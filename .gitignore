@@ -1,0 +1,22 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Mac OS
+.DS_Store
+
+# IDE and Editor
+.vscode/
+.idea/
+
+# PM2 Logs
+logs/
+*.log
+
+.vercel

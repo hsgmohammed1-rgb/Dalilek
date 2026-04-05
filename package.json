@@ -1,0 +1,16 @@
+{
+  "name": "ghyfgt6y",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "npx pm2 start ecosystem.config.js",
+    "stop": "npx pm2 stop dalilek-server",
+    "dev": "node server.js"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.4.0",
+    "sharp": "^0.34.5"
+  }
+}

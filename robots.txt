@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /profile
+
+# Optimized for Googlebot
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+# The ONLY map we submit is the Index Map. 
+# Providing multiple map links wastes crawl budget.
+Sitemap: https://dalilek.online/sitemap-index.xml

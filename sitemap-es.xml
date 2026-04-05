@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://dalilek.online/es/</loc>
+    <lastmod>2025-04-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/" />
+  </url>
+  <url>
+    <loc>https://dalilek.online/es/articles</loc>
+    <lastmod>2025-04-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://dalilek.online/es/categories</loc>
+    <lastmod>2025-04-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://dalilek.online/es/categories/technology</loc>
+    <lastmod>2025-04-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dalilek.online/es/categories/health</loc>
+    <lastmod>2025-04-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dalilek.online/es/categories/business</loc>
+    <lastmod>2025-04-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dalilek.online/es/categories/science</loc>
+    <lastmod>2025-04-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dalilek.online/es/categories/culture</loc>
+    <lastmod>2025-04-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://dalilek.online/es/categories/arts</loc>
+    <lastmod>2025-04-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://dalilek.online/es/categories/sports</loc>
+    <lastmod>2025-04-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://dalilek.online/es/categories/self-development</loc>
+    <lastmod>2025-04-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+</urlset>
