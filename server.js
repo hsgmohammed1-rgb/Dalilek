@@ -132,7 +132,7 @@ function generateArticlesSitemapXml() {
     const canonical = `${SITE_URL}/articles/${slug}`;
     const banner = BANNERS.ar || { landscape: SITE_URL + '/banners/ar-landscape.png' };
     const alts = langs.map(l =>
-      `    <xhtml:link rel="alternate" hreflang="${l}" href=SITE_URL + "/${l}/articles/${slug}" />`
+      `    <xhtml:link rel="alternate" hreflang="${l}" href="${SITE_URL}/${l}/articles/${slug}" />`
     ).join('\n');
     const xDefault = `    <xhtml:link rel="alternate" hreflang="x-default" href="${canonical}" />`;
     const imageTitle = article.title ? safeEscapeString(article.title) : 'صورة المقال';
@@ -376,11 +376,11 @@ function injectArticleMeta(baseHtml, slug, lang) {
 
   // Inject hreflang for all 4 language versions of this article
   const hreflang = `
-    <link rel="alternate" hreflang="ar" href=SITE_URL + "/ar/articles/${slug}" />
-    <link rel="alternate" hreflang="en" href=SITE_URL + "/en/articles/${slug}" />
-    <link rel="alternate" hreflang="fr" href=SITE_URL + "/fr/articles/${slug}" />
-    <link rel="alternate" hreflang="es" href=SITE_URL + "/es/articles/${slug}" />
-    <link rel="alternate" hreflang="x-default" href=SITE_URL + "/articles/${slug}" />
+    <link rel="alternate" hreflang="ar" href="${SITE_URL}/ar/articles/${slug}" />
+    <link rel="alternate" hreflang="en" href="${SITE_URL}/en/articles/${slug}" />
+    <link rel="alternate" hreflang="fr" href="${SITE_URL}/fr/articles/${slug}" />
+    <link rel="alternate" hreflang="es" href="${SITE_URL}/es/articles/${slug}" />
+    <link rel="alternate" hreflang="x-default" href="${SITE_URL}/articles/${slug}" />
   `;
   html = html.replace('</head>', hreflang + '</head>');
 
