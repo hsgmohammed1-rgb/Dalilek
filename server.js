@@ -190,10 +190,11 @@ async function refreshSeoFromSupabase() {
       headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Accept': 'application/json' },
     };
     const req = https.request(opts, (res) => {
-      let data = '';
-      res.on('data', d => data += d);
+      const chunks = [];
+      res.on('data', d => chunks.push(d));
       res.on('end', async () => {
         try {
+          const data = Buffer.concat(chunks).toString('utf-8');
           const articles = JSON.parse(data);
           if (!Array.isArray(articles)) { resolve(); return; }
           const { buildMultilingualKeywords, buildMultilingualDescription, supabaseFetch } = require('./seo-generator.js');
@@ -554,10 +555,11 @@ const appHandler = async (req, res) => {
         headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Accept': 'application/json' },
       };
       const supaReq = https.request(opts, (supaRes) => {
-        let data = '';
-        supaRes.on('data', d => data += d);
+        const chunks = [];
+        supaRes.on('data', d => chunks.push(d));
         supaRes.on('end', () => {
           try {
+            const data = Buffer.concat(chunks).toString('utf-8');
             const rows = JSON.parse(data);
             if (Array.isArray(rows) && rows.length > 0) {
               const { buildMultilingualKeywords } = require('./seo-generator.js');
