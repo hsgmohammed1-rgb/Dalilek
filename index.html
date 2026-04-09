@@ -246,20 +246,42 @@
     }
     </script>
 
-    <!-- ===== Early language detection ===== -->
+    <!-- ===== Early language detection & Virtual Router ===== -->
     <script>
       (function () {
         try {
-          var stored = localStorage.getItem('dalilek-lang');
           var valid = ['ar', 'en', 'fr', 'es'];
           var lang = 'ar';
-          if (stored && valid.indexOf(stored) !== -1) {
-            lang = stored;
+          var stored = localStorage.getItem('dalilek-lang');
+          
+          var currentPath = window.location.pathname;
+          var match = currentPath.match(/^\/(ar|en|fr|es)(\/|$)(.*)/);
+          
+          if (match) {
+            lang = match[1];
+            window.__dalilekLang = lang;
+            localStorage.setItem('dalilek-lang', lang);
+            
+            var unPrefixed = '/' + match[3];
+            window.history.replaceState(window.history.state, '', unPrefixed + window.location.search + window.location.hash);
+            
+            setTimeout(function() {
+               var cur = window.location.pathname;
+               if (!cur.startsWith('/' + lang)) {
+                   var restored = '/' + lang + (cur === '/' ? '' : cur) + window.location.search + window.location.hash;
+                   window.history.replaceState(window.history.state, '', restored);
+               }
+            }, 0);
           } else {
-            var bl = (navigator.language || '').toLowerCase();
-            if (bl.startsWith('fr')) lang = 'fr';
-            else if (bl.startsWith('es')) lang = 'es';
-            else if (bl.startsWith('en')) lang = 'en';
+            if (stored && valid.indexOf(stored) !== -1) {
+              lang = stored;
+            } else {
+              var bl = (navigator.language || '').toLowerCase();
+              if (bl.startsWith('fr')) lang = 'fr';
+              else if (bl.startsWith('es')) lang = 'es';
+              else if (bl.startsWith('en')) lang = 'en';
+            }
+            window.__dalilekLang = lang;
           }
           document.documentElement.setAttribute('lang', lang);
           document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
@@ -332,10 +354,51 @@
           } catch (e) {}
         }
 
-        var origPush = history.pushState;
-        history.pushState = function () { origPush.apply(this, arguments); syncSeo(); };
-        var origReplace = history.replaceState;
-        history.replaceState = function () { origReplace.apply(this, arguments); syncSeo(); };
+        var origPush = window.history.pushState;
+        window.history.pushState = function (state, unused, url) { 
+           var newUrl = url;
+           if (url) {
+               var u = url.toString();
+               if (u.startsWith('/') && !u.match(/^\/(ar|en|fr|es)(\/|$)/)) {
+                   var prefix = window.__dalilekLang ? '/' + window.__dalilekLang : '/ar';
+                   newUrl = prefix + (u === '/' ? '' : u);
+               }
+           }
+           origPush.call(this, state, unused, newUrl); 
+           syncSeo(); 
+        };
+        var origReplace = window.history.replaceState;
+        window.history.replaceState = function (state, unused, url) { 
+           var newUrl = url;
+           if (url) {
+               var u = url.toString();
+               if (u.startsWith('/') && !u.match(/^\/(ar|en|fr|es)(\/|$)/)) {
+                   var prefix = window.__dalilekLang ? '/' + window.__dalilekLang : '/ar';
+                   newUrl = prefix + (u === '/' ? '' : u);
+               }
+           }
+           origReplace.call(this, state, unused, newUrl); 
+           syncSeo(); 
+        };
+        var origAddEventListener = window.addEventListener;
+        window.addEventListener = function(type, listener, options) {
+            if (type === 'popstate') {
+                var proxyListener = function(event) {
+                    var current = window.location.pathname;
+                    var match = current.match(/^\/(ar|en|fr|es)(\/|$)(.*)/);
+                    if (match) {
+                        var unPrefixed = '/' + match[3];
+                        origReplace.call(window.history, event.state, '', unPrefixed + window.location.search + window.location.hash);
+                        listener.call(this, event);
+                        origReplace.call(window.history, event.state, '', current + window.location.search + window.location.hash);
+                    } else {
+                        listener.call(this, event);
+                    }
+                };
+                return origAddEventListener.call(this, type, proxyListener, options);
+            }
+            return origAddEventListener.call(this, type, listener, options);
+        };
         window.addEventListener('popstate', syncSeo);
         document.addEventListener('DOMContentLoaded', syncSeo);
       })();
