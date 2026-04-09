@@ -343,7 +343,6 @@ function injectArticleMeta(baseHtml, slug, lang) {
     .replace(/<title>[^<]*<\/title>/, `<title>${fullTitle}</title>`)
     .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${desc}" />`)
     .replace(/<meta name="keywords" content="[^"]*" \/>/, `<meta name="keywords" content="${kw}" />`)
-    .replace(/<link rel="canonical" href="[^"]*" \/>/, `<link rel="canonical" href="${canonicalUrl}" />`)
     .replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${fullTitle}" />`)
     .replace(/<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${desc}" />`)
     .replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${canonicalUrl}" />`)
@@ -374,16 +373,6 @@ function injectArticleMeta(baseHtml, slug, lang) {
     <script type="application/ld+json">${safeEscapeString(breadcrumbJsonLd)}</script>
   `;
   html = html.replace('</head>', articleScripts + '</head>');
-
-  // Inject hreflang for all 4 language versions of this article
-  const hreflang = `
-    <link rel="alternate" hreflang="ar" href="${SITE_URL}/ar/articles/${slug}" />
-    <link rel="alternate" hreflang="en" href="${SITE_URL}/en/articles/${slug}" />
-    <link rel="alternate" hreflang="fr" href="${SITE_URL}/fr/articles/${slug}" />
-    <link rel="alternate" hreflang="es" href="${SITE_URL}/es/articles/${slug}" />
-    <link rel="alternate" hreflang="x-default" href="${SITE_URL}/articles/${slug}" />
-  `;
-  html = html.replace('</head>', hreflang + '</head>');
 
   return html;
 }
@@ -428,6 +417,34 @@ function injectPageMeta(html, lang) {
 
 function getBaseHtml() {
   try { return fs.readFileSync(path.join(ROOT, 'index.html'), 'utf-8'); } catch { return null; }
+}
+
+function injectCanonicalAndHreflang(html, effectivePath) {
+  html = html.replace(/<link rel="canonical"[^>]*\/>/gi, '');
+  html = html.replace(/<link rel="alternate" hreflang=[^>]*\/>/gi, '');
+
+  let basePath = effectivePath === '/index.html' ? '/' : effectivePath;
+  const langMatch = basePath.match(/^\/(ar|en|fr|es)(\/|$)/);
+  if (langMatch) {
+    basePath = basePath.slice(langMatch[1].length + 1);
+    if (!basePath.startsWith('/')) basePath = '/' + basePath;
+  }
+  if (basePath.endsWith('/') && basePath.length > 1) basePath = basePath.slice(0, -1);
+
+  let requestedCanonPath = effectivePath === '/index.html' ? '/' : effectivePath;
+  if (requestedCanonPath.endsWith('/') && requestedCanonPath.length > 1) requestedCanonPath = requestedCanonPath.slice(0, -1);
+  const canonicalUrl = `${SITE_URL}${requestedCanonPath}`;
+
+  const hreflang = `
+    <link rel="canonical" href="${canonicalUrl}" />
+    <link rel="alternate" hreflang="ar" href="${SITE_URL}/ar${basePath === '/' ? '' : basePath}" />
+    <link rel="alternate" hreflang="en" href="${SITE_URL}/en${basePath === '/' ? '' : basePath}" />
+    <link rel="alternate" hreflang="fr" href="${SITE_URL}/fr${basePath === '/' ? '' : basePath}" />
+    <link rel="alternate" hreflang="es" href="${SITE_URL}/es${basePath === '/' ? '' : basePath}" />
+    <link rel="alternate" hreflang="x-default" href="${SITE_URL}${basePath === '/' ? '' : basePath}" />
+  `;
+  
+  return html.replace('</head>', hreflang + '</head>');
 }
 
 function detectLangFromPath(urlPath) {
@@ -679,6 +696,8 @@ const appHandler = async (req, res) => {
   } else {
     html = injectPageMeta(baseHtml, lang);
   }
+
+  html = injectCanonicalAndHreflang(html, effectivePath);
 
   // Inject all articles' multilingual keywords so React can resolve them on client-side navigation
   const allKeywordsMap = Object.fromEntries(
