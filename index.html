@@ -265,13 +265,32 @@
             var unPrefixed = '/' + match[3];
             window.history.replaceState(window.history.state, '', unPrefixed + window.location.search + window.location.hash);
             
-            setTimeout(function() {
+            var restoreUrl = function() {
                var cur = window.location.pathname;
                if (!cur.startsWith('/' + lang)) {
                    var restored = '/' + lang + (cur === '/' ? '' : cur) + window.location.search + window.location.hash;
                    window.history.replaceState(window.history.state, '', restored);
                }
-            }, 0);
+            };
+            
+            var checkRoot = function() {
+                var root = document.getElementById('root');
+                if (root && root.children.length > 0) {
+                    restoreUrl();
+                    return true;
+                }
+                return false;
+            };
+
+            document.addEventListener('DOMContentLoaded', function() {
+                if (!checkRoot()) {
+                    var observer = new MutationObserver(function(mutations, obs) {
+                        if (checkRoot()) obs.disconnect();
+                    });
+                    var root = document.getElementById('root');
+                    if (root) observer.observe(root, { childList: true, subtree: true });
+                }
+            });
           } else {
             if (stored && valid.indexOf(stored) !== -1) {
               lang = stored;
