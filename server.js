@@ -48,11 +48,13 @@ const mimeTypes = {
   '.woff': 'font/woff',
   '.woff2':'font/woff2',
   '.ttf':  'font/ttf',
+  '.xsl':  'text/xsl; charset=utf-8',
 };
 
 const ROOT_SEO_FILES = [
   '/robots.txt','/sitemap.xml','/sitemap-index.xml',
   '/sitemap-ar.xml','/sitemap-en.xml','/sitemap-fr.xml','/sitemap-es.xml',
+  '/sitemap-style.xsl',
   '/favicon.svg','/logo.png','/opengraph.jpg',
 ];
 
@@ -154,6 +156,7 @@ ${xDefault}
   }
 
   return `<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap-style.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
