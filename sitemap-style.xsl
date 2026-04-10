@@ -93,7 +93,7 @@
         <xsl:for-each select="sitemap:urlset/sitemap:url">
           <tr>
             <td style="color:#4a5568;text-align:center"><xsl:value-of select="position()"/></td>
-            <td>
+            <td dir="ltr" style="text-align:left;">
               <a href="{sitemap:loc}"><xsl:value-of select="sitemap:loc"/></a>
             </td>
             <td style="text-align:center">
