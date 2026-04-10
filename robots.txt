@@ -15,6 +15,6 @@ Allow: /
 User-agent: Googlebot-News
 Allow: /
 
-# The ONLY map we submit is the Index Map. 
-# Providing multiple map links wastes crawl budget.
+# Sitemaps: Both the index map and the main sitemap
 Sitemap: https://dalilek.online/sitemap-index.xml
+Sitemap: https://dalilek.online/sitemap.xml

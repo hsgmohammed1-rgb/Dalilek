@@ -2,7 +2,8 @@ require('dotenv').config();
 const https = require('https');
 
 const SUPABASE_URL = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
-const SUPABASE_KEY = process.env.SUPABASE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
+// CRITICAL: Prefer JWT keys for REST API calls. sb_publishable_* keys do NOT work with PostgREST.
+const SUPABASE_KEY = process.env.SERVICE_ROLE_API || process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.ANON_PUBLIC || process.env.SUPABASE_KEY;
 if (!SUPABASE_URL || !SUPABASE_KEY) { console.error('CRITICAL: Supabase credentials missing from .env'); process.exit(1); }
 
 async function supabaseFetch(path, method = 'GET', body = null) {

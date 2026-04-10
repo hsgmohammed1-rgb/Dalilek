@@ -15,9 +15,10 @@ const SITEMAP_PATH = path.join(CACHE_DIR, 'sitemap-articles.xml');
 const BASE_PATH = process.env.BASE_PATH || '';
 
 const SUPABASE_URL = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
-const SUPABASE_KEY = process.env.SUPABASE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
+// CRITICAL: Prefer JWT keys for REST API calls. sb_publishable_* keys do NOT work with PostgREST.
+const SUPABASE_KEY = process.env.SERVICE_ROLE_API || process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.ANON_PUBLIC || process.env.SUPABASE_KEY;
 const SEO_WEBHOOK_SECRET = process.env.SEO_WEBHOOK_SECRET;
-const SITE_URL = process.env.SITE_URL || process.env.ALLOWED_ORIGIN;
+const SITE_URL = (process.env.SITE_URL || process.env.ALLOWED_ORIGIN || '').replace(/\/$/, '');
 if (!SITE_URL) throw new Error("CRITICAL: SITE_URL missing in .env");
 if (!SUPABASE_URL || !SUPABASE_KEY) throw new Error("CRITICAL: Supabase keys missing in .env");
 
@@ -420,8 +421,11 @@ function getBaseHtml() {
 }
 
 function injectCanonicalAndHreflang(html, effectivePath) {
-  html = html.replace(/<link rel="canonical"[^>]*\/>/gi, '');
-  html = html.replace(/<link rel="alternate" hreflang=[^>]*\/>/gi, '');
+  // Remove ALL existing canonical and hreflang tags (more robust regex)
+  html = html.replace(/<link\s+rel=["']canonical["'][^>]*\/?>/gi, '');
+  html = html.replace(/<link\s+rel=["']alternate["']\s+hreflang=[^>]*\/?>/gi, '');
+  // Also clean up the section comment and any empty lines left behind
+  html = html.replace(/\s*<!-- ===== CANONICAL \+ HREFLANG[^>]*-->\s*/gi, '');
 
   let basePath = effectivePath === '/index.html' ? '/' : effectivePath;
   const langMatch = basePath.match(/^\/(ar|en|fr|es)(\/|$)/);
@@ -436,6 +440,7 @@ function injectCanonicalAndHreflang(html, effectivePath) {
   const canonicalUrl = `${SITE_URL}${requestedCanonPath}`;
 
   const hreflang = `
+    <!-- Canonical + Hreflang (injected by server) -->
     <link rel="canonical" href="${canonicalUrl}" />
     <link rel="alternate" hreflang="ar" href="${SITE_URL}/ar${basePath === '/' ? '' : basePath}" />
     <link rel="alternate" hreflang="en" href="${SITE_URL}/en${basePath === '/' ? '' : basePath}" />
@@ -444,6 +449,7 @@ function injectCanonicalAndHreflang(html, effectivePath) {
     <link rel="alternate" hreflang="x-default" href="${SITE_URL}${basePath === '/' ? '' : basePath}" />
   `;
   
+  // Insert canonical/hreflang BEFORE closing </head> — NOT after
   return html.replace('</head>', hreflang + '</head>');
 }
 
@@ -455,6 +461,21 @@ function detectLangFromPath(urlPath) {
 function detectSlugFromPath(urlPath) {
   const m = urlPath.match(/\/articles\/([^/?#]+)/);
   return m ? m[1] : null;
+}
+
+// ── Bot / Crawler detection ──────────────────────────────────────────────────
+function isCrawlerBot(userAgent) {
+  if (!userAgent) return false;
+  return /Googlebot|bingbot|Baiduspider|YandexBot|DuckDuckBot|Slurp|facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp|Applebot|AhrefsBot|SemrushBot|MJ12bot|Screaming Frog|rogerbot|Sogou|ia_archiver|archive\.org_bot|Mediapartners-Google|APIs-Google|AdsBot-Google|Googlebot-Image|Googlebot-News|Googlebot-Video|FeedFetcher-Google/i.test(userAgent);
+}
+
+// Strip virtual router scripts from HTML so crawlers see clean, stable URLs
+function stripVirtualRouterForBot(html) {
+  // Remove the early language detection script that does replaceState URL manipulation
+  html = html.replace(/<!-- ===== Early language detection & Virtual Router ===== -->[\s\S]*?<\/script>/, '');
+  // Remove the client-side navigation sync script that overrides pushState/replaceState
+  html = html.replace(/<!-- ===== Multilingual SEO: client-side navigation sync ===== -->[\s\S]*?<\/script>/, '');
+  return html;
 }
 
 // ── SEO Webhook handler (called when article is created/published) ─────────────
@@ -667,10 +688,10 @@ const appHandler = async (req, res) => {
     const acceptEncoding = req.headers['accept-encoding'] || '';
     const isCompressible = ct.startsWith('text/') || ct.startsWith('application/javascript') || ct.startsWith('application/json') || ext.endsWith('.xml') || ext.endsWith('.svg');
 
-    if (isCompressible && acceptEncoding.match(/\\bbr\\b/)) {
+    if (isCompressible && /\bbr\b/.test(acceptEncoding)) {
       res.writeHead(200, { 'Content-Type': ct, 'Content-Encoding': 'br', ...getCacheHeaders(ext) });
       fs.createReadStream(resolvedPath).pipe(zlib.createBrotliCompress()).pipe(res);
-    } else if (isCompressible && acceptEncoding.match(/\\bgzip\\b/)) {
+    } else if (isCompressible && /\bgzip\b/.test(acceptEncoding)) {
       res.writeHead(200, { 'Content-Type': ct, 'Content-Encoding': 'gzip', ...getCacheHeaders(ext) });
       fs.createReadStream(resolvedPath).pipe(zlib.createGzip()).pipe(res);
     } else {
@@ -706,11 +727,22 @@ const appHandler = async (req, res) => {
   const allKeywordsScript = `<script>window.__DALILEK_ALL_KEYWORDS__=${safeJsonStringify(allKeywordsMap)};</script>`;
   html = html.replace('</head>', allKeywordsScript + '</head>');
 
+  // ── Crawler-safe rendering: strip virtual router for bots ──────────────────
+  const userAgent = req.headers['user-agent'] || '';
+  const isBot = isCrawlerBot(userAgent);
+  if (isBot) {
+    html = stripVirtualRouterForBot(html);
+    // Add noscript fallback content for bots that don't execute JS
+    const pageMeta = PAGE_META[lang] || PAGE_META.ar;
+    const noscriptContent = `<noscript><h1>${escapeHtml(pageMeta.title)}</h1><p>${escapeHtml(pageMeta.description)}</p></noscript>`;
+    html = html.replace('<div id="root"></div>', `<div id="root">${noscriptContent}</div>`);
+  }
+
   const acceptEncoding = req.headers['accept-encoding'] || '';
-  if (acceptEncoding.match(/\\bbr\\b/)) {
+  if (/\bbr\b/.test(acceptEncoding)) {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Content-Encoding': 'br', ...getCacheHeaders('.html') });
     res.end(zlib.brotliCompressSync(Buffer.from(html, 'utf-8')));
-  } else if (acceptEncoding.match(/\\bgzip\\b/)) {
+  } else if (/\bgzip\b/.test(acceptEncoding)) {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Content-Encoding': 'gzip', ...getCacheHeaders('.html') });
     res.end(zlib.gzipSync(Buffer.from(html, 'utf-8')));
   } else {

@@ -8,6 +8,8 @@
         "includeFiles": [
           "assets/**",
           "banners/**",
+          "seo-generator.js",
+          "seo-data.json",
           "*.html",
           "*.jpg",
           "*.png",

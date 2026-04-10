@@ -7,7 +7,7 @@
   <!-- Home Page -->
   <url>
     <loc>https://dalilek.online/</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/" />
@@ -24,7 +24,7 @@
   <!-- Articles -->
   <url>
     <loc>https://dalilek.online/articles</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/articles" />
@@ -37,7 +37,7 @@
   <!-- Categories -->
   <url>
     <loc>https://dalilek.online/categories</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/categories" />
@@ -50,7 +50,7 @@
   <!-- Category: Technology -->
   <url>
     <loc>https://dalilek.online/categories/technology</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/categories/technology" />
@@ -63,7 +63,7 @@
   <!-- Category: Health -->
   <url>
     <loc>https://dalilek.online/categories/health</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/categories/health" />
@@ -76,7 +76,7 @@
   <!-- Category: Business -->
   <url>
     <loc>https://dalilek.online/categories/business</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/categories/business" />
@@ -89,7 +89,7 @@
   <!-- Category: Science -->
   <url>
     <loc>https://dalilek.online/categories/science</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/categories/science" />
@@ -102,7 +102,7 @@
   <!-- Category: Culture -->
   <url>
     <loc>https://dalilek.online/categories/culture</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/categories/culture" />
@@ -115,7 +115,7 @@
   <!-- Category: Arts -->
   <url>
     <loc>https://dalilek.online/categories/arts</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/categories/arts" />
@@ -128,7 +128,7 @@
   <!-- Category: Sports -->
   <url>
     <loc>https://dalilek.online/categories/sports</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.80</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/categories/sports" />
@@ -141,7 +141,7 @@
   <!-- Category: Self Development -->
   <url>
     <loc>https://dalilek.online/categories/self-development</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/categories/self-development" />
@@ -154,7 +154,7 @@
   <!-- Arabic Language Root -->
   <url>
     <loc>https://dalilek.online/ar/</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/" />
@@ -167,7 +167,7 @@
   <!-- English Language Root -->
   <url>
     <loc>https://dalilek.online/en/</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/" />
@@ -180,7 +180,7 @@
   <!-- French Language Root -->
   <url>
     <loc>https://dalilek.online/fr/</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/" />
@@ -193,7 +193,7 @@
   <!-- Spanish Language Root -->
   <url>
     <loc>https://dalilek.online/es/</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/" />
@@ -206,7 +206,7 @@
   <!-- About -->
   <url>
     <loc>https://dalilek.online/about</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.60</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/about" />
@@ -219,7 +219,7 @@
   <!-- Contact -->
   <url>
     <loc>https://dalilek.online/contact</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/contact" />
@@ -232,7 +232,7 @@
   <!-- ===== ARTICLES ===== -->
   <url>
     <loc>https://dalilek.online/articles/time-management-and-productivity</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/articles/time-management-and-productivity" />
@@ -243,7 +243,7 @@
   </url>
   <url>
     <loc>https://dalilek.online/articles/idarah-al-waqt</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/articles/idarah-al-waqt" />
@@ -254,7 +254,7 @@
   </url>
   <url>
     <loc>https://dalilek.online/articles/ai-jobs-future-arab-world</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/articles/ai-jobs-future-arab-world" />
@@ -265,7 +265,7 @@
   </url>
   <url>
     <loc>https://dalilek.online/articles/artificial-intelligence-future-of-jobs</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/articles/artificial-intelligence-future-of-jobs" />
@@ -276,7 +276,7 @@
   </url>
   <url>
     <loc>https://dalilek.online/articles/fitness-and-sports-benefits</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/articles/fitness-and-sports-benefits" />
@@ -287,7 +287,7 @@
   </url>
   <url>
     <loc>https://dalilek.online/articles/the-future-of-robotics</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/articles/the-future-of-robotics" />
@@ -300,7 +300,7 @@
   <!-- Privacy -->
   <url>
     <loc>https://dalilek.online/privacy</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.40</priority>
   </url>
@@ -308,7 +308,7 @@
   <!-- Terms -->
   <url>
     <loc>https://dalilek.online/terms</loc>
-    <lastmod>2025-04-01</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.40</priority>
   </url>
