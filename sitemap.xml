@@ -5,12 +5,173 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <!-- ===== HOME PAGE ===== -->
-  
-  
-  
-  
-  
-  
+  <url>
+    <loc>https://dalilek.online/</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/" />
+  </url>
+
+  <!-- ===== ARTICLES INDEX ===== -->
+  <url>
+    <loc>https://dalilek.online/articles</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/articles" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/articles" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/articles" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/articles" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/articles" />
+  </url>
+
+  <!-- ===== CATEGORIES INDEX ===== -->
+  <url>
+    <loc>https://dalilek.online/categories</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/categories" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/categories" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/categories" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/categories" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/categories" />
+  </url>
+
+  <!-- ===== CATEGORY: TECHNOLOGY ===== -->
+  <url>
+    <loc>https://dalilek.online/categories/technology</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/categories/technology" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/categories/technology" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/categories/technology" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/categories/technology" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/categories/technology" />
+  </url>
+
+  <!-- ===== CATEGORY: HEALTH ===== -->
+  <url>
+    <loc>https://dalilek.online/categories/health</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/categories/health" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/categories/health" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/categories/health" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/categories/health" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/categories/health" />
+  </url>
+
+  <!-- ===== CATEGORY: BUSINESS ===== -->
+  <url>
+    <loc>https://dalilek.online/categories/business</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/categories/business" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/categories/business" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/categories/business" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/categories/business" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/categories/business" />
+  </url>
+
+  <!-- ===== CATEGORY: SCIENCE ===== -->
+  <url>
+    <loc>https://dalilek.online/categories/science</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/categories/science" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/categories/science" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/categories/science" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/categories/science" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/categories/science" />
+  </url>
+
+  <!-- ===== CATEGORY: CULTURE ===== -->
+  <url>
+    <loc>https://dalilek.online/categories/culture</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/categories/culture" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/categories/culture" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/categories/culture" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/categories/culture" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/categories/culture" />
+  </url>
+
+  <!-- ===== CATEGORY: ARTS ===== -->
+  <url>
+    <loc>https://dalilek.online/categories/arts</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/categories/arts" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/categories/arts" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/categories/arts" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/categories/arts" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/categories/arts" />
+  </url>
+
+  <!-- ===== CATEGORY: SPORTS ===== -->
+  <url>
+    <loc>https://dalilek.online/categories/sports</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/categories/sports" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/categories/sports" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/categories/sports" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/categories/sports" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/categories/sports" />
+  </url>
+
+  <!-- ===== CATEGORY: SELF-DEVELOPMENT ===== -->
+  <url>
+    <loc>https://dalilek.online/categories/self-development</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/categories/self-development" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/categories/self-development" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/categories/self-development" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/categories/self-development" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/categories/self-development" />
+  </url>
+
+  <!-- ===== ABOUT ===== -->
+  <url>
+    <loc>https://dalilek.online/about</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/about" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/about" />
+  </url>
+
+  <!-- ===== CONTACT ===== -->
+  <url>
+    <loc>https://dalilek.online/contact</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/contact" />
+  </url>
 
   <!-- ===== PRIVACY ===== -->
   <url>
@@ -20,6 +181,8 @@
     <priority>0.40</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/privacy" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/privacy" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/privacy" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/privacy" />
   </url>
 
@@ -31,6 +194,8 @@
     <priority>0.40</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/terms" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/terms" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/terms" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/terms" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/terms" />
   </url>
 

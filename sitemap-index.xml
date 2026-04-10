@@ -3,26 +3,12 @@
 
   <sitemap>
     <loc>https://dalilek.online/sitemap.xml</loc>
+    <lastmod>2026-04-10</lastmod>
   </sitemap>
 
   <sitemap>
     <loc>https://dalilek.online/sitemap-articles.xml</loc>
-  </sitemap>
-
-  <sitemap>
-    <loc>https://dalilek.online/sitemap-ar.xml</loc>
-  </sitemap>
-
-  <sitemap>
-    <loc>https://dalilek.online/sitemap-en.xml</loc>
-  </sitemap>
-
-  <sitemap>
-    <loc>https://dalilek.online/sitemap-fr.xml</loc>
-  </sitemap>
-
-  <sitemap>
-    <loc>https://dalilek.online/sitemap-es.xml</loc>
+    <lastmod>2026-04-10</lastmod>
   </sitemap>
 
 </sitemapindex>

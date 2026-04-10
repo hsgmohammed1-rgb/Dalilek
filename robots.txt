@@ -17,8 +17,6 @@ Allow: /
 
 # Sitemaps
 Sitemap: https://dalilek.online/sitemap-index.xml
-Sitemap: https://dalilek.online/sitemap.xml
-Sitemap: https://dalilek.online/sitemap-articles.xml
 
 # Host
 Host: https://dalilek.online
