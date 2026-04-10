@@ -263,13 +263,14 @@
             localStorage.setItem('dalilek-lang', lang);
             
             var unPrefixed = '/' + match[3];
-            window.history.replaceState(window.history.state, '', unPrefixed + window.location.search + window.location.hash);
+            var nativeReplaceState = window.history.replaceState;
+            nativeReplaceState.call(window.history, window.history.state, '', unPrefixed + window.location.search + window.location.hash);
             
             var restoreUrl = function() {
                var cur = window.location.pathname;
                if (!cur.startsWith('/' + lang)) {
                    var restored = '/' + lang + (cur === '/' ? '' : cur) + window.location.search + window.location.hash;
-                   window.history.replaceState(window.history.state, '', restored);
+                   nativeReplaceState.call(window.history, window.history.state, '', restored);
                }
             };
             
