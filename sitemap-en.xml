@@ -7,7 +7,10 @@
     <lastmod>2026-04-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/" />
   </url>
   <url>
@@ -15,12 +18,17 @@
     <lastmod>2026-04-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/articles" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/articles" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/articles" />
   </url>
   <url>
     <loc>https://dalilek.online/en/categories</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/categories" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/categories" />
   </url>
   <url>
     <loc>https://dalilek.online/en/categories/technology</loc>
@@ -66,6 +74,56 @@
   </url>
   <url>
     <loc>https://dalilek.online/en/categories/self-development</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://dalilek.online/en/about</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://dalilek.online/en/contact</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+
+  <!-- English Article URLs -->
+  <url>
+    <loc>https://dalilek.online/en/articles/time-management-and-productivity</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://dalilek.online/en/articles/idarah-al-waqt</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://dalilek.online/en/articles/ai-jobs-future-arab-world</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://dalilek.online/en/articles/artificial-intelligence-future-of-jobs</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://dalilek.online/en/articles/fitness-and-sports-benefits</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://dalilek.online/en/articles/the-future-of-robotics</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>

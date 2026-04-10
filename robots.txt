@@ -4,7 +4,7 @@ Disallow: /api/
 Disallow: /admin
 Disallow: /profile
 
-# Optimized for Googlebot
+# Googlebot
 User-agent: Googlebot
 Allow: /
 Disallow: /api/
@@ -15,6 +15,10 @@ Allow: /
 User-agent: Googlebot-News
 Allow: /
 
-# Sitemaps: Both the index map and the main sitemap
+# Sitemaps
 Sitemap: https://dalilek.online/sitemap-index.xml
 Sitemap: https://dalilek.online/sitemap.xml
+Sitemap: https://dalilek.online/sitemap-articles.xml
+
+# Host
+Host: https://dalilek.online

@@ -424,32 +424,51 @@ function injectCanonicalAndHreflang(html, effectivePath) {
   // Remove ALL existing canonical and hreflang tags (more robust regex)
   html = html.replace(/<link\s+rel=["']canonical["'][^>]*\/?>/gi, '');
   html = html.replace(/<link\s+rel=["']alternate["']\s+hreflang=[^>]*\/?>/gi, '');
-  // Also clean up the section comment and any empty lines left behind
   html = html.replace(/\s*<!-- ===== CANONICAL \+ HREFLANG[^>]*-->\s*/gi, '');
 
-  let basePath = effectivePath === '/index.html' ? '/' : effectivePath;
-  const langMatch = basePath.match(/^\/(ar|en|fr|es)(\/|$)/);
+  // Normalize effective path
+  let urlPath = effectivePath === '/index.html' ? '/' : effectivePath;
+
+  // Detect language prefix and extract base path (without lang prefix)
+  const langMatch = urlPath.match(/^\/(ar|en|fr|es)(\/(.*)|$)/);
+  let basePath;
   if (langMatch) {
-    basePath = basePath.slice(langMatch[1].length + 1);
-    if (!basePath.startsWith('/')) basePath = '/' + basePath;
+    basePath = langMatch[3] ? '/' + langMatch[3] : '/';
+  } else {
+    basePath = urlPath;
   }
+  // Remove trailing slash from basePath UNLESS it IS just "/"
   if (basePath.endsWith('/') && basePath.length > 1) basePath = basePath.slice(0, -1);
 
-  let requestedCanonPath = effectivePath === '/index.html' ? '/' : effectivePath;
-  if (requestedCanonPath.endsWith('/') && requestedCanonPath.length > 1) requestedCanonPath = requestedCanonPath.slice(0, -1);
-  const canonicalUrl = `${SITE_URL}${requestedCanonPath}`;
+  const isRoot = (basePath === '/');
+
+  // Build canonical URL — consistent with sitemap:
+  // Language roots get trailing slash (/ar/), other paths don't
+  let canonicalPath;
+  if (langMatch && isRoot) {
+    canonicalPath = '/' + langMatch[1] + '/';
+  } else if (!langMatch && isRoot) {
+    canonicalPath = '/';
+  } else {
+    canonicalPath = urlPath;
+    if (canonicalPath.endsWith('/') && canonicalPath.length > 1) canonicalPath = canonicalPath.slice(0, -1);
+  }
+  const canonicalUrl = `${SITE_URL}${canonicalPath}`;
+
+  // Build hreflang alternate URLs — language roots get trailing slash
+  const buildLangUrl = (lang) => isRoot ? `${SITE_URL}/${lang}/` : `${SITE_URL}/${lang}${basePath}`;
+  const xDefaultUrl = isRoot ? `${SITE_URL}/` : `${SITE_URL}${basePath}`;
 
   const hreflang = `
     <!-- Canonical + Hreflang (injected by server) -->
     <link rel="canonical" href="${canonicalUrl}" />
-    <link rel="alternate" hreflang="ar" href="${SITE_URL}/ar${basePath === '/' ? '' : basePath}" />
-    <link rel="alternate" hreflang="en" href="${SITE_URL}/en${basePath === '/' ? '' : basePath}" />
-    <link rel="alternate" hreflang="fr" href="${SITE_URL}/fr${basePath === '/' ? '' : basePath}" />
-    <link rel="alternate" hreflang="es" href="${SITE_URL}/es${basePath === '/' ? '' : basePath}" />
-    <link rel="alternate" hreflang="x-default" href="${SITE_URL}${basePath === '/' ? '' : basePath}" />
+    <link rel="alternate" hreflang="ar" href="${buildLangUrl('ar')}" />
+    <link rel="alternate" hreflang="en" href="${buildLangUrl('en')}" />
+    <link rel="alternate" hreflang="fr" href="${buildLangUrl('fr')}" />
+    <link rel="alternate" hreflang="es" href="${buildLangUrl('es')}" />
+    <link rel="alternate" hreflang="x-default" href="${xDefaultUrl}" />
   `;
-  
-  // Insert canonical/hreflang BEFORE closing </head> — NOT after
+
   return html.replace('</head>', hreflang + '</head>');
 }
 
@@ -469,13 +488,95 @@ function isCrawlerBot(userAgent) {
   return /Googlebot|bingbot|Baiduspider|YandexBot|DuckDuckBot|Slurp|facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp|Applebot|AhrefsBot|SemrushBot|MJ12bot|Screaming Frog|rogerbot|Sogou|ia_archiver|archive\.org_bot|Mediapartners-Google|APIs-Google|AdsBot-Google|Googlebot-Image|Googlebot-News|Googlebot-Video|FeedFetcher-Google/i.test(userAgent);
 }
 
-// Strip virtual router scripts from HTML so crawlers see clean, stable URLs
-function stripVirtualRouterForBot(html) {
-  // Remove the early language detection script that does replaceState URL manipulation
-  html = html.replace(/<!-- ===== Early language detection & Virtual Router ===== -->[\s\S]*?<\/script>/, '');
-  // Remove the client-side navigation sync script that overrides pushState/replaceState
-  html = html.replace(/<!-- ===== Multilingual SEO: client-side navigation sync ===== -->[\s\S]*?<\/script>/, '');
-  return html;
+// ── Rich pre-rendered content for search engine bots ────────────────────────
+// Google has TWO crawl passes:
+//   1. HTML-only pass: indexes raw HTML (no JS)
+//   2. JS rendering pass (WRS): executes JavaScript like a real browser
+// This function generates meaningful HTML for the HTML-only pass so Google
+// can index real content, links, and navigation even before JS runs.
+// React will replace this content when it mounts on the WRS pass.
+function generateBotContent(effectivePath, lang, articleSlug) {
+  const effectiveLang = lang || 'ar';
+  const pageMeta = PAGE_META[effectiveLang] || PAGE_META.ar;
+
+  const catLabels = {
+    ar: { technology:'تكنولوجيا', health:'صحة', business:'أعمال', science:'علوم', culture:'ثقافة', arts:'فنون', sports:'رياضة', 'self-development':'تطوير الذات' },
+    en: { technology:'Technology', health:'Health', business:'Business', science:'Science', culture:'Culture', arts:'Arts', sports:'Sports', 'self-development':'Self Development' },
+    fr: { technology:'Technologie', health:'Santé', business:'Affaires', science:'Sciences', culture:'Culture', arts:'Arts', sports:'Sports', 'self-development':'Développement personnel' },
+    es: { technology:'Tecnología', health:'Salud', business:'Negocios', science:'Ciencias', culture:'Cultura', arts:'Artes', sports:'Deportes', 'self-development':'Desarrollo personal' },
+  };
+  const labels = catLabels[effectiveLang] || catLabels.ar;
+
+  const txt = {
+    ar: { home:'الرئيسية', articles:'المقالات', categories:'التصنيفات', about:'من نحن', contact:'تواصل معنا', latest:'أحدث المقالات', category:'التصنيف', keywords:'كلمات مفتاحية', privacy:'سياسة الخصوصية', terms:'شروط الاستخدام' },
+    en: { home:'Home', articles:'Articles', categories:'Categories', about:'About', contact:'Contact', latest:'Latest Articles', category:'Category', keywords:'Keywords', privacy:'Privacy Policy', terms:'Terms of Use' },
+    fr: { home:'Accueil', articles:'Articles', categories:'Catégories', about:'À propos', contact:'Contact', latest:'Derniers articles', category:'Catégorie', keywords:'Mots-clés', privacy:'Politique de confidentialité', terms:"Conditions d'utilisation" },
+    es: { home:'Inicio', articles:'Artículos', categories:'Categorías', about:'Acerca de', contact:'Contacto', latest:'Últimos artículos', category:'Categoría', keywords:'Palabras clave', privacy:'Política de privacidad', terms:'Términos de uso' },
+  };
+  const T = txt[effectiveLang] || txt.ar;
+
+  // Language switcher
+  const langLinks = ['ar','en','fr','es'].map(l => {
+    const name = l==='ar'?'العربية':l==='en'?'English':l==='fr'?'Français':'Español';
+    return `<a href="${SITE_URL}/${l}/">${name}</a>`;
+  }).join(' | ');
+
+  // Main navigation
+  const nav = `<header><nav><a href="${SITE_URL}/${effectiveLang}/">${T.home}</a> | <a href="${SITE_URL}/${effectiveLang}/articles">${T.articles}</a> | <a href="${SITE_URL}/${effectiveLang}/categories">${T.categories}</a> | <a href="${SITE_URL}/${effectiveLang}/about">${T.about}</a> | <a href="${SITE_URL}/${effectiveLang}/contact">${T.contact}</a></nav><nav>${langLinks}</nav></header>`;
+
+  // Category links
+  const categories = ['technology','health','business','science','culture','arts','sports','self-development'];
+  const catLinks = categories.map(c =>
+    `<li><a href="${SITE_URL}/${effectiveLang}/categories/${c}">${escapeHtml(labels[c]||c)}</a></li>`
+  ).join('');
+
+  // Article links (up to 50)
+  const articleEntries = Object.entries(seoDataCache);
+  const articleLinks = articleEntries.slice(0, 50).map(([slug, a]) => {
+    const desc = (a.description && (a.description[effectiveLang] || a.description.ar)) || '';
+    return `<li><a href="${SITE_URL}/${effectiveLang}/articles/${slug}">${escapeHtml(a.title)}</a><p>${escapeHtml(desc.substring(0, 200))}</p></li>`;
+  }).join('');
+
+  // ── Individual article page ────────────────────
+  if (articleSlug && seoDataCache[articleSlug]) {
+    const article = seoDataCache[articleSlug];
+    const desc = (article.description && (article.description[effectiveLang] || article.description.ar)) || '';
+    const kw = (article.keywords && (article.keywords[effectiveLang] || article.keywords.ar)) || '';
+    return `${nav}<main><article><h1>${escapeHtml(article.title)}</h1><p>${escapeHtml(desc)}</p><p><strong>${T.category}:</strong> ${escapeHtml(article.category||'')}</p><p><strong>${T.keywords}:</strong> ${escapeHtml(kw)}</p></article><section><h2>${T.latest}</h2><ul>${articleLinks}</ul></section></main><footer><ul>${catLinks}</ul></footer>`;
+  }
+
+  // Strip lang prefix for path matching
+  const pathWithoutLang = effectivePath.replace(/^\/(ar|en|fr|es)(\/|$)/, '/');
+
+  // ── Articles listing ───────────────────────────
+  if (pathWithoutLang === '/articles' || pathWithoutLang === '/articles/') {
+    return `${nav}<main><h1>${escapeHtml(pageMeta.title)} — ${T.articles}</h1><p>${escapeHtml(pageMeta.description)}</p><section><h2>${T.latest}</h2><ul>${articleLinks}</ul></section><section><h2>${T.categories}</h2><ul>${catLinks}</ul></section></main>`;
+  }
+
+  // ── Categories listing ─────────────────────────
+  if (pathWithoutLang === '/categories' || pathWithoutLang === '/categories/') {
+    return `${nav}<main><h1>${escapeHtml(pageMeta.title)} — ${T.categories}</h1><p>${escapeHtml(pageMeta.description)}</p><ul>${catLinks}</ul></main>`;
+  }
+
+  // ── Category page ──────────────────────────────
+  const catMatch = pathWithoutLang.match(/^\/categories\/([^/?#]+)/);
+  if (catMatch) {
+    const catSlug = catMatch[1];
+    const catName = labels[catSlug] || catSlug;
+    const catArticles = articleEntries
+      .filter(([, a]) => a.category && (a.category.toLowerCase() === catSlug.toLowerCase() || a.category === (catLabels.ar[catSlug]||'')))
+      .map(([slug, a]) => `<li><a href="${SITE_URL}/${effectiveLang}/articles/${slug}">${escapeHtml(a.title)}</a></li>`).join('');
+    return `${nav}<main><h1>${escapeHtml(catName)}</h1><p>${escapeHtml(pageMeta.description)}</p><ul>${catArticles || articleLinks}</ul></main>`;
+  }
+
+  // ── About / Contact / Privacy / Terms ──────────
+  if (pathWithoutLang === '/about' || pathWithoutLang === '/about/') return `${nav}<main><h1>${T.about}</h1><p>${escapeHtml(pageMeta.description)}</p></main>`;
+  if (pathWithoutLang === '/contact' || pathWithoutLang === '/contact/') return `${nav}<main><h1>${T.contact}</h1><p>${escapeHtml(pageMeta.description)}</p></main>`;
+  if (pathWithoutLang === '/privacy') return `${nav}<main><h1>${T.privacy}</h1><p>${escapeHtml(pageMeta.description)}</p></main>`;
+  if (pathWithoutLang === '/terms') return `${nav}<main><h1>${T.terms}</h1><p>${escapeHtml(pageMeta.description)}</p></main>`;
+
+  // ── Default: Home page ─────────────────────────
+  return `${nav}<main><h1>${escapeHtml(pageMeta.title)}</h1><p>${escapeHtml(pageMeta.description)}</p><section><h2>${T.latest}</h2><ul>${articleLinks}</ul></section><section><h2>${T.categories}</h2><ul>${catLinks}</ul></section></main>`;
 }
 
 // ── SEO Webhook handler (called when article is created/published) ─────────────
@@ -727,15 +828,19 @@ const appHandler = async (req, res) => {
   const allKeywordsScript = `<script>window.__DALILEK_ALL_KEYWORDS__=${safeJsonStringify(allKeywordsMap)};</script>`;
   html = html.replace('</head>', allKeywordsScript + '</head>');
 
-  // ── Crawler-safe rendering: strip virtual router for bots ──────────────────
+  // ── Crawler-safe rendering: rich pre-rendered content for bots ──────────────
+  // IMPORTANT: Do NOT strip Virtual Router scripts!
+  // Google's WRS (Web Rendering Service) executes JavaScript like Chrome.
+  // If we strip the Virtual Router, React Router sees /ar/ and has no route → 404.
+  // Instead, we KEEP the Virtual Router so WRS can handle URL rewriting,
+  // AND we add rich pre-rendered HTML content inside <div id="root"> for
+  // Google's initial HTML-only crawl pass (before WRS runs JS).
+  // React will replace this pre-rendered content when it mounts.
   const userAgent = req.headers['user-agent'] || '';
   const isBot = isCrawlerBot(userAgent);
   if (isBot) {
-    html = stripVirtualRouterForBot(html);
-    // Add noscript fallback content for bots that don't execute JS
-    const pageMeta = PAGE_META[lang] || PAGE_META.ar;
-    const noscriptContent = `<noscript><h1>${escapeHtml(pageMeta.title)}</h1><p>${escapeHtml(pageMeta.description)}</p></noscript>`;
-    html = html.replace('<div id="root"></div>', `<div id="root">${noscriptContent}</div>`);
+    const botContent = generateBotContent(effectivePath, lang, articleSlug);
+    html = html.replace('<div id="root"></div>', `<div id="root">${botContent}</div>`);
   }
 
   const acceptEncoding = req.headers['accept-encoding'] || '';
