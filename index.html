@@ -411,7 +411,9 @@
                         var unPrefixed = '/' + match[3];
                         origReplace.call(window.history, event.state, '', unPrefixed + window.location.search + window.location.hash);
                         listener.call(this, event);
-                        origReplace.call(window.history, event.state, '', current + window.location.search + window.location.hash);
+                        setTimeout(function() {
+                            origReplace.call(window.history, event.state, '', current + window.location.search + window.location.hash);
+                        }, 20);
                     } else {
                         listener.call(this, event);
                     }
