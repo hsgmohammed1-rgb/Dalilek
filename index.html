@@ -377,29 +377,36 @@
 
         var origPush = window.history.pushState;
         window.history.pushState = function (state, unused, url) { 
-           var newUrl = url;
-           if (url) {
-               var u = url.toString();
+           var originalUrl = url || '';
+           origPush.call(this, state, unused, originalUrl);
+           if (originalUrl) {
+               var u = originalUrl.toString();
                if (u.startsWith('/') && !u.match(/^\/(ar|en|fr|es)(\/|$)/)) {
                    var prefix = window.__dalilekLang ? '/' + window.__dalilekLang : '/ar';
-                   newUrl = prefix + (u === '/' ? '' : u);
+                   var newUrl = prefix + (u === '/' ? '' : u);
+                   setTimeout(function() {
+                       origReplace.call(window.history, state, '', newUrl);
+                   }, 0);
                }
            }
-           origPush.call(this, state, unused, newUrl); 
-           syncSeo(); 
+           setTimeout(syncSeo, 50); 
         };
+        
         var origReplace = window.history.replaceState;
         window.history.replaceState = function (state, unused, url) { 
-           var newUrl = url;
-           if (url) {
-               var u = url.toString();
+           var originalUrl = url || '';
+           origReplace.call(this, state, unused, originalUrl);
+           if (originalUrl) {
+               var u = originalUrl.toString();
                if (u.startsWith('/') && !u.match(/^\/(ar|en|fr|es)(\/|$)/)) {
                    var prefix = window.__dalilekLang ? '/' + window.__dalilekLang : '/ar';
-                   newUrl = prefix + (u === '/' ? '' : u);
+                   var newUrl = prefix + (u === '/' ? '' : u);
+                   setTimeout(function() {
+                       origReplace.call(window.history, state, '', newUrl);
+                   }, 0);
                }
            }
-           origReplace.call(this, state, unused, newUrl); 
-           syncSeo(); 
+           setTimeout(syncSeo, 50); 
         };
         var origAddEventListener = window.addEventListener;
         window.addEventListener = function(type, listener, options) {
