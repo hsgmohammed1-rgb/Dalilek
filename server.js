@@ -843,7 +843,7 @@ const appHandler = async (req, res) => {
   const isBot = isCrawlerBot(userAgent);
   if (isBot) {
     const botContent = generateBotContent(effectivePath, lang, articleSlug);
-    html = html.replace('<div id="root"></div>', `<div id="root">${botContent}</div>`);
+    html = html.replace('<div id="root"></div>', `<div id="root"><div id="bot-seo-content">${botContent}</div></div>`);
   }
 
   const acceptEncoding = req.headers['accept-encoding'] || '';

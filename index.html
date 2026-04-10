@@ -276,7 +276,8 @@
             
             var checkRoot = function() {
                 var root = document.getElementById('root');
-                if (root && root.children.length > 0) {
+                var botSEO = document.getElementById('bot-seo-content');
+                if (root && root.children.length > 0 && !botSEO) {
                     restoreUrl();
                     return true;
                 }
