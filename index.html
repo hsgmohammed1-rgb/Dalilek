@@ -519,7 +519,19 @@
       html[dir="ltr"] .ad-label {
           text-align: left;
       }
+      /* Force Social Bar to be smaller and less intrusive */
+      div[style*="z-index"][style*="max-width"] {
+          transform: scale(0.85) !important;
+          transform-origin: top center !important;
+      }
+      @media (max-width: 768px) {
+          div[style*="z-index"][style*="max-width"] {
+              transform: scale(0.7) !important;
+          }
+      }
     </style>
+    <!-- Adsterra Social Bar: Loaded natively to guarantee rendering -->
+    <script type="text/javascript" src="//pl29127615.profitablecpmratenetwork.com/f4/9b/94/f49b9400151514a0c48fd351f79951d4.js"></script>
     <script type="module" crossorigin src="/assets/index-CdSb2jcH.v3.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-DCMX2uWH.css">
   </head>
@@ -577,12 +589,6 @@
     </script>
     <script>
       (function() {
-        // --- 1. Social Bar --- 
-        // We inject it directly. Note: Frequency and Size MUST be controlled via Adsterra Dashboard!
-        var socialBar = document.createElement('script');
-        socialBar.src = "https://pl29127615.profitablecpmratenetwork.com/f4/9b/94/f49b9400151514a0c48fd351f79951d4.js";
-        document.head.appendChild(socialBar);
-
         // --- 2. Dynamic Injection for Native Banner & Smartlink ---
         let injectedNativeUrl = '';
 
