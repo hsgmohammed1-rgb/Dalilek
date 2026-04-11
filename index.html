@@ -454,7 +454,7 @@
       /* Adsterra Integrations */
       .ad-native-wrapper {
           margin: 40px auto !important;
-          padding: 20px;
+          padding: 10px; /* Reduced padding for mobile */
           background: rgba(255, 255, 255, 0.03);
           border-radius: 16px;
           border: 1px solid rgba(0, 230, 200, 0.15);
@@ -464,20 +464,14 @@
           width: 100% !important;
           max-width: 600px !important;
           box-sizing: border-box !important;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
           position: relative;
           backdrop-filter: blur(10px);
       }
       #container-1c5924c6364b1d4d0e4fd05017c43c2b {
-          display: flex;
-          align-items: center;
-          justify-content: center;
           width: 100%;
           max-width: 100%;
-          overflow: hidden;
+          margin: 0 auto;
+          overflow: hidden; /* Prevent 2x2 grid overflow in iOS */
       }
       .ad-native-wrapper::before {
           content: "";
@@ -489,15 +483,9 @@
           font-size: 0.8rem;
           color: rgba(255,255,255,0.5);
           text-align: right;
-          margin-bottom: 15px;
+          margin-bottom: 10px;
           font-weight: 500;
           letter-spacing: 0.5px;
-      }
-      .ad-smartlink-wrapper {
-          margin: 50px auto;
-          text-align: center;
-          display: flex;
-          justify-content: center;
       }
       .smartlink-btn {
           display: inline-flex;
@@ -531,17 +519,6 @@
       }
       html[dir="ltr"] .ad-label {
           text-align: left;
-      }
-      /* Shrink Adsterra Social Bar natively */
-      body > div[style*="z-index: 2147483647"],
-      body > div[style*="z-index: 2147483646"] {
-          zoom: 0.8 !important;   /* Works perfectly to scale without breaking fixed positioning */
-      }
-      @media screen and (max-width: 768px) {
-          body > div[style*="z-index: 2147483647"],
-          body > div[style*="z-index: 2147483646"] {
-              zoom: 0.7 !important;
-          }
       }
     </style>
     <!-- Adsterra Social Bar -->
