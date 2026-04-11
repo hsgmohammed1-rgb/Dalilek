@@ -460,41 +460,31 @@
           width: 100%;
           border-radius: 12px;
           overflow: hidden;
-          background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(0, 230, 200, 0.1);
-          box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-          padding: 10px;
+          padding: 5px;
           box-sizing: border-box;
-          transition: all 0.3s ease;
-      }
-      .adsense-container:hover {
-          border-color: rgba(0, 230, 200, 0.3);
-          box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+          z-index: 10;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
       }
       .adsense-label {
-          font-size: 0.75rem;
-          color: rgba(255,255,255,0.4);
+          font-size: 0.70rem;
+          color: rgba(150, 150, 150, 0.5);
           text-transform: uppercase;
           letter-spacing: 1px;
-          margin-bottom: 8px;
+          margin-bottom: 12px;
+          font-weight: 500;
           display: block;
           user-select: none;
       }
       html[dir="rtl"] .adsense-label {
           letter-spacing: normal;
       }
-      .ad-in-article { max-width: 800px; }
-      .ad-multiplex { max-width: 1000px; padding: 15px; margin: 40px auto; }
-      .ad-display { max-width: 900px; }
-      .ad-in-feed { 
-          width: 100%; 
-          height: 100%; 
-          min-height: 250px; 
-          display: flex; 
-          flex-direction: column;
-          align-items: center; 
-          justify-content: center; 
-      }
+      .ad-in-article { max-width: 800px; margin: 40px auto; background: transparent; }
+      .ad-multiplex { max-width: 1000px; padding: 15px; margin: 50px auto; border-top: 1px solid rgba(255,255,255,0.05); }
+      .ad-display { max-width: 900px; margin: 20px auto 40px; background: transparent; }
+      .ad-in-feed { max-width: 1100px; margin: 40px auto; background: transparent; }
     </style>
     <script type="module" crossorigin src="/assets/index-CdSb2jcH.v3.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-DCMX2uWH.css">
@@ -595,77 +585,74 @@
 
             const currentLang = window.__dalilekLang || document.documentElement.lang || 'ar';
             const textOptions = {
-                ar: { 'adv': 'إعلان - Advertisement', 'rec': 'محتوى مقترح - Recommended' },
+                ar: { 'adv': 'إعلان', 'rec': 'محتوى مقترح' },
                 en: { 'adv': 'Advertisement', 'rec': 'Recommended' },
                 fr: { 'adv': 'Publicité', 'rec': 'Recommandé' },
                 es: { 'adv': 'Anuncio', 'rec': 'Recomendado' }
             };
             const labels = textOptions[currentLang] || textOptions.en;
 
-            // 1. In-Article Ad 
-            if (isArticlePage && !document.getElementById('adsense-in-article')) {
-                const texts = Array.from(document.querySelectorAll('p, h2, h3')).filter(el => 
-                    el.innerText.length > 60 && !el.closest('nav') && !el.closest('footer')
-                );
-                
-                if (texts.length >= 3) {
-                    const wrapper = createAdWrapper('adsense-in-article', 'ad-in-article', labels.adv);
-                    wrapper.innerHTML += `<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5965093049196524" data-ad-slot="2746019815"></ins>`;
+            // --- 1. Top Display Ad (Safely at the top of the main layout, below header) ---
+            if (!document.getElementById('adsense-display-top')) {
+                const mainEl = document.querySelector('main');
+                if (mainEl && mainEl.parentNode && mainEl.children.length > 0) {
+                    const wrapper = createAdWrapper('adsense-display-top', 'ad-display', labels.adv);
+                    wrapper.innerHTML += `<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5965093049196524" data-ad-slot="2985692961" data-ad-format="horizontal" data-full-width-responsive="true"></ins>`;
                     try {
-                        const target = texts[1]; // after 2nd substantial element
-                        target.parentNode.insertBefore(wrapper, target.nextSibling);
+                        mainEl.insertBefore(wrapper, mainEl.firstChild);
                         pushAd();
                     } catch(e) {}
                 }
             }
 
-            // 2. Multiplex Ad
-            if (isArticlePage && !document.getElementById('adsense-multiplex')) {
-                const allTexts = Array.from(document.querySelectorAll('p, blockquote')).filter(el => !el.closest('nav') && !el.closest('footer'));
-                if (allTexts.length > 0) {
-                    const lastText = allTexts[allTexts.length - 1]; 
-                    const wrapper = createAdWrapper('adsense-multiplex', 'ad-multiplex', labels.rec);
-                    wrapper.innerHTML += `<ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-5965093049196524" data-ad-slot="8977829201"></ins>`;
-                    try {
-                        const container = lastText.parentNode;
-                        container.appendChild(wrapper);
-                        pushAd();
-                    } catch(e) {}
-                }
-            }
-
-            // 3. In-Feed Ads
-            const grids = document.querySelectorAll('div.grid');
-            grids.forEach((grid, idx) => {
-                const feedId = 'adsense-in-feed-' + idx;
-                if (!document.getElementById(feedId) && grid.children.length >= 2) {
-                    // Make sure it's an article grid
-                    if (grid.querySelector('a.group')) {
-                        const wrapper = document.createElement('div');
-                        wrapper.id = feedId; 
-                        wrapper.className = 'adsense-container ad-in-feed';
-                        wrapper.style.margin = "0"; 
-                        wrapper.innerHTML = `<span class="adsense-label">${labels.adv}</span><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-5x+co-i-89+nz" data-ad-client="ca-pub-5965093049196524" data-ad-slot="8123912531"></ins>`;
-                        try {
-                            // Insert between existing grid items
-                            let injectIdx = Math.min(2, grid.children.length - 1);
-                            grid.insertBefore(wrapper, grid.children[injectIdx]);
-                            pushAd();
-                        } catch(e) {}
-                    }
-                }
-            });
-
-            // 4. Display Ads (At the top of list pages or above footer)
-            if (!isArticlePage && !document.getElementById('adsense-display')) {
+            // --- 2. In-Feed Ad (Safely placed above footer on all pages) ---
+            if (!document.getElementById('adsense-in-feed-bottom')) {
                 const footer = document.querySelector('footer');
                 if (footer && footer.parentNode) {
-                    const wrapper = createAdWrapper('adsense-display', 'ad-display', labels.adv);
-                    wrapper.innerHTML += `<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5965093049196524" data-ad-slot="2985692961" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
+                    const wrapper = createAdWrapper('adsense-in-feed-bottom', 'ad-in-feed', labels.adv);
+                    wrapper.innerHTML += `<ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-5x+co-i-89+nz" data-ad-client="ca-pub-5965093049196524" data-ad-slot="8123912531"></ins>`;
                     try {
                         footer.parentNode.insertBefore(wrapper, footer);
                         pushAd();
                     } catch(e) {}
+                }
+            }
+
+            // --- 3. In-Article Ad (Only inside articles, safely injected) ---
+            if (isArticlePage && !document.getElementById('adsense-in-article')) {
+                const articleBody = document.querySelector('main');
+                if (articleBody) {
+                    const pTags = Array.from(articleBody.querySelectorAll('p')).filter(el => 
+                        el.innerText.length > 80 && !el.closest('nav') && !el.closest('aside') && !el.closest('footer')
+                    );
+                    if (pTags.length >= 3) {
+                        const wrapper = createAdWrapper('adsense-in-article', 'ad-in-article', labels.adv);
+                        wrapper.innerHTML += `<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5965093049196524" data-ad-slot="2746019815"></ins>`;
+                        try {
+                            const target = pTags[2]; 
+                            target.parentNode.insertBefore(wrapper, target.nextSibling);
+                            pushAd();
+                        } catch(e) {}
+                    }
+                }
+            }
+
+            // --- 4. Multiplex Ad (Only inside articles, at the very end) ---
+            if (isArticlePage && !document.getElementById('adsense-multiplex')) {
+                const articleBody = document.querySelector('main');
+                if (articleBody) {
+                    const pTags = Array.from(articleBody.querySelectorAll('p')).filter(el => 
+                        el.innerText.length > 50 && !el.closest('nav') && !el.closest('aside') && !el.closest('footer')
+                    );
+                    if (pTags.length > 0) {
+                        const target = pTags[pTags.length - 1]; 
+                        const wrapper = createAdWrapper('adsense-multiplex', 'ad-multiplex', labels.rec);
+                        wrapper.innerHTML += `<ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-5965093049196524" data-ad-slot="8977829201"></ins>`;
+                        try {
+                            target.parentNode.insertBefore(wrapper, target.nextSibling);
+                            pushAd();
+                        } catch(e) {}
+                    }
                 }
             }
         }
