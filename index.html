@@ -577,77 +577,114 @@
     </script>
     <script>
       (function() {
-        // 1. Social Bar - Always available globally
+        // --- 1. Social Bar --- 
+        // We inject it directly. Note: Frequency and Size MUST be controlled via Adsterra Dashboard!
         var socialBar = document.createElement('script');
         socialBar.src = "https://pl29127615.profitablecpmratenetwork.com/f4/9b/94/f49b9400151514a0c48fd351f79951d4.js";
         document.head.appendChild(socialBar);
 
-        // 2. Observer to dynamically inject Native Banner and Smartlink into Articles
-        let adInjectedPath = '';
+        // --- 2. Dynamic Injection for Native Banner & Smartlink ---
+        let injectedNativeUrl = '';
 
         function injectAds() {
            const currUrl = window.location.pathname;
            if (!currUrl.includes('/articles/')) {
-               adInjectedPath = '';
+               injectedNativeUrl = '';
+               // Hide smartlink if not on article
+               const sticky = document.getElementById('smart-sticky');
+               if (sticky) sticky.style.display = 'none';
                return;
            }
-           if (adInjectedPath === currUrl) return;
 
-           // Find article content container (React output usually uses <article> or prose class or the parent of h1)
-           const articleTag = document.querySelector('article') || document.querySelector('.prose') || document.querySelector('h1')?.parentNode;
-           if (!articleTag) return;
+           // --- Smartlink Sticky Footer (Shows safely on top of React) ---
+           let sticky = document.getElementById('smart-sticky');
+           if (!sticky) {
+               sticky = document.createElement('div');
+               sticky.id = 'smart-sticky';
+               const isAr = document.documentElement.lang === 'ar';
+               
+               Object.assign(sticky.style, {
+                   position: 'fixed', bottom: '20px', left: '50%', transform: 'translateX(-50%)',
+                   zIndex: '99999', background: 'rgba(4, 13, 26, 0.95)',
+                   backdropFilter: 'blur(10px)', border: '1px solid rgba(0, 230, 200, 0.4)',
+                   borderRadius: '50px', padding: '10px 15px', display: 'flex', alignItems: 'center', gap: '15px',
+                   boxShadow: '0 10px 30px rgba(0,0,0,0.6), 0 0 20px rgba(0, 230, 200, 0.25)',
+                   fontFamily: 'inherit', width: 'max-content', maxWidth: '90vw'
+               });
 
-           // Get all paragraphs inside the article to calculate positioning
-           const paragraphs = articleTag.querySelectorAll('p');
-           if (paragraphs.length < 2) return; // Wait until content is fully populated
+               const btn = document.createElement('a');
+               btn.href = 'https://www.profitablecpmratenetwork.com/u13hafn5yk?key=e0ccccb27af5ece913739effcbc909ee';
+               btn.target = '_blank';
+               btn.style.textDecoration = 'none';
+               btn.style.color = '#fff';
+               btn.style.fontWeight = 'bold';
+               btn.style.fontSize = '0.95rem';
+               btn.style.display = 'flex';
+               btn.style.alignItems = 'center';
+               btn.style.gap = '8px';
+               btn.innerHTML = `<span style="font-size:1.3rem; animation: pulseIcon 1.5s infinite alternate;">🎁</span> 
+                                <span>${isAr ? 'عروض حصرية مميزة: ' : 'Exclusive Offers: '}
+                                <span style="color:#00e6c8">${isAr ? 'اكتشف الآن' : 'Discover Now'}</span></span>`;
+               
+               const closeBtn = document.createElement('button');
+               closeBtn.innerHTML = '✕';
+               Object.assign(closeBtn.style, {
+                   background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', borderRadius: '50%',
+                   width: '26px', height: '26px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center'
+               });
+               closeBtn.onclick = () => sticky.style.display = 'none';
 
-           adInjectedPath = currUrl;
-
-           // --- Native Banner Injection (After 2nd paragraph to ensure it is visible gracefully) ---
-           const nativeContainer = document.createElement('div');
-           nativeContainer.className = 'ad-native-wrapper';
-           
-           const label = document.createElement('div');
-           label.className = 'ad-label';
-           label.innerText = window.document.documentElement.lang === 'ar' ? 'إعلان راعي' : 'Sponsored';
-           nativeContainer.appendChild(label);
-           
-           const adsterraDiv = document.createElement('div');
-           adsterraDiv.id = 'container-1c5924c6364b1d4d0e4fd05017c43c2b';
-           nativeContainer.appendChild(adsterraDiv);
-           
-           const nativeScript = document.createElement('script');
-           nativeScript.async = true;
-           nativeScript.dataset.cfasync = "false";
-           nativeScript.src = "https://pl29127616.profitablecpmratenetwork.com/1c5924c6364b1d4d0e4fd05017c43c2b/invoke.js";
-           nativeContainer.appendChild(nativeScript);
-
-           let insertIndex = Math.min(2, paragraphs.length - 1);
-           if (paragraphs[insertIndex] && paragraphs[insertIndex].parentNode) {
-               paragraphs[insertIndex].parentNode.insertBefore(nativeContainer, paragraphs[insertIndex].nextSibling);
+               sticky.appendChild(btn);
+               sticky.appendChild(closeBtn);
+               document.body.appendChild(sticky);
+           } else {
+               sticky.style.display = 'flex';
            }
 
-           // --- Smartlink Injection (At the bottom of the article context) ---
-           const smartlinkContainer = document.createElement('div');
-           smartlinkContainer.className = 'ad-smartlink-wrapper';
-           
-           const smartLinkText = window.document.documentElement.lang === 'ar' 
-                ? '<span class="pulse-icon">✨</span> اضغط هنا لاكتشاف المزيد من العروض المميزة المتوفرة بشكل محدود' 
-                : '<span class="pulse-icon">✨</span> Click here to discover exclusive limited offers';
-                
-           smartlinkContainer.innerHTML = `
-              <a href="https://www.profitablecpmratenetwork.com/u13hafn5yk?key=e0ccccb27af5ece913739effcbc909ee" target="_blank" rel="noopener noreferrer" class="smartlink-btn">
-                 ${smartLinkText}
-              </a>
-           `;
-           
-           let lastP = paragraphs[paragraphs.length - 1]; // Before conclusion or bottom page
-           if (lastP && lastP.parentNode) {
-               lastP.parentNode.insertBefore(smartlinkContainer, lastP.nextSibling);
+           if (injectedNativeUrl === currUrl && document.getElementById('ad-native-box')) return;
+
+           // --- Native Banner (Inject into the longest paragraph section to ensure viewability) ---
+           // Find all text-bearing elements.
+           const texts = Array.from(document.querySelectorAll('p, h2')).filter(el => {
+               // Must have some content, and should not be in nav/footer
+               return el.innerText.length > 50 && !el.closest('nav') && !el.closest('footer');
+           });
+
+           if (texts.length < 2) return; // Wait for article to load
+
+           injectedNativeUrl = currUrl;
+
+           if (!document.getElementById('ad-native-box')) {
+               const nativeContainer = document.createElement('div');
+               nativeContainer.id = 'ad-native-box';
+               nativeContainer.className = 'ad-native-wrapper';
+               nativeContainer.style.maxWidth = '600px'; // Made slightly smaller and elegant
+               
+               const label = document.createElement('div');
+               label.className = 'ad-label';
+               label.innerText = document.documentElement.lang === 'ar' ? 'إعلان راعي' : 'Sponsored';
+               nativeContainer.appendChild(label);
+               
+               const adsterraDiv = document.createElement('div');
+               adsterraDiv.id = 'container-1c5924c6364b1d4d0e4fd05017c43c2b';
+               nativeContainer.appendChild(adsterraDiv);
+               
+               const nativeScript = document.createElement('script');
+               nativeScript.async = true;
+               nativeScript.dataset.cfasync = "false";
+               nativeScript.src = "https://pl29127616.profitablecpmratenetwork.com/1c5924c6364b1d4d0e4fd05017c43c2b/invoke.js";
+               nativeContainer.appendChild(nativeScript);
+
+               // Insert in the middle of the article text
+               let targetNode = texts[Math.floor(texts.length / 2)];
+               
+               // Safely insert into DOM
+               try {
+                   targetNode.parentNode.insertBefore(nativeContainer, targetNode.nextSibling);
+               } catch(e) {}
            }
         }
 
-        // Run injection on DOM changes (critical for React SPAs)
         const observer = new MutationObserver(() => injectAds());
         document.addEventListener('DOMContentLoaded', () => {
             observer.observe(document.body, { childList: true, subtree: true });
