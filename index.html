@@ -451,6 +451,50 @@
           text-shadow: 0px 1px 3px rgba(0,0,0,1) !important;
           opacity: 1 !important;
       }
+      
+      /* Google AdSense Styling */
+      .adsense-container {
+          margin: 30px auto;
+          text-align: center;
+          position: relative;
+          width: 100%;
+          border-radius: 12px;
+          overflow: hidden;
+          background: rgba(255, 255, 255, 0.02);
+          border: 1px solid rgba(0, 230, 200, 0.1);
+          box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+          padding: 10px;
+          box-sizing: border-box;
+          transition: all 0.3s ease;
+      }
+      .adsense-container:hover {
+          border-color: rgba(0, 230, 200, 0.3);
+          box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+      }
+      .adsense-label {
+          font-size: 0.75rem;
+          color: rgba(255,255,255,0.4);
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-bottom: 8px;
+          display: block;
+          user-select: none;
+      }
+      html[dir="rtl"] .adsense-label {
+          letter-spacing: normal;
+      }
+      .ad-in-article { max-width: 800px; }
+      .ad-multiplex { max-width: 1000px; padding: 15px; margin: 40px auto; }
+      .ad-display { max-width: 900px; }
+      .ad-in-feed { 
+          width: 100%; 
+          height: 100%; 
+          min-height: 250px; 
+          display: flex; 
+          flex-direction: column;
+          align-items: center; 
+          justify-content: center; 
+      }
     </style>
     <script type="module" crossorigin src="/assets/index-CdSb2jcH.v3.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-DCMX2uWH.css">
@@ -505,6 +549,134 @@
              container.appendChild(tiktok);
           }
         }, 1000);
+      })();
+    </script>
+    <!-- Google AdSense Intregration Script -->
+    <script>
+      (function() {
+        // Load AdSense globally once
+        if (!document.getElementById('adsense-script')) {
+            const script = document.createElement('script');
+            script.id = 'adsense-script';
+            script.async = true;
+            script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5965093049196524";
+            script.crossOrigin = "anonymous";
+            document.head.appendChild(script);
+        }
+
+        function pushAd() {
+            try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } 
+            catch (e) { console.error("AdSense error:", e); }
+        }
+
+        function createAdWrapper(id, typeClass, labelText) {
+            const wrapper = document.createElement('div');
+            wrapper.id = id;
+            wrapper.className = `adsense-container ${typeClass}`;
+            const label = document.createElement('span');
+            label.className = 'adsense-label';
+            label.innerText = labelText;
+            wrapper.appendChild(label);
+            return wrapper;
+        }
+
+        let lastUrl = '';
+
+        function injectAds() {
+            const currentUrl = window.location.pathname;
+            const isArticlePage = currentUrl.includes('/articles/');
+            
+            // Re-run safely after navigation in client-side router
+            if (lastUrl !== currentUrl) {
+                lastUrl = currentUrl;
+                setTimeout(injectAds, 1000);
+                setTimeout(injectAds, 2000);
+            }
+
+            const currentLang = window.__dalilekLang || document.documentElement.lang || 'ar';
+            const textOptions = {
+                ar: { 'adv': 'إعلان - Advertisement', 'rec': 'محتوى مقترح - Recommended' },
+                en: { 'adv': 'Advertisement', 'rec': 'Recommended' },
+                fr: { 'adv': 'Publicité', 'rec': 'Recommandé' },
+                es: { 'adv': 'Anuncio', 'rec': 'Recomendado' }
+            };
+            const labels = textOptions[currentLang] || textOptions.en;
+
+            // 1. In-Article Ad 
+            if (isArticlePage && !document.getElementById('adsense-in-article')) {
+                const texts = Array.from(document.querySelectorAll('p, h2, h3')).filter(el => 
+                    el.innerText.length > 60 && !el.closest('nav') && !el.closest('footer')
+                );
+                
+                if (texts.length >= 3) {
+                    const wrapper = createAdWrapper('adsense-in-article', 'ad-in-article', labels.adv);
+                    wrapper.innerHTML += `<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5965093049196524" data-ad-slot="2746019815"></ins>`;
+                    try {
+                        const target = texts[1]; // after 2nd substantial element
+                        target.parentNode.insertBefore(wrapper, target.nextSibling);
+                        pushAd();
+                    } catch(e) {}
+                }
+            }
+
+            // 2. Multiplex Ad
+            if (isArticlePage && !document.getElementById('adsense-multiplex')) {
+                const allTexts = Array.from(document.querySelectorAll('p, blockquote')).filter(el => !el.closest('nav') && !el.closest('footer'));
+                if (allTexts.length > 0) {
+                    const lastText = allTexts[allTexts.length - 1]; 
+                    const wrapper = createAdWrapper('adsense-multiplex', 'ad-multiplex', labels.rec);
+                    wrapper.innerHTML += `<ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-5965093049196524" data-ad-slot="8977829201"></ins>`;
+                    try {
+                        const container = lastText.parentNode;
+                        container.appendChild(wrapper);
+                        pushAd();
+                    } catch(e) {}
+                }
+            }
+
+            // 3. In-Feed Ads
+            const grids = document.querySelectorAll('div.grid');
+            grids.forEach((grid, idx) => {
+                const feedId = 'adsense-in-feed-' + idx;
+                if (!document.getElementById(feedId) && grid.children.length >= 2) {
+                    // Make sure it's an article grid
+                    if (grid.querySelector('a.group')) {
+                        const wrapper = document.createElement('div');
+                        wrapper.id = feedId; 
+                        wrapper.className = 'adsense-container ad-in-feed';
+                        wrapper.style.margin = "0"; 
+                        wrapper.innerHTML = `<span class="adsense-label">${labels.adv}</span><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-5x+co-i-89+nz" data-ad-client="ca-pub-5965093049196524" data-ad-slot="8123912531"></ins>`;
+                        try {
+                            // Insert between existing grid items
+                            let injectIdx = Math.min(2, grid.children.length - 1);
+                            grid.insertBefore(wrapper, grid.children[injectIdx]);
+                            pushAd();
+                        } catch(e) {}
+                    }
+                }
+            });
+
+            // 4. Display Ads (At the top of list pages or above footer)
+            if (!isArticlePage && !document.getElementById('adsense-display')) {
+                const footer = document.querySelector('footer');
+                if (footer && footer.parentNode) {
+                    const wrapper = createAdWrapper('adsense-display', 'ad-display', labels.adv);
+                    wrapper.innerHTML += `<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5965093049196524" data-ad-slot="2985692961" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
+                    try {
+                        footer.parentNode.insertBefore(wrapper, footer);
+                        pushAd();
+                    } catch(e) {}
+                }
+            }
+        }
+
+        const observer = new MutationObserver(() => injectAds());
+        document.addEventListener('DOMContentLoaded', () => {
+            observer.observe(document.body, { childList: true, subtree: true });
+            setTimeout(injectAds, 500);
+            setTimeout(injectAds, 1500);
+            setTimeout(injectAds, 3000);
+        });
       })();
     </script>
   </body>
