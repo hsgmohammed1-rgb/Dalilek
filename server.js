@@ -56,6 +56,7 @@ const ROOT_SEO_FILES = [
   '/sitemap-ar.xml','/sitemap-en.xml','/sitemap-fr.xml','/sitemap-es.xml',
   '/sitemap-style.xsl',
   '/favicon.svg','/logo.png','/opengraph.jpg',
+  '/ads.txt'
 ];
 
 const BANNERS = {

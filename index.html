@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
 
+    <!-- ===== GOOGLE ADSENSE ===== -->
+    <meta name="google-adsense-account" content="ca-pub-5965093049196524">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5965093049196524" crossorigin="anonymous"></script>
+
     <!-- ===== PRIMARY SEO ===== -->
     <title>دليلك - الموسوعة العربية الشاملة | موسوعة المعرفة العربية</title>
     <!-- ===== BRAND ICONS ===== -->
@@ -544,16 +548,6 @@
     <!-- Google AdSense Intregration Script -->
     <script>
       (function() {
-        // Load AdSense globally once
-        if (!document.getElementById('adsense-script')) {
-            const script = document.createElement('script');
-            script.id = 'adsense-script';
-            script.async = true;
-            script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5965093049196524";
-            script.crossOrigin = "anonymous";
-            document.head.appendChild(script);
-        }
-
         function pushAd() {
             try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } 
             catch (e) { console.error("AdSense error:", e); }
