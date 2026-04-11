@@ -453,7 +453,7 @@
       }
       /* Adsterra Integrations */
       .ad-native-wrapper {
-          margin: 40px auto;
+          margin: 40px auto !important;
           padding: 20px;
           background: rgba(255, 255, 255, 0.03);
           border-radius: 16px;
@@ -461,10 +461,23 @@
           box-shadow: 0 10px 30px rgba(0,0,0,0.3);
           text-align: center;
           overflow: hidden;
-          width: 100%;
-          max-width: 800px;
+          width: 100% !important;
+          max-width: 600px !important;
+          box-sizing: border-box !important;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
           position: relative;
           backdrop-filter: blur(10px);
+      }
+      #container-1c5924c6364b1d4d0e4fd05017c43c2b {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          max-width: 100%;
+          overflow: hidden;
       }
       .ad-native-wrapper::before {
           content: "";
@@ -518,16 +531,6 @@
       }
       html[dir="ltr"] .ad-label {
           text-align: left;
-      }
-      /* Force Social Bar to be smaller and less intrusive */
-      div[style*="z-index"][style*="max-width"] {
-          transform: scale(0.85) !important;
-          transform-origin: top center !important;
-      }
-      @media (max-width: 768px) {
-          div[style*="z-index"][style*="max-width"] {
-              transform: scale(0.7) !important;
-          }
       }
     </style>
     <!-- Adsterra Social Bar: Loaded natively to guarantee rendering -->
@@ -664,10 +667,11 @@
                const nativeContainer = document.createElement('div');
                nativeContainer.id = 'ad-native-box';
                nativeContainer.className = 'ad-native-wrapper';
-               nativeContainer.style.maxWidth = '600px'; // Made slightly smaller and elegant
                
                const label = document.createElement('div');
                label.className = 'ad-label';
+               label.style.alignSelf = 'flex-start';
+               label.style.width = '100%';
                label.innerText = document.documentElement.lang === 'ar' ? 'إعلان راعي' : 'Sponsored';
                nativeContainer.appendChild(label);
                
