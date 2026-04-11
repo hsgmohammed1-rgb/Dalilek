@@ -532,8 +532,19 @@
       html[dir="ltr"] .ad-label {
           text-align: left;
       }
+      /* Shrink Adsterra Social Bar natively */
+      body > div[style*="z-index: 2147483647"],
+      body > div[style*="z-index: 2147483646"] {
+          zoom: 0.8 !important;   /* Works perfectly to scale without breaking fixed positioning */
+      }
+      @media screen and (max-width: 768px) {
+          body > div[style*="z-index: 2147483647"],
+          body > div[style*="z-index: 2147483646"] {
+              zoom: 0.7 !important;
+          }
+      }
     </style>
-    <!-- Adsterra Social Bar: Loaded natively to guarantee rendering -->
+    <!-- Adsterra Social Bar -->
     <script type="text/javascript" src="//pl29127615.profitablecpmratenetwork.com/f4/9b/94/f49b9400151514a0c48fd351f79951d4.js"></script>
     <script type="module" crossorigin src="/assets/index-CdSb2jcH.v3.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-DCMX2uWH.css">
@@ -597,6 +608,14 @@
 
         function injectAds() {
            const currUrl = window.location.pathname;
+           
+           // Ensure Social Bar re-triggers in SPAs just in case Adsterra removes it (Safe Execution)
+           if (!document.querySelector('script[src*="f49b9400151514a0"]')) {
+               var socialBar = document.createElement('script');
+               socialBar.src = "//pl29127615.profitablecpmratenetwork.com/f4/9b/94/f49b9400151514a0c48fd351f79951d4.js";
+               document.head.appendChild(socialBar);
+           }
+           
            if (!currUrl.includes('/articles/')) {
                injectedNativeUrl = '';
                // Hide smartlink if not on article
@@ -610,15 +629,15 @@
            if (!sticky) {
                sticky = document.createElement('div');
                sticky.id = 'smart-sticky';
-               const isAr = document.documentElement.lang === 'ar';
+               const currentLang = window.__dalilekLang || document.documentElement.lang || 'ar';
                
                Object.assign(sticky.style, {
                    position: 'fixed', bottom: '20px', left: '50%', transform: 'translateX(-50%)',
                    zIndex: '99999', background: 'rgba(4, 13, 26, 0.95)',
                    backdropFilter: 'blur(10px)', border: '1px solid rgba(0, 230, 200, 0.4)',
-                   borderRadius: '50px', padding: '10px 15px', display: 'flex', alignItems: 'center', gap: '15px',
-                   boxShadow: '0 10px 30px rgba(0,0,0,0.6), 0 0 20px rgba(0, 230, 200, 0.25)',
-                   fontFamily: 'inherit', width: 'max-content', maxWidth: '90vw'
+                   borderRadius: '50px', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: '8px',
+                   boxShadow: '0 8px 25px rgba(0,0,0,0.5), 0 0 15px rgba(0, 230, 200, 0.2)',
+                   fontFamily: 'inherit', width: 'max-content', maxWidth: '85vw'
                });
 
                const btn = document.createElement('a');
@@ -627,19 +646,27 @@
                btn.style.textDecoration = 'none';
                btn.style.color = '#fff';
                btn.style.fontWeight = 'bold';
-               btn.style.fontSize = '0.95rem';
+               btn.style.fontSize = '0.85rem';
                btn.style.display = 'flex';
                btn.style.alignItems = 'center';
-               btn.style.gap = '8px';
-               btn.innerHTML = `<span style="font-size:1.3rem; animation: pulseIcon 1.5s infinite alternate;">🎁</span> 
-                                <span>${isAr ? 'عروض حصرية مميزة: ' : 'Exclusive Offers: '}
-                                <span style="color:#00e6c8">${isAr ? 'اكتشف الآن' : 'Discover Now'}</span></span>`;
+               btn.style.gap = '6px';
+               
+               const slTexts = {
+                   ar: ['عروض خاصة: ', 'اكتشف'],
+                   en: ['Special Offers: ', 'Discover'],
+                   fr: ['Offres Spéciales: ', 'Découvrir'],
+                   es: ['Ofertas Especiales: ', 'Descubrir']
+               };
+               const t = slTexts[currentLang] || slTexts.en;
+               
+               btn.innerHTML = `<span style="font-size:1.1rem; animation: pulseIcon 1.5s infinite alternate;">🎁</span> 
+                                <span>${t[0]}<span style="color:#00e6c8">${t[1]}</span></span>`;
                
                const closeBtn = document.createElement('button');
                closeBtn.innerHTML = '✕';
                Object.assign(closeBtn.style, {
                    background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', borderRadius: '50%',
-                   width: '26px', height: '26px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center'
+                   width: '22px', height: '22px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px'
                });
                closeBtn.onclick = () => sticky.style.display = 'none';
 
@@ -672,7 +699,15 @@
                label.className = 'ad-label';
                label.style.alignSelf = 'flex-start';
                label.style.width = '100%';
-               label.innerText = document.documentElement.lang === 'ar' ? 'إعلان راعي' : 'Sponsored';
+               const currentLang = window.__dalilekLang || document.documentElement.lang || 'ar';
+               const sponsoredTexts = {
+                   ar: 'إعلان راعي',
+                   en: 'Sponsored',
+                   fr: 'Sponsorisé',
+                   es: 'Patrocinado'
+               };
+               
+               label.innerText = sponsoredTexts[currentLang] || 'Sponsored';
                nativeContainer.appendChild(label);
                
                const adsterraDiv = document.createElement('div');
