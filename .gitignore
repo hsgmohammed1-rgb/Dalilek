@@ -20,3 +20,6 @@ logs/
 *.log
 
 .vercel
+service-account.json
+seo-data.json
+sitemap-articles.xml

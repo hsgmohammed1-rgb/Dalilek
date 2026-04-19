@@ -52,7 +52,7 @@ const mimeTypes = {
 };
 
 const ROOT_SEO_FILES = [
-  '/robots.txt','/sitemap.xml','/sitemap-index.xml',
+  '/robots.txt','/sitemap.xml',
   '/sitemap-ar.xml','/sitemap-en.xml','/sitemap-fr.xml','/sitemap-es.xml',
   '/sitemap-style.xsl',
   '/favicon.svg','/logo.png','/opengraph.jpg',
@@ -251,6 +251,33 @@ async function refreshSeoFromSupabase() {
       });
     });
     req.on('error', () => resolve());
+    req.end();
+  });
+}
+
+// ── Fetch full article content for bots ──────────────────────────────────────
+async function fetchArticleContent(slug) {
+  if (!SUPABASE_URL || !SUPABASE_KEY) return '';
+  const host = SUPABASE_URL.replace('https://', '').split('/')[0];
+  return new Promise((resolve) => {
+    const opts = {
+      hostname: host,
+      path: '/rest/v1/articles?slug=eq.' + encodeURIComponent(slug) + '&select=content',
+      method: 'GET',
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Accept': 'application/json' },
+    };
+    const req = https.request(opts, (res) => {
+      let data = '';
+      res.on('data', d => data += d);
+      res.on('end', () => {
+        try {
+          const rows = JSON.parse(data);
+          if (Array.isArray(rows) && rows.length > 0) resolve(rows[0].content || '');
+          else resolve('');
+        } catch(e) { resolve(''); }
+      });
+    });
+    req.on('error', () => resolve(''));
     req.end();
   });
 }
@@ -499,7 +526,7 @@ function isCrawlerBot(userAgent) {
 // This function generates meaningful HTML for the HTML-only pass so Google
 // can index real content, links, and navigation even before JS runs.
 // React will replace this content when it mounts on the WRS pass.
-function generateBotContent(effectivePath, lang, articleSlug) {
+function generateBotContent(effectivePath, lang, articleSlug, articleContentHTML = '') {
   const effectiveLang = lang || 'ar';
   const pageMeta = PAGE_META[effectiveLang] || PAGE_META.ar;
 
@@ -546,7 +573,7 @@ function generateBotContent(effectivePath, lang, articleSlug) {
     const article = seoDataCache[articleSlug];
     const desc = (article.description && (article.description[effectiveLang] || article.description.ar)) || '';
     const kw = (article.keywords && (article.keywords[effectiveLang] || article.keywords.ar)) || '';
-    return `${nav}<main><article><h1>${escapeHtml(article.title)}</h1><p>${escapeHtml(desc)}</p><p><strong>${T.category}:</strong> ${escapeHtml(article.category||'')}</p><p><strong>${T.keywords}:</strong> ${escapeHtml(kw)}</p></article><section><h2>${T.latest}</h2><ul>${articleLinks}</ul></section></main><footer><ul>${catLinks}</ul></footer>`;
+    return `${nav}<main><article><h1>${escapeHtml(article.title)}</h1><p>${escapeHtml(desc)}</p>${articleContentHTML}<p><strong>${T.category}:</strong> ${escapeHtml(article.category||'')}</p><p><strong>${T.keywords}:</strong> ${escapeHtml(kw)}</p></article><section><h2>${T.latest}</h2><ul>${articleLinks}</ul></section></main><footer><ul>${catLinks}</ul></footer>`;
   }
 
   // Strip lang prefix for path matching
@@ -731,6 +758,28 @@ const appHandler = async (req, res) => {
 
 
 
+  // ── Dynamic sitemap-index.xml ───────────────────────────────────────────────
+  if (urlPath === '/sitemap-index.xml') {
+    const today = new Date().toISOString().split('T')[0];
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>${SITE_URL}/sitemap.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${SITE_URL}/sitemap-articles.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+</sitemapindex>`;
+    res.writeHead(200, {
+      'Content-Type': 'application/xml; charset=utf-8',
+      'Cache-Control': 'public, max-age=300',
+    });
+    res.end(xml);
+    return;
+  }
+
   // ── Dynamic sitemap-articles.xml ────────────────────────────────────────────
   if (urlPath === '/sitemap-articles.xml') {
     const xml = generateArticlesSitemapXml();
@@ -771,6 +820,12 @@ const appHandler = async (req, res) => {
   // ── Strip base path ─────────────────────────────────────────────────────────
   let effectivePath = urlPath.startsWith(BASE_PATH) ? urlPath.slice(BASE_PATH.length) : urlPath;
   if (!effectivePath || effectivePath === '/') effectivePath = '/index.html';
+
+  if (effectivePath.includes('/http:/') || effectivePath.includes('/https:/') || effectivePath.includes('//')) {
+    res.writeHead(404, {'Content-Type': 'text/plain'});
+    res.end('404 Not Found');
+    return;
+  }
 
   const ext = path.extname(effectivePath).toLowerCase();
   
@@ -819,6 +874,10 @@ const appHandler = async (req, res) => {
   let html;
   if (articleSlug && seoDataCache[articleSlug]) {
     html = injectArticleMeta(baseHtml, articleSlug, lang);
+  } else if (articleSlug) {
+    res.writeHead(404, {'Content-Type': 'text/plain'});
+    res.end('404 Article Not Found');
+    return;
   } else {
     html = injectPageMeta(baseHtml, lang);
   }
@@ -843,7 +902,12 @@ const appHandler = async (req, res) => {
   const userAgent = req.headers['user-agent'] || '';
   const isBot = isCrawlerBot(userAgent);
   if (isBot) {
-    const botContent = generateBotContent(effectivePath, lang, articleSlug);
+    let articleContentHTML = '';
+    if (articleSlug && seoDataCache[articleSlug]) {
+      const rawContent = await fetchArticleContent(articleSlug);
+      articleContentHTML = `<div class="article-body" style="margin-top:1em;">${rawContent}</div>`;
+    }
+    const botContent = generateBotContent(effectivePath, lang, articleSlug, articleContentHTML);
     html = html.replace('<div id="root"></div>', `<div id="root"><div id="bot-seo-content">${botContent}</div></div>`);
   }
 
