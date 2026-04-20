@@ -51,6 +51,7 @@ async function indexUrls(urls) {
 const urlsToIndex = [
   "https://dalilek.online/articles/quick-easy-lunch-recipes",
   "https://dalilek.online/articles/ai-for-profit-online",
+  "https://www.dalilek.online/ar/articles/saudi-vision-2030",
   // يمكنك إضافة المزيد من الروابط هنا...
 ];
 
