@@ -20,6 +20,43 @@ const FREE_MODELS = [
   { id: 'nvidia/nemotron-nano-9b-v2:free',                   label: 'Nvidia Nemotron Nano 9B (سريع)' },
 ];
 
+// Speed profiles — control prompt depth, output budget, and concurrency
+const SPEED_PROFILES = {
+  fast: {
+    label: '⚡ سريع',
+    description: 'نموذج خفيف، 3-4 أقسام مختصرة، توليد متوازي 4×',
+    recommendedModel: 'nvidia/nemotron-nano-9b-v2:free',
+    maxTokens: 3500,
+    minSections: 3, maxSections: 4,
+    sectionLength: '100-150 كلمة',
+    concurrency: 4,
+    skillsCount: 4,
+    statsCount: 3,
+  },
+  medium: {
+    label: '⚖️ متوسط',
+    description: 'نموذج قوي، 4-5 أقسام متوازنة، توليد متوازي 2×',
+    recommendedModel: 'openai/gpt-oss-120b:free',
+    maxTokens: 5500,
+    minSections: 4, maxSections: 5,
+    sectionLength: '150-220 كلمة',
+    concurrency: 2,
+    skillsCount: 4,
+    statsCount: 3,
+  },
+  thorough: {
+    label: '💎 الأفضل',
+    description: 'نموذج ضخم، 6-8 أقسام معمّقة، توليد تسلسلي للجودة القصوى',
+    recommendedModel: 'qwen/qwen3-next-80b-a3b-instruct:free',
+    maxTokens: 8000,
+    minSections: 6, maxSections: 8,
+    sectionLength: '220-320 كلمة',
+    concurrency: 1,
+    skillsCount: 6,
+    statsCount: 4,
+  },
+};
+
 const sessions = new Map();
 const SESSION_TTL_MS = 4 * 60 * 60 * 1000;
 
@@ -231,7 +268,8 @@ async function discoverTopics({ apiKey, model, count, mode, category, customSeed
 }
 
 // ── Article generation ────────────────────────────────────────────────────
-async function generateArticle({ apiKey, model, topic }) {
+async function generateArticle({ apiKey, model, topic, speed = 'medium' }) {
+  const profile = SPEED_PROFILES[speed] || SPEED_PROFILES.medium;
   const sys = `أنت كاتب محتوى عربي محترف متخصص في SEO. مهمتك إنشاء مقالات معمّقة وجذابة وعالية الجودة. تُرجع دائماً JSON صالح فقط بدون أي شرح خارجي.
 
 التنسيق المطلوب بالضبط (لا تغيّر أي اسم حقل):
@@ -240,35 +278,33 @@ async function generateArticle({ apiKey, model, topic }) {
   "slug": "english-kebab-case-slug-without-arabic-letters",
   "intro": "مقدمة جذابة 2-3 أسطر تجيب على سؤال القارئ مباشرة",
   "stats": [
-    { "value": "رقم أو نسبة", "label": "وصف قصير" },
-    { "value": "رقم أو نسبة", "label": "وصف قصير" },
     { "value": "رقم أو نسبة", "label": "وصف قصير" }
   ],
   "sections": [
     {
       "number": "01",
       "title": "عنوان القسم",
-      "content": "محتوى القسم كاملاً (150-250 كلمة) عملي ومفيد",
+      "content": "محتوى القسم كاملاً (${profile.sectionLength}) عملي ومفيد",
       "callout": { "icon": "info", "title": "نصيحة", "text": "نصيحة عملية قصيرة" }
     }
   ],
   "skills": [
-    { "number": 1, "title": "مهارة", "description": "وصف قصير" },
-    { "number": 2, "title": "مهارة", "description": "وصف قصير" },
-    { "number": 3, "title": "مهارة", "description": "وصف قصير" },
-    { "number": 4, "title": "مهارة", "description": "وصف قصير" }
+    { "number": 1, "title": "مهارة", "description": "وصف قصير" }
   ],
   "conclusion": "خاتمة 2-3 أسطر مع دعوة للعمل",
   "seo_description": "وصف SEO باللغة العربية 150-160 حرف",
   "seo_keywords": "كلمة1, كلمة2, كلمة3, ... (10-15 كلمة مفصولة بفواصل)",
-  "image_query": "english search query for stock photos describing the article topic visually (3-6 words)"
+  "image_query": "english search query for stock photos describing the article topic visually (3-6 words)",
+  "video_query": "english search query for stock VIDEOS related to the topic (3-5 words, slightly different angle than image_query)"
 }
 
 شروط حرجة:
 - الـ slug إنجليزي صرف، أحرف صغيرة، شرطات بدل الفراغ، بدون رموز خاصة، بدون أحرف عربية إطلاقاً.
-- أنشئ من 4 إلى 6 أقسام (sections). الـcallout اختياري في بعضها (يمكن أن يكون null).
+- أنشئ بالضبط ${profile.statsCount} عنصر في stats.
+- أنشئ من ${profile.minSections} إلى ${profile.maxSections} أقسام (sections). كل قسم ${profile.sectionLength}. الـcallout اختياري في بعضها (يمكن أن يكون null).
+- أنشئ بالضبط ${profile.skillsCount} مهارات (skills).
 - المحتوى أصلي ومفيد وليس مكرراً.
-- الـ image_query بالإنجليزية فقط ووصفي بصرياً (مثل "modern home office workspace").`;
+- الـ image_query والـ video_query بالإنجليزية فقط ووصفي بصرياً (مثل "modern home office workspace" و "person working laptop coffee shop").`;
 
   const userPrompt = `الموضوع: "${topic.title}"
 الفئة: ${topic.category}
@@ -283,9 +319,9 @@ async function generateArticle({ apiKey, model, topic }) {
       { role: 'user', content: userPrompt },
     ],
     jsonMode: true,
-    maxTokens: 6000,
+    maxTokens: profile.maxTokens,
   });
-  return { article: extractJson(out.text), modelUsed: out.modelUsed };
+  return { article: extractJson(out.text), modelUsed: out.modelUsed, profile };
 }
 
 // ── Pexels image search ────────────────────────────────────────────────────
@@ -310,6 +346,52 @@ async function fetchPexelsImages(query, count = 3) {
     width: p.width,
     height: p.height,
   })).filter(p => p.url);
+}
+
+// ── Pexels video search ────────────────────────────────────────────────────
+// Returns one video object suitable for HTML <video src=...>
+async function fetchPexelsVideo(query) {
+  if (!PEXELS_API_KEY) return null;
+  const q = encodeURIComponent(String(query || '').slice(0, 100));
+  if (!q) return null;
+  try {
+    const r = await httpsRequestJson({
+      hostname: 'api.pexels.com',
+      path: `/videos/search?query=${q}&per_page=5&orientation=landscape`,
+      method: 'GET',
+      headers: { 'Authorization': PEXELS_API_KEY },
+      timeout: 15000,
+    });
+    if (r.status !== 200 || !Array.isArray(r.json?.videos) || r.json.videos.length === 0) return null;
+
+    // Prefer videos with reasonable duration (5-30 sec, not too long)
+    const candidates = r.json.videos
+      .filter(v => v.duration >= 5 && v.duration <= 30)
+      .sort((a, b) => Math.abs(15 - a.duration) - Math.abs(15 - b.duration));
+    const video = candidates[0] || r.json.videos[0];
+    if (!video) return null;
+
+    // Pick best mp4 file: HD (around 1280px wide), not too huge
+    const mp4Files = (video.video_files || []).filter(f => f.file_type === 'video/mp4' && f.link);
+    if (mp4Files.length === 0) return null;
+    // Sort by closeness to 1280px width (sweet spot for web)
+    mp4Files.sort((a, b) => Math.abs(1280 - (a.width || 0)) - Math.abs(1280 - (b.width || 0)));
+    const file = mp4Files[0];
+
+    return {
+      url: file.link,
+      poster: video.image || video.video_pictures?.[0]?.picture || null,
+      duration: video.duration,
+      width: file.width,
+      height: file.height,
+      photographer: video.user?.name,
+      photographer_url: video.user?.url,
+      pexels_url: video.url,
+    };
+  } catch (e) {
+    console.warn('Pexels video fetch failed:', e.message);
+    return null;
+  }
 }
 
 // ── Slug normalization + uniqueness ─────────────────────────────────────────
@@ -364,30 +446,36 @@ async function insertArticle(record) {
   throw new Error(`Supabase insert ${r.status}: ${msg}`);
 }
 
-async function generateAndPublish({ apiKey, model, topic, templateId }) {
-  const { article, modelUsed } = await generateArticle({ apiKey, model, topic });
+async function generateAndPublish({ apiKey, model, topic, templateId, speed = 'medium' }) {
+  const { article, modelUsed, profile } = await generateArticle({ apiKey, model, topic, speed });
   if (!article || !article.title || !article.slug) {
     throw new Error('AI رجّع بنية مقال غير صالحة');
   }
 
-  let images = [];
-  try {
-    const q = article.image_query || article.title;
-    images = await fetchPexelsImages(q, 3);
-  } catch (e) {
-    console.warn('Pexels fetch failed:', e.message);
-  }
+  // Fetch images AND video in parallel for speed
+  const imageQuery = article.image_query || article.title;
+  const videoQuery = article.video_query || article.image_query || article.title;
+  const [imagesResult, videoResult] = await Promise.allSettled([
+    fetchPexelsImages(imageQuery, 3),
+    fetchPexelsVideo(videoQuery),
+  ]);
+  const images = imagesResult.status === 'fulfilled' ? (imagesResult.value || []) : [];
+  const video = videoResult.status === 'fulfilled' ? videoResult.value : null;
 
   const arContent = {
     title: article.title,
     intro: article.intro,
-    stats: Array.isArray(article.stats) ? article.stats.slice(0, 3) : [],
-    sections: Array.isArray(article.sections) ? article.sections.slice(0, 6) : [],
-    skills: Array.isArray(article.skills) ? article.skills.slice(0, 4) : [],
+    stats: Array.isArray(article.stats) ? article.stats.slice(0, profile.statsCount) : [],
+    sections: Array.isArray(article.sections) ? article.sections.slice(0, profile.maxSections) : [],
+    skills: Array.isArray(article.skills) ? article.skills.slice(0, profile.skillsCount) : [],
     conclusion: article.conclusion,
+    // Match the field names that the existing site SPA reads:
     cover_image: images[0]?.url || null,
-    images: images,
+    cover: images[0]?.url || null,        // alternate name some templates use
+    images: images,                        // SPA reads .images
+    video: video,                          // SPA reads .video (single object with .url)
     image_query: article.image_query || null,
+    video_query: article.video_query || null,
   };
 
   const content = { languages: { ar: arContent } };
@@ -413,7 +501,9 @@ async function generateAndPublish({ apiKey, model, topic, templateId }) {
     category: inserted.category,
     cover_image: arContent.cover_image,
     images_count: images.length,
+    has_video: !!video,
     model_used: modelUsed,
+    speed_used: speed,
   };
 }
 
@@ -422,7 +512,10 @@ async function handle(req, res) {
   const urlPath = req.url.split('?')[0];
 
   if (urlPath === '/api/bulk-admin/models' && req.method === 'GET') {
-    return jsonResponse(res, 200, { models: FREE_MODELS, allowedEmail: ALLOWED_EMAIL });
+    const profiles = Object.fromEntries(Object.entries(SPEED_PROFILES).map(([k, v]) => [k, {
+      label: v.label, description: v.description, recommendedModel: v.recommendedModel, concurrency: v.concurrency,
+    }]));
+    return jsonResponse(res, 200, { models: FREE_MODELS, speedProfiles: profiles, allowedEmail: ALLOWED_EMAIL });
   }
 
   // Auth via Supabase Google session: client sends access_token, server verifies email
@@ -468,8 +561,9 @@ async function handle(req, res) {
       const model = body.model || FREE_MODELS[0].id;
       const topic = body.topic;
       const templateId = body.templateId || null;
+      const speed = body.speed || 'medium';
       if (!topic || !topic.title) return jsonResponse(res, 400, { error: 'topic.title مطلوب' });
-      const out = await generateAndPublish({ apiKey, model, topic, templateId });
+      const out = await generateAndPublish({ apiKey, model, topic, templateId, speed });
       return jsonResponse(res, 200, { article: out });
     } catch (e) {
       return jsonResponse(res, 500, { error: e.message });

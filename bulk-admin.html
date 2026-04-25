@@ -106,6 +106,15 @@
   .toast.error{border-color:var(--danger);color:#fca5a5}
   @keyframes slidein{from{opacity:0;transform:translate(-50%,10px)}to{opacity:1;transform:translate(-50%,0)}}
 
+  .speed-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+  @media(max-width:760px){.speed-grid{grid-template-columns:1fr}}
+  .speed-card{background:var(--panel-3);border:1px solid var(--border);border-radius:11px;padding:14px;cursor:pointer;transition:all .15s;text-align:center}
+  .speed-card:hover{border-color:var(--brand-2)}
+  .speed-card.active{background:var(--brand-soft);border-color:var(--brand);box-shadow:0 0 0 3px rgba(0,230,200,.1)}
+  .speed-card .icon{font-size:24px;margin-bottom:6px}
+  .speed-card .label{font-weight:800;font-size:14px;color:var(--text);margin-bottom:4px}
+  .speed-card .desc{font-size:11.5px;color:var(--muted);line-height:1.55}
+
   .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:14px}
   .feature{background:var(--panel-3);padding:14px;border-radius:11px;border:1px solid var(--border);font-size:12.5px;color:var(--muted-2);line-height:1.7}
   .feature b{display:block;color:var(--brand-2);font-size:13px;margin-bottom:5px;font-weight:800}
@@ -190,6 +199,12 @@
       <select id="orModel"></select>
       <div class="small" style="margin-top:5px">إذا فشل نموذج، النظام يجرّب التالي تلقائياً</div>
     </div>
+  </div>
+
+  <div style="margin-top:18px">
+    <label>وضع السرعة والجودة</label>
+    <div class="speed-grid" id="speedGrid"></div>
+    <div class="small" id="speedHint" style="margin-top:8px"></div>
   </div>
 </div>
 
@@ -279,14 +294,14 @@
   <p class="desc">سيُنشأ كل مقال كاملاً، تُجلب أول 3 صور من Pexels عالية الجودة، ثم يُنشر على Supabase تلقائياً مع slug فريد.</p>
 
   <div class="feature-grid">
-    <div class="feature"><b>🤖 ذكاء اصطناعي كامل</b>عناوين، محتوى، كلمات مفتاحية، وصف SEO، استعلام صور</div>
-    <div class="feature"><b>📸 3 صور لكل مقال</b>من Pexels عالية الجودة، استعلام البحث بالإنجليزي يولّده الذكاء الاصطناعي</div>
+    <div class="feature"><b>🤖 ذكاء اصطناعي كامل</b>عناوين، محتوى، كلمات مفتاحية، وصف SEO، استعلامات الوسائط</div>
+    <div class="feature"><b>📸 3 صور HD لكل مقال</b>من Pexels مع استعلام بحث منفصل بالإنجليزي يولّده الذكاء الاصطناعي</div>
+    <div class="feature"><b>🎬 فيديو لكل مقال</b>فيديو HD من Pexels (5-30 ثانية) مع استعلام بصري مخصّص</div>
+    <div class="feature"><b>⚡ 3 أوضاع سرعة</b>سريع (متوازي 4×) / متوسط / الأفضل (تسلسلي للجودة القصوى)</div>
     <div class="feature"><b>🔗 slug فريد تلقائياً</b>إذا تكرر، يُضاف رقم تلقائي (-2, -3, …) — يحل مشكلة articles_slug_key</div>
-    <div class="feature"><b>📑 4-6 أقسام لكل مقال</b>مع stats وskills وcallouts وخاتمة جذابة</div>
-    <div class="feature"><b>🌍 SEO متعدد اللغات</b>تُضاف keywords/description بـ4 لغات تلقائياً عند التحديث</div>
+    <div class="feature"><b>📑 3-8 أقسام حسب الوضع</b>مع stats وskills وcallouts وخاتمة جذابة</div>
     <div class="feature"><b>📋 نسخ كل الروابط دفعة واحدة</b>زر واحد بعد الانتهاء + صيغة Markdown</div>
     <div class="feature"><b>♻️ تبديل تلقائي للنماذج</b>إذا نموذج فشل، يجرّب التالي بنفس الطلب</div>
-    <div class="feature"><b>⏹ إيقاف فوري</b>توقف العملية في أي لحظة دون فقد ما تم نشره</div>
   </div>
 
   <div class="row-actions">
@@ -334,7 +349,8 @@
   let stopRequested = false;
   let timerInterval = null;
   let startTime = 0;
-  let publicCfg = null;
+  let speedProfiles = {};
+  let currentSpeed = localStorage.getItem('speed') || 'medium';
 
   // ── Discover Supabase access token from localStorage ──
   function findSupabaseAccessToken(){
@@ -460,7 +476,7 @@
     setTimeout(() => t.remove(), 3500);
   }
 
-  // ── Models ──
+  // ── Models + speed profiles ──
   async function loadModels(){
     try {
       const r = await fetch('/api/bulk-admin/models');
@@ -475,8 +491,61 @@
       });
       const saved = localStorage.getItem('orModel');
       if (saved && [...sel.options].some(o => o.value === saved)) sel.value = saved;
-      sel.addEventListener('change', () => localStorage.setItem('orModel', sel.value));
+      sel.addEventListener('change', () => {
+        localStorage.setItem('orModel', sel.value);
+        sessionStorage.setItem('userPickedModel', '1');
+      });
+
+      speedProfiles = j.speedProfiles || {};
+      renderSpeedCards();
     } catch(e) { console.warn(e); }
+  }
+
+  function renderSpeedCards(){
+    const grid = $('speedGrid');
+    grid.innerHTML = '';
+    const icons = { fast: '⚡', medium: '⚖️', thorough: '💎' };
+    Object.entries(speedProfiles).forEach(([key, p]) => {
+      const card = document.createElement('div');
+      card.className = 'speed-card' + (key === currentSpeed ? ' active' : '');
+      card.dataset.speed = key;
+      card.innerHTML = `
+        <div class="icon">${icons[key] || '⚙'}</div>
+        <div class="label">${p.label.replace(/^[⚡⚖💎️ ]+/, '')}</div>
+        <div class="desc">${p.description}</div>
+      `;
+      card.onclick = () => selectSpeed(key);
+      grid.appendChild(card);
+    });
+    updateSpeedHint();
+  }
+
+  function selectSpeed(key){
+    currentSpeed = key;
+    localStorage.setItem('speed', key);
+    document.querySelectorAll('.speed-card').forEach(c => {
+      c.classList.toggle('active', c.dataset.speed === key);
+    });
+    // Optionally suggest the recommended model
+    const rec = speedProfiles[key]?.recommendedModel;
+    if (rec) {
+      const sel = $('orModel');
+      const opt = [...sel.options].find(o => o.value === rec);
+      if (opt && sel.value !== rec) {
+        // Only auto-switch if user hasn't manually picked one in this session
+        if (!sessionStorage.getItem('userPickedModel')) {
+          sel.value = rec;
+          localStorage.setItem('orModel', rec);
+        }
+      }
+    }
+    updateSpeedHint();
+  }
+
+  function updateSpeedHint(){
+    const p = speedProfiles[currentSpeed];
+    if (!p) return;
+    $('speedHint').innerHTML = `النموذج الموصى به: <span style="color:var(--brand-2);font-weight:700">${p.recommendedModel?.split('/').pop() || ''}</span> · توليد متزامن ${p.concurrency}× مقال`;
   }
 
   // ── Mode toggle ──
@@ -549,12 +618,14 @@
   });
   $('clearTopicsBtn')?.addEventListener('click', () => { if (confirm('حذف كل المواضيع؟')) { topics=[]; renderTopics(); } });
 
-  // ── Generate ──
+  // ── Generate (with concurrency based on speed profile) ──
   $('generateBtn')?.addEventListener('click', async () => {
     if (topics.length === 0) return;
     const apiKey = $('orKey').value.trim();
     if (!apiKey) { toast('أدخل مفتاح OpenRouter أولاً', 'error'); return; }
-    if (!confirm('سيُنشر ' + topics.length + ' مقال على الموقع. متابعة؟')) return;
+    const profile = speedProfiles[currentSpeed] || { concurrency: 1 };
+    const concurrency = Math.max(1, profile.concurrency || 1);
+    if (!confirm('سيُنشر ' + topics.length + ' مقال على الموقع بوضع "' + (profile.label||currentSpeed) + '" (تزامن ' + concurrency + 'x). متابعة؟')) return;
 
     stopRequested = false;
     results = [];
@@ -574,27 +645,47 @@
       $('statTime').textContent = s + 's';
     }, 500);
 
-    let done = 0, fail = 0;
-    for (let i = 0; i < topics.length; i++) {
-      if (stopRequested) break;
-      const t = topics[i];
-      const statusEl = $('status-' + i);
-      if (statusEl) statusEl.innerHTML = '<span class="badge warn">⏳ جارٍ التوليد</span>';
-      try {
-        const tplId = tplMode === 'random' ? null : parseInt(tplMode, 10);
-        const out = await api('/api/bulk-admin/generate-one', { apiKey, model, topic: t, templateId: tplId });
-        results.push(out.article);
-        done++;
-        if (statusEl) statusEl.innerHTML = '<span class="badge ok">✓ منشور</span>';
-      } catch(e) {
-        fail++;
-        if (statusEl) statusEl.innerHTML = '<span class="badge err" title="'+escapeAttr(e.message)+'">✗ فشل</span>';
-        console.error('Failed for', t.title, e);
+    let done = 0, fail = 0, processed = 0;
+
+    // Worker pool: each worker pulls next index, generates, marks status
+    const queue = topics.map((_, i) => i);
+    const workers = [];
+
+    async function worker() {
+      while (queue.length > 0 && !stopRequested) {
+        const i = queue.shift();
+        const t = topics[i];
+        const statusEl = $('status-' + i);
+        if (statusEl) statusEl.innerHTML = '<span class="badge warn">⏳ جارٍ التوليد</span>';
+        try {
+          const tplId = tplMode === 'random' ? null : parseInt(tplMode, 10);
+          const out = await api('/api/bulk-admin/generate-one', {
+            apiKey, model, topic: t, templateId: tplId, speed: currentSpeed
+          });
+          results.push(out.article);
+          done++;
+          if (statusEl) {
+            const badges = [];
+            badges.push('<span class="badge ok">✓ منشور</span>');
+            if (out.article?.has_video) badges.push('<span class="badge ok" title="يحتوي فيديو">🎬</span>');
+            if (out.article?.images_count) badges.push('<span class="badge ok" title="صور">📸'+out.article.images_count+'</span>');
+            statusEl.innerHTML = badges.join(' ');
+          }
+        } catch(e) {
+          fail++;
+          if (statusEl) statusEl.innerHTML = '<span class="badge err" title="'+escapeAttr(e.message)+'">✗ فشل</span>';
+          console.error('Failed for', t?.title, e);
+        }
+        processed++;
+        $('statDone').textContent = done;
+        $('statFail').textContent = fail;
+        $('progressFill').style.width = ((processed/topics.length)*100) + '%';
       }
-      $('statDone').textContent = done;
-      $('statFail').textContent = fail;
-      $('progressFill').style.width = (((i+1)/topics.length)*100) + '%';
     }
+
+    for (let w = 0; w < concurrency; w++) workers.push(worker());
+    await Promise.all(workers);
+
     clearInterval(timerInterval);
     $('stopBtn').classList.add('hidden');
     $('generateBtn').classList.remove('hidden');
