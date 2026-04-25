@@ -6,23 +6,26 @@ const crypto = require('crypto');
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_KEY;
 const PEXELS_API_KEY = process.env.PEXELS_API_KEY;
-const ADMIN_PASSWORD = process.env.BULK_ADMIN_PASSWORD;
+const ALLOWED_EMAIL = (process.env.BULK_ADMIN_EMAIL || 'cpshzt@gmail.com').toLowerCase();
 
+// Verified working free models on OpenRouter (queried 2026-04)
 const FREE_MODELS = [
-  { id: 'google/gemini-2.0-flash-exp:free', label: 'Gemini 2.0 Flash (مجاني — موصى به)' },
-  { id: 'deepseek/deepseek-chat-v3.1:free', label: 'DeepSeek V3.1 (مجاني)' },
-  { id: 'meta-llama/llama-3.3-70b-instruct:free', label: 'Llama 3.3 70B (مجاني)' },
-  { id: 'qwen/qwen-2.5-72b-instruct:free', label: 'Qwen 2.5 72B (مجاني)' },
-  { id: 'mistralai/mistral-small-3.1-24b-instruct:free', label: 'Mistral Small 3.1 (مجاني)' },
-  { id: 'nvidia/nemotron-nano-9b-v2:free', label: 'Nvidia Nemotron Nano 9B (مجاني)' },
+  { id: 'openai/gpt-oss-120b:free',                          label: 'OpenAI GPT-OSS 120B (الأقوى — موصى به)' },
+  { id: 'qwen/qwen3-next-80b-a3b-instruct:free',             label: 'Qwen 3 Next 80B (ممتاز للعربي)' },
+  { id: 'meta-llama/llama-3.3-70b-instruct:free',            label: 'Llama 3.3 70B' },
+  { id: 'z-ai/glm-4.5-air:free',                             label: 'GLM 4.5 Air' },
+  { id: 'nvidia/nemotron-3-super-120b-a12b:free',            label: 'Nvidia Nemotron Super 120B' },
+  { id: 'google/gemma-3-27b-it:free',                        label: 'Google Gemma 3 27B' },
+  { id: 'openai/gpt-oss-20b:free',                           label: 'OpenAI GPT-OSS 20B (سريع)' },
+  { id: 'nvidia/nemotron-nano-9b-v2:free',                   label: 'Nvidia Nemotron Nano 9B (سريع)' },
 ];
 
 const sessions = new Map();
-const SESSION_TTL_MS = 2 * 60 * 60 * 1000;
+const SESSION_TTL_MS = 4 * 60 * 60 * 1000;
 
-function newSession() {
+function newSession(email) {
   const token = crypto.randomBytes(32).toString('hex');
-  sessions.set(token, { createdAt: Date.now() });
+  sessions.set(token, { createdAt: Date.now(), email });
   return token;
 }
 
@@ -81,9 +84,37 @@ function httpsRequestJson({ hostname, path, method = 'GET', headers = {}, body =
   });
 }
 
-// ── OpenRouter call ─────────────────────────────────────────────────────────
+// ── Verify Supabase user via access_token ───────────────────────────────────
+async function verifySupabaseUser(accessToken) {
+  if (!SUPABASE_URL || !SUPABASE_KEY || !accessToken) return null;
+  const host = SUPABASE_URL.replace('https://', '').split('/')[0];
+  try {
+    const r = await httpsRequestJson({
+      hostname: host,
+      path: '/auth/v1/user',
+      method: 'GET',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + accessToken,
+      },
+      timeout: 10000,
+    });
+    if (r.status !== 200 || !r.json) return null;
+    return {
+      id: r.json.id,
+      email: (r.json.email || '').toLowerCase(),
+      provider: r.json.app_metadata?.provider,
+      name: r.json.user_metadata?.full_name || r.json.user_metadata?.name,
+      avatar: r.json.user_metadata?.avatar_url || r.json.user_metadata?.picture,
+    };
+  } catch (e) {
+    return null;
+  }
+}
+
+// ── OpenRouter call with auto-fallback ─────────────────────────────────────
 async function callOpenRouter({ apiKey, model, messages, jsonMode = false, maxTokens = 4096 }) {
-  if (!apiKey) throw new Error('OpenRouter API key is required');
+  if (!apiKey) throw new Error('مفتاح OpenRouter مطلوب');
   const payload = {
     model,
     messages,
@@ -102,27 +133,45 @@ async function callOpenRouter({ apiKey, model, messages, jsonMode = false, maxTo
       'X-Title': 'Dalilek Bulk Admin',
     },
     body: payload,
-    timeout: 120000,
+    timeout: 180000,
   });
   if (r.status !== 200) {
     const msg = (r.json && (r.json.error?.message || r.json.message)) || r.body.slice(0, 300);
-    throw new Error(`OpenRouter ${r.status}: ${msg}`);
+    const err = new Error(`OpenRouter ${r.status}: ${msg}`);
+    err.status = r.status;
+    err.openRouterBody = r.json;
+    throw err;
   }
   const text = r.json?.choices?.[0]?.message?.content;
-  if (!text) throw new Error('OpenRouter returned empty content');
+  if (!text) throw new Error('OpenRouter رجّع رد فارغ');
   return text;
 }
 
+async function callOpenRouterWithFallback({ apiKey, model, messages, jsonMode, maxTokens }) {
+  // Try the requested model first; if it 404s/errors, try fallbacks
+  const fallbackOrder = [model, ...FREE_MODELS.map(m => m.id).filter(id => id !== model)];
+  let lastError = null;
+  for (const m of fallbackOrder.slice(0, 4)) {
+    try {
+      return { text: await callOpenRouter({ apiKey, model: m, messages, jsonMode, maxTokens }), modelUsed: m };
+    } catch (e) {
+      lastError = e;
+      // If 401/403 (bad key), don't try fallbacks
+      if (e.status === 401 || e.status === 403) throw e;
+      // For 404 (model not available), 429 (rate limit), 5xx — try next
+      continue;
+    }
+  }
+  throw lastError || new Error('كل النماذج فشلت');
+}
+
 function extractJson(str) {
-  if (!str) throw new Error('empty AI response');
-  // Prefer fenced JSON
+  if (!str) throw new Error('رد ذكاء اصطناعي فارغ');
   const fence = str.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
   if (fence) {
     try { return JSON.parse(fence[1]); } catch (e) {}
   }
-  // Try direct parse
   try { return JSON.parse(str); } catch (e) {}
-  // Fallback: locate first {...} balanced block
   const start = str.indexOf('{');
   if (start >= 0) {
     let depth = 0;
@@ -134,7 +183,7 @@ function extractJson(str) {
       }}
     }
   }
-  throw new Error('Could not parse JSON from AI response');
+  throw new Error('فشل تحليل JSON من رد الذكاء الاصطناعي');
 }
 
 // ── Topic discovery ────────────────────────────────────────────────────────
@@ -160,7 +209,7 @@ async function discoverTopics({ apiKey, model, count, mode, category, customSeed
 
 الفئات المسموحة (اختر واحدة فقط لكل مقال): تكنولوجيا، صحة، مال وأعمال، تطوير ذات، ثقافة، علوم، أسلوب حياة، طعام، رياضة، تعليم، سفر، ترفيه.`;
 
-  const text = await callOpenRouter({
+  const out = await callOpenRouterWithFallback({
     apiKey, model,
     messages: [
       { role: 'system', content: sys },
@@ -169,13 +218,16 @@ async function discoverTopics({ apiKey, model, count, mode, category, customSeed
     jsonMode: true,
     maxTokens: 4096,
   });
-  const j = extractJson(text);
+  const j = extractJson(out.text);
   const topics = Array.isArray(j.topics) ? j.topics : [];
-  return topics.slice(0, count).map(t => ({
-    title: String(t.title || '').trim(),
-    category: String(t.category || 'ثقافة').trim(),
-    keywords: String(t.keywords || '').trim(),
-  })).filter(t => t.title);
+  return {
+    modelUsed: out.modelUsed,
+    topics: topics.slice(0, count).map(t => ({
+      title: String(t.title || '').trim(),
+      category: String(t.category || 'ثقافة').trim(),
+      keywords: String(t.keywords || '').trim(),
+    })).filter(t => t.title),
+  };
 }
 
 // ── Article generation ────────────────────────────────────────────────────
@@ -199,7 +251,6 @@ async function generateArticle({ apiKey, model, topic }) {
       "content": "محتوى القسم كاملاً (150-250 كلمة) عملي ومفيد",
       "callout": { "icon": "info", "title": "نصيحة", "text": "نصيحة عملية قصيرة" }
     }
-    // أنشئ من 4 إلى 6 أقسام، الـcallout اختياري في بعضها (يمكن أن يكون null)
   ],
   "skills": [
     { "number": 1, "title": "مهارة", "description": "وصف قصير" },
@@ -215,8 +266,9 @@ async function generateArticle({ apiKey, model, topic }) {
 
 شروط حرجة:
 - الـ slug إنجليزي صرف، أحرف صغيرة، شرطات بدل الفراغ، بدون رموز خاصة، بدون أحرف عربية إطلاقاً.
+- أنشئ من 4 إلى 6 أقسام (sections). الـcallout اختياري في بعضها (يمكن أن يكون null).
 - المحتوى أصلي ومفيد وليس مكرراً.
-- الـ image_query بالإنجليزية فقط ووصفي بصرياً (مثل "modern home office workspace" وليس اسم المقال حرفياً).`;
+- الـ image_query بالإنجليزية فقط ووصفي بصرياً (مثل "modern home office workspace").`;
 
   const userPrompt = `الموضوع: "${topic.title}"
 الفئة: ${topic.category}
@@ -224,7 +276,7 @@ async function generateArticle({ apiKey, model, topic }) {
 
 أنشئ مقالاً كاملاً عالي الجودة وفق التنسيق المحدد. اجعل المحتوى عملياً ومحدّثاً لعام 2026.`;
 
-  const text = await callOpenRouter({
+  const out = await callOpenRouterWithFallback({
     apiKey, model,
     messages: [
       { role: 'system', content: sys },
@@ -233,13 +285,14 @@ async function generateArticle({ apiKey, model, topic }) {
     jsonMode: true,
     maxTokens: 6000,
   });
-  return extractJson(text);
+  return { article: extractJson(out.text), modelUsed: out.modelUsed };
 }
 
 // ── Pexels image search ────────────────────────────────────────────────────
 async function fetchPexelsImages(query, count = 3) {
   if (!PEXELS_API_KEY) return [];
-  const q = encodeURIComponent(query.slice(0, 100));
+  const q = encodeURIComponent(String(query || '').slice(0, 100));
+  if (!q) return [];
   const r = await httpsRequestJson({
     hostname: 'api.pexels.com',
     path: `/v1/search?query=${q}&per_page=${count}&orientation=landscape`,
@@ -290,7 +343,6 @@ async function findUniqueSlug(base) {
   return `${base}-${Date.now()}`;
 }
 
-// ── Insert into Supabase ───────────────────────────────────────────────────
 async function insertArticle(record) {
   if (!SUPABASE_URL || !SUPABASE_KEY) throw new Error('Supabase not configured');
   const host = SUPABASE_URL.replace('https://', '').split('/')[0];
@@ -312,14 +364,12 @@ async function insertArticle(record) {
   throw new Error(`Supabase insert ${r.status}: ${msg}`);
 }
 
-// ── End-to-end: generate + images + insert ─────────────────────────────────
 async function generateAndPublish({ apiKey, model, topic, templateId }) {
-  const article = await generateArticle({ apiKey, model, topic });
+  const { article, modelUsed } = await generateArticle({ apiKey, model, topic });
   if (!article || !article.title || !article.slug) {
-    throw new Error('AI returned invalid article structure');
+    throw new Error('AI رجّع بنية مقال غير صالحة');
   }
 
-  // Fetch images from Pexels
   let images = [];
   try {
     const q = article.image_query || article.title;
@@ -328,7 +378,6 @@ async function generateAndPublish({ apiKey, model, topic, templateId }) {
     console.warn('Pexels fetch failed:', e.message);
   }
 
-  // Build content JSON in the existing schema (Arabic primary)
   const arContent = {
     title: article.title,
     intro: article.intro,
@@ -342,11 +391,7 @@ async function generateAndPublish({ apiKey, model, topic, templateId }) {
   };
 
   const content = { languages: { ar: arContent } };
-
-  // Unique slug
   const slug = await findUniqueSlug(normalizeSlug(article.slug));
-
-  // Pick template (round-robin or stick with provided)
   const tpl = templateId || (Math.floor(Math.random() * 14) + 1);
 
   const record = {
@@ -368,6 +413,7 @@ async function generateAndPublish({ apiKey, model, topic, templateId }) {
     category: inserted.category,
     cover_image: arContent.cover_image,
     images_count: images.length,
+    model_used: modelUsed,
   };
 }
 
@@ -375,28 +421,29 @@ async function generateAndPublish({ apiKey, model, topic, templateId }) {
 async function handle(req, res) {
   const urlPath = req.url.split('?')[0];
 
-  // Public: list available models
   if (urlPath === '/api/bulk-admin/models' && req.method === 'GET') {
-    return jsonResponse(res, 200, { models: FREE_MODELS });
+    return jsonResponse(res, 200, { models: FREE_MODELS, allowedEmail: ALLOWED_EMAIL });
   }
 
-  // Login
-  if (urlPath === '/api/bulk-admin/login' && req.method === 'POST') {
+  // Auth via Supabase Google session: client sends access_token, server verifies email
+  if (urlPath === '/api/bulk-admin/auth-google' && req.method === 'POST') {
     try {
       const body = JSON.parse((await readBody(req)) || '{}');
-      if (!ADMIN_PASSWORD) return jsonResponse(res, 500, { error: 'Server password not configured' });
-      if (!body.password || body.password !== ADMIN_PASSWORD) {
-        return jsonResponse(res, 401, { error: 'كلمة السر غير صحيحة' });
+      const accessToken = body.accessToken;
+      if (!accessToken) return jsonResponse(res, 400, { error: 'accessToken مطلوب' });
+      const user = await verifySupabaseUser(accessToken);
+      if (!user) return jsonResponse(res, 401, { error: 'فشل التحقق من جلسة Supabase. الرجاء تسجيل الدخول من لوحة الإدارة الرئيسية أولاً.' });
+      if (user.email !== ALLOWED_EMAIL) {
+        return jsonResponse(res, 403, { error: `هذه اللوحة محصورة بالحساب ${ALLOWED_EMAIL} فقط. أنت داخل بـ ${user.email}.` });
       }
-      const token = newSession();
-      return jsonResponse(res, 200, { token, ttlMs: SESSION_TTL_MS });
+      const token = newSession(user.email);
+      return jsonResponse(res, 200, { token, ttlMs: SESSION_TTL_MS, user: { email: user.email, name: user.name, avatar: user.avatar } });
     } catch (e) {
-      return jsonResponse(res, 400, { error: 'Invalid request' });
+      return jsonResponse(res, 500, { error: e.message });
     }
   }
 
-  // All routes below require auth
-  if (!isAuthed(req)) return jsonResponse(res, 401, { error: 'Unauthorized — please login again' });
+  if (!isAuthed(req)) return jsonResponse(res, 401, { error: 'انتهت الجلسة، أعد التحميل' });
 
   if (urlPath === '/api/bulk-admin/discover-topics' && req.method === 'POST') {
     try {
@@ -407,8 +454,8 @@ async function handle(req, res) {
       const mode = body.mode || 'trending';
       const category = body.category || '';
       const customSeed = body.customSeed || '';
-      const topics = await discoverTopics({ apiKey, model, count, mode, category, customSeed });
-      return jsonResponse(res, 200, { topics });
+      const out = await discoverTopics({ apiKey, model, count, mode, category, customSeed });
+      return jsonResponse(res, 200, out);
     } catch (e) {
       return jsonResponse(res, 500, { error: e.message });
     }
@@ -421,7 +468,7 @@ async function handle(req, res) {
       const model = body.model || FREE_MODELS[0].id;
       const topic = body.topic;
       const templateId = body.templateId || null;
-      if (!topic || !topic.title) return jsonResponse(res, 400, { error: 'topic.title required' });
+      if (!topic || !topic.title) return jsonResponse(res, 400, { error: 'topic.title مطلوب' });
       const out = await generateAndPublish({ apiKey, model, topic, templateId });
       return jsonResponse(res, 200, { article: out });
     } catch (e) {
@@ -442,4 +489,12 @@ async function handle(req, res) {
   return jsonResponse(res, 404, { error: 'Not found' });
 }
 
-module.exports = { handle, FREE_MODELS };
+// Public bootstrap config (used by HTML page before login)
+function publicConfig() {
+  return {
+    supabaseUrl: SUPABASE_URL || '',
+    allowedEmail: ALLOWED_EMAIL,
+  };
+}
+
+module.exports = { handle, FREE_MODELS, publicConfig };
