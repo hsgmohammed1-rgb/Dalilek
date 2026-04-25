@@ -1834,5 +1834,73 @@
       "fr": "Lisez \"الاستثمار في العملات الرقمية المستقرة 2026: دليلك للفرص الجديدة وتجنب المخاطر\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur مال وأعمال.",
       "es": "Lea \"الاستثمار في العملات الرقمية المستقرة 2026: دليلك للفرص الجديدة وتجنب المخاطر\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre مال وأعمال."
     }
+  },
+  "mental-health-in-metaverse-era": {
+    "id": "cd85b324-5167-4d86-b9fa-ea73247499e5",
+    "title": "الصحة النفسية في عصر الميتافيرس: كيف يؤثر الواقع المعزز على رفاهيتنا",
+    "category": "صحة",
+    "keywords": {
+      "ar": "الصحة النفسية, الميتافيرس, الواقع المعزز, علاج افتراضي, توتر, رفاهية, تقنيات العلاج, إدارة الوقت الرقمي, تحسين النوم, التواصل الاجتماعي, صحة, طب, علاج, وقاية, غذاء صحي, رياضة, نصائح صحية, جسم سليم, صحة نفسية, مناعة, نوم, تغذية, أمراض, أدوية, صحة عامة",
+      "en": "health, medicine, treatment, prevention, healthy food, fitness, wellness tips, healthy body, mental health, immunity, sleep, nutrition, diseases, medications, public health",
+      "fr": "santé, médecine, traitement, prévention, alimentation saine, remise en forme, conseils santé, corps sain, santé mentale, immunité, sommeil, nutrition, maladies, médicaments",
+      "es": "salud, medicina, tratamiento, prevención, alimentación saludable, fitness, consejos de salud, cuerpo sano, salud mental, inmunidad, sueño, nutrición, enfermedades, medicamentos"
+    },
+    "description": {
+      "ar": "اكتشف كيف يؤثر الميتافيرس على الصحة النفسية في 2026 وتعرف على استراتيجيات عملية للتوازن بين الواقع المعزز والرفاهية.",
+      "en": "Read \"الصحة النفسية في عصر الميتافيرس: كيف يؤثر الواقع المعزز على رفاهيتنا\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
+      "fr": "Lisez \"الصحة النفسية في عصر الميتافيرس: كيف يؤثر الواقع المعزز على رفاهيتنا\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
+      "es": "Lea \"الصحة النفسية في عصر الميتافيرس: كيف يؤثر الواقع المعزز على رفاهيتنا\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
+    }
+  },
+  "generative-ai-for-small-businesses-2026": {
+    "id": "b9847244-2488-4222-ac1d-d94c96dc40c8",
+    "title": "الذكاء الاصطناعي التوليدي: كيف يرفع إنتاجية الشركات الصغيرة في 2026",
+    "category": "تكنولوجيا",
+    "keywords": {
+      "ar": "الذكاء الاصطناعي, توليدي, الشركات الصغيرة, أتمتة, إنتاجية, محتوى تسويقي, تصميم مرئي, تحليل بيانات, تكنولوجيا, ذكاء اصطناعي, برمجة, أجهزة ذكية, إنترنت, تطبيقات, ابتكار, مستقبل رقمي, تحول رقمي, أمن معلومات, سحابة, بيانات ضخمة, روبوتات, تعلم آلي",
+      "en": "technology, artificial intelligence, programming, smart devices, internet, apps, innovation, digital future, digital transformation, cybersecurity, cloud computing, big data, robotics, machine learning",
+      "fr": "technologie, intelligence artificielle, programmation, appareils intelligents, internet, applications, innovation, avenir numérique, transformation numérique, cybersécurité, cloud, big data, robotique, apprentissage automatique",
+      "es": "tecnología, inteligencia artificial, programación, dispositivos inteligentes, internet, aplicaciones, innovación, futuro digital, transformación digital, ciberseguridad, nube, big data, robótica, aprendizaje automático"
+    },
+    "description": {
+      "ar": "اكتشف كيف يرفع الذكاء الاصطناعي التوليدي إنتاجية الشركات الصغيرة في 2026 عبر أتمتة المحتوى، خدمة العملاء، وتصميم الإعلانات.",
+      "en": "Read \"الذكاء الاصطناعي التوليدي: كيف يرفع إنتاجية الشركات الصغيرة في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تكنولوجيا.",
+      "fr": "Lisez \"الذكاء الاصطناعي التوليدي: كيف يرفع إنتاجية الشركات الصغيرة في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تكنولوجيا.",
+      "es": "Lea \"الذكاء الاصطناعي التوليدي: كيف يرفع إنتاجية الشركات الصغيرة في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
+    }
+  },
+  "smart-sleep-tech-2026-improve-quality": {
+    "id": "900bf955-f297-4ffd-910b-b40e7a86355e",
+    "title": "تقنيات النوم الذكي في 2026: كيف تساعدك الأجهزة والبيانات على تحسين جودة نومك",
+    "category": "تطوير ذات",
+    "keywords": {
+      "ar": "نوم ذكي, أجهزة تتبع النوم, تحسين النوم, تكنولوجيا النوم 2026, تحليل بيانات النوم, بيئة منزلية ذكية, تطبيقات النوم, الذكاء الاصطناعي للنوم, جودة النوم, صحة النوم, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
+      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
+      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+    },
+    "description": {
+      "ar": "اكتشف أحدث تقنيات النوم الذكي في 2026، من الأجهزة إلى تحليل البيانات، وتعلم كيف تحسّن جودة نومك بطرق علمية وعملية.",
+      "en": "Read \"تقنيات النوم الذكي في 2026: كيف تساعدك الأجهزة والبيانات على تحسين جودة نومك\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تطوير ذات.",
+      "fr": "Lisez \"تقنيات النوم الذكي في 2026: كيف تساعدك الأجهزة والبيانات على تحسين جودة نومك\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تطوير ذات.",
+      "es": "Lea \"تقنيات النوم الذكي في 2026: كيف تساعدك الأجهزة والبيانات على تحسين جودة نومك\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تطوير ذات."
+    }
+  },
+  "stable-digital-currency-investment-2026": {
+    "id": "d5f03d16-1652-47af-8e85-7c594981a61c",
+    "title": "الاستثمار في العملات الرقمية المستقرة 2026: فرص مربحة ومخاطر يجب مراعاتها",
+    "category": "مال وأعمال",
+    "keywords": {
+      "ar": "العملات الرقمية, المستقرة, استثمار, مخاطر, عوائد, التمويل اللامركزي, إدارة المخاطر, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
+      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
+      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+    },
+    "description": {
+      "ar": "تعرف على فرص الاستثمار في العملات الرقمية المستقرة لعام 2026، العوائد المتوقعة، المخاطر، واستراتيجيات إدارة المخاطر لتأمين محفظتك.",
+      "en": "Read \"الاستثمار في العملات الرقمية المستقرة 2026: فرص مربحة ومخاطر يجب مراعاتها\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on مال وأعمال.",
+      "fr": "Lisez \"الاستثمار في العملات الرقمية المستقرة 2026: فرص مربحة ومخاطر يجب مراعاتها\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur مال وأعمال.",
+      "es": "Lea \"الاستثمار في العملات الرقمية المستقرة 2026: فرص مربحة ومخاطر يجب مراعاتها\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre مال وأعمال."
+    }
   }
 }
