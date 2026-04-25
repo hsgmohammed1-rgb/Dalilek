@@ -46,14 +46,16 @@ const SPEED_PROFILES = {
   },
   thorough: {
     label: '💎 الأفضل',
-    description: 'نموذج ضخم، 6-8 أقسام معمّقة، توليد تسلسلي للجودة القصوى',
-    recommendedModel: 'qwen/qwen3-next-80b-a3b-instruct:free',
-    maxTokens: 8000,
-    minSections: 6, maxSections: 8,
-    sectionLength: '220-320 كلمة',
+    description: 'نموذج ضخم، 5-6 أقسام معمّقة، توليد تسلسلي للجودة القصوى',
+    recommendedModel: 'openai/gpt-oss-120b:free',
+    maxTokens: 6000,
+    minSections: 5, maxSections: 6,
+    sectionLength: '200-280 كلمة',
     concurrency: 1,
-    skillsCount: 6,
+    skillsCount: 5,
     statsCount: 4,
+    timeoutMs: 300000,
+    useJsonMode: false,
   },
 };
 
@@ -150,7 +152,7 @@ async function verifySupabaseUser(accessToken) {
 }
 
 // ── OpenRouter call with auto-fallback ─────────────────────────────────────
-async function callOpenRouter({ apiKey, model, messages, jsonMode = false, maxTokens = 4096 }) {
+async function callOpenRouter({ apiKey, model, messages, jsonMode = false, maxTokens = 4096, timeoutMs = 180000 }) {
   if (!apiKey) throw new Error('مفتاح OpenRouter مطلوب');
   const payload = {
     model,
@@ -170,7 +172,7 @@ async function callOpenRouter({ apiKey, model, messages, jsonMode = false, maxTo
       'X-Title': 'Dalilek Bulk Admin',
     },
     body: payload,
-    timeout: 180000,
+    timeout: timeoutMs,
   });
   if (r.status !== 200) {
     const msg = (r.json && (r.json.error?.message || r.json.message)) || r.body.slice(0, 300);
@@ -184,42 +186,84 @@ async function callOpenRouter({ apiKey, model, messages, jsonMode = false, maxTo
   return text;
 }
 
-async function callOpenRouterWithFallback({ apiKey, model, messages, jsonMode, maxTokens }) {
+async function callOpenRouterWithFallback({ apiKey, model, messages, jsonMode, maxTokens, timeoutMs }) {
   // Try the requested model first; if it 404s/errors, try fallbacks
   const fallbackOrder = [model, ...FREE_MODELS.map(m => m.id).filter(id => id !== model)];
   let lastError = null;
   for (const m of fallbackOrder.slice(0, 4)) {
     try {
-      return { text: await callOpenRouter({ apiKey, model: m, messages, jsonMode, maxTokens }), modelUsed: m };
+      return { text: await callOpenRouter({ apiKey, model: m, messages, jsonMode, maxTokens, timeoutMs }), modelUsed: m };
     } catch (e) {
       lastError = e;
       // If 401/403 (bad key), don't try fallbacks
       if (e.status === 401 || e.status === 403) throw e;
-      // For 404 (model not available), 429 (rate limit), 5xx — try next
+      // For 404 (model not available), 429 (rate limit), 5xx, timeouts — try next
       continue;
     }
   }
   throw lastError || new Error('كل النماذج فشلت');
 }
 
+function tryParse(s) { try { return JSON.parse(s); } catch (e) { return null; } }
+
+// Attempt to "repair" a JSON string truncated by max_tokens by closing strings/arrays/objects.
+function repairTruncatedJson(str) {
+  if (!str) return null;
+  const start = str.indexOf('{');
+  if (start < 0) return null;
+  let s = str.slice(start);
+  // Strip any trailing junk after the last brace if it's actually balanced
+  let inStr = false, esc = false, depthArr = 0, depthObj = 0;
+  let lastSafe = -1;
+  for (let i = 0; i < s.length; i++) {
+    const ch = s[i];
+    if (inStr) {
+      if (esc) { esc = false; continue; }
+      if (ch === '\\') { esc = true; continue; }
+      if (ch === '"') inStr = false;
+      continue;
+    }
+    if (ch === '"') { inStr = true; continue; }
+    if (ch === '{') depthObj++;
+    else if (ch === '}') { depthObj--; if (depthObj === 0 && depthArr === 0) lastSafe = i; }
+    else if (ch === '[') depthArr++;
+    else if (ch === ']') depthArr--;
+  }
+  // Build a repaired version: close open string, then close all open arrays/objects.
+  let repaired = s;
+  if (inStr) repaired += '"';
+  // Remove a trailing comma before adding closers (e.g. `,` inside array/object)
+  repaired = repaired.replace(/,\s*$/, '');
+  for (let i = 0; i < depthArr; i++) repaired += ']';
+  for (let i = 0; i < depthObj; i++) repaired += '}';
+  return tryParse(repaired) || (lastSafe > 0 ? tryParse(s.slice(0, lastSafe + 1)) : null);
+}
+
 function extractJson(str) {
   if (!str) throw new Error('رد ذكاء اصطناعي فارغ');
   const fence = str.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
   if (fence) {
-    try { return JSON.parse(fence[1]); } catch (e) {}
+    const j = tryParse(fence[1]); if (j) return j;
   }
-  try { return JSON.parse(str); } catch (e) {}
+  const direct = tryParse(str); if (direct) return direct;
   const start = str.indexOf('{');
   if (start >= 0) {
-    let depth = 0;
+    // Try the largest balanced object
+    let depth = 0, inStr = false, esc = false;
     for (let i = start; i < str.length; i++) {
-      if (str[i] === '{') depth++;
-      else if (str[i] === '}') { depth--; if (depth === 0) {
-        try { return JSON.parse(str.slice(start, i + 1)); } catch (e) {}
+      const ch = str[i];
+      if (inStr) { if (esc) { esc = false; } else if (ch === '\\') { esc = true; } else if (ch === '"') inStr = false; continue; }
+      if (ch === '"') { inStr = true; continue; }
+      if (ch === '{') depth++;
+      else if (ch === '}') { depth--; if (depth === 0) {
+        const j = tryParse(str.slice(start, i + 1)); if (j) return j;
         break;
       }}
     }
   }
+  // Last resort: try to repair a truncated JSON object
+  const repaired = repairTruncatedJson(str);
+  if (repaired) return repaired;
   throw new Error('فشل تحليل JSON من رد الذكاء الاصطناعي');
 }
 
@@ -254,6 +298,7 @@ async function discoverTopics({ apiKey, model, count, mode, category, customSeed
     ],
     jsonMode: true,
     maxTokens: 4096,
+    timeoutMs: 180000,
   });
   const j = extractJson(out.text);
   const topics = Array.isArray(j.topics) ? j.topics : [];
@@ -312,52 +357,73 @@ async function generateArticle({ apiKey, model, topic, speed = 'medium' }) {
 
 أنشئ مقالاً كاملاً عالي الجودة وفق التنسيق المحدد. اجعل المحتوى عملياً ومحدّثاً لعام 2026.`;
 
+  const useJsonMode = profile.useJsonMode !== false; // default true unless profile explicitly disables it
+  const timeoutMs = profile.timeoutMs || 180000;
   const out = await callOpenRouterWithFallback({
     apiKey, model,
     messages: [
       { role: 'system', content: sys },
       { role: 'user', content: userPrompt },
     ],
-    jsonMode: true,
+    jsonMode: useJsonMode,
     maxTokens: profile.maxTokens,
+    timeoutMs,
   });
   return { article: extractJson(out.text), modelUsed: out.modelUsed, profile };
 }
 
-// ── Pexels image search ────────────────────────────────────────────────────
-async function fetchPexelsImages(query, count = 3) {
-  if (!PEXELS_API_KEY) return [];
+// ── Pexels image search (with auto-fallback queries) ──────────────────────
+async function _pexelsSearchImages(query, count) {
   const q = encodeURIComponent(String(query || '').slice(0, 100));
   if (!q) return [];
-  const r = await httpsRequestJson({
-    hostname: 'api.pexels.com',
-    path: `/v1/search?query=${q}&per_page=${count}&orientation=landscape`,
-    method: 'GET',
-    headers: { 'Authorization': PEXELS_API_KEY },
-    timeout: 15000,
-  });
-  if (r.status !== 200 || !r.json?.photos) return [];
-  return r.json.photos.slice(0, count).map(p => ({
-    url: p.src?.large2x || p.src?.large || p.src?.original,
-    thumb: p.src?.medium,
-    photographer: p.photographer,
-    photographer_url: p.photographer_url,
-    pexels_url: p.url,
-    width: p.width,
-    height: p.height,
-  })).filter(p => p.url);
+  try {
+    const r = await httpsRequestJson({
+      hostname: 'api.pexels.com',
+      path: `/v1/search?query=${q}&per_page=${count}&orientation=landscape`,
+      method: 'GET',
+      headers: { 'Authorization': PEXELS_API_KEY },
+      timeout: 15000,
+    });
+    if (r.status !== 200 || !r.json?.photos) return [];
+    return r.json.photos.slice(0, count).map(p => ({
+      url: p.src?.large2x || p.src?.large || p.src?.original,
+      thumb: p.src?.medium,
+      photographer: p.photographer,
+      photographer_url: p.photographer_url,
+      pexels_url: p.url,
+      width: p.width,
+      height: p.height,
+    })).filter(p => p.url);
+  } catch (e) {
+    console.warn('Pexels image fetch failed:', e.message);
+    return [];
+  }
+}
+
+async function fetchPexelsImages(query, count = 3, fallbackQueries = []) {
+  if (!PEXELS_API_KEY) return [];
+  let images = await _pexelsSearchImages(query, count);
+  // If too few results, try fallback queries (e.g. category-based, or generic)
+  for (const fb of fallbackQueries) {
+    if (images.length >= count) break;
+    if (!fb) continue;
+    const more = await _pexelsSearchImages(fb, count - images.length);
+    // Dedupe by URL
+    const seen = new Set(images.map(i => i.url));
+    for (const m of more) if (!seen.has(m.url)) { images.push(m); seen.add(m.url); }
+  }
+  return images.slice(0, count);
 }
 
 // ── Pexels video search ────────────────────────────────────────────────────
 // Returns one video object suitable for HTML <video src=...>
-async function fetchPexelsVideo(query) {
-  if (!PEXELS_API_KEY) return null;
+async function _pexelsSearchVideo(query) {
   const q = encodeURIComponent(String(query || '').slice(0, 100));
   if (!q) return null;
   try {
     const r = await httpsRequestJson({
       hostname: 'api.pexels.com',
-      path: `/videos/search?query=${q}&per_page=5&orientation=landscape`,
+      path: `/videos/search?query=${q}&per_page=8&orientation=landscape`,
       method: 'GET',
       headers: { 'Authorization': PEXELS_API_KEY },
       timeout: 15000,
@@ -393,6 +459,33 @@ async function fetchPexelsVideo(query) {
     return null;
   }
 }
+
+async function fetchPexelsVideo(query, fallbackQueries = []) {
+  if (!PEXELS_API_KEY) return null;
+  let v = await _pexelsSearchVideo(query);
+  for (const fb of fallbackQueries) {
+    if (v) break;
+    if (!fb) continue;
+    v = await _pexelsSearchVideo(fb);
+  }
+  return v;
+}
+
+// Map Arabic categories to safe English Pexels keywords as a final fallback.
+const CATEGORY_FALLBACK_QUERIES = {
+  'تكنولوجيا': 'technology innovation',
+  'صحة': 'healthy lifestyle',
+  'مال وأعمال': 'business finance',
+  'تطوير ذات': 'personal growth',
+  'ثقافة': 'culture art',
+  'علوم': 'science laboratory',
+  'أسلوب حياة': 'lifestyle modern',
+  'طعام': 'food cooking',
+  'رياضة': 'sports fitness',
+  'تعليم': 'education learning',
+  'سفر': 'travel destination',
+  'ترفيه': 'entertainment fun',
+};
 
 // ── Slug normalization + uniqueness ─────────────────────────────────────────
 function normalizeSlug(s) {
@@ -452,12 +545,15 @@ async function generateAndPublish({ apiKey, model, topic, templateId, speed = 'm
     throw new Error('AI رجّع بنية مقال غير صالحة');
   }
 
-  // Fetch images AND video in parallel for speed
+  // Fetch images AND video in parallel for speed, with category-based fallback
+  const categoryFallback = CATEGORY_FALLBACK_QUERIES[topic.category] || 'modern abstract background';
   const imageQuery = article.image_query || article.title;
   const videoQuery = article.video_query || article.image_query || article.title;
+  const imageFallbacks = [article.image_query, categoryFallback, 'business workspace', 'modern abstract'].filter(Boolean);
+  const videoFallbacks = [article.video_query, categoryFallback, 'business workspace'].filter(Boolean);
   const [imagesResult, videoResult] = await Promise.allSettled([
-    fetchPexelsImages(imageQuery, 3),
-    fetchPexelsVideo(videoQuery),
+    fetchPexelsImages(imageQuery, 3, imageFallbacks),
+    fetchPexelsVideo(videoQuery, videoFallbacks),
   ]);
   const images = imagesResult.status === 'fulfilled' ? (imagesResult.value || []) : [];
   const video = videoResult.status === 'fulfilled' ? videoResult.value : null;

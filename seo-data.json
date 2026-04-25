@@ -696,23 +696,6 @@
       "es": "Lea \"تأثير مانديلا: حقائق، أسباب وتفسيرات للذاكرة الجماعية الخاطئة\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة نفسية."
     }
   },
-  "mary-celeste-ghost-ship": {
-    "id": "d4ba997d-5680-4efb-af30-f482859033e2",
-    "title": "لغز ماري سليست: سفينة الأشباح التي اختفى طاقمها بالكامل",
-    "category": "تاريخ وحضارات",
-    "keywords": {
-      "ar": "سفينة ماري سليست, سفينة الأشباح, لغز بحري, اختفاء طاقم, تاريخ بحري, المحيط الأطلسي, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
-      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
-      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
-      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
-    },
-    "description": {
-      "ar": "اكتشف قصة سفينة الأشباح ماري سليست، وكيف اختفى طاقمها في ظروف غامضة عام 1872. نظريات وحقائق مثيرة! اقرأ المزيد الآن.",
-      "en": "Read \"لغز ماري سليست: سفينة الأشباح التي اختفى طاقمها بالكامل\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تاريخ وحضارات.",
-      "fr": "Lisez \"لغز ماري سليست: سفينة الأشباح التي اختفى طاقمها بالكامل\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تاريخ وحضارات.",
-      "es": "Lea \"لغز ماري سليست: سفينة الأشباح التي اختفى طاقمها بالكامل\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تاريخ وحضارات."
-    }
-  },
   "bayern-munich-achievements": {
     "id": "f0303e58-f856-49d1-9fd6-ecfeed231328",
     "title": "بايرن ميونخ: تاريخ، إنجازات، وأكثر | دليل شامل",
@@ -830,6 +813,23 @@
       "en": "Read \"لغز ممر دياتلوف: القصة الكاملة وراء الحادثة الغامضة\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تاريخ وحضارات.",
       "fr": "Lisez \"لغز ممر دياتلوف: القصة الكاملة وراء الحادثة الغامضة\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تاريخ وحضارات.",
       "es": "Lea \"لغز ممر دياتلوف: القصة الكاملة وراء الحادثة الغامضة\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تاريخ وحضارات."
+    }
+  },
+  "mary-celeste-ghost-ship": {
+    "id": "d4ba997d-5680-4efb-af30-f482859033e2",
+    "title": "لغز ماري سليست: سفينة الأشباح التي اختفى طاقمها بالكامل",
+    "category": "تاريخ وحضارات",
+    "keywords": {
+      "ar": "سفينة ماري سليست, سفينة الأشباح, لغز بحري, اختفاء طاقم, تاريخ بحري, المحيط الأطلسي, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
+      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
+      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+    },
+    "description": {
+      "ar": "اكتشف قصة سفينة الأشباح ماري سليست، وكيف اختفى طاقمها في ظروف غامضة عام 1872. نظريات وحقائق مثيرة! اقرأ المزيد الآن.",
+      "en": "Read \"لغز ماري سليست: سفينة الأشباح التي اختفى طاقمها بالكامل\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تاريخ وحضارات.",
+      "fr": "Lisez \"لغز ماري سليست: سفينة الأشباح التي اختفى طاقمها بالكامل\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تاريخ وحضارات.",
+      "es": "Lea \"لغز ماري سليست: سفينة الأشباح التي اختفى طاقمها بالكامل\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تاريخ وحضارات."
     }
   },
   "cicada-3301-internet-puzzle": {
@@ -966,6 +966,23 @@
       "en": "Read \"العلاقات المصرية المجرية: تعاون استراتيجي واقتصادي\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on سياسة.",
       "fr": "Lisez \"العلاقات المصرية المجرية: تعاون استراتيجي واقتصادي\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur سياسة.",
       "es": "Lea \"العلاقات المصرية المجرية: تعاون استراتيجي واقتصادي\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre سياسة."
+    }
+  },
+  "weather-forecast-april-13-18": {
+    "id": "fbebac8a-6604-4580-a6f6-09007f2e143b",
+    "title": "توقعات مفصلة لحالة الطقس والأمطار في الأيام القادمة",
+    "category": "علوم وطبيعة",
+    "keywords": {
+      "ar": "توقعات الطقس, حالة الطقس, أمطار, سيول, درجات الحرارة, الأرصاد الجوية, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
+      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
+      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+    },
+    "description": {
+      "ar": "توقعات مفصلة لحالة الطقس من 13 إلى 18 أبريل: أمطار، سيول محتملة، درجات حرارة. ابق آمناً ومطلعاً على آخر التحديثات الجوية. 155 حرف",
+      "en": "Read \"توقعات مفصلة لحالة الطقس والأمطار في الأيام القادمة\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on علوم وطبيعة.",
+      "fr": "Lisez \"توقعات مفصلة لحالة الطقس والأمطار في الأيام القادمة\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur علوم وطبيعة.",
+      "es": "Lea \"توقعات مفصلة لحالة الطقس والأمطار في الأيام القادمة\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre علوم وطبيعة."
     }
   },
   "school-suspension-weather": {
@@ -1119,23 +1136,6 @@
       "en": "Read \"جريان السيول والأودية: تغطية شاملة وتحذيرات هامة\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on علوم وطبيعة.",
       "fr": "Lisez \"جريان السيول والأودية: تغطية شاملة وتحذيرات هامة\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur علوم وطبيعة.",
       "es": "Lea \"جريان السيول والأودية: تغطية شاملة وتحذيرات هامة\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre علوم وطبيعة."
-    }
-  },
-  "weather-forecast-april-13-18": {
-    "id": "fbebac8a-6604-4580-a6f6-09007f2e143b",
-    "title": "توقعات مفصلة لحالة الطقس والأمطار في الأيام القادمة",
-    "category": "علوم وطبيعة",
-    "keywords": {
-      "ar": "توقعات الطقس, حالة الطقس, أمطار, سيول, درجات الحرارة, الأرصاد الجوية, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
-      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
-      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
-      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
-    },
-    "description": {
-      "ar": "توقعات مفصلة لحالة الطقس من 13 إلى 18 أبريل: أمطار، سيول محتملة، درجات حرارة. ابق آمناً ومطلعاً على آخر التحديثات الجوية. 155 حرف",
-      "en": "Read \"توقعات مفصلة لحالة الطقس والأمطار في الأيام القادمة\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on علوم وطبيعة.",
-      "fr": "Lisez \"توقعات مفصلة لحالة الطقس والأمطار في الأيام القادمة\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur علوم وطبيعة.",
-      "es": "Lea \"توقعات مفصلة لحالة الطقس والأمطار في الأيام القادمة\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre علوم وطبيعة."
     }
   },
   "why-we-watch-disasters": {
@@ -1750,6 +1750,23 @@
       "es": "Lea \"تقنيات النوم الذكية 2026: كيف تُحسّن الأجهزة القابلة للارتداء جودة نومك\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
     }
   },
+  "mental-health-augmented-reality-wellbeing-strategies": {
+    "id": "0be380e0-69e9-46c8-929e-653bc1382532",
+    "title": "الصحة النفسية في عصر الواقع المعزز: استراتيجيات للرفاهية الرقمية",
+    "category": "صحة",
+    "keywords": {
+      "ar": "الصحة النفسية, الواقع المعزز, الرفاهية الرقمية, تقنيات الصحة, إدارة التوتر, صحة دماغية, فواصل تقنية, تطبيقات AR, توازن رقمي, صحة, طب, علاج, وقاية, غذاء صحي, رياضة, نصائح صحية, جسم سليم, صحة نفسية, مناعة, نوم, تغذية, أمراض, أدوية, صحة عامة",
+      "en": "health, medicine, treatment, prevention, healthy food, fitness, wellness tips, healthy body, mental health, immunity, sleep, nutrition, diseases, medications, public health",
+      "fr": "santé, médecine, traitement, prévention, alimentation saine, remise en forme, conseils santé, corps sain, santé mentale, immunité, sommeil, nutrition, maladies, médicaments",
+      "es": "salud, medicina, tratamiento, prevención, alimentación saludable, fitness, consejos de salud, cuerpo sano, salud mental, inmunidad, sueño, nutrición, enfermedades, medicamentos"
+    },
+    "description": {
+      "ar": "اكتشف استراتيجيات الصحة النفسية في عصر الواقع المعزز لعام 2026؛ نصائح عملية للرفاهية الرقمية وتوازن الاستخدام.",
+      "en": "Read \"الصحة النفسية في عصر الواقع المعزز: استراتيجيات للرفاهية الرقمية\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
+      "fr": "Lisez \"الصحة النفسية في عصر الواقع المعزز: استراتيجيات للرفاهية الرقمية\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
+      "es": "Lea \"الصحة النفسية في عصر الواقع المعزز: استراتيجيات للرفاهية الرقمية\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
+    }
+  },
   "snowy-mountain-power-episode-4": {
     "id": "552c8d94-9b92-4207-8e46-1c8ddf4df5b3",
     "title": "جبل باور الثلجي: الحلقة 4 - صراع البقاء يشتد",
@@ -1782,6 +1799,40 @@
       "en": "Read \"الصحة النفسية في عصر العمل عن بُعد: استراتيجيات للرفاهية في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
       "fr": "Lisez \"الصحة النفسية في عصر العمل عن بُعد: استراتيجيات للرفاهية في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
       "es": "Lea \"الصحة النفسية في عصر العمل عن بُعد: استراتيجيات للرفاهية في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
+    }
+  },
+  "how-generative-ai-transforms-job-market-2026": {
+    "id": "52e5f99f-6cb6-48db-9a52-ed85527d3bfe",
+    "title": "كيف يُعيد الذكاء الاصطناعي التوليدي تشكيل مستقبل سوق العمل في 2026",
+    "category": "تكنولوجيا",
+    "keywords": {
+      "ar": "الذكاء الاصطناعي التوليدي, سوق العمل 2026, التكنولوجيا والمستقبل, تحول الوظائف, مهارات المستقبل, التحول الرقمي, مستقبل العمل, إعادة تدريب الموظفين, أخلاقيات الذكاء الاصطناعي, الوظائف الجديدة, تكنولوجيا, ذكاء اصطناعي, برمجة, أجهزة ذكية, إنترنت, تطبيقات, ابتكار, مستقبل رقمي, تحول رقمي, أمن معلومات, سحابة, بيانات ضخمة, روبوتات, تعلم آلي",
+      "en": "technology, artificial intelligence, programming, smart devices, internet, apps, innovation, digital future, digital transformation, cybersecurity, cloud computing, big data, robotics, machine learning",
+      "fr": "technologie, intelligence artificielle, programmation, appareils intelligents, internet, applications, innovation, avenir numérique, transformation numérique, cybersécurité, cloud, big data, robotique, apprentissage automatique",
+      "es": "tecnología, inteligencia artificial, programación, dispositivos inteligentes, internet, aplicaciones, innovación, futuro digital, transformación digital, ciberseguridad, nube, big data, robótica, aprendizaje automático"
+    },
+    "description": {
+      "ar": "كيف يغير الذكاء الاصطناعي التوليدي سوق العمل في 2026. اكتشف التأثير على الوظائف والمهارات المطلوبة والتحديات الأخلاقية في عصر الذكاء الاصطناعي.",
+      "en": "Read \"كيف يُعيد الذكاء الاصطناعي التوليدي تشكيل مستقبل سوق العمل في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تكنولوجيا.",
+      "fr": "Lisez \"كيف يُعيد الذكاء الاصطناعي التوليدي تشكيل مستقبل سوق العمل في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تكنولوجيا.",
+      "es": "Lea \"كيف يُعيد الذكاء الاصطناعي التوليدي تشكيل مستقبل سوق العمل في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
+    }
+  },
+  "stable-coins-investment-2026-opportunities-and-challenges": {
+    "id": "cd216f89-4138-4971-9e7d-c0ab07d3ad43",
+    "title": "الاستثمار في العملات الرقمية المستقرة 2026: دليلك للفرص الجديدة وتجنب المخاطر",
+    "category": "مال وأعمال",
+    "keywords": {
+      "ar": "العملات الرقمية المستقرة, استثمار, فرص 2026, مخاطر, البلوكتشين, عملات مستقرة, استثمار رقمي, أمان الاستثمار, عملات مشفرة مستقرة, سوق العملات المستقرة, إدارة المخاطر, استثمار آمن, العملات الرقمية, تحليل السوق, استثمار ذكي, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
+      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
+      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+    },
+    "description": {
+      "ar": "دليل شامل عن الاستثمار في العملات الرقمية المستقرة لعام 2026. اكتشف أحدث الفرص والمخاطر في عالم العملات المستقرة وكيفية بناء محفظة استثمارية آمنة ومربحة.",
+      "en": "Read \"الاستثمار في العملات الرقمية المستقرة 2026: دليلك للفرص الجديدة وتجنب المخاطر\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on مال وأعمال.",
+      "fr": "Lisez \"الاستثمار في العملات الرقمية المستقرة 2026: دليلك للفرص الجديدة وتجنب المخاطر\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur مال وأعمال.",
+      "es": "Lea \"الاستثمار في العملات الرقمية المستقرة 2026: دليلك للفرص الجديدة وتجنب المخاطر\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre مال وأعمال."
     }
   }
 }
