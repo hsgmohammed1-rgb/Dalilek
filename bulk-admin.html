@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<title>توليد مقالات بالذكاء الاصطناعي — Dalilek</title>
+<style>
+  *{box-sizing:border-box}
+  :root{
+    --bg:#0b1220; --panel:#121a2e; --panel-2:#0f1729; --border:#1f2a44;
+    --text:#e6ecf5; --muted:#8a96b0; --primary:#22d3ee; --primary-2:#0ea5b7;
+    --success:#10b981; --warn:#f59e0b; --danger:#ef4444; --accent:#a78bfa;
+  }
+  body{margin:0;background:linear-gradient(180deg,#0a0f1f 0%,#0b1220 100%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,sans-serif;min-height:100vh}
+  header{padding:18px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:rgba(11,18,32,.85);backdrop-filter:blur(8px);position:sticky;top:0;z-index:10}
+  header h1{margin:0;font-size:18px;font-weight:700;display:flex;align-items:center;gap:10px}
+  header h1 .dot{width:10px;height:10px;border-radius:50%;background:var(--primary);box-shadow:0 0 10px var(--primary)}
+  header .right{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--muted)}
+  main{max-width:1180px;margin:0 auto;padding:24px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:18px;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+  .card h2{margin:0 0 6px 0;font-size:17px;display:flex;align-items:center;gap:10px}
+  .card h2 .num{background:var(--primary);color:#001;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}
+  .card .desc{color:var(--muted);font-size:13px;margin:0 0 18px 0}
+  label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:600}
+  input,select,textarea{width:100%;background:var(--panel-2);color:var(--text);border:1px solid var(--border);border-radius:9px;padding:11px 13px;font-size:14px;font-family:inherit;outline:none;transition:border-color .15s}
+  input:focus,select:focus,textarea:focus{border-color:var(--primary)}
+  textarea{resize:vertical;min-height:80px}
+  .row{display:grid;gap:14px}
+  .row.cols-2{grid-template-columns:1fr 1fr}
+  .row.cols-3{grid-template-columns:1fr 1fr 1fr}
+  @media(max-width:720px){.row.cols-2,.row.cols-3{grid-template-columns:1fr}}
+  button{cursor:pointer;border:none;border-radius:9px;padding:11px 18px;font-size:14px;font-weight:700;transition:transform .08s,opacity .15s;font-family:inherit}
+  button:active{transform:scale(.98)}
+  button:disabled{opacity:.5;cursor:not-allowed}
+  .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#001}
+  .btn-secondary{background:var(--panel-2);color:var(--text);border:1px solid var(--border)}
+  .btn-success{background:linear-gradient(135deg,#10b981,#059669);color:#fff}
+  .btn-danger{background:#3a1a1a;color:#fca5a5;border:1px solid #7f1d1d}
+  .btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border)}
+  .badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;border:1px solid currentColor}
+  .badge.ok{color:var(--success)}
+  .badge.warn{color:var(--warn)}
+  .badge.err{color:var(--danger)}
+  .badge.idle{color:var(--muted)}
+  .topic-row{display:flex;gap:10px;align-items:flex-start;padding:10px;border-radius:9px;background:var(--panel-2);margin-bottom:8px;border:1px solid transparent;transition:border-color .15s}
+  .topic-row:hover{border-color:var(--border)}
+  .topic-row .idx{width:28px;height:28px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:6px}
+  .topic-row input{background:var(--panel)}
+  .topic-row .col{flex:1;min-width:0}
+  .topic-row .status{flex-shrink:0;align-self:center;font-size:11px;min-width:80px;text-align:center}
+  .progress-bar{height:8px;background:var(--panel-2);border-radius:99px;overflow:hidden;margin:8px 0}
+  .progress-bar .fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));transition:width .3s}
+  .stats-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px}
+  .stat-pill{background:var(--panel-2);border:1px solid var(--border);padding:8px 14px;border-radius:9px;font-size:13px}
+  .stat-pill b{color:var(--primary);font-size:15px}
+  .url-list{background:var(--panel-2);border:1px solid var(--border);border-radius:9px;padding:14px;max-height:340px;overflow-y:auto;font-family:"SF Mono",Monaco,Consolas,monospace;font-size:12px;line-height:1.9;white-space:pre;direction:ltr;text-align:left}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--panel);border:1px solid var(--border);padding:12px 22px;border-radius:9px;font-size:14px;box-shadow:0 8px 32px rgba(0,0,0,.4);z-index:100;animation:slidein .25s}
+  .toast.success{border-color:var(--success);color:var(--success)}
+  .toast.error{border-color:var(--danger);color:#fca5a5}
+  @keyframes slidein{from{opacity:0;transform:translate(-50%,10px)}to{opacity:1;transform:translate(-50%,0)}}
+  .login-screen{max-width:380px;margin:80px auto;padding:30px;background:var(--panel);border:1px solid var(--border);border-radius:14px;text-align:center}
+  .login-screen h2{margin:0 0 8px 0}
+  .login-screen p{color:var(--muted);font-size:13px;margin:0 0 20px 0}
+  .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:14px}
+  .feature{background:var(--panel-2);padding:12px;border-radius:9px;border:1px solid var(--border);font-size:12px;color:var(--muted)}
+  .feature b{display:block;color:var(--primary);font-size:13px;margin-bottom:3px}
+  .row-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .hidden{display:none!important}
+  .small{font-size:12px;color:var(--muted)}
+  .key-link{color:var(--primary);text-decoration:none}
+  .key-link:hover{text-decoration:underline}
+  .step-status{font-size:11px;padding:2px 8px;border-radius:99px;background:var(--panel-2);color:var(--muted);margin-right:6px}
+</style>
+</head>
+<body>
+
+<!-- Login screen -->
+<div id="login" class="login-screen">
+  <h2>🔐 لوحة التوليد الجماعي</h2>
+  <p>أدخل كلمة السر للدخول</p>
+  <input type="password" id="loginPw" placeholder="كلمة السر" style="margin-bottom:12px" />
+  <button class="btn-primary" id="loginBtn" style="width:100%">دخول</button>
+  <div id="loginErr" style="color:var(--danger);font-size:13px;margin-top:10px"></div>
+</div>
+
+<!-- Main app -->
+<div id="app" class="hidden">
+<header>
+  <h1><span class="dot"></span> توليد مقالات بالذكاء الاصطناعي</h1>
+  <div class="right">
+    <span id="topicCount">0 موضوع</span>
+    <button class="btn-ghost" id="logoutBtn">خروج</button>
+  </div>
+</header>
+
+<main>
+
+<!-- Settings -->
+<div class="card">
+  <h2><span class="num">1</span> الإعدادات</h2>
+  <p class="desc">المفتاح يُحفظ محلياً في متصفحك فقط، ولا يُرسل لأي مكان غير OpenRouter.</p>
+  <div class="row cols-2">
+    <div>
+      <label>مفتاح OpenRouter API</label>
+      <input type="password" id="orKey" placeholder="sk-or-v1-..." autocomplete="off" />
+      <div class="small" style="margin-top:5px">احصل على مفتاح مجاني من <a class="key-link" href="https://openrouter.ai/keys" target="_blank">openrouter.ai/keys</a></div>
+    </div>
+    <div>
+      <label>النموذج (كلها مجانية)</label>
+      <select id="orModel"></select>
+      <div class="small" style="margin-top:5px">إذا فشل نموذج، جرّب نموذج آخر</div>
+    </div>
+  </div>
+</div>
+
+<!-- Topic discovery -->
+<div class="card">
+  <h2><span class="num">2</span> اكتشاف المواضيع</h2>
+  <p class="desc">يحدد الذكاء الاصطناعي أكثر المواضيع رواجاً وبحثاً عالمياً، ثم تستطيع تعديل القائمة قبل التوليد.</p>
+  <div class="row cols-3">
+    <div>
+      <label>عدد المقالات</label>
+      <select id="count">
+        <option value="10">10 مقالات</option>
+        <option value="20">20 مقال</option>
+        <option value="30">30 مقال</option>
+        <option value="50">50 مقال</option>
+        <option value="75">75 مقال</option>
+        <option value="100">100 مقال</option>
+        <option value="150">150 مقال</option>
+      </select>
+    </div>
+    <div>
+      <label>وضع الاكتشاف</label>
+      <select id="mode">
+        <option value="trending">🔥 الأكثر رواجاً عالمياً</option>
+        <option value="category">📂 حسب فئة معينة</option>
+        <option value="custom">✏️ مخصص (أنا أحدد البذرة)</option>
+      </select>
+    </div>
+    <div>
+      <label>القالب (محدد عشوائياً)</label>
+      <select id="templateMode">
+        <option value="random">عشوائي لكل مقال</option>
+        <option value="1">قالب 1</option>
+        <option value="2">قالب 2</option>
+        <option value="3">قالب 3 (موسع)</option>
+        <option value="4">قالب 4</option>
+        <option value="5">قالب 5</option>
+        <option value="6">قالب 6</option>
+        <option value="7">قالب 7</option>
+        <option value="8">قالب 8</option>
+        <option value="9">قالب 9</option>
+        <option value="10">قالب 10</option>
+        <option value="11">قالب 11</option>
+        <option value="12">قالب 12</option>
+        <option value="13">قالب 13</option>
+        <option value="14">قالب 14</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row cols-2" style="margin-top:14px">
+    <div id="categoryWrap" class="hidden">
+      <label>الفئة</label>
+      <select id="category">
+        <option value="تكنولوجيا">تكنولوجيا</option>
+        <option value="صحة">صحة</option>
+        <option value="مال وأعمال">مال وأعمال</option>
+        <option value="تطوير ذات">تطوير ذات</option>
+        <option value="ثقافة">ثقافة</option>
+        <option value="علوم">علوم</option>
+        <option value="أسلوب حياة">أسلوب حياة</option>
+        <option value="طعام">طعام</option>
+        <option value="رياضة">رياضة</option>
+        <option value="تعليم">تعليم</option>
+        <option value="سفر">سفر</option>
+        <option value="ترفيه">ترفيه</option>
+      </select>
+    </div>
+    <div id="customWrap" class="hidden">
+      <label>كلمة/موضوع البذرة</label>
+      <input type="text" id="customSeed" placeholder="مثلاً: الذكاء الاصطناعي 2026" />
+    </div>
+  </div>
+
+  <div class="row-actions">
+    <button class="btn-primary" id="discoverBtn">🔍 اكتشاف المواضيع</button>
+    <button class="btn-secondary" id="addManualBtn">+ إضافة موضوع يدوي</button>
+    <button class="btn-danger" id="clearTopicsBtn">حذف الكل</button>
+  </div>
+
+  <div id="topicsList" style="margin-top:18px"></div>
+</div>
+
+<!-- Generation -->
+<div class="card">
+  <h2><span class="num">3</span> التوليد والنشر</h2>
+  <p class="desc">سيُنشأ كل مقال كاملاً، تُجلب أول 3 صور من Pexels، ثم يُنشر على Supabase تلقائياً مع slug فريد.</p>
+
+  <div class="feature-grid">
+    <div class="feature"><b>🤖 ذكاء اصطناعي كامل</b>عناوين، محتوى، كلمات مفتاحية، وصف SEO، استعلام صور</div>
+    <div class="feature"><b>📸 3 صور لكل مقال</b>من Pexels عالية الجودة، استعلام البحث بالإنجليزية يولّده الذكاء الاصطناعي</div>
+    <div class="feature"><b>🔗 slug فريد تلقائياً</b>إذا تكرر، يُضاف رقم تلقائي (-2, -3, ...)</div>
+    <div class="feature"><b>📑 4-6 أقسام لكل مقال</b>مع stats، skills، callouts، وخاتمة جذابة</div>
+    <div class="feature"><b>🌍 SEO متعدد اللغات</b>تُضاف keywords/description بـ4 لغات تلقائياً عند التحديث</div>
+    <div class="feature"><b>📋 نسخ كل الروابط دفعة واحدة</b>زر واحد بعد الانتهاء</div>
+  </div>
+
+  <div class="row-actions" style="margin-top:18px">
+    <button class="btn-success" id="generateBtn" disabled>🚀 توليد ونشر الكل</button>
+    <button class="btn-danger hidden" id="stopBtn">⏹ إيقاف</button>
+  </div>
+
+  <div id="progressWrap" class="hidden" style="margin-top:14px">
+    <div class="progress-bar"><div class="fill" id="progressFill" style="width:0%"></div></div>
+    <div class="stats-row">
+      <div class="stat-pill">المنجز: <b id="statDone">0</b></div>
+      <div class="stat-pill">الفاشل: <b id="statFail">0</b></div>
+      <div class="stat-pill">الإجمالي: <b id="statTotal">0</b></div>
+      <div class="stat-pill">الوقت: <b id="statTime">0s</b></div>
+    </div>
+  </div>
+</div>
+
+<!-- Results -->
+<div class="card hidden" id="resultsCard">
+  <h2><span class="num">4</span> الروابط النهائية</h2>
+  <p class="desc">جميع المقالات المنشورة. اضغط "نسخ الكل" لنسخ كل الروابط دفعة واحدة.</p>
+  <div class="row-actions">
+    <button class="btn-primary" id="copyAllBtn">📋 نسخ كل الروابط</button>
+    <button class="btn-secondary" id="copyMdBtn">📝 نسخ بصيغة Markdown</button>
+    <button class="btn-secondary" id="refreshSeoBtn">🔄 تحديث الكاش وخريطة الموقع</button>
+  </div>
+  <div id="urlList" class="url-list" style="margin-top:14px"></div>
+</div>
+
+</main>
+</div>
+
+<script>
+(function(){
+  const $ = (id) => document.getElementById(id);
+  const SITE_URL = location.origin;
+
+  let token = sessionStorage.getItem('bulkAdminToken') || '';
+  let topics = [];
+  let results = [];
+  let stopRequested = false;
+  let timerInterval = null;
+  let startTime = 0;
+
+  // ── Login ──
+  function showApp(){
+    $('login').classList.add('hidden');
+    $('app').classList.remove('hidden');
+    loadModels();
+    // Restore saved OpenRouter key
+    const savedKey = localStorage.getItem('orKey') || '';
+    $('orKey').value = savedKey;
+    $('orKey').addEventListener('change', () => localStorage.setItem('orKey', $('orKey').value));
+  }
+  function showLogin(){
+    $('app').classList.add('hidden');
+    $('login').classList.remove('hidden');
+  }
+
+  if (token) showApp(); else showLogin();
+
+  $('loginBtn').onclick = async () => {
+    const pw = $('loginPw').value;
+    if (!pw) return;
+    $('loginBtn').disabled = true;
+    $('loginErr').textContent = '';
+    try {
+      const r = await fetch('/api/bulk-admin/login', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ password: pw })
+      });
+      const j = await r.json();
+      if (!r.ok) throw new Error(j.error || 'Login failed');
+      token = j.token;
+      sessionStorage.setItem('bulkAdminToken', token);
+      $('loginPw').value = '';
+      showApp();
+    } catch(e) {
+      $('loginErr').textContent = e.message;
+    } finally {
+      $('loginBtn').disabled = false;
+    }
+  };
+  $('loginPw').addEventListener('keydown', e => { if (e.key === 'Enter') $('loginBtn').click(); });
+
+  $('logoutBtn').onclick = () => {
+    sessionStorage.removeItem('bulkAdminToken');
+    token = '';
+    showLogin();
+  };
+
+  // ── Helpers ──
+  async function api(path, body){
+    const r = await fetch(path, {
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'X-Bulk-Admin-Token': token,
+      },
+      body: JSON.stringify(body || {})
+    });
+    const j = await r.json().catch(() => ({}));
+    if (r.status === 401) { sessionStorage.removeItem('bulkAdminToken'); token=''; showLogin(); throw new Error('انتهت الجلسة، الرجاء تسجيل الدخول مجدداً'); }
+    if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
+    return j;
+  }
+
+  function toast(msg, kind){
+    const t = document.createElement('div');
+    t.className = 'toast ' + (kind||'');
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 3000);
+  }
+
+  // ── Models ──
+  async function loadModels(){
+    try {
+      const r = await fetch('/api/bulk-admin/models');
+      const j = await r.json();
+      const sel = $('orModel');
+      sel.innerHTML = '';
+      (j.models || []).forEach(m => {
+        const o = document.createElement('option');
+        o.value = m.id;
+        o.textContent = m.label;
+        sel.appendChild(o);
+      });
+      const saved = localStorage.getItem('orModel');
+      if (saved) sel.value = saved;
+      sel.addEventListener('change', () => localStorage.setItem('orModel', sel.value));
+    } catch(e) { console.warn(e); }
+  }
+
+  // ── Mode toggle ──
+  $('mode').addEventListener('change', () => {
+    const m = $('mode').value;
+    $('categoryWrap').classList.toggle('hidden', m !== 'category');
+    $('customWrap').classList.toggle('hidden', m !== 'custom');
+  });
+
+  // ── Topics rendering ──
+  function renderTopics(){
+    const list = $('topicsList');
+    list.innerHTML = '';
+    topics.forEach((t, i) => {
+      const row = document.createElement('div');
+      row.className = 'topic-row';
+      row.innerHTML = `
+        <div class="idx">${i+1}</div>
+        <div class="col">
+          <input data-i="${i}" data-f="title" value="${escapeAttr(t.title)}" placeholder="عنوان المقال" />
+          <div class="row cols-2" style="margin-top:6px;gap:6px">
+            <input data-i="${i}" data-f="category" value="${escapeAttr(t.category)}" placeholder="الفئة" />
+            <input data-i="${i}" data-f="keywords" value="${escapeAttr(t.keywords)}" placeholder="كلمات مفتاحية" />
+          </div>
+        </div>
+        <div class="status" id="status-${i}"><span class="badge idle">في الانتظار</span></div>
+        <button class="btn-ghost" data-del="${i}" style="padding:6px 10px;font-size:12px">×</button>
+      `;
+      list.appendChild(row);
+    });
+    list.querySelectorAll('input').forEach(inp => {
+      inp.addEventListener('input', e => {
+        const i = +e.target.dataset.i, f = e.target.dataset.f;
+        topics[i][f] = e.target.value;
+      });
+    });
+    list.querySelectorAll('[data-del]').forEach(btn => {
+      btn.onclick = () => { topics.splice(+btn.dataset.del, 1); renderTopics(); };
+    });
+    $('topicCount').textContent = topics.length + ' موضوع';
+    $('generateBtn').disabled = topics.length === 0;
+  }
+
+  function escapeAttr(s){ return String(s||'').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+  // ── Discover ──
+  $('discoverBtn').onclick = async () => {
+    const apiKey = $('orKey').value.trim();
+    if (!apiKey) { toast('أدخل مفتاح OpenRouter أولاً', 'error'); return; }
+    const btn = $('discoverBtn');
+    btn.disabled = true; btn.textContent = '⏳ جارٍ الاكتشاف...';
+    try {
+      const out = await api('/api/bulk-admin/discover-topics', {
+        apiKey,
+        model: $('orModel').value,
+        count: +$('count').value,
+        mode: $('mode').value,
+        category: $('category').value,
+        customSeed: $('customSeed').value,
+      });
+      topics = out.topics || [];
+      renderTopics();
+      toast('تم اكتشاف ' + topics.length + ' موضوع', 'success');
+    } catch(e) {
+      toast('خطأ: ' + e.message, 'error');
+    } finally {
+      btn.disabled = false; btn.textContent = '🔍 اكتشاف المواضيع';
+    }
+  };
+
+  $('addManualBtn').onclick = () => {
+    topics.push({ title:'', category: $('category').value || 'ثقافة', keywords:'' });
+    renderTopics();
+  };
+  $('clearTopicsBtn').onclick = () => { if (confirm('حذف كل المواضيع؟')) { topics=[]; renderTopics(); } };
+
+  // ── Generate ──
+  $('generateBtn').onclick = async () => {
+    if (topics.length === 0) return;
+    const apiKey = $('orKey').value.trim();
+    if (!apiKey) { toast('أدخل مفتاح OpenRouter أولاً', 'error'); return; }
+    if (!confirm('سيُنشر ' + topics.length + ' مقال على الموقع. متابعة؟')) return;
+
+    stopRequested = false;
+    results = [];
+    const tplMode = $('templateMode').value;
+    const model = $('orModel').value;
+
+    $('progressWrap').classList.remove('hidden');
+    $('generateBtn').classList.add('hidden');
+    $('stopBtn').classList.remove('hidden');
+    $('resultsCard').classList.add('hidden');
+    $('statTotal').textContent = topics.length;
+    $('statDone').textContent = '0';
+    $('statFail').textContent = '0';
+    startTime = Date.now();
+    timerInterval = setInterval(() => {
+      const s = Math.floor((Date.now()-startTime)/1000);
+      $('statTime').textContent = s + 's';
+    }, 500);
+
+    let done = 0, fail = 0;
+    for (let i = 0; i < topics.length; i++) {
+      if (stopRequested) break;
+      const t = topics[i];
+      const statusEl = $('status-' + i);
+      if (statusEl) statusEl.innerHTML = '<span class="badge warn">⏳ جارٍ التوليد</span>';
+      try {
+        const tplId = tplMode === 'random' ? null : parseInt(tplMode, 10);
+        const out = await api('/api/bulk-admin/generate-one', {
+          apiKey, model, topic: t, templateId: tplId,
+        });
+        const a = out.article;
+        results.push(a);
+        done++;
+        if (statusEl) statusEl.innerHTML = '<span class="badge ok">✓ منشور</span>';
+      } catch(e) {
+        fail++;
+        if (statusEl) statusEl.innerHTML = '<span class="badge err" title="'+escapeAttr(e.message)+'">✗ فشل</span>';
+        console.error('Failed for', t.title, e);
+      }
+      $('statDone').textContent = done;
+      $('statFail').textContent = fail;
+      $('progressFill').style.width = (((i+1)/topics.length)*100) + '%';
+    }
+    clearInterval(timerInterval);
+    $('stopBtn').classList.add('hidden');
+    $('generateBtn').classList.remove('hidden');
+
+    if (results.length > 0) {
+      renderResults();
+      $('resultsCard').classList.remove('hidden');
+      $('resultsCard').scrollIntoView({behavior:'smooth'});
+      // Auto-refresh SEO cache
+      try {
+        await fetch('/api/seo-webhook', {
+          method:'POST',
+          headers:{ 'Content-Type':'application/json', 'X-Webhook-Secret':'' },
+          body: '{}'
+        });
+      } catch(e) {}
+    }
+    toast(done + ' منشور · ' + fail + ' فاشل', done > fail ? 'success' : 'error');
+  };
+
+  $('stopBtn').onclick = () => { stopRequested = true; toast('سيتوقف بعد المقال الحالي'); };
+
+  // ── Results ──
+  function renderResults(){
+    const list = $('urlList');
+    const lines = results.map(a => `${SITE_URL}/articles/${a.slug}`);
+    list.textContent = lines.join('\n');
+  }
+
+  $('copyAllBtn').onclick = () => {
+    const text = results.map(a => `${SITE_URL}/articles/${a.slug}`).join('\n');
+    navigator.clipboard.writeText(text).then(() => toast('تم نسخ ' + results.length + ' رابط', 'success'));
+  };
+  $('copyMdBtn').onclick = () => {
+    const text = results.map(a => `- [${a.title}](${SITE_URL}/articles/${a.slug})`).join('\n');
+    navigator.clipboard.writeText(text).then(() => toast('تم نسخ Markdown', 'success'));
+  };
+  $('refreshSeoBtn').onclick = async () => {
+    $('refreshSeoBtn').disabled = true;
+    try {
+      await api('/api/bulk-admin/refresh-cache', {});
+      toast('تم تحديث الكاش وخريطة الموقع', 'success');
+    } catch(e) { toast(e.message, 'error'); }
+    $('refreshSeoBtn').disabled = false;
+  };
+
+})();
+</script>
+</body>
+</html>

@@ -663,9 +663,27 @@ async function handleSeoWebhook(req, res) {
   });
 }
 
+const bulkAdmin = require('./bulk-admin.js');
+
 const appHandler = async (req, res) => {
   await ensureSeoCache();
   let urlPath = req.url.split('?')[0];
+
+  // ── Bulk Admin page ────────────────────────────────────────────────────────
+  if ((urlPath === '/bulk-admin' || urlPath === '/bulk-admin/') && req.method === 'GET') {
+    fs.readFile(path.join(ROOT, 'bulk-admin.html'), (err, data) => {
+      if (err) { res.writeHead(404); res.end('Not Found'); return; }
+      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex,nofollow' });
+      res.end(data);
+    });
+    return;
+  }
+
+  // ── Bulk Admin API ─────────────────────────────────────────────────────────
+  if (urlPath.startsWith('/api/bulk-admin/')) {
+    req.app = { refreshSeoFromSupabase };
+    return bulkAdmin.handle(req, res);
+  }
 
   // ── SEO Webhook endpoint ────────────────────────────────────────────────────
   if (urlPath === '/api/seo-webhook' && req.method === 'POST') {
