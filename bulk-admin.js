@@ -518,6 +518,10 @@ async function handle(req, res) {
     return jsonResponse(res, 200, { models: FREE_MODELS, speedProfiles: profiles, allowedEmail: ALLOWED_EMAIL });
   }
 
+  if (urlPath === '/api/bulk-admin/public-config' && req.method === 'GET') {
+    return jsonResponse(res, 200, publicConfig());
+  }
+
   // Auth via Supabase Google session: client sends access_token, server verifies email
   if (urlPath === '/api/bulk-admin/auth-google' && req.method === 'POST') {
     try {

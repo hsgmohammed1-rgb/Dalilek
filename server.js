@@ -669,8 +669,13 @@ const appHandler = async (req, res) => {
   await ensureSeoCache();
   let urlPath = req.url.split('?')[0];
 
-  // ── Bulk Admin page ────────────────────────────────────────────────────────
-  if ((urlPath === '/bulk-admin' || urlPath === '/bulk-admin/') && req.method === 'GET') {
+  // ── Bulk Admin page (served at multiple paths so it feels part of /admin) ──
+  const isBulkAdminPath = (
+    urlPath === '/bulk-admin' || urlPath === '/bulk-admin/' ||
+    urlPath === '/admin/bulk-tools' || urlPath === '/admin/bulk-tools/' ||
+    urlPath === '/admin/bulk' || urlPath === '/admin/bulk/'
+  );
+  if (isBulkAdminPath && req.method === 'GET') {
     fs.readFile(path.join(ROOT, 'bulk-admin.html'), (err, data) => {
       if (err) { res.writeHead(404); res.end('Not Found'); return; }
       res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex,nofollow' });
