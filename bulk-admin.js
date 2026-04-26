@@ -24,23 +24,23 @@ const FREE_MODELS = [
 const SPEED_PROFILES = {
   fast: {
     label: '⚡ سريع',
-    description: 'نموذج خفيف، 3-4 أقسام مختصرة، توليد متوازي 4×',
+    description: 'نموذج خفيف، 3-4 أقسام مختصرة، مقالان بالتوازي (مع 4 لغات لكل واحد)',
     recommendedModel: 'nvidia/nemotron-nano-9b-v2:free',
     maxTokens: 3500,
     minSections: 3, maxSections: 4,
     sectionLength: '100-150 كلمة',
-    concurrency: 4,
+    concurrency: 2,
     skillsCount: 4,
     statsCount: 3,
   },
   medium: {
     label: '⚖️ متوسط',
-    description: 'نموذج قوي، 4-5 أقسام متوازنة، توليد متوازي 2×',
+    description: 'نموذج قوي، 4-5 أقسام متوازنة، مقال واحد كل مرة (مع 4 لغات)',
     recommendedModel: 'openai/gpt-oss-120b:free',
     maxTokens: 5500,
     minSections: 4, maxSections: 5,
     sectionLength: '150-220 كلمة',
-    concurrency: 2,
+    concurrency: 1,
     skillsCount: 4,
     statsCount: 3,
   },
@@ -778,17 +778,23 @@ async function handle(req, res) {
   }
 
   if (urlPath === '/api/bulk-admin/generate-one' && req.method === 'POST') {
+    let parsedBody = null;
     try {
-      const body = JSON.parse((await readBody(req)) || '{}');
-      const apiKey = body.apiKey;
-      const model = body.model || FREE_MODELS[0].id;
-      const topic = body.topic;
-      const templateId = body.templateId || null;
-      const speed = body.speed || 'medium';
+      parsedBody = JSON.parse((await readBody(req)) || '{}');
+      const apiKey = parsedBody.apiKey;
+      const model = parsedBody.model || FREE_MODELS[0].id;
+      const topic = parsedBody.topic;
+      const templateId = parsedBody.templateId || null;
+      const speed = parsedBody.speed || 'medium';
       if (!topic || !topic.title) return jsonResponse(res, 400, { error: 'topic.title مطلوب' });
       const out = await generateAndPublish({ apiKey, model, topic, templateId, speed });
       return jsonResponse(res, 200, { article: out });
     } catch (e) {
+      const topicTitle = parsedBody?.topic?.title || '(no topic)';
+      console.error('[bulk-admin] generate-one failed for topic:', topicTitle);
+      console.error('[bulk-admin] error message:', e.message);
+      if (e.openRouterBody) console.error('[bulk-admin] openrouter body:', JSON.stringify(e.openRouterBody).slice(0, 500));
+      if (e.stack) console.error('[bulk-admin] stack:', e.stack.split('\n').slice(0, 5).join('\n'));
       return jsonResponse(res, 500, { error: e.message });
     }
   }
