@@ -1640,6 +1640,21 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/articles/mental-health-in-metaverse-era" />
   </url>
   <url>
+    <loc>https://dalilek.online/articles/generative-ai-evolution-2026-content-creation</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://dalilek.online/banners/ar-landscape.png</image:loc>
+      <image:title>تطور الذكاء الاصطناعي التوليدي في 2026: كيف يغيّر صناعة المحتوى الإبداعي</image:title>
+    </image:image>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/articles/generative-ai-evolution-2026-content-creation" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/articles/generative-ai-evolution-2026-content-creation" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/articles/generative-ai-evolution-2026-content-creation" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/articles/generative-ai-evolution-2026-content-creation" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/articles/generative-ai-evolution-2026-content-creation" />
+  </url>
+  <url>
     <loc>https://dalilek.online/articles/generative-ai-for-small-businesses-2026</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -1698,5 +1713,20 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/articles/arabic-cultural-identity-digital-2026" />
     <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/articles/arabic-cultural-identity-digital-2026" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/articles/arabic-cultural-identity-digital-2026" />
+  </url>
+  <url>
+    <loc>https://dalilek.online/articles/stable-crypto-investment-2026</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://dalilek.online/banners/ar-landscape.png</image:loc>
+      <image:title>الاستثمار في العملات الرقمية المستقرة 2026: فرص مربحة ومخاطر محتملة</image:title>
+    </image:image>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/articles/stable-crypto-investment-2026" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/articles/stable-crypto-investment-2026" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/articles/stable-crypto-investment-2026" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/articles/stable-crypto-investment-2026" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/articles/stable-crypto-investment-2026" />
   </url>
 </urlset>

@@ -288,7 +288,21 @@ async function discoverTopics({ apiKey, model, count, mode, category, customSeed
   ]
 }
 
-الفئات المسموحة (اختر واحدة فقط لكل مقال): تكنولوجيا، صحة، مال وأعمال، تطوير ذات، ثقافة، علوم، أسلوب حياة، طعام، رياضة، تعليم، سفر، ترفيه.`;
+الفئات المسموحة (اختر واحدة فقط لكل مقال): تكنولوجيا، صحة، مال وأعمال، تطوير ذات، ثقافة، علوم، أسلوب حياة، طعام، رياضة، تعليم، سفر، ترفيه.
+
+ملاحظة مهمة: لكل موضوع، أعطِ كذلك حقل "image_query" بالإنجليزية فقط (3-6 كلمات وصفية بصرية) عشان نجلب صورة من Pexels. مثال: "modern home office workspace" أو "person meditation sunset beach". لا تستعمل العربية في image_query.
+
+الشكل النهائي:
+{
+  "topics": [
+    {
+      "title": "العنوان بالعربية",
+      "category": "فئة عربية",
+      "keywords": "كلمة1, كلمة2, ...",
+      "image_query": "english visual keywords"
+    }
+  ]
+}`;
 
   const out = await callOpenRouterWithFallback({
     apiKey, model,
@@ -308,6 +322,7 @@ async function discoverTopics({ apiKey, model, count, mode, category, customSeed
       title: String(t.title || '').trim(),
       category: String(t.category || 'ثقافة').trim(),
       keywords: String(t.keywords || '').trim(),
+      image_query: String(t.image_query || '').trim(),
     })).filter(t => t.title),
   };
 }
@@ -615,15 +630,16 @@ async function generateAndPublish({ apiKey, model, topic, templateId, speed = 'm
   const slugAsQuery = slugBase.replace(/-/g, ' ').trim().slice(0, 100);
 
   // Fetch images AND video in parallel. Order of fallbacks matters:
-  // 1) AI-provided English image_query
-  // 2) the slug words (always English, derived from the topic)
-  // 3) category-based generic English query
-  // 4) ultra-generic safety net
+  // 1) AI-provided English image_query (from generation)
+  // 2) topic.image_query (set by discover-topics, also English)
+  // 3) the slug words (always English, derived from the topic)
+  // 4) category-based generic English query
+  // 5) ultra-generic safety net
   const categoryFallback = CATEGORY_FALLBACK_QUERIES[topic.category] || 'modern abstract background';
-  const imageQuery = article.image_query || slugAsQuery || categoryFallback;
-  const videoQuery = article.video_query || article.image_query || slugAsQuery || categoryFallback;
-  const imageFallbacks = [slugAsQuery, categoryFallback, 'business workspace', 'modern abstract'].filter(Boolean);
-  const videoFallbacks = [slugAsQuery, categoryFallback, 'business workspace'].filter(Boolean);
+  const imageQuery = article.image_query || topic.image_query || slugAsQuery || categoryFallback;
+  const videoQuery = article.video_query || article.image_query || topic.image_query || slugAsQuery || categoryFallback;
+  const imageFallbacks = [topic.image_query, slugAsQuery, categoryFallback, 'business workspace', 'modern abstract'].filter(Boolean);
+  const videoFallbacks = [topic.image_query, slugAsQuery, categoryFallback, 'business workspace'].filter(Boolean);
 
   // Run media fetch in parallel with the 3 translations to shave latency.
   const [imagesResult, videoResult, enRes, frRes, esRes] = await Promise.allSettled([
@@ -667,7 +683,27 @@ async function generateAndPublish({ apiKey, model, topic, templateId, speed = 'm
     es: esRes.status === 'fulfilled' && !!esRes.value,
   };
 
-  const content = { languages: { ar: arContent, en: enContent, fr: frContent, es: esContent } };
+  // Build SPA-compatible top-level fields. The pre-built React SPA reads
+  // content.images as an array of URL STRINGS (not objects) and content.video
+  // as { url, title }. Without these, the article hero falls back to a plain
+  // gradient even when media is fetched correctly.
+  const topLevelImages = (media.images || []).map(im => im?.url).filter(Boolean);
+  const topLevelVideo = media.video?.url ? { url: media.video.url, title: media.video.photographer || '' } : null;
+
+  const content = {
+    // top-level fields the SPA card mapper reads first
+    intro: arContent.intro || '',
+    stats: arContent.stats || [],
+    sections: arContent.sections || [],
+    skills: arContent.skills || [],
+    conclusion: arContent.conclusion || '',
+    images: topLevelImages,
+    video: topLevelVideo,
+    cover_image: topLevelImages[0] || null,
+    cover: topLevelImages[0] || null,
+    // full multilingual content
+    languages: { ar: arContent, en: enContent, fr: frContent, es: esContent },
+  };
   const slug = await findUniqueSlug(slugBase);
   const tpl = templateId || (Math.floor(Math.random() * 14) + 1);
 
@@ -795,6 +831,44 @@ async function handle(req, res) {
       console.error('[bulk-admin] error message:', e.message);
       if (e.openRouterBody) console.error('[bulk-admin] openrouter body:', JSON.stringify(e.openRouterBody).slice(0, 500));
       if (e.stack) console.error('[bulk-admin] stack:', e.stack.split('\n').slice(0, 5).join('\n'));
+      return jsonResponse(res, 500, { error: e.message });
+    }
+  }
+
+  // Preview Pexels media (1 image thumb + 1 video thumb) for a list of topics, in parallel.
+  // Body: { topics: [{ title, category, image_query? }] }
+  // Returns: { previews: [{ index, image_query, image, video }] }
+  if (urlPath === '/api/bulk-admin/preview-media' && req.method === 'POST') {
+    try {
+      const body = JSON.parse((await readBody(req)) || '{}');
+      const topics = Array.isArray(body.topics) ? body.topics : [];
+      if (!PEXELS_API_KEY) return jsonResponse(res, 500, { error: 'مفتاح PEXELS_API_KEY غير مضبوط على الخادم' });
+      if (topics.length === 0) return jsonResponse(res, 400, { error: 'topics فارغة' });
+
+      // Build a guaranteed-English query per topic. Priority: explicit image_query > category fallback.
+      // (We never use the Arabic title as a Pexels query — it returns 0 results.)
+      const previews = await Promise.all(topics.map(async (t, idx) => {
+        const cat = t.category || '';
+        const query = (t.image_query && t.image_query.trim())
+          || CATEGORY_FALLBACK_QUERIES[cat]
+          || 'modern abstract background';
+        const fallbacks = [CATEGORY_FALLBACK_QUERIES[cat], 'business workspace', 'modern abstract'].filter(Boolean);
+        const [imgs, vid] = await Promise.allSettled([
+          fetchPexelsImages(query, 1, fallbacks),
+          fetchPexelsVideo(query, fallbacks),
+        ]);
+        const img = imgs.status === 'fulfilled' && imgs.value && imgs.value[0] ? imgs.value[0] : null;
+        const video = vid.status === 'fulfilled' && vid.value ? vid.value : null;
+        return {
+          index: idx,
+          image_query: query,
+          image: img ? { url: img.url, thumb: img.thumb || img.url, photographer: img.photographer || '' } : null,
+          video: video ? { url: video.url, poster: video.poster, duration: video.duration } : null,
+        };
+      }));
+      return jsonResponse(res, 200, { previews });
+    } catch (e) {
+      console.error('[bulk-admin] preview-media failed:', e.message);
       return jsonResponse(res, 500, { error: e.message });
     }
   }
