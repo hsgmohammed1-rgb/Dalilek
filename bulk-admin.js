@@ -539,24 +539,104 @@ async function insertArticle(record) {
   throw new Error(`Supabase insert ${r.status}: ${msg}`);
 }
 
+// Translate a finished Arabic article into another language.
+// Returns { title, intro, sections, skills, conclusion, seo_description, seo_keywords }
+async function translateArticle({ apiKey, model, article, targetLang }) {
+  const langName = { en: 'English', fr: 'French', es: 'Spanish' }[targetLang] || targetLang;
+  const sys = `You are a professional translator and SEO copywriter. Translate the given Arabic article into NATURAL, fluent ${langName}. Preserve the structure exactly. Do NOT translate brand names or numbers. Return ONLY valid JSON, no commentary.
+
+Required JSON shape (keep exact field names, same array lengths as input):
+{
+  "title": "translated title in ${langName}",
+  "intro": "translated intro in ${langName}",
+  "stats": [ { "value": "same number/percent", "label": "translated label in ${langName}" } ],
+  "sections": [
+    {
+      "number": "01",
+      "title": "translated section title",
+      "content": "translated full section content (same length, same paragraphs)",
+      "callout": { "icon": "info", "title": "translated callout title", "text": "translated callout text" }
+    }
+  ],
+  "skills": [ { "number": 1, "title": "translated skill", "description": "translated description" } ],
+  "conclusion": "translated conclusion",
+  "seo_description": "natural ${langName} SEO description, 150-160 chars, NOT a literal translation but optimized for ${langName} search",
+  "seo_keywords": "10-15 ${langName} SEO keywords separated by commas"
+}`;
+
+  const sourcePayload = {
+    title: article.title,
+    intro: article.intro,
+    stats: article.stats || [],
+    sections: article.sections || [],
+    skills: article.skills || [],
+    conclusion: article.conclusion,
+    seo_description: article.seo_description || '',
+  };
+
+  const out = await callOpenRouterWithFallback({
+    apiKey, model,
+    messages: [
+      { role: 'system', content: sys },
+      { role: 'user', content: 'Arabic source article:\n' + JSON.stringify(sourcePayload) + `\n\nTranslate every text field into ${langName}. Keep arrays the same length. Output JSON only.` },
+    ],
+    jsonMode: false,
+    maxTokens: 6000,
+    timeoutMs: 240000,
+  });
+  return extractJson(out.text);
+}
+
+function buildLangContent(translated, media) {
+  return {
+    title: translated.title || '',
+    intro: translated.intro || '',
+    stats: Array.isArray(translated.stats) ? translated.stats : [],
+    sections: Array.isArray(translated.sections) ? translated.sections : [],
+    skills: Array.isArray(translated.skills) ? translated.skills : [],
+    conclusion: translated.conclusion || '',
+    seo_description: translated.seo_description || '',
+    seo_keywords: translated.seo_keywords || '',
+    cover_image: media.cover_image,
+    cover: media.cover_image,
+    images: media.images,
+    video: media.video,
+  };
+}
+
 async function generateAndPublish({ apiKey, model, topic, templateId, speed = 'medium' }) {
   const { article, modelUsed, profile } = await generateArticle({ apiKey, model, topic, speed });
   if (!article || !article.title || !article.slug) {
     throw new Error('AI رجّع بنية مقال غير صالحة');
   }
 
-  // Fetch images AND video in parallel for speed, with category-based fallback
+  // Normalize slug now so we can use it as a guaranteed-English Pexels fallback.
+  const slugBase = normalizeSlug(article.slug);
+  const slugAsQuery = slugBase.replace(/-/g, ' ').trim().slice(0, 100);
+
+  // Fetch images AND video in parallel. Order of fallbacks matters:
+  // 1) AI-provided English image_query
+  // 2) the slug words (always English, derived from the topic)
+  // 3) category-based generic English query
+  // 4) ultra-generic safety net
   const categoryFallback = CATEGORY_FALLBACK_QUERIES[topic.category] || 'modern abstract background';
-  const imageQuery = article.image_query || article.title;
-  const videoQuery = article.video_query || article.image_query || article.title;
-  const imageFallbacks = [article.image_query, categoryFallback, 'business workspace', 'modern abstract'].filter(Boolean);
-  const videoFallbacks = [article.video_query, categoryFallback, 'business workspace'].filter(Boolean);
-  const [imagesResult, videoResult] = await Promise.allSettled([
+  const imageQuery = article.image_query || slugAsQuery || categoryFallback;
+  const videoQuery = article.video_query || article.image_query || slugAsQuery || categoryFallback;
+  const imageFallbacks = [slugAsQuery, categoryFallback, 'business workspace', 'modern abstract'].filter(Boolean);
+  const videoFallbacks = [slugAsQuery, categoryFallback, 'business workspace'].filter(Boolean);
+
+  // Run media fetch in parallel with the 3 translations to shave latency.
+  const [imagesResult, videoResult, enRes, frRes, esRes] = await Promise.allSettled([
     fetchPexelsImages(imageQuery, 3, imageFallbacks),
     fetchPexelsVideo(videoQuery, videoFallbacks),
+    translateArticle({ apiKey, model, article, targetLang: 'en' }),
+    translateArticle({ apiKey, model, article, targetLang: 'fr' }),
+    translateArticle({ apiKey, model, article, targetLang: 'es' }),
   ]);
+
   const images = imagesResult.status === 'fulfilled' ? (imagesResult.value || []) : [];
   const video = videoResult.status === 'fulfilled' ? videoResult.value : null;
+  const media = { cover_image: images[0]?.url || null, images, video };
 
   const arContent = {
     title: article.title,
@@ -565,18 +645,45 @@ async function generateAndPublish({ apiKey, model, topic, templateId, speed = 'm
     sections: Array.isArray(article.sections) ? article.sections.slice(0, profile.maxSections) : [],
     skills: Array.isArray(article.skills) ? article.skills.slice(0, profile.skillsCount) : [],
     conclusion: article.conclusion,
-    // Match the field names that the existing site SPA reads:
-    cover_image: images[0]?.url || null,
-    cover: images[0]?.url || null,        // alternate name some templates use
-    images: images,                        // SPA reads .images
-    video: video,                          // SPA reads .video (single object with .url)
+    seo_description: article.seo_description || '',
+    seo_keywords: article.seo_keywords || '',
     image_query: article.image_query || null,
     video_query: article.video_query || null,
+    cover_image: media.cover_image,
+    cover: media.cover_image,
+    images: media.images,
+    video: media.video,
   };
 
-  const content = { languages: { ar: arContent } };
-  const slug = await findUniqueSlug(normalizeSlug(article.slug));
+  // If a translation failed, fall back to the Arabic content for that language so the
+  // article record stays valid (better than missing the language entirely).
+  const enContent = enRes.status === 'fulfilled' && enRes.value ? buildLangContent(enRes.value, media) : arContent;
+  const frContent = frRes.status === 'fulfilled' && frRes.value ? buildLangContent(frRes.value, media) : arContent;
+  const esContent = esRes.status === 'fulfilled' && esRes.value ? buildLangContent(esRes.value, media) : arContent;
+
+  const translationsOk = {
+    en: enRes.status === 'fulfilled' && !!enRes.value,
+    fr: frRes.status === 'fulfilled' && !!frRes.value,
+    es: esRes.status === 'fulfilled' && !!esRes.value,
+  };
+
+  const content = { languages: { ar: arContent, en: enContent, fr: frContent, es: esContent } };
+  const slug = await findUniqueSlug(slugBase);
   const tpl = templateId || (Math.floor(Math.random() * 14) + 1);
+
+  // Build a multilingual SEO description/keywords payload for the SEO refresh.
+  const seoDescriptionMultilingual = {
+    ar: arContent.seo_description || '',
+    en: enContent.seo_description || arContent.seo_description || '',
+    fr: frContent.seo_description || arContent.seo_description || '',
+    es: esContent.seo_description || arContent.seo_description || '',
+  };
+  const seoKeywordsMultilingual = {
+    ar: arContent.seo_keywords || topic.keywords || '',
+    en: enContent.seo_keywords || arContent.seo_keywords || '',
+    fr: frContent.seo_keywords || arContent.seo_keywords || '',
+    es: esContent.seo_keywords || arContent.seo_keywords || '',
+  };
 
   const record = {
     title: article.title,
@@ -586,10 +693,24 @@ async function generateAndPublish({ apiKey, model, topic, templateId, speed = 'm
     seo_keywords: article.seo_keywords || topic.keywords || '',
     category: topic.category,
     seo_description: article.seo_description || '',
+    seo_keywords_multilingual: seoKeywordsMultilingual,
+    seo_description_multilingual: seoDescriptionMultilingual,
     views: 0,
   };
 
-  const inserted = await insertArticle(record);
+  let inserted;
+  try {
+    inserted = await insertArticle(record);
+  } catch (e) {
+    // Some Supabase schemas don't have the *_multilingual columns; retry without them.
+    if (/seo_(keywords|description)_multilingual/i.test(e.message)) {
+      delete record.seo_keywords_multilingual;
+      delete record.seo_description_multilingual;
+      inserted = await insertArticle(record);
+    } else {
+      throw e;
+    }
+  }
   return {
     id: inserted.id,
     slug: inserted.slug,
@@ -598,6 +719,8 @@ async function generateAndPublish({ apiKey, model, topic, templateId, speed = 'm
     cover_image: arContent.cover_image,
     images_count: images.length,
     has_video: !!video,
+    languages: ['ar', ...Object.keys(translationsOk).filter(k => translationsOk[k])],
+    translations_ok: translationsOk,
     model_used: modelUsed,
     speed_used: speed,
   };

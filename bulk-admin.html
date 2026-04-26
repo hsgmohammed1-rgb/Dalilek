@@ -738,6 +738,11 @@
             badges.push('<span class="badge ok">✓ منشور</span>');
             if (out.article?.has_video) badges.push('<span class="badge ok" title="يحتوي فيديو">🎬</span>');
             if (out.article?.images_count) badges.push('<span class="badge ok" title="صور">📸'+out.article.images_count+'</span>');
+            if (Array.isArray(out.article?.languages)) {
+              const langs = out.article.languages.length;
+              const cls = langs >= 4 ? 'ok' : 'warn';
+              badges.push('<span class="badge '+cls+'" title="'+out.article.languages.join(',')+'">🌐 '+langs+'/4</span>');
+            }
             statusEl.innerHTML = badges.join(' ');
           }
         } catch(e) {

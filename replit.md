@@ -48,3 +48,14 @@ A pre-built React + Vite static web application for "دليلك" (Dalilek), the 
 ```bash
 node server.js
 ```
+
+## Bulk Article Generator (`/admin/bulk-tools`)
+- Backend: `bulk-admin.js` (mounted in `server.js`)
+- Restricted to email in `BULK_ADMIN_EMAIL` (default `cpshzt@gmail.com`) via Supabase Google OAuth
+- Three speed profiles: fast / medium / thorough (`SPEED_PROFILES`)
+- Every generated article includes:
+  - **Full Arabic content** (title, intro, stats, sections, skills, conclusion)
+  - **Auto-translated en/fr/es content** via 3 parallel calls (falls back to Arabic if a translation fails)
+  - **3 Pexels HD images** + **1 Pexels HD video** (fallback chain: AI image_query → English slug words → category keyword → generic "business workspace")
+  - Per-language `seo_description` + `seo_keywords` saved both inside `content.languages.<lang>` and into top-level `seo_*_multilingual` JSON columns (auto-skipped if columns absent)
+- Required env: `PEXELS_API_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SITE_URL`
