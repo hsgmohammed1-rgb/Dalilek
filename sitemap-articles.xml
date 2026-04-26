@@ -65,6 +65,21 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/articles/self-improvement-daily-habits" />
   </url>
   <url>
+    <loc>https://dalilek.online/articles/powr-mountain-snow</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://dalilek.online/banners/ar-landscape.png</image:loc>
+      <image:title>سلسلة جبل باور الثلجي: مغامرات و تحديات</image:title>
+    </image:image>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/articles/powr-mountain-snow" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/articles/powr-mountain-snow" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/articles/powr-mountain-snow" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/articles/powr-mountain-snow" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/articles/powr-mountain-snow" />
+  </url>
+  <url>
     <loc>https://dalilek.online/articles/master-digital-marketing</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -108,21 +123,6 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/articles/dhurandhar-the-revenge" />
     <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/articles/dhurandhar-the-revenge" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/articles/dhurandhar-the-revenge" />
-  </url>
-  <url>
-    <loc>https://dalilek.online/articles/powr-mountain-snow</loc>
-    <lastmod>2026-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://dalilek.online/banners/ar-landscape.png</image:loc>
-      <image:title>سلسلة جبل باور الثلجي: مغامرات و تحديات</image:title>
-    </image:image>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/articles/powr-mountain-snow" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/articles/powr-mountain-snow" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/articles/powr-mountain-snow" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/articles/powr-mountain-snow" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/articles/powr-mountain-snow" />
   </url>
   <url>
     <loc>https://dalilek.online/articles/free-ai-tools-productivity</loc>
@@ -1728,5 +1728,20 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/articles/stable-crypto-investment-2026" />
     <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/articles/stable-crypto-investment-2026" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/articles/stable-crypto-investment-2026" />
+  </url>
+  <url>
+    <loc>https://dalilek.online/articles/mental-wellbeing-augmented-reality-2026</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://dalilek.online/banners/ar-landscape.png</image:loc>
+      <image:title>الصحة النفسية في عصر الواقع المعزز: طرق مبتكرة للتوازن الذهني 2026</image:title>
+    </image:image>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dalilek.online/ar/articles/mental-wellbeing-augmented-reality-2026" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dalilek.online/en/articles/mental-wellbeing-augmented-reality-2026" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dalilek.online/fr/articles/mental-wellbeing-augmented-reality-2026" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dalilek.online/es/articles/mental-wellbeing-augmented-reality-2026" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dalilek.online/articles/mental-wellbeing-augmented-reality-2026" />
   </url>
 </urlset>

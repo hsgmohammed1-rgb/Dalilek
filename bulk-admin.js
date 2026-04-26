@@ -186,22 +186,45 @@ async function callOpenRouter({ apiKey, model, messages, jsonMode = false, maxTo
   return text;
 }
 
+// Per-process cool-down map: modelId -> epoch ms until which it should be skipped.
+// Populated when a model returns 429 so we don't keep hammering the same rate-limited one.
+const MODEL_COOLDOWN = new Map();
+const COOLDOWN_MS = 60_000; // 1 min cool-down on 429
+
 async function callOpenRouterWithFallback({ apiKey, model, messages, jsonMode, maxTokens, timeoutMs }) {
-  // Try the requested model first; if it 404s/errors, try fallbacks
-  const fallbackOrder = [model, ...FREE_MODELS.map(m => m.id).filter(id => id !== model)];
+  // Try ALL free models, starting with the requested one, skipping any in cool-down.
+  const now = Date.now();
+  const allCandidates = [model, ...FREE_MODELS.map(m => m.id).filter(id => id !== model)];
+  const fresh = allCandidates.filter(m => (MODEL_COOLDOWN.get(m) || 0) <= now);
+  // If everything is on cool-down, fall back to the full list anyway (better to retry than fail)
+  const fallbackOrder = fresh.length ? fresh : allCandidates;
+
   let lastError = null;
-  for (const m of fallbackOrder.slice(0, 4)) {
+  for (let i = 0; i < fallbackOrder.length; i++) {
+    const m = fallbackOrder[i];
     try {
-      return { text: await callOpenRouter({ apiKey, model: m, messages, jsonMode, maxTokens, timeoutMs }), modelUsed: m };
+      const text = await callOpenRouter({ apiKey, model: m, messages, jsonMode, maxTokens, timeoutMs });
+      // Success — clear any prior cool-down on this model
+      MODEL_COOLDOWN.delete(m);
+      if (m !== model) console.log(`[bulk-admin] fallback model used: ${m} (requested: ${model})`);
+      return { text, modelUsed: m };
     } catch (e) {
       lastError = e;
-      // If 401/403 (bad key), don't try fallbacks
+      // Bad-key errors: stop immediately
       if (e.status === 401 || e.status === 403) throw e;
-      // For 404 (model not available), 429 (rate limit), 5xx, timeouts — try next
+      // Rate-limited: cool this model down so next article skips it
+      if (e.status === 429) {
+        MODEL_COOLDOWN.set(m, Date.now() + COOLDOWN_MS);
+        console.warn(`[bulk-admin] ${m} rate-limited (429), cooling down 60s, trying next model...`);
+      } else {
+        console.warn(`[bulk-admin] ${m} failed (${e.status || 'no-status'}: ${(e.message||'').slice(0,120)}), trying next model...`);
+      }
+      // Tiny backoff between attempts to avoid thrashing
+      await new Promise(r => setTimeout(r, 500));
       continue;
     }
   }
-  throw lastError || new Error('كل النماذج فشلت');
+  throw lastError || new Error('كل النماذج المجانية فشلت — جرّب لاحقاً أو أضف مفتاحك في OpenRouter');
 }
 
 function tryParse(s) { try { return JSON.parse(s); } catch (e) { return null; } }
