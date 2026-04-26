@@ -860,7 +860,7 @@ const appHandler = async (req, res) => {
 
   // ── Static assets ───────────────────────────────────────────────────────────
   const isAssetOrBanner = effectivePath.startsWith('/assets/') || effectivePath.startsWith('/banners/');
-  const isPublicRootFile = ['/favicon.svg', '/logo.png', '/opengraph.jpg', '/robots.txt', '/seo-data.json'].includes(effectivePath);
+  const isPublicRootFile = ['/favicon.svg', '/logo.png', '/opengraph.jpg', '/robots.txt', '/seo-data.json', '/admin-sidebar-injector.js'].includes(effectivePath);
   
   if (ext && ext !== '.html' && fs.existsSync(resolvedPath) && !fs.statSync(resolvedPath).isDirectory()) {
     if (!isAssetOrBanner && !isPublicRootFile && !effectivePath.endsWith('.xml')) {

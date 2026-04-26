@@ -59,3 +59,10 @@ node server.js
   - **3 Pexels HD images** + **1 Pexels HD video** (fallback chain: AI image_query → English slug words → category keyword → generic "business workspace")
   - Per-language `seo_description` + `seo_keywords` saved both inside `content.languages.<lang>` and into top-level `seo_*_multilingual` JSON columns (auto-skipped if columns absent)
 - Required env: `PEXELS_API_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SITE_URL`
+- Reachable URLs: `/admin/bulk-tools`, `/admin/bulk`, `/bulk-admin` (all serve the same `bulk-admin.html`)
+- `bulk-admin.html` sends `provider` (gemini / groq / openrouter) on every API call so the user's key is matched to the right provider's endpoint
+
+## Admin Sidebar Injection
+- `admin-sidebar-injector.js` (root, served via static-file allowlist) is loaded from `index.html`
+- On any `/admin*` page it watches the DOM, finds the React sidebar button "إنشاء مقال ذكي", and inserts a styled "إنشاء مقالات كثيرة" button right after it that navigates to `/admin/bulk`
+- The compiled React bundle (`assets/index-CdSb2jcH.js`) is not modified — the injector reuses the existing Tailwind classes so the new button visually matches

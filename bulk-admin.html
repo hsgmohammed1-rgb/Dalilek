@@ -762,11 +762,13 @@
   // ── Discover ──
   $('discoverBtn')?.addEventListener('click', async () => {
     const apiKey = $('orKey').value.trim();
-    if (!apiKey) { toast('أدخل مفتاح Gemini API أولاً', 'error'); return; }
+    const provLabel = (providers[currentProvider] && providers[currentProvider].label) || 'الذكاء الاصطناعي';
+    if (!apiKey) { toast('أدخل مفتاح ' + provLabel + ' أولاً', 'error'); return; }
     const btn = $('discoverBtn');
     btn.disabled = true; btn.textContent = '⏳ جارٍ الاكتشاف...';
     try {
       const out = await api('/api/bulk-admin/discover-topics', {
+        provider: currentProvider,
         apiKey, model: $('orModel').value, count: +$('count').value,
         mode: $('mode').value, category: $('category').value, customSeed: $('customSeed').value,
       });
@@ -836,7 +838,8 @@
   $('generateBtn')?.addEventListener('click', async () => {
     if (topics.length === 0) return;
     const apiKey = $('orKey').value.trim();
-    if (!apiKey) { toast('أدخل مفتاح Gemini API أولاً', 'error'); return; }
+    const provLabelGen = (providers[currentProvider] && providers[currentProvider].label) || 'الذكاء الاصطناعي';
+    if (!apiKey) { toast('أدخل مفتاح ' + provLabelGen + ' أولاً', 'error'); return; }
     const profile = speedProfiles[currentSpeed] || { concurrency: 1 };
     const concurrency = Math.max(1, profile.concurrency || 1);
     if (!confirm('سيُنشر ' + topics.length + ' مقال على الموقع بوضع "' + (profile.label||currentSpeed) + '" (تزامن ' + concurrency + 'x). متابعة؟')) return;
@@ -874,6 +877,7 @@
         try {
           const tplId = tplMode === 'random' ? null : parseInt(tplMode, 10);
           const out = await api('/api/bulk-admin/generate-one', {
+            provider: currentProvider,
             apiKey, model, topic: t, templateId: tplId, speed: currentSpeed
           });
           results.push(out.article);
