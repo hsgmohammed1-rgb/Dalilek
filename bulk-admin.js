@@ -8,22 +8,62 @@ const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABA
 const PEXELS_API_KEY = process.env.PEXELS_API_KEY;
 const ALLOWED_EMAIL = (process.env.BULK_ADMIN_EMAIL || 'cpshzt@gmail.com').toLowerCase();
 
-// Google Gemini models — free tier available with personal API key (aistudio.google.com/apikey)
-const FREE_MODELS = [
-  { id: 'gemini-2.5-flash',       label: 'Gemini 2.5 Flash (موصى به — متوازن وسريع)' },
-  { id: 'gemini-2.5-pro',         label: 'Gemini 2.5 Pro (الأقوى للجودة القصوى)' },
-  { id: 'gemini-2.5-flash-lite',  label: 'Gemini 2.5 Flash Lite (الأسرع)' },
-  { id: 'gemini-2.0-flash',       label: 'Gemini 2.0 Flash (مستقر)' },
-  { id: 'gemini-2.0-flash-lite',  label: 'Gemini 2.0 Flash Lite (سريع ومستقر)' },
-  { id: 'gemini-1.5-flash',       label: 'Gemini 1.5 Flash (احتياطي)' },
-];
+// ── Multi-provider model catalog ───────────────────────────────────────────
+// Three free-tier providers; each has its own API key + recommended model list.
+const PROVIDERS = {
+  gemini: {
+    label: 'Google Gemini',
+    keyHint: 'AIza...',
+    keyUrl: 'https://aistudio.google.com/apikey',
+    models: [
+      { id: 'gemini-2.5-flash',       label: 'Gemini 2.5 Flash (موصى به)' },
+      { id: 'gemini-2.5-pro',         label: 'Gemini 2.5 Pro (الأقوى)' },
+      { id: 'gemini-2.5-flash-lite',  label: 'Gemini 2.5 Flash Lite (الأسرع)' },
+      { id: 'gemini-2.0-flash',       label: 'Gemini 2.0 Flash' },
+      { id: 'gemini-2.0-flash-lite',  label: 'Gemini 2.0 Flash Lite' },
+      { id: 'gemini-1.5-flash',       label: 'Gemini 1.5 Flash (احتياطي)' },
+    ],
+  },
+  groq: {
+    label: 'Groq',
+    keyHint: 'gsk_...',
+    keyUrl: 'https://console.groq.com/keys',
+    models: [
+      { id: 'llama-3.3-70b-versatile',                      label: 'Llama 3.3 70B Versatile (موصى به)' },
+      { id: 'openai/gpt-oss-120b',                          label: 'OpenAI GPT-OSS 120B (الأقوى)' },
+      { id: 'openai/gpt-oss-20b',                           label: 'OpenAI GPT-OSS 20B (سريع)' },
+      { id: 'moonshotai/kimi-k2-instruct',                  label: 'Moonshot Kimi K2 Instruct' },
+      { id: 'meta-llama/llama-4-maverick-17b-128e-instruct', label: 'Llama 4 Maverick 17B' },
+      { id: 'qwen/qwen3-32b',                               label: 'Qwen 3 32B (ممتاز للعربي)' },
+      { id: 'llama-3.1-8b-instant',                         label: 'Llama 3.1 8B Instant (الأسرع)' },
+    ],
+  },
+  openrouter: {
+    label: 'OpenRouter',
+    keyHint: 'sk-or-v1-...',
+    keyUrl: 'https://openrouter.ai/keys',
+    models: [
+      { id: 'openai/gpt-oss-120b:free',              label: 'OpenAI GPT-OSS 120B (الأقوى — موصى به)' },
+      { id: 'qwen/qwen3-next-80b-a3b-instruct:free', label: 'Qwen 3 Next 80B (ممتاز للعربي)' },
+      { id: 'meta-llama/llama-3.3-70b-instruct:free', label: 'Llama 3.3 70B' },
+      { id: 'z-ai/glm-4.5-air:free',                 label: 'GLM 4.5 Air' },
+      { id: 'google/gemma-3-27b-it:free',            label: 'Google Gemma 3 27B' },
+      { id: 'openai/gpt-oss-20b:free',               label: 'OpenAI GPT-OSS 20B (سريع)' },
+      { id: 'nvidia/nemotron-nano-9b-v2:free',       label: 'Nvidia Nemotron Nano 9B (سريع)' },
+    ],
+  },
+};
 
-// Speed profiles — control prompt depth, output budget, and concurrency
+// Backwards-compat alias (older code paths read FREE_MODELS as a flat list).
+const FREE_MODELS = PROVIDERS.gemini.models;
+
+// Speed profiles — control prompt depth, output budget, and concurrency.
+// recommendedModel is keyed by provider so we can suggest the right model when the user switches.
 const SPEED_PROFILES = {
   fast: {
     label: '⚡ سريع',
-    description: 'Gemini Flash Lite، 3-4 أقسام مختصرة، مقالان بالتوازي (مع 4 لغات لكل واحد)',
-    recommendedModel: 'gemini-2.5-flash-lite',
+    description: '3-4 أقسام مختصرة، مقالان بالتوازي (مع 4 لغات لكل واحد)',
+    recommendedModel: { gemini: 'gemini-2.5-flash-lite', groq: 'llama-3.1-8b-instant', openrouter: 'nvidia/nemotron-nano-9b-v2:free' },
     maxTokens: 3500,
     minSections: 3, maxSections: 4,
     sectionLength: '100-150 كلمة',
@@ -33,8 +73,8 @@ const SPEED_PROFILES = {
   },
   medium: {
     label: '⚖️ متوسط',
-    description: 'Gemini Flash، 4-5 أقسام متوازنة، مقال واحد كل مرة (مع 4 لغات)',
-    recommendedModel: 'gemini-2.5-flash',
+    description: '4-5 أقسام متوازنة، مقال واحد كل مرة (مع 4 لغات)',
+    recommendedModel: { gemini: 'gemini-2.5-flash', groq: 'llama-3.3-70b-versatile', openrouter: 'openai/gpt-oss-120b:free' },
     maxTokens: 5500,
     minSections: 4, maxSections: 5,
     sectionLength: '150-220 كلمة',
@@ -44,8 +84,8 @@ const SPEED_PROFILES = {
   },
   thorough: {
     label: '💎 الأفضل',
-    description: 'Gemini Pro، 5-6 أقسام معمّقة، توليد تسلسلي للجودة القصوى',
-    recommendedModel: 'gemini-2.5-pro',
+    description: '5-6 أقسام معمّقة، توليد تسلسلي للجودة القصوى',
+    recommendedModel: { gemini: 'gemini-2.5-pro', groq: 'openai/gpt-oss-120b', openrouter: 'openai/gpt-oss-120b:free' },
     maxTokens: 6000,
     minSections: 5, maxSections: 6,
     sectionLength: '200-280 كلمة',
@@ -149,6 +189,45 @@ async function verifySupabaseUser(accessToken) {
   }
 }
 
+// ── OpenAI-compatible call (Groq + OpenRouter) ─────────────────────────────
+// Both Groq and OpenRouter speak the OpenAI Chat Completions protocol natively,
+// so we share one implementation and only swap the host/auth header.
+async function callOpenAICompat({ provider, apiKey, model, messages, jsonMode = false, maxTokens = 4096, timeoutMs = 180000 }) {
+  if (!apiKey) throw new Error(`مفتاح ${provider === 'groq' ? 'Groq' : 'OpenRouter'} مطلوب`);
+  const payload = { model, messages, max_tokens: maxTokens, temperature: 0.8 };
+  if (jsonMode) payload.response_format = { type: 'json_object' };
+
+  const isGroq = provider === 'groq';
+  const headers = {
+    'Authorization': 'Bearer ' + apiKey,
+    'Content-Type': 'application/json',
+  };
+  if (!isGroq) {
+    headers['HTTP-Referer'] = process.env.SITE_URL || 'https://dalilek.com';
+    headers['X-Title'] = 'Dalilek Bulk Admin';
+  }
+
+  const r = await httpsRequestJson({
+    hostname: isGroq ? 'api.groq.com' : 'openrouter.ai',
+    path:     isGroq ? '/openai/v1/chat/completions' : '/api/v1/chat/completions',
+    method: 'POST',
+    headers,
+    body: payload,
+    timeout: timeoutMs,
+  });
+
+  if (r.status !== 200) {
+    const msg = (r.json && (r.json.error?.message || r.json.message)) || r.body.slice(0, 300);
+    const err = new Error(`${isGroq ? 'Groq' : 'OpenRouter'} ${r.status}: ${msg}`);
+    err.status = r.status;
+    err.providerBody = r.json;
+    throw err;
+  }
+  const text = r.json?.choices?.[0]?.message?.content;
+  if (!text) throw new Error(`${isGroq ? 'Groq' : 'OpenRouter'} رجّع رد فارغ`);
+  return text;
+}
+
 // ── Google Gemini call with auto-fallback ──────────────────────────────────
 // Translates the OpenAI-style { role:'system'|'user'|'assistant', content } messages
 // into Gemini's { systemInstruction, contents:[{role,parts:[{text}]}] } shape.
@@ -215,42 +294,54 @@ async function callGemini({ apiKey, model, messages, jsonMode = false, maxTokens
   return text;
 }
 
-// Per-process cool-down map: modelId -> epoch ms until which it should be skipped.
+// Per-process cool-down map: "<provider>:<modelId>" -> epoch ms until it should be skipped.
 // Populated when a model returns 429 so we don't keep hammering the same rate-limited one.
 const MODEL_COOLDOWN = new Map();
 const COOLDOWN_MS = 60_000; // 1 min cool-down on 429
 
-async function callAIWithFallback({ apiKey, model, messages, jsonMode, maxTokens, timeoutMs }) {
-  // Try ALL Gemini models, starting with the requested one, skipping any in cool-down.
+// Single dispatcher: routes to the right per-provider call function.
+async function callOneModel({ provider, apiKey, model, messages, jsonMode, maxTokens, timeoutMs }) {
+  if (provider === 'gemini') {
+    return await callGemini({ apiKey, model, messages, jsonMode, maxTokens, timeoutMs });
+  }
+  // groq + openrouter share the same OpenAI-compatible call.
+  return await callOpenAICompat({ provider, apiKey, model, messages, jsonMode, maxTokens, timeoutMs });
+}
+
+async function callAIWithFallback({ provider = 'gemini', apiKey, model, messages, jsonMode, maxTokens, timeoutMs }) {
+  const prov = PROVIDERS[provider] || PROVIDERS.gemini;
+  const provName = prov.label;
+  // Try requested model first, then the rest of THIS provider's models, skipping any in cool-down.
   const now = Date.now();
-  const allCandidates = [model, ...FREE_MODELS.map(m => m.id).filter(id => id !== model)];
-  const fresh = allCandidates.filter(m => (MODEL_COOLDOWN.get(m) || 0) <= now);
-  const fallbackOrder = fresh.length ? fresh : allCandidates;
+  const all = [model, ...prov.models.map(m => m.id).filter(id => id !== model)];
+  const cooldownKey = m => `${provider}:${m}`;
+  const fresh = all.filter(m => (MODEL_COOLDOWN.get(cooldownKey(m)) || 0) <= now);
+  const fallbackOrder = fresh.length ? fresh : all;
 
   let lastError = null;
   for (let i = 0; i < fallbackOrder.length; i++) {
     const m = fallbackOrder[i];
     try {
-      const text = await callGemini({ apiKey, model: m, messages, jsonMode, maxTokens, timeoutMs });
-      MODEL_COOLDOWN.delete(m);
-      if (m !== model) console.log(`[bulk-admin] fallback model used: ${m} (requested: ${model})`);
-      return { text, modelUsed: m };
+      const text = await callOneModel({ provider, apiKey, model: m, messages, jsonMode, maxTokens, timeoutMs });
+      MODEL_COOLDOWN.delete(cooldownKey(m));
+      if (m !== model) console.log(`[bulk-admin] ${provider} fallback model used: ${m} (requested: ${model})`);
+      return { text, modelUsed: m, providerUsed: provider };
     } catch (e) {
       lastError = e;
-      // Bad-key errors: stop immediately, no point trying other models with the same key
-      if (e.status === 400 && /API key not valid|API_KEY_INVALID/i.test(e.message || '')) throw e;
+      // Bad-key errors → stop immediately (no point trying other models with the same key)
+      if (e.status === 400 && /API key not valid|API_KEY_INVALID|Invalid API Key/i.test(e.message || '')) throw e;
       if (e.status === 401 || e.status === 403) throw e;
       if (e.status === 429) {
-        MODEL_COOLDOWN.set(m, Date.now() + COOLDOWN_MS);
-        console.warn(`[bulk-admin] ${m} rate-limited (429), cooling down 60s, trying next model...`);
+        MODEL_COOLDOWN.set(cooldownKey(m), Date.now() + COOLDOWN_MS);
+        console.warn(`[bulk-admin] ${provider}/${m} rate-limited (429), cooling down 60s, trying next model...`);
       } else {
-        console.warn(`[bulk-admin] ${m} failed (${e.status || 'no-status'}: ${(e.message||'').slice(0,120)}), trying next model...`);
+        console.warn(`[bulk-admin] ${provider}/${m} failed (${e.status || 'no-status'}: ${(e.message||'').slice(0,120)}), trying next model...`);
       }
       await new Promise(r => setTimeout(r, 500));
       continue;
     }
   }
-  throw lastError || new Error('كل نماذج Gemini فشلت — تحقق من المفتاح أو جرّب لاحقاً');
+  throw lastError || new Error(`كل نماذج ${provName} فشلت — تحقق من المفتاح أو جرّب لاحقاً`);
 }
 
 // Backwards-compatible alias so older code paths still work.
@@ -320,7 +411,7 @@ function extractJson(str) {
 }
 
 // ── Topic discovery ────────────────────────────────────────────────────────
-async function discoverTopics({ apiKey, model, count, mode, category, customSeed }) {
+async function discoverTopics({ provider = 'gemini', apiKey, model, count, mode, category, customSeed }) {
   let userPrompt;
   if (mode === 'custom' && customSeed) {
     userPrompt = `أعطني ${count} عناوين فريدة لمقالات معمّقة باللغة العربية مستوحاة من هذا الموضوع/الكلمة المفتاحية: "${customSeed}". لا تكرر العنوان نفسه. كل عنوان لازم يكون جذاب، عملي، ويثير الاهتمام.`;
@@ -357,7 +448,7 @@ async function discoverTopics({ apiKey, model, count, mode, category, customSeed
 }`;
 
   const out = await callOpenRouterWithFallback({
-    apiKey, model,
+    provider, apiKey, model,
     messages: [
       { role: 'system', content: sys },
       { role: 'user', content: userPrompt },
@@ -380,7 +471,7 @@ async function discoverTopics({ apiKey, model, count, mode, category, customSeed
 }
 
 // ── Article generation ────────────────────────────────────────────────────
-async function generateArticle({ apiKey, model, topic, speed = 'medium' }) {
+async function generateArticle({ provider = 'gemini', apiKey, model, topic, speed = 'medium' }) {
   const profile = SPEED_PROFILES[speed] || SPEED_PROFILES.medium;
   const sys = `أنت كاتب محتوى عربي محترف متخصص في SEO. مهمتك إنشاء مقالات معمّقة وجذابة وعالية الجودة. تُرجع دائماً JSON صالح فقط بدون أي شرح خارجي.
 
@@ -427,7 +518,7 @@ async function generateArticle({ apiKey, model, topic, speed = 'medium' }) {
   const useJsonMode = profile.useJsonMode !== false; // default true unless profile explicitly disables it
   const timeoutMs = profile.timeoutMs || 180000;
   const out = await callOpenRouterWithFallback({
-    apiKey, model,
+    provider, apiKey, model,
     messages: [
       { role: 'system', content: sys },
       { role: 'user', content: userPrompt },
@@ -608,7 +699,7 @@ async function insertArticle(record) {
 
 // Translate a finished Arabic article into another language.
 // Returns { title, intro, sections, skills, conclusion, seo_description, seo_keywords }
-async function translateArticle({ apiKey, model, article, targetLang }) {
+async function translateArticle({ provider = 'gemini', apiKey, model, article, targetLang }) {
   const langName = { en: 'English', fr: 'French', es: 'Spanish' }[targetLang] || targetLang;
   const sys = `You are a professional translator and SEO copywriter. Translate the given Arabic article into NATURAL, fluent ${langName}. Preserve the structure exactly. Do NOT translate brand names or numbers. Return ONLY valid JSON, no commentary.
 
@@ -642,7 +733,7 @@ Required JSON shape (keep exact field names, same array lengths as input):
   };
 
   const out = await callOpenRouterWithFallback({
-    apiKey, model,
+    provider, apiKey, model,
     messages: [
       { role: 'system', content: sys },
       { role: 'user', content: 'Arabic source article:\n' + JSON.stringify(sourcePayload) + `\n\nTranslate every text field into ${langName}. Keep arrays the same length. Output JSON only.` },
@@ -671,8 +762,8 @@ function buildLangContent(translated, media) {
   };
 }
 
-async function generateAndPublish({ apiKey, model, topic, templateId, speed = 'medium' }) {
-  const { article, modelUsed, profile } = await generateArticle({ apiKey, model, topic, speed });
+async function generateAndPublish({ provider = 'gemini', apiKey, model, topic, templateId, speed = 'medium' }) {
+  const { article, modelUsed, profile } = await generateArticle({ provider, apiKey, model, topic, speed });
   if (!article || !article.title || !article.slug) {
     throw new Error('AI رجّع بنية مقال غير صالحة');
   }
@@ -697,9 +788,9 @@ async function generateAndPublish({ apiKey, model, topic, templateId, speed = 'm
   const [imagesResult, videoResult, enRes, frRes, esRes] = await Promise.allSettled([
     fetchPexelsImages(imageQuery, 3, imageFallbacks),
     fetchPexelsVideo(videoQuery, videoFallbacks),
-    translateArticle({ apiKey, model, article, targetLang: 'en' }),
-    translateArticle({ apiKey, model, article, targetLang: 'fr' }),
-    translateArticle({ apiKey, model, article, targetLang: 'es' }),
+    translateArticle({ provider, apiKey, model, article, targetLang: 'en' }),
+    translateArticle({ provider, apiKey, model, article, targetLang: 'fr' }),
+    translateArticle({ provider, apiKey, model, article, targetLang: 'es' }),
   ]);
 
   const images = imagesResult.status === 'fulfilled' ? (imagesResult.value || []) : [];
@@ -822,7 +913,12 @@ async function handle(req, res) {
     const profiles = Object.fromEntries(Object.entries(SPEED_PROFILES).map(([k, v]) => [k, {
       label: v.label, description: v.description, recommendedModel: v.recommendedModel, concurrency: v.concurrency,
     }]));
-    return jsonResponse(res, 200, { models: FREE_MODELS, speedProfiles: profiles, allowedEmail: ALLOWED_EMAIL });
+    // New shape: providers map ({id,label,keyHint,keyUrl,models[]}) so the UI can render a provider switcher.
+    // Also keep `models` (Gemini list) for any older clients that haven't refreshed.
+    const providers = Object.fromEntries(Object.entries(PROVIDERS).map(([k, v]) => [k, {
+      id: k, label: v.label, keyHint: v.keyHint, keyUrl: v.keyUrl, models: v.models,
+    }]));
+    return jsonResponse(res, 200, { providers, models: FREE_MODELS, speedProfiles: profiles, allowedEmail: ALLOWED_EMAIL });
   }
 
   if (urlPath === '/api/bulk-admin/public-config' && req.method === 'GET') {
@@ -852,13 +948,14 @@ async function handle(req, res) {
   if (urlPath === '/api/bulk-admin/discover-topics' && req.method === 'POST') {
     try {
       const body = JSON.parse((await readBody(req)) || '{}');
+      const provider = (body.provider && PROVIDERS[body.provider]) ? body.provider : 'gemini';
       const apiKey = body.apiKey;
-      const model = body.model || FREE_MODELS[0].id;
+      const model = body.model || PROVIDERS[provider].models[0].id;
       const count = Math.max(1, Math.min(150, parseInt(body.count, 10) || 10));
       const mode = body.mode || 'trending';
       const category = body.category || '';
       const customSeed = body.customSeed || '';
-      const out = await discoverTopics({ apiKey, model, count, mode, category, customSeed });
+      const out = await discoverTopics({ provider, apiKey, model, count, mode, category, customSeed });
       return jsonResponse(res, 200, out);
     } catch (e) {
       return jsonResponse(res, 500, { error: e.message });
@@ -869,19 +966,21 @@ async function handle(req, res) {
     let parsedBody = null;
     try {
       parsedBody = JSON.parse((await readBody(req)) || '{}');
+      const provider = (parsedBody.provider && PROVIDERS[parsedBody.provider]) ? parsedBody.provider : 'gemini';
       const apiKey = parsedBody.apiKey;
-      const model = parsedBody.model || FREE_MODELS[0].id;
+      const model = parsedBody.model || PROVIDERS[provider].models[0].id;
       const topic = parsedBody.topic;
       const templateId = parsedBody.templateId || null;
       const speed = parsedBody.speed || 'medium';
       if (!topic || !topic.title) return jsonResponse(res, 400, { error: 'topic.title مطلوب' });
-      const out = await generateAndPublish({ apiKey, model, topic, templateId, speed });
+      const out = await generateAndPublish({ provider, apiKey, model, topic, templateId, speed });
       return jsonResponse(res, 200, { article: out });
     } catch (e) {
       const topicTitle = parsedBody?.topic?.title || '(no topic)';
       console.error('[bulk-admin] generate-one failed for topic:', topicTitle);
       console.error('[bulk-admin] error message:', e.message);
       if (e.geminiBody) console.error('[bulk-admin] gemini body:', JSON.stringify(e.geminiBody).slice(0, 500));
+      if (e.providerBody) console.error('[bulk-admin] provider body:', JSON.stringify(e.providerBody).slice(0, 500));
       if (e.stack) console.error('[bulk-admin] stack:', e.stack.split('\n').slice(0, 5).join('\n'));
       return jsonResponse(res, 500, { error: e.message });
     }

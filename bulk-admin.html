@@ -113,6 +113,11 @@
 
   .speed-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
   @media(max-width:760px){.speed-grid{grid-template-columns:1fr}}
+  .provider-tabs{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .provider-tab{flex:1;min-width:120px;padding:11px 14px;background:var(--panel-3);border:1px solid var(--border);border-radius:11px;cursor:pointer;text-align:center;font-size:14px;font-weight:600;color:var(--muted);transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px}
+  .provider-tab:hover{border-color:var(--border-strong);color:var(--text)}
+  .provider-tab.active{background:var(--brand-soft);border-color:var(--brand-2);color:var(--brand-2);box-shadow:0 0 0 1px var(--brand-2) inset}
+  .provider-tab .saved-dot{width:8px;height:8px;border-radius:50%;background:var(--brand);box-shadow:0 0 6px var(--brand);display:inline-block}
   .speed-card{background:var(--panel-3);border:1px solid var(--border);border-radius:11px;padding:14px;cursor:pointer;transition:all .15s;text-align:center}
   .speed-card:hover{border-color:var(--brand-2)}
   .speed-card.active{background:var(--brand-soft);border-color:var(--brand);box-shadow:0 0 0 3px rgba(0,230,200,.1)}
@@ -201,20 +206,26 @@
     <div class="card-num">1</div>
     <h3>الإعدادات</h3>
   </div>
-  <p class="desc">المفتاح يُحفظ محلياً في متصفحك فقط، ولا يُرسل إلا إلى Google Gemini API.</p>
+  <p class="desc">المفاتيح تُحفظ محلياً في متصفحك فقط. اختر مزوّد الذكاء الاصطناعي ثم ألصق مفتاحه. يمكنك التبديل بين المزوّدين في أي وقت.</p>
+
+  <div style="margin-bottom:14px">
+    <label>مزوّد الذكاء الاصطناعي</label>
+    <div class="provider-tabs" id="providerTabs"></div>
+  </div>
+
   <div class="row cols-2">
     <div>
-      <label>مفتاح Google Gemini API</label>
-      <input type="password" id="orKey" placeholder="AIza..." autocomplete="off" />
+      <label id="keyLabel">مفتاح API</label>
+      <input type="password" id="orKey" placeholder="..." autocomplete="off" />
       <div class="mini-row">
         <span id="keyStatus" class="key-status hidden">✓ المفتاح محفوظ</span>
-        <span class="small">احصل على مفتاح مجاني من <a class="key-link" href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a></span>
+        <span class="small">احصل على مفتاح مجاني من <a class="key-link" id="keyLink" href="#" target="_blank" rel="noopener">—</a></span>
       </div>
     </div>
     <div>
-      <label>نموذج Gemini (كلها مجانية، مع تبديل تلقائي عند الفشل)</label>
+      <label>النموذج (كلها مجانية، مع تبديل تلقائي عند الفشل)</label>
       <select id="orModel"></select>
-      <div class="small" style="margin-top:5px">إذا فشل نموذج، النظام يجرّب التالي تلقائياً</div>
+      <div class="small" style="margin-top:5px">إذا فشل نموذج، النظام يجرّب التالي من نفس المزوّد تلقائياً</div>
     </div>
   </div>
 
@@ -369,6 +380,8 @@
   let startTime = 0;
   let speedProfiles = {};
   let currentSpeed = localStorage.getItem('speed') || 'medium';
+  let providers = {};
+  let currentProvider = localStorage.getItem('aiProvider') || 'gemini';
 
   // ── Smart token discovery: scan ALL localStorage values for any access_token ──
   function isJwt(s){ return typeof s==='string' && s.length > 40 && s.split('.').length === 3 && s.startsWith('eyJ'); }
@@ -500,23 +513,28 @@
     if (user.avatar) $('userAvatar').src = user.avatar;
     else $('userAvatar').src = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300e6c8"><circle cx="12" cy="8" r="4"/><path d="M12 14c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"/></svg>');
 
-    loadModels();
-    // One-time migration: clear any leftover OpenRouter key/model so the user
-    // doesn't accidentally try to use an `sk-or-...` key against Gemini.
-    if (!localStorage.getItem('keyMigratedToGemini')) {
+    // One-time migration to per-provider storage: a leftover single `orKey`
+    // is treated as the Gemini key; legacy OpenRouter keys are dropped.
+    if (!localStorage.getItem('multiProviderMigrated')) {
       const oldKey = localStorage.getItem('orKey') || '';
-      if (/^sk-or[-_]/i.test(oldKey)) localStorage.removeItem('orKey');
-      const oldModel = localStorage.getItem('orModel') || '';
-      if (oldModel.includes('/') || oldModel.includes(':free')) localStorage.removeItem('orModel');
-      localStorage.setItem('keyMigratedToGemini', '1');
+      if (oldKey && !/^sk-or[-_]/i.test(oldKey) && !localStorage.getItem('apiKey_gemini')) {
+        localStorage.setItem('apiKey_gemini', oldKey);
+      }
+      localStorage.removeItem('orKey');
+      localStorage.removeItem('orModel');
+      localStorage.setItem('multiProviderMigrated', '1');
     }
-    const savedKey = localStorage.getItem('orKey') || '';
-    $('orKey').value = savedKey;
-    if (savedKey) $('keyStatus').classList.remove('hidden');
+
+    // Live: persist key on every keystroke under the active provider's slot.
     $('orKey').addEventListener('input', () => {
-      localStorage.setItem('orKey', $('orKey').value);
-      $('keyStatus').classList.toggle('hidden', !$('orKey').value);
+      const v = $('orKey').value;
+      localStorage.setItem('apiKey_' + currentProvider, v);
+      $('keyStatus').classList.toggle('hidden', !v);
+      // Refresh provider tab dots to reflect saved-state.
+      renderProviderTabs();
     });
+
+    loadModels();
   }
 
   function showGate(){
@@ -560,29 +578,81 @@
     setTimeout(() => t.remove(), 3500);
   }
 
-  // ── Models + speed profiles ──
+  // ── Providers + Models + speed profiles ──
   async function loadModels(){
     try {
       const r = await fetch('/api/bulk-admin/models');
       const j = await r.json();
-      const sel = $('orModel');
-      sel.innerHTML = '';
-      (j.models || []).forEach(m => {
-        const o = document.createElement('option');
-        o.value = m.id;
-        o.textContent = m.label;
-        sel.appendChild(o);
-      });
-      const saved = localStorage.getItem('orModel');
-      if (saved && [...sel.options].some(o => o.value === saved)) sel.value = saved;
-      sel.addEventListener('change', () => {
-        localStorage.setItem('orModel', sel.value);
-        sessionStorage.setItem('userPickedModel', '1');
+      providers = j.providers || {};
+      // Backward-compat: if /models is an older build that only sent {models}, wrap it as Gemini.
+      if (!providers.gemini && Array.isArray(j.models)) {
+        providers = { gemini: { id:'gemini', label:'Google Gemini', keyHint:'AIza...', keyUrl:'https://aistudio.google.com/apikey', models: j.models } };
+      }
+      if (!providers[currentProvider]) currentProvider = Object.keys(providers)[0] || 'gemini';
+      renderProviderTabs();
+      applyProvider(currentProvider, /*persist*/ false);
+
+      // Model dropdown change persists per-provider and marks "user picked".
+      $('orModel').addEventListener('change', () => {
+        localStorage.setItem('model_' + currentProvider, $('orModel').value);
+        sessionStorage.setItem('userPickedModel:' + currentProvider, '1');
       });
 
       speedProfiles = j.speedProfiles || {};
       renderSpeedCards();
     } catch(e) { console.warn(e); }
+  }
+
+  function renderProviderTabs(){
+    const wrap = $('providerTabs');
+    if (!wrap) return;
+    wrap.innerHTML = '';
+    Object.values(providers).forEach(p => {
+      const has = !!localStorage.getItem('apiKey_' + p.id);
+      const tab = document.createElement('div');
+      tab.className = 'provider-tab' + (p.id === currentProvider ? ' active' : '');
+      tab.dataset.provider = p.id;
+      tab.innerHTML = `${has ? '<span class="saved-dot" title="مفتاح محفوظ"></span>' : ''}<span>${p.label}</span>`;
+      tab.onclick = () => applyProvider(p.id, /*persist*/ true);
+      wrap.appendChild(tab);
+    });
+  }
+
+  function applyProvider(id, persist){
+    if (!providers[id]) return;
+    currentProvider = id;
+    if (persist) localStorage.setItem('aiProvider', id);
+    const p = providers[id];
+
+    // Update key field for this provider
+    const keyEl = $('orKey');
+    keyEl.value = localStorage.getItem('apiKey_' + id) || '';
+    keyEl.placeholder = p.keyHint || '...';
+    $('keyStatus').classList.toggle('hidden', !keyEl.value);
+    $('keyLabel').textContent = 'مفتاح ' + p.label;
+    const link = $('keyLink');
+    if (p.keyUrl) {
+      link.href = p.keyUrl;
+      try { link.textContent = new URL(p.keyUrl).host; } catch { link.textContent = p.keyUrl; }
+    } else {
+      link.removeAttribute('href');
+      link.textContent = '—';
+    }
+
+    // Rebuild model dropdown for this provider
+    const sel = $('orModel');
+    sel.innerHTML = '';
+    (p.models || []).forEach(m => {
+      const o = document.createElement('option');
+      o.value = m.id; o.textContent = m.label;
+      sel.appendChild(o);
+    });
+    const savedModel = localStorage.getItem('model_' + id);
+    if (savedModel && [...sel.options].some(o => o.value === savedModel)) sel.value = savedModel;
+
+    // Refresh tab visuals + speed hint (rec model depends on provider)
+    renderProviderTabs();
+    updateSpeedHint();
   }
 
   function renderSpeedCards(){
