@@ -8,24 +8,22 @@ const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABA
 const PEXELS_API_KEY = process.env.PEXELS_API_KEY;
 const ALLOWED_EMAIL = (process.env.BULK_ADMIN_EMAIL || 'cpshzt@gmail.com').toLowerCase();
 
-// Verified working free models on OpenRouter (queried 2026-04)
+// Google Gemini models — free tier available with personal API key (aistudio.google.com/apikey)
 const FREE_MODELS = [
-  { id: 'openai/gpt-oss-120b:free',                          label: 'OpenAI GPT-OSS 120B (الأقوى — موصى به)' },
-  { id: 'qwen/qwen3-next-80b-a3b-instruct:free',             label: 'Qwen 3 Next 80B (ممتاز للعربي)' },
-  { id: 'meta-llama/llama-3.3-70b-instruct:free',            label: 'Llama 3.3 70B' },
-  { id: 'z-ai/glm-4.5-air:free',                             label: 'GLM 4.5 Air' },
-  { id: 'nvidia/nemotron-3-super-120b-a12b:free',            label: 'Nvidia Nemotron Super 120B' },
-  { id: 'google/gemma-3-27b-it:free',                        label: 'Google Gemma 3 27B' },
-  { id: 'openai/gpt-oss-20b:free',                           label: 'OpenAI GPT-OSS 20B (سريع)' },
-  { id: 'nvidia/nemotron-nano-9b-v2:free',                   label: 'Nvidia Nemotron Nano 9B (سريع)' },
+  { id: 'gemini-2.5-flash',       label: 'Gemini 2.5 Flash (موصى به — متوازن وسريع)' },
+  { id: 'gemini-2.5-pro',         label: 'Gemini 2.5 Pro (الأقوى للجودة القصوى)' },
+  { id: 'gemini-2.5-flash-lite',  label: 'Gemini 2.5 Flash Lite (الأسرع)' },
+  { id: 'gemini-2.0-flash',       label: 'Gemini 2.0 Flash (مستقر)' },
+  { id: 'gemini-2.0-flash-lite',  label: 'Gemini 2.0 Flash Lite (سريع ومستقر)' },
+  { id: 'gemini-1.5-flash',       label: 'Gemini 1.5 Flash (احتياطي)' },
 ];
 
 // Speed profiles — control prompt depth, output budget, and concurrency
 const SPEED_PROFILES = {
   fast: {
     label: '⚡ سريع',
-    description: 'نموذج خفيف، 3-4 أقسام مختصرة، مقالان بالتوازي (مع 4 لغات لكل واحد)',
-    recommendedModel: 'nvidia/nemotron-nano-9b-v2:free',
+    description: 'Gemini Flash Lite، 3-4 أقسام مختصرة، مقالان بالتوازي (مع 4 لغات لكل واحد)',
+    recommendedModel: 'gemini-2.5-flash-lite',
     maxTokens: 3500,
     minSections: 3, maxSections: 4,
     sectionLength: '100-150 كلمة',
@@ -35,8 +33,8 @@ const SPEED_PROFILES = {
   },
   medium: {
     label: '⚖️ متوسط',
-    description: 'نموذج قوي، 4-5 أقسام متوازنة، مقال واحد كل مرة (مع 4 لغات)',
-    recommendedModel: 'openai/gpt-oss-120b:free',
+    description: 'Gemini Flash، 4-5 أقسام متوازنة، مقال واحد كل مرة (مع 4 لغات)',
+    recommendedModel: 'gemini-2.5-flash',
     maxTokens: 5500,
     minSections: 4, maxSections: 5,
     sectionLength: '150-220 كلمة',
@@ -46,8 +44,8 @@ const SPEED_PROFILES = {
   },
   thorough: {
     label: '💎 الأفضل',
-    description: 'نموذج ضخم، 5-6 أقسام معمّقة، توليد تسلسلي للجودة القصوى',
-    recommendedModel: 'openai/gpt-oss-120b:free',
+    description: 'Gemini Pro، 5-6 أقسام معمّقة، توليد تسلسلي للجودة القصوى',
+    recommendedModel: 'gemini-2.5-pro',
     maxTokens: 6000,
     minSections: 5, maxSections: 6,
     sectionLength: '200-280 كلمة',
@@ -55,7 +53,7 @@ const SPEED_PROFILES = {
     skillsCount: 5,
     statsCount: 4,
     timeoutMs: 300000,
-    useJsonMode: false,
+    useJsonMode: true,
   },
 };
 
@@ -151,38 +149,69 @@ async function verifySupabaseUser(accessToken) {
   }
 }
 
-// ── OpenRouter call with auto-fallback ─────────────────────────────────────
-async function callOpenRouter({ apiKey, model, messages, jsonMode = false, maxTokens = 4096, timeoutMs = 180000 }) {
-  if (!apiKey) throw new Error('مفتاح OpenRouter مطلوب');
+// ── Google Gemini call with auto-fallback ──────────────────────────────────
+// Translates the OpenAI-style { role:'system'|'user'|'assistant', content } messages
+// into Gemini's { systemInstruction, contents:[{role,parts:[{text}]}] } shape.
+function messagesToGemini(messages) {
+  const out = { systemInstruction: null, contents: [] };
+  for (const m of messages || []) {
+    const text = String(m.content || '');
+    if (!text) continue;
+    if (m.role === 'system') {
+      // Gemini supports a single systemInstruction; concatenate multiple system msgs.
+      if (!out.systemInstruction) out.systemInstruction = { parts: [{ text }] };
+      else out.systemInstruction.parts.push({ text });
+    } else {
+      const role = m.role === 'assistant' ? 'model' : 'user';
+      out.contents.push({ role, parts: [{ text }] });
+    }
+  }
+  return out;
+}
+
+async function callGemini({ apiKey, model, messages, jsonMode = false, maxTokens = 4096, timeoutMs = 180000 }) {
+  if (!apiKey) throw new Error('مفتاح Gemini API مطلوب');
+  const { systemInstruction, contents } = messagesToGemini(messages);
   const payload = {
-    model,
-    messages,
-    max_tokens: maxTokens,
-    temperature: 0.8,
-  };
-  if (jsonMode) payload.response_format = { type: 'json_object' };
-  const r = await httpsRequestJson({
-    hostname: 'openrouter.ai',
-    path: '/api/v1/chat/completions',
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer ' + apiKey,
-      'Content-Type': 'application/json',
-      'HTTP-Referer': process.env.SITE_URL || 'https://dalilek.com',
-      'X-Title': 'Dalilek Bulk Admin',
+    contents,
+    generationConfig: {
+      temperature: 0.8,
+      maxOutputTokens: maxTokens,
     },
+  };
+  if (systemInstruction) payload.systemInstruction = systemInstruction;
+  if (jsonMode) payload.generationConfig.responseMimeType = 'application/json';
+
+  const r = await httpsRequestJson({
+    hostname: 'generativelanguage.googleapis.com',
+    path: `/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: payload,
     timeout: timeoutMs,
   });
+
   if (r.status !== 200) {
     const msg = (r.json && (r.json.error?.message || r.json.message)) || r.body.slice(0, 300);
-    const err = new Error(`OpenRouter ${r.status}: ${msg}`);
+    const err = new Error(`Gemini ${r.status}: ${msg}`);
     err.status = r.status;
-    err.openRouterBody = r.json;
+    err.geminiBody = r.json;
     throw err;
   }
-  const text = r.json?.choices?.[0]?.message?.content;
-  if (!text) throw new Error('OpenRouter رجّع رد فارغ');
+
+  // Pull text out of the first candidate. If the model was blocked or returned
+  // no parts, surface a clear Arabic error rather than silently returning ''.
+  const cand = r.json?.candidates?.[0];
+  if (!cand) {
+    const blockReason = r.json?.promptFeedback?.blockReason;
+    throw new Error(blockReason ? `Gemini رفض الطلب (${blockReason})` : 'Gemini رجّع رد فارغ بدون مرشحين');
+  }
+  const parts = cand.content?.parts || [];
+  const text = parts.map(p => p.text || '').join('').trim();
+  if (!text) {
+    const finish = cand.finishReason || 'unknown';
+    throw new Error(`Gemini رجّع رد فارغ (finishReason=${finish})`);
+  }
   return text;
 }
 
@@ -191,41 +220,41 @@ async function callOpenRouter({ apiKey, model, messages, jsonMode = false, maxTo
 const MODEL_COOLDOWN = new Map();
 const COOLDOWN_MS = 60_000; // 1 min cool-down on 429
 
-async function callOpenRouterWithFallback({ apiKey, model, messages, jsonMode, maxTokens, timeoutMs }) {
-  // Try ALL free models, starting with the requested one, skipping any in cool-down.
+async function callAIWithFallback({ apiKey, model, messages, jsonMode, maxTokens, timeoutMs }) {
+  // Try ALL Gemini models, starting with the requested one, skipping any in cool-down.
   const now = Date.now();
   const allCandidates = [model, ...FREE_MODELS.map(m => m.id).filter(id => id !== model)];
   const fresh = allCandidates.filter(m => (MODEL_COOLDOWN.get(m) || 0) <= now);
-  // If everything is on cool-down, fall back to the full list anyway (better to retry than fail)
   const fallbackOrder = fresh.length ? fresh : allCandidates;
 
   let lastError = null;
   for (let i = 0; i < fallbackOrder.length; i++) {
     const m = fallbackOrder[i];
     try {
-      const text = await callOpenRouter({ apiKey, model: m, messages, jsonMode, maxTokens, timeoutMs });
-      // Success — clear any prior cool-down on this model
+      const text = await callGemini({ apiKey, model: m, messages, jsonMode, maxTokens, timeoutMs });
       MODEL_COOLDOWN.delete(m);
       if (m !== model) console.log(`[bulk-admin] fallback model used: ${m} (requested: ${model})`);
       return { text, modelUsed: m };
     } catch (e) {
       lastError = e;
-      // Bad-key errors: stop immediately
+      // Bad-key errors: stop immediately, no point trying other models with the same key
+      if (e.status === 400 && /API key not valid|API_KEY_INVALID/i.test(e.message || '')) throw e;
       if (e.status === 401 || e.status === 403) throw e;
-      // Rate-limited: cool this model down so next article skips it
       if (e.status === 429) {
         MODEL_COOLDOWN.set(m, Date.now() + COOLDOWN_MS);
         console.warn(`[bulk-admin] ${m} rate-limited (429), cooling down 60s, trying next model...`);
       } else {
         console.warn(`[bulk-admin] ${m} failed (${e.status || 'no-status'}: ${(e.message||'').slice(0,120)}), trying next model...`);
       }
-      // Tiny backoff between attempts to avoid thrashing
       await new Promise(r => setTimeout(r, 500));
       continue;
     }
   }
-  throw lastError || new Error('كل النماذج المجانية فشلت — جرّب لاحقاً أو أضف مفتاحك في OpenRouter');
+  throw lastError || new Error('كل نماذج Gemini فشلت — تحقق من المفتاح أو جرّب لاحقاً');
 }
+
+// Backwards-compatible alias so older code paths still work.
+const callOpenRouterWithFallback = callAIWithFallback;
 
 function tryParse(s) { try { return JSON.parse(s); } catch (e) { return null; } }
 
@@ -852,7 +881,7 @@ async function handle(req, res) {
       const topicTitle = parsedBody?.topic?.title || '(no topic)';
       console.error('[bulk-admin] generate-one failed for topic:', topicTitle);
       console.error('[bulk-admin] error message:', e.message);
-      if (e.openRouterBody) console.error('[bulk-admin] openrouter body:', JSON.stringify(e.openRouterBody).slice(0, 500));
+      if (e.geminiBody) console.error('[bulk-admin] gemini body:', JSON.stringify(e.geminiBody).slice(0, 500));
       if (e.stack) console.error('[bulk-admin] stack:', e.stack.split('\n').slice(0, 5).join('\n'));
       return jsonResponse(res, 500, { error: e.message });
     }

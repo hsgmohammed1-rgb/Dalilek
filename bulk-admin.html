@@ -201,18 +201,18 @@
     <div class="card-num">1</div>
     <h3>الإعدادات</h3>
   </div>
-  <p class="desc">المفتاح يُحفظ محلياً في متصفحك فقط، ولا يُرسل لأي مكان غير OpenRouter.</p>
+  <p class="desc">المفتاح يُحفظ محلياً في متصفحك فقط، ولا يُرسل إلا إلى Google Gemini API.</p>
   <div class="row cols-2">
     <div>
-      <label>مفتاح OpenRouter API</label>
-      <input type="password" id="orKey" placeholder="sk-or-v1-..." autocomplete="off" />
+      <label>مفتاح Google Gemini API</label>
+      <input type="password" id="orKey" placeholder="AIza..." autocomplete="off" />
       <div class="mini-row">
         <span id="keyStatus" class="key-status hidden">✓ المفتاح محفوظ</span>
-        <span class="small">احصل على مفتاح مجاني من <a class="key-link" href="https://openrouter.ai/keys" target="_blank" rel="noopener">openrouter.ai/keys</a></span>
+        <span class="small">احصل على مفتاح مجاني من <a class="key-link" href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a></span>
       </div>
     </div>
     <div>
-      <label>النموذج (كلها مجانية، مع تبديل تلقائي عند الفشل)</label>
+      <label>نموذج Gemini (كلها مجانية، مع تبديل تلقائي عند الفشل)</label>
       <select id="orModel"></select>
       <div class="small" style="margin-top:5px">إذا فشل نموذج، النظام يجرّب التالي تلقائياً</div>
     </div>
@@ -501,6 +501,15 @@
     else $('userAvatar').src = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300e6c8"><circle cx="12" cy="8" r="4"/><path d="M12 14c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"/></svg>');
 
     loadModels();
+    // One-time migration: clear any leftover OpenRouter key/model so the user
+    // doesn't accidentally try to use an `sk-or-...` key against Gemini.
+    if (!localStorage.getItem('keyMigratedToGemini')) {
+      const oldKey = localStorage.getItem('orKey') || '';
+      if (/^sk-or[-_]/i.test(oldKey)) localStorage.removeItem('orKey');
+      const oldModel = localStorage.getItem('orModel') || '';
+      if (oldModel.includes('/') || oldModel.includes(':free')) localStorage.removeItem('orModel');
+      localStorage.setItem('keyMigratedToGemini', '1');
+    }
     const savedKey = localStorage.getItem('orKey') || '';
     $('orKey').value = savedKey;
     if (savedKey) $('keyStatus').classList.remove('hidden');
@@ -683,7 +692,7 @@
   // ── Discover ──
   $('discoverBtn')?.addEventListener('click', async () => {
     const apiKey = $('orKey').value.trim();
-    if (!apiKey) { toast('أدخل مفتاح OpenRouter أولاً', 'error'); return; }
+    if (!apiKey) { toast('أدخل مفتاح Gemini API أولاً', 'error'); return; }
     const btn = $('discoverBtn');
     btn.disabled = true; btn.textContent = '⏳ جارٍ الاكتشاف...';
     try {
@@ -757,7 +766,7 @@
   $('generateBtn')?.addEventListener('click', async () => {
     if (topics.length === 0) return;
     const apiKey = $('orKey').value.trim();
-    if (!apiKey) { toast('أدخل مفتاح OpenRouter أولاً', 'error'); return; }
+    if (!apiKey) { toast('أدخل مفتاح Gemini API أولاً', 'error'); return; }
     const profile = speedProfiles[currentSpeed] || { concurrency: 1 };
     const concurrency = Math.max(1, profile.concurrency || 1);
     if (!confirm('سيُنشر ' + topics.length + ' مقال على الموقع بوضع "' + (profile.label||currentSpeed) + '" (تزامن ' + concurrency + 'x). متابعة؟')) return;
