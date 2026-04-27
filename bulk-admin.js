@@ -28,14 +28,15 @@ const PROVIDERS = {
     label: 'Groq',
     keyHint: 'gsk_...',
     keyUrl: 'https://console.groq.com/keys',
+    // Groq free tier has a hard 6000 TPM (tokens-per-minute) cap PER MODEL.
+    // Models removed: 'moonshotai/kimi-k2-instruct' & 'meta-llama/llama-4-maverick-17b-128e-instruct'
+    // (both return 404 — Groq deprecated them).
     models: [
-      { id: 'llama-3.3-70b-versatile',                      label: 'Llama 3.3 70B Versatile (موصى به)' },
-      { id: 'openai/gpt-oss-120b',                          label: 'OpenAI GPT-OSS 120B (الأقوى)' },
-      { id: 'openai/gpt-oss-20b',                           label: 'OpenAI GPT-OSS 20B (سريع)' },
-      { id: 'moonshotai/kimi-k2-instruct',                  label: 'Moonshot Kimi K2 Instruct' },
-      { id: 'meta-llama/llama-4-maverick-17b-128e-instruct', label: 'Llama 4 Maverick 17B' },
-      { id: 'qwen/qwen3-32b',                               label: 'Qwen 3 32B (ممتاز للعربي)' },
-      { id: 'llama-3.1-8b-instant',                         label: 'Llama 3.1 8B Instant (الأسرع)' },
+      { id: 'llama-3.3-70b-versatile',  label: 'Llama 3.3 70B Versatile (موصى به)' },
+      { id: 'openai/gpt-oss-120b',      label: 'OpenAI GPT-OSS 120B (الأقوى)' },
+      { id: 'openai/gpt-oss-20b',       label: 'OpenAI GPT-OSS 20B (سريع)' },
+      { id: 'qwen/qwen3-32b',           label: 'Qwen 3 32B (ممتاز للعربي)' },
+      { id: 'llama-3.1-8b-instant',     label: 'Llama 3.1 8B Instant (الأسرع)' },
     ],
   },
   openrouter: {
@@ -192,12 +193,21 @@ async function verifySupabaseUser(accessToken) {
 // ── OpenAI-compatible call (Groq + OpenRouter) ─────────────────────────────
 // Both Groq and OpenRouter speak the OpenAI Chat Completions protocol natively,
 // so we share one implementation and only swap the host/auth header.
+//
+// Groq free-tier reality (as of 2026): a hard 6000 TPM (tokens-per-minute) bucket
+// PER MODEL that counts BOTH input prompt tokens AND requested max_tokens. So a
+// 5500 max_tokens request with a 700-token prompt = 6200 → instant 413. We cap
+// max_tokens for Groq below the limit and auto-retry on 413 with smaller budget.
+const GROQ_MAX_TOKEN_CAP = 4500;     // safe ceiling that leaves room for prompt
+const GROQ_MIN_TOKEN_FLOOR = 1500;   // never shrink below this — output gets useless
+
 async function callOpenAICompat({ provider, apiKey, model, messages, jsonMode = false, maxTokens = 4096, timeoutMs = 180000 }) {
   if (!apiKey) throw new Error(`مفتاح ${provider === 'groq' ? 'Groq' : 'OpenRouter'} مطلوب`);
-  const payload = { model, messages, max_tokens: maxTokens, temperature: 0.8 };
-  if (jsonMode) payload.response_format = { type: 'json_object' };
-
   const isGroq = provider === 'groq';
+
+  // Cap max_tokens for Groq up-front to avoid the 413 round-trip whenever possible.
+  let effectiveMax = isGroq ? Math.min(maxTokens, GROQ_MAX_TOKEN_CAP) : maxTokens;
+
   const headers = {
     'Authorization': 'Bearer ' + apiKey,
     'Content-Type': 'application/json',
@@ -207,25 +217,67 @@ async function callOpenAICompat({ provider, apiKey, model, messages, jsonMode = 
     headers['X-Title'] = 'Dalilek Bulk Admin';
   }
 
-  const r = await httpsRequestJson({
-    hostname: isGroq ? 'api.groq.com' : 'openrouter.ai',
-    path:     isGroq ? '/openai/v1/chat/completions' : '/api/v1/chat/completions',
-    method: 'POST',
-    headers,
-    body: payload,
-    timeout: timeoutMs,
-  });
+  // Allow up to 2 in-place retries for 413 (shrink) + 1 retry for 429 with retry-after.
+  let attempts = 0;
+  const MAX_ATTEMPTS = 4;
+  while (true) {
+    attempts++;
+    const payload = { model, messages, max_tokens: effectiveMax, temperature: 0.8 };
+    if (jsonMode) payload.response_format = { type: 'json_object' };
 
-  if (r.status !== 200) {
+    const r = await httpsRequestJson({
+      hostname: isGroq ? 'api.groq.com' : 'openrouter.ai',
+      path:     isGroq ? '/openai/v1/chat/completions' : '/api/v1/chat/completions',
+      method: 'POST',
+      headers,
+      body: payload,
+      timeout: timeoutMs,
+    });
+
+    if (r.status === 200) {
+      const text = r.json?.choices?.[0]?.message?.content;
+      if (!text) throw new Error(`${isGroq ? 'Groq' : 'OpenRouter'} رجّع رد فارغ`);
+      return text;
+    }
+
+    // 413 = request too large. Try to extract the actual TPM limit from the
+    // error message ("Limit 6000, Requested 6235") and shrink max_tokens to fit,
+    // then retry the SAME model (much better than bouncing to another model
+    // that shares the same per-key TPM pool).
+    if (r.status === 413 && attempts < MAX_ATTEMPTS && effectiveMax > GROQ_MIN_TOKEN_FLOOR) {
+      const errMsg = (r.json && (r.json.error?.message || r.json.message)) || '';
+      const m = errMsg.match(/Limit\s+(\d+)\s*,\s*Requested\s+(\d+)/i);
+      if (m) {
+        const limit = parseInt(m[1], 10);
+        const requested = parseInt(m[2], 10);
+        const overage = requested - limit;
+        // Drop max_tokens by the overage + 200-token safety margin.
+        effectiveMax = Math.max(GROQ_MIN_TOKEN_FLOOR, effectiveMax - overage - 200);
+      } else {
+        // No parseable limit — just halve and try again.
+        effectiveMax = Math.max(GROQ_MIN_TOKEN_FLOOR, Math.floor(effectiveMax / 2));
+      }
+      console.warn(`[bulk-admin] ${provider}/${model} 413: shrinking max_tokens to ${effectiveMax} and retrying…`);
+      continue;
+    }
+
+    // 429 = rate-limited. Honor Retry-After if present (Groq sends it in seconds).
+    if (r.status === 429 && attempts < MAX_ATTEMPTS) {
+      const retryAfter = parseFloat(r.headers['retry-after'] || '0');
+      if (retryAfter > 0 && retryAfter <= 30) {
+        console.warn(`[bulk-admin] ${provider}/${model} 429: waiting ${retryAfter}s per Retry-After header…`);
+        await new Promise(rs => setTimeout(rs, Math.ceil(retryAfter * 1000) + 200));
+        continue;
+      }
+    }
+
+    // Anything else (or exhausted retries) → throw with full context for the caller.
     const msg = (r.json && (r.json.error?.message || r.json.message)) || r.body.slice(0, 300);
     const err = new Error(`${isGroq ? 'Groq' : 'OpenRouter'} ${r.status}: ${msg}`);
     err.status = r.status;
     err.providerBody = r.json;
     throw err;
   }
-  const text = r.json?.choices?.[0]?.message?.content;
-  if (!text) throw new Error(`${isGroq ? 'Groq' : 'OpenRouter'} رجّع رد فارغ`);
-  return text;
 }
 
 // ── Google Gemini call with auto-fallback ──────────────────────────────────
@@ -784,14 +836,37 @@ async function generateAndPublish({ provider = 'gemini', apiKey, model, topic, t
   const imageFallbacks = [topic.image_query, slugAsQuery, categoryFallback, 'business workspace', 'modern abstract'].filter(Boolean);
   const videoFallbacks = [topic.image_query, slugAsQuery, categoryFallback, 'business workspace'].filter(Boolean);
 
-  // Run media fetch in parallel with the 3 translations to shave latency.
-  const [imagesResult, videoResult, enRes, frRes, esRes] = await Promise.allSettled([
+  // Pexels media is always parallel (different host, no AI quota involved).
+  // Translations: parallelize on Gemini/OpenRouter (separate per-key buckets handle it),
+  // but SERIALIZE on Groq because Groq's free tier shares ONE 6000-TPM bucket per
+  // model — firing 3 translations at once guarantees 429s and lost articles.
+  const mediaPromises = Promise.allSettled([
     fetchPexelsImages(imageQuery, 3, imageFallbacks),
     fetchPexelsVideo(videoQuery, videoFallbacks),
-    translateArticle({ provider, apiKey, model, article, targetLang: 'en' }),
-    translateArticle({ provider, apiKey, model, article, targetLang: 'fr' }),
-    translateArticle({ provider, apiKey, model, article, targetLang: 'es' }),
   ]);
+
+  let enRes, frRes, esRes;
+  if (provider === 'groq') {
+    const langs = ['en', 'fr', 'es'];
+    const results = [];
+    for (const lang of langs) {
+      const r = await Promise.allSettled([
+        translateArticle({ provider, apiKey, model, article, targetLang: lang }),
+      ]);
+      results.push(r[0]);
+      // Tiny breather so the TPM bucket has time to refill between calls.
+      await new Promise(rs => setTimeout(rs, 800));
+    }
+    [enRes, frRes, esRes] = results;
+  } else {
+    [enRes, frRes, esRes] = await Promise.allSettled([
+      translateArticle({ provider, apiKey, model, article, targetLang: 'en' }),
+      translateArticle({ provider, apiKey, model, article, targetLang: 'fr' }),
+      translateArticle({ provider, apiKey, model, article, targetLang: 'es' }),
+    ]);
+  }
+
+  const [imagesResult, videoResult] = await mediaPromises;
 
   const images = imagesResult.status === 'fulfilled' ? (imagesResult.value || []) : [];
   const video = videoResult.status === 'fulfilled' ? videoResult.value : null;
