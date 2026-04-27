@@ -63,34 +63,34 @@ const FREE_MODELS = PROVIDERS.gemini.models;
 const SPEED_PROFILES = {
   fast: {
     label: '⚡ سريع',
-    description: '3-4 أقسام مختصرة، مقالان بالتوازي (مع 4 لغات لكل واحد)',
+    description: '3-4 أقسام مختصرة، 5 مقالات بالتوازي (مع 4 لغات لكل واحد)',
     recommendedModel: { gemini: 'gemini-2.5-flash-lite', groq: 'llama-3.1-8b-instant', openrouter: 'nvidia/nemotron-nano-9b-v2:free' },
     maxTokens: 3500,
     minSections: 3, maxSections: 4,
     sectionLength: '100-150 كلمة',
-    concurrency: 2,
+    concurrency: 5,
     skillsCount: 4,
     statsCount: 3,
   },
   medium: {
     label: '⚖️ متوسط',
-    description: '4-5 أقسام متوازنة، مقال واحد كل مرة (مع 4 لغات)',
+    description: '4-5 أقسام متوازنة، 3 مقالات بالتوازي (مع 4 لغات لكل واحد)',
     recommendedModel: { gemini: 'gemini-2.5-flash', groq: 'llama-3.3-70b-versatile', openrouter: 'openai/gpt-oss-120b:free' },
     maxTokens: 5500,
     minSections: 4, maxSections: 5,
     sectionLength: '150-220 كلمة',
-    concurrency: 1,
+    concurrency: 3,
     skillsCount: 4,
     statsCount: 3,
   },
   thorough: {
     label: '💎 الأفضل',
-    description: '5-6 أقسام معمّقة، توليد تسلسلي للجودة القصوى',
+    description: '5-6 أقسام معمّقة، مقالان بالتوازي للجودة القصوى',
     recommendedModel: { gemini: 'gemini-2.5-pro', groq: 'openai/gpt-oss-120b', openrouter: 'openai/gpt-oss-120b:free' },
     maxTokens: 6000,
     minSections: 5, maxSections: 6,
     sectionLength: '200-280 كلمة',
-    concurrency: 1,
+    concurrency: 2,
     skillsCount: 5,
     statsCount: 4,
     timeoutMs: 300000,
@@ -389,7 +389,7 @@ async function callAIWithFallback({ provider = 'gemini', apiKey, model, messages
       } else {
         console.warn(`[bulk-admin] ${provider}/${m} failed (${e.status || 'no-status'}: ${(e.message||'').slice(0,120)}), trying next model...`);
       }
-      await new Promise(r => setTimeout(r, 500));
+      await new Promise(r => setTimeout(r, 200));
       continue;
     }
   }
@@ -811,22 +811,24 @@ Required JSON shape (keep exact field names, same array lengths as input):
   return extractJson(out.text);
 }
 
-// Wraps translateArticle with a retry-on-failure loop. Most translation failures
-// on Groq are transient TPM-bucket exhaustion that clears within ~30-60s, so
-// instead of silently falling back to Arabic we wait and try again.
-async function translateArticleWithRetry(opts, { attempts = 3, baseDelayMs = 15000 } = {}) {
+// Wraps translateArticle with a retry-on-failure loop. The inner call already
+// iterates through every model on the provider (callAIWithFallback), so most
+// failures we see at this layer are transient network/TPM issues that clear
+// within a few seconds. We keep retries short so a single flaky language
+// doesn't add 30+ seconds to every article in a bulk run.
+async function translateArticleWithRetry(opts, { attempts = 3, baseDelayMs = 4000 } = {}) {
   let lastErr = null;
   for (let i = 0; i < attempts; i++) {
     try {
       const res = await translateArticle(opts);
-      if (res) return res;
-      lastErr = new Error('translateArticle returned null');
+      if (res && res.title && res.intro) return res;
+      lastErr = new Error('translateArticle returned empty/invalid payload');
     } catch (e) {
       lastErr = e;
     }
     if (i < attempts - 1) {
-      // Exponential-ish backoff: 15s, 30s. Long enough for Groq's 60s/min TPM
-      // bucket to refill at 100 tokens/sec.
+      // Short backoff: 4s, 8s. Long enough for a transient 429/timeout to clear
+      // but short enough that bulk runs stay fast.
       const delay = baseDelayMs * (i + 1);
       console.warn(`[bulk-admin] translation ${opts.targetLang} failed (${(lastErr.message||'').slice(0,80)}), retrying in ${delay/1000}s…`);
       await new Promise(rs => setTimeout(rs, delay));
@@ -887,7 +889,7 @@ async function generateAndPublish({ provider = 'gemini', apiKey, model, topic, t
   let enRes, frRes, esRes;
   if (provider === 'groq') {
     // Sequential on Groq + retry-with-backoff per language. Translations now
-    // route to a different model (separate TPM bucket) so a 1.5s breather is
+    // route to a different model (separate TPM bucket) so a short breather is
     // plenty between languages instead of the 30+ seconds we'd need otherwise.
     const langs = ['en', 'fr', 'es'];
     const results = [];
@@ -896,7 +898,7 @@ async function generateAndPublish({ provider = 'gemini', apiKey, model, topic, t
         translateArticleWithRetry({ provider, apiKey, model, article, targetLang: lang }),
       ]);
       results.push(r[0]);
-      await new Promise(rs => setTimeout(rs, 1500));
+      await new Promise(rs => setTimeout(rs, 600));
     }
     [enRes, frRes, esRes] = results;
   } else {
