@@ -470,7 +470,12 @@ function todayArabic() {
   return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
 }
 
-async function discoverTopics({ provider = 'gemini', apiKey, model, count, mode, category, customSeed }) {
+async function discoverTopics({ provider = 'gemini', apiKey, model, count, mode, category, customSeed, excludeTitles = [] }) {
+  // Build a "forbidden" list block to inject into the prompt (works for any mode).
+  const exclusionBlock = excludeTitles.length
+    ? `\n\nقائمة العناوين الموجودة سابقاً (ممنوع تكرارها أو اقتراح أي موضوع مشابه لها بأي شكل):\n${excludeTitles.slice(0, 100).map((t, i) => `${i + 1}. ${t}`).join('\n')}\n\nأي موضوع جديد لازم يكون مختلفاً جوهرياً عن كل العناوين أعلاه — لا تكرر نفس الفكرة بصياغة مختلفة.`
+    : '';
+
   let userPrompt;
   if (mode === 'custom' && customSeed) {
     userPrompt = `أعطني ${count} عناوين فريدة لمقالات معمّقة باللغة العربية مستوحاة من هذا الموضوع/الكلمة المفتاحية: "${customSeed}". لا تكرر العنوان نفسه. كل عنوان لازم يكون جذاب، عملي، ويثير الاهتمام.`;
@@ -498,9 +503,9 @@ async function discoverTopics({ provider = 'gemini', apiKey, model, count, mode,
 - عناوين عامة فضفاضة مثل "كيف تنجح في الحياة".
 - مواضيع مستهلكة قديمة بدون زاوية جديدة لـ 2026.
 
-أعطِ كل موضوع: عنوان عربي قوي + الفئة المناسبة + 8-12 كلمة مفتاحية + image_query إنجليزي وصفي بصرياً.`;
+أعطِ كل موضوع: عنوان عربي قوي + الفئة المناسبة + 8-12 كلمة مفتاحية + image_query إنجليزي وصفي بصرياً.${exclusionBlock}`;
   } else {
-    userPrompt = `أعطني ${count} عناوين فريدة لأكثر المقالات رواجاً وبحثاً عالمياً في عام 2026 على الإنترنت. غطّ مواضيع متنوعة (تكنولوجيا، صحة، مال، تطوير ذات، ثقافة، علوم، أسلوب حياة). اختر مواضيع يبحث عنها الناس فعلاً، وأعطها زاوية حديثة 2026.`;
+    userPrompt = `أعطني ${count} عناوين فريدة لأكثر المقالات رواجاً وبحثاً عالمياً في عام 2026 على الإنترنت. غطّ مواضيع متنوعة (تكنولوجيا، صحة، مال، تطوير ذات، ثقافة، علوم، أسلوب حياة). اختر مواضيع يبحث عنها الناس فعلاً، وأعطها زاوية حديثة 2026.${exclusionBlock}`;
   }
 
   const sys = `أنت محرر تحرير محتوى عربي خبير في SEO وتحليل اتجاهات البحث عالمياً. تُرجع دائماً JSON صالح فقط بدون أي شرح.
@@ -541,14 +546,27 @@ async function discoverTopics({ provider = 'gemini', apiKey, model, count, mode,
   });
   const j = extractJson(out.text);
   const topics = Array.isArray(j.topics) ? j.topics : [];
-  return {
-    modelUsed: out.modelUsed,
-    topics: topics.slice(0, count).map(t => ({
+
+  // Build a Set of existing-title fingerprints for O(1) duplicate filtering.
+  const exclusionSet = new Set(excludeTitles.map(normalizeArabicTitle).filter(Boolean));
+
+  const cleaned = topics
+    .map(t => ({
       title: String(t.title || '').trim(),
       category: String(t.category || 'ثقافة').trim(),
       keywords: String(t.keywords || '').trim(),
       image_query: String(t.image_query || '').trim(),
-    })).filter(t => t.title),
+    }))
+    .filter(t => t.title)
+    // Drop anything that fingerprint-matches an existing article title.
+    .filter(t => !exclusionSet.has(normalizeArabicTitle(t.title)))
+    // Also drop in-batch duplicates.
+    .filter((t, i, arr) => arr.findIndex(x => normalizeArabicTitle(x.title) === normalizeArabicTitle(t.title)) === i);
+
+  return {
+    modelUsed: out.modelUsed,
+    topics: cleaned.slice(0, count),
+    duplicates_filtered: topics.length - cleaned.length,
   };
 }
 
@@ -776,7 +794,43 @@ async function insertArticle(record) {
   });
   if (r.status >= 200 && r.status < 300 && Array.isArray(r.json) && r.json.length > 0) return r.json[0];
   const msg = (r.json && (r.json.message || r.json.hint || r.json.details)) || r.body.slice(0, 300);
-  throw new Error(`Supabase insert ${r.status}: ${msg}`);
+  const err = new Error(`Supabase insert ${r.status}: ${msg}`);
+  err.status = r.status;
+  err.body = msg;
+  throw err;
+}
+
+// Fetch recent article titles + slugs so we can tell the AI not to suggest
+// duplicates and so we can filter overlap server-side too.
+async function fetchRecentArticles(limit = 100) {
+  if (!SUPABASE_URL || !SUPABASE_KEY) return [];
+  const host = SUPABASE_URL.replace('https://', '').split('/')[0];
+  try {
+    const r = await httpsRequestJson({
+      hostname: host,
+      path: `/rest/v1/articles?select=title,slug&order=id.desc&limit=${limit}`,
+      method: 'GET',
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY },
+      timeout: 10000,
+    });
+    if (r.status === 200 && Array.isArray(r.json)) {
+      return r.json.map(a => ({ title: String(a.title || '').trim(), slug: String(a.slug || '').trim() }))
+        .filter(a => a.title || a.slug);
+    }
+  } catch (e) {
+    console.warn('[bulk-admin] fetchRecentArticles failed:', e.message);
+  }
+  return [];
+}
+
+// Loose Arabic title comparison: strip diacritics + common prefixes + spaces.
+function normalizeArabicTitle(s) {
+  return String(s || '')
+    .replace(/[\u064B-\u065F\u0670]/g, '')   // strip tashkeel
+    .replace(/[إأآا]/g, 'ا')                  // unify alef
+    .replace(/ى/g, 'ي').replace(/ة/g, 'ه')   // unify ya/ta-marbuta
+    .replace(/[^\u0600-\u06FFa-z0-9]/gi, '')  // keep only letters/digits
+    .toLowerCase();
 }
 
 // Translate a finished Arabic article into another language.
@@ -887,12 +941,26 @@ function buildLangContent(translated, media) {
 
 async function generateAndPublish({ provider = 'gemini', apiKey, model, topic, templateId, speed = 'medium' }) {
   const { article, modelUsed, profile } = await generateArticle({ provider, apiKey, model, topic, speed });
-  if (!article || !article.title || !article.slug) {
-    throw new Error('AI رجّع بنية مقال غير صالحة');
+  if (!article || (!article.title && !topic.title)) {
+    throw new Error('AI رجّع بنية مقال غير صالحة (لا عنوان)');
   }
 
-  // Normalize slug now so we can use it as a guaranteed-English Pexels fallback.
-  const slugBase = normalizeSlug(article.slug);
+  // Resilience: backfill missing fields from the topic so a partially-broken AI
+  // response still produces a publishable article instead of dying outright.
+  if (!article.title) article.title = topic.title;
+  if (!article.intro) article.intro = `مقال شامل حول ${article.title}.`;
+  if (!Array.isArray(article.sections) || article.sections.length === 0) {
+    throw new Error('AI رجّع مقال بدون أقسام');
+  }
+
+  // Slug fallback chain: AI's slug → image_query → topic.image_query →
+  // keywords-as-slug → timestamp slug. Anything but throwing.
+  let rawSlug = article.slug
+    || article.image_query
+    || topic.image_query
+    || (article.seo_keywords || topic.keywords || '').split(',')[0]
+    || `article-${Date.now()}`;
+  const slugBase = normalizeSlug(rawSlug) || `article-${Date.now()}`;
   const slugAsQuery = slugBase.replace(/-/g, ' ').trim().slice(0, 100);
 
   // Fetch images AND video in parallel. Order of fallbacks matters:
@@ -1026,18 +1094,27 @@ async function generateAndPublish({ provider = 'gemini', apiKey, model, topic, t
   };
 
   let inserted;
-  try {
-    inserted = await insertArticle(record);
-  } catch (e) {
-    // Some Supabase schemas don't have the *_multilingual columns; retry without them.
-    if (/seo_(keywords|description)_multilingual/i.test(e.message)) {
-      delete record.seo_keywords_multilingual;
-      delete record.seo_description_multilingual;
-      inserted = await insertArticle(record);
-    } else {
+  async function tryInsert(rec) {
+    try {
+      return await insertArticle(rec);
+    } catch (e) {
+      const msg = e.message || '';
+      // Some Supabase schemas don't have the *_multilingual columns; retry without them.
+      if (/seo_(keywords|description)_multilingual/i.test(msg)) {
+        delete rec.seo_keywords_multilingual;
+        delete rec.seo_description_multilingual;
+        return await insertArticle(rec);
+      }
+      // Race condition: slug got taken between findUniqueSlug and insert.
+      // Append a timestamp suffix and retry once.
+      if (/duplicate key|unique constraint|already exists|23505/i.test(msg) && /slug/i.test(msg)) {
+        rec.slug = `${rec.slug}-${Date.now().toString(36)}`;
+        return await insertArticle(rec);
+      }
       throw e;
     }
   }
+  inserted = await tryInsert(record);
   return {
     id: inserted.id,
     slug: inserted.slug,
@@ -1100,11 +1177,17 @@ async function handle(req, res) {
       const apiKey = body.apiKey;
       const model = body.model || PROVIDERS[provider].models[0].id;
       const count = Math.max(1, Math.min(150, parseInt(body.count, 10) || 10));
-      const mode = body.mode || 'trending';
+      const mode = body.mode || 'auto';
       const category = body.category || '';
       const customSeed = body.customSeed || '';
-      const out = await discoverTopics({ provider, apiKey, model, count, mode, category, customSeed });
-      return jsonResponse(res, 200, out);
+
+      // For ALL modes, pull the last 100 article titles so the AI never
+      // re-suggests something already in the encyclopedia. Cheap and high-impact.
+      const recent = await fetchRecentArticles(100);
+      const excludeTitles = recent.map(a => a.title).filter(Boolean);
+
+      const out = await discoverTopics({ provider, apiKey, model, count, mode, category, customSeed, excludeTitles });
+      return jsonResponse(res, 200, { ...out, excluded_count: excludeTitles.length });
     } catch (e) {
       return jsonResponse(res, 500, { error: e.message });
     }

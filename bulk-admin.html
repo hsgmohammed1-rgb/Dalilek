@@ -775,7 +775,11 @@
       });
       topics = out.topics || [];
       renderTopics();
-      toast('تم اكتشاف ' + topics.length + ' موضوع' + (out.modelUsed ? ' عبر ' + out.modelUsed.split('/').pop() : ''), 'success');
+      const extras = [];
+      if (out.modelUsed) extras.push('عبر ' + out.modelUsed.split('/').pop());
+      if (out.excluded_count) extras.push('استبعاد ' + out.excluded_count + ' موجود مسبقاً');
+      if (out.duplicates_filtered) extras.push(out.duplicates_filtered + ' مكرر فُلتر');
+      toast('تم اكتشاف ' + topics.length + ' موضوع' + (extras.length ? ' (' + extras.join(' · ') + ')' : ''), 'success');
     } catch(e) {
       toast('خطأ: ' + e.message, 'error');
     } finally {
