@@ -751,6 +751,11 @@ async function insertArticle(record) {
 
 // Translate a finished Arabic article into another language.
 // Returns { title, intro, sections, skills, conclusion, seo_description, seo_keywords }
+//
+// On Groq we deliberately route translations to a DIFFERENT model than the one
+// used for article generation, because each Groq model has its OWN per-key
+// 6000-TPM bucket. Sharing the bucket = guaranteed 429 storm; using a separate
+// model = each translation runs in its own clean budget.
 async function translateArticle({ provider = 'gemini', apiKey, model, article, targetLang }) {
   const langName = { en: 'English', fr: 'French', es: 'Spanish' }[targetLang] || targetLang;
   const sys = `You are a professional translator and SEO copywriter. Translate the given Arabic article into NATURAL, fluent ${langName}. Preserve the structure exactly. Do NOT translate brand names or numbers. Return ONLY valid JSON, no commentary.
@@ -784,17 +789,51 @@ Required JSON shape (keep exact field names, same array lengths as input):
     seo_description: article.seo_description || '',
   };
 
+  // Pick a translation model that doesn't share the article model's TPM bucket on Groq.
+  let translationModel = model;
+  if (provider === 'groq') {
+    translationModel = (model === 'llama-3.1-8b-instant') ? 'openai/gpt-oss-20b' : 'llama-3.1-8b-instant';
+  }
+  // Translations are short → small token budget keeps us well under any TPM cap
+  // and means a single 413/429 retry cycle resolves cleanly.
+  const translationMaxTokens = provider === 'groq' ? 3000 : 4000;
+
   const out = await callOpenRouterWithFallback({
-    provider, apiKey, model,
+    provider, apiKey, model: translationModel,
     messages: [
       { role: 'system', content: sys },
       { role: 'user', content: 'Arabic source article:\n' + JSON.stringify(sourcePayload) + `\n\nTranslate every text field into ${langName}. Keep arrays the same length. Output JSON only.` },
     ],
     jsonMode: false,
-    maxTokens: 6000,
+    maxTokens: translationMaxTokens,
     timeoutMs: 240000,
   });
   return extractJson(out.text);
+}
+
+// Wraps translateArticle with a retry-on-failure loop. Most translation failures
+// on Groq are transient TPM-bucket exhaustion that clears within ~30-60s, so
+// instead of silently falling back to Arabic we wait and try again.
+async function translateArticleWithRetry(opts, { attempts = 3, baseDelayMs = 15000 } = {}) {
+  let lastErr = null;
+  for (let i = 0; i < attempts; i++) {
+    try {
+      const res = await translateArticle(opts);
+      if (res) return res;
+      lastErr = new Error('translateArticle returned null');
+    } catch (e) {
+      lastErr = e;
+    }
+    if (i < attempts - 1) {
+      // Exponential-ish backoff: 15s, 30s. Long enough for Groq's 60s/min TPM
+      // bucket to refill at 100 tokens/sec.
+      const delay = baseDelayMs * (i + 1);
+      console.warn(`[bulk-admin] translation ${opts.targetLang} failed (${(lastErr.message||'').slice(0,80)}), retrying in ${delay/1000}s…`);
+      await new Promise(rs => setTimeout(rs, delay));
+    }
+  }
+  console.error(`[bulk-admin] translation ${opts.targetLang} EXHAUSTED ${attempts} attempts: ${lastErr?.message}`);
+  return null;
 }
 
 function buildLangContent(translated, media) {
@@ -847,22 +886,24 @@ async function generateAndPublish({ provider = 'gemini', apiKey, model, topic, t
 
   let enRes, frRes, esRes;
   if (provider === 'groq') {
+    // Sequential on Groq + retry-with-backoff per language. Translations now
+    // route to a different model (separate TPM bucket) so a 1.5s breather is
+    // plenty between languages instead of the 30+ seconds we'd need otherwise.
     const langs = ['en', 'fr', 'es'];
     const results = [];
     for (const lang of langs) {
       const r = await Promise.allSettled([
-        translateArticle({ provider, apiKey, model, article, targetLang: lang }),
+        translateArticleWithRetry({ provider, apiKey, model, article, targetLang: lang }),
       ]);
       results.push(r[0]);
-      // Tiny breather so the TPM bucket has time to refill between calls.
-      await new Promise(rs => setTimeout(rs, 800));
+      await new Promise(rs => setTimeout(rs, 1500));
     }
     [enRes, frRes, esRes] = results;
   } else {
     [enRes, frRes, esRes] = await Promise.allSettled([
-      translateArticle({ provider, apiKey, model, article, targetLang: 'en' }),
-      translateArticle({ provider, apiKey, model, article, targetLang: 'fr' }),
-      translateArticle({ provider, apiKey, model, article, targetLang: 'es' }),
+      translateArticleWithRetry({ provider, apiKey, model, article, targetLang: 'en' }),
+      translateArticleWithRetry({ provider, apiKey, model, article, targetLang: 'fr' }),
+      translateArticleWithRetry({ provider, apiKey, model, article, targetLang: 'es' }),
     ]);
   }
 
