@@ -83,6 +83,13 @@
   .badge.warn{color:var(--warn)}
   .badge.err{color:#fca5a5}
   .badge.idle{color:var(--muted)}
+  .err-detail{margin-top:6px;padding:8px 10px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);border-radius:8px;font-size:12px;color:#fca5a5;line-height:1.5;max-width:340px;word-break:break-word;cursor:pointer}
+  .err-detail .why{color:#fde68a;font-weight:700;margin-bottom:3px;display:block}
+  .err-detail .full{display:none;margin-top:6px;color:#cbd5e1;font-size:11px;font-family:ui-monospace,Menlo,Consolas,monospace;background:rgba(0,0,0,.25);padding:6px 8px;border-radius:6px;max-height:140px;overflow:auto}
+  .err-detail.expanded .full{display:block}
+  .retry-btn{margin-top:6px;background:#1f2937;color:#e2e8f0;border:1px solid #475569;border-radius:6px;padding:5px 10px;font-size:11px;cursor:pointer;font-weight:700}
+  .retry-btn:hover{background:#334155;border-color:#64748b}
+  .retry-btn:disabled{opacity:.5;cursor:not-allowed}
 
   .topic-row{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:11px;background:var(--panel-3);margin-bottom:8px;border:1px solid transparent;transition:border-color .15s}
   .topic-row:hover{border-color:var(--border-strong)}
@@ -1014,6 +1021,89 @@
 
     let done = 0, fail = 0, processed = 0;
 
+    // Map raw error → short user-friendly Arabic reason, so the user
+    // immediately understands WHY each article failed without reading logs.
+    function explainError(msg){
+      const m = String(msg || '').toLowerCase();
+      if (/مفتاح|api key|unauthorized|401/.test(m)) return { why:'مفتاح API غير صالح أو منتهي', tip:'تحقق من المفتاح في الأعلى وأعد الإدخال.' };
+      if (/quota|exhausted|429|rate[- ]?limit|too many|الحد اليومي|الحد الشهري/.test(m)) return { why:'تجاوز حد الطلبات/الحصة على مفتاح الذكاء الاصطناعي', tip:'انتظر دقيقة أو خفّض السرعة (وضع متوسط/أفضل) أو استخدم مزوّداً آخر.' };
+      if (/timeout|تجاوز الوقت|aborted/.test(m)) return { why:'انتهت مهلة الاتصال بمزوّد الذكاء الاصطناعي', tip:'سيُعاد المحاولة تلقائياً، أو اضغط زر "إعادة المحاولة" بالأسفل.' };
+      if (/empty|فارغ|finishreason/.test(m)) return { why:'النموذج رجّع رد فارغ', tip:'جرّب نموذجاً مختلفاً أو وضع جودة أعلى.' };
+      if (/json|parse|تحليل/.test(m)) return { why:'النموذج رجّع تنسيقاً غير صالح', tip:'جرّب الوضع "الأفضل" — يستعمل JSON mode الأكثر موثوقية.' };
+      if (/بنية مقال|بدون أقسام|أقسام/.test(m)) return { why:'النموذج رجّع مقالاً ناقصاً', tip:'جرّب نموذجاً أقوى أو وضع "متوسط/أفضل".' };
+      if (/supabase|insert|unique|duplicate|slug/.test(m)) return { why:'فشل حفظ المقال في قاعدة البيانات (ربما مكرر)', tip:'العنوان قد يكون موجوداً مسبقاً — غيّره وأعد المحاولة.' };
+      if (/blocked|safety|رفض|منع/.test(m)) return { why:'النموذج رفض الموضوع لأسباب أمان', tip:'غيّر صياغة العنوان أو استخدم موضوعاً مختلفاً.' };
+      if (/network|fetch|enotfound|econn/.test(m)) return { why:'مشكلة شبكة مع مزوّد الذكاء الاصطناعي', tip:'تحقّق من الاتصال وأعد المحاولة.' };
+      return { why:'خطأ أثناء التوليد', tip:'افتح التفاصيل بالأسفل لمعرفة الرسالة الكاملة.' };
+    }
+
+    function renderFailure(i, errMsg){
+      const statusEl = $('status-' + i);
+      if (!statusEl) return;
+      const explained = explainError(errMsg);
+      statusEl.innerHTML = `
+        <span class="badge err">✗ فشل</span>
+        <div class="err-detail" data-i="${i}" title="اضغط لعرض الرسالة الكاملة">
+          <span class="why">⚠ ${escapeAttr(explained.why)}</span>
+          <span style="opacity:.85">${escapeAttr(explained.tip)}</span>
+          <div class="full">${escapeAttr(errMsg || '(no message)')}</div>
+        </div>
+        <button class="retry-btn" data-retry="${i}">↻ إعادة المحاولة</button>
+      `;
+      // Click to expand full error.
+      statusEl.querySelector('.err-detail')?.addEventListener('click', e => {
+        if (e.target.closest('.retry-btn')) return;
+        e.currentTarget.classList.toggle('expanded');
+      });
+      // Click to retry just this one article.
+      statusEl.querySelector('.retry-btn')?.addEventListener('click', async (e) => {
+        const btn = e.currentTarget;
+        btn.disabled = true; btn.textContent = '⏳ جارٍ المحاولة…';
+        statusEl.querySelector('.err-detail')?.remove();
+        await runOne(i, /*isRetry*/true);
+      });
+    }
+
+    async function runOne(i, isRetry){
+      const t = topics[i];
+      const statusEl = $('status-' + i);
+      if (statusEl && !isRetry) statusEl.innerHTML = '<span class="badge warn">⏳ جارٍ التوليد</span>';
+      else if (statusEl && isRetry) statusEl.innerHTML = '<span class="badge warn">⏳ إعادة المحاولة…</span>';
+      try {
+        const tplId = tplMode === 'random' ? null : parseInt(tplMode, 10);
+        const out = await api('/api/bulk-admin/generate-one', {
+          provider: currentProvider,
+          apiKey, model, topic: t, templateId: tplId, speed: currentSpeed
+        });
+        results.push(out.article);
+        if (!isRetry) done++; else { done++; fail--; }
+        if (statusEl) {
+          const badges = [];
+          badges.push('<span class="badge ok">✓ منشور</span>');
+          if (out.article?.has_video) badges.push('<span class="badge ok" title="يحتوي فيديو">🎬</span>');
+          if (out.article?.images_count) badges.push('<span class="badge ok" title="صور">📸'+out.article.images_count+'</span>');
+          if (Array.isArray(out.article?.languages)) {
+            const langs = out.article.languages.length;
+            const cls = langs >= 4 ? 'ok' : 'warn';
+            badges.push('<span class="badge '+cls+'" title="'+out.article.languages.join(',')+'">🌐 '+langs+'/4</span>');
+          }
+          statusEl.innerHTML = badges.join(' ');
+        }
+        $('statDone').textContent = done;
+        $('statFail').textContent = fail;
+        if (isRetry) {
+          // Refresh the cache + results panel after a successful retry.
+          renderResults?.();
+          try { await api('/api/bulk-admin/refresh-cache', {}); } catch(_) {}
+        }
+      } catch(e) {
+        if (!isRetry) fail++;
+        renderFailure(i, e.message);
+        $('statFail').textContent = fail;
+        console.error('Failed for', t?.title, e);
+      }
+    }
+
     // Worker pool: each worker pulls next index, generates, marks status
     const queue = topics.map((_, i) => i);
     const workers = [];
@@ -1021,37 +1111,8 @@
     async function worker() {
       while (queue.length > 0 && !stopRequested) {
         const i = queue.shift();
-        const t = topics[i];
-        const statusEl = $('status-' + i);
-        if (statusEl) statusEl.innerHTML = '<span class="badge warn">⏳ جارٍ التوليد</span>';
-        try {
-          const tplId = tplMode === 'random' ? null : parseInt(tplMode, 10);
-          const out = await api('/api/bulk-admin/generate-one', {
-            provider: currentProvider,
-            apiKey, model, topic: t, templateId: tplId, speed: currentSpeed
-          });
-          results.push(out.article);
-          done++;
-          if (statusEl) {
-            const badges = [];
-            badges.push('<span class="badge ok">✓ منشور</span>');
-            if (out.article?.has_video) badges.push('<span class="badge ok" title="يحتوي فيديو">🎬</span>');
-            if (out.article?.images_count) badges.push('<span class="badge ok" title="صور">📸'+out.article.images_count+'</span>');
-            if (Array.isArray(out.article?.languages)) {
-              const langs = out.article.languages.length;
-              const cls = langs >= 4 ? 'ok' : 'warn';
-              badges.push('<span class="badge '+cls+'" title="'+out.article.languages.join(',')+'">🌐 '+langs+'/4</span>');
-            }
-            statusEl.innerHTML = badges.join(' ');
-          }
-        } catch(e) {
-          fail++;
-          if (statusEl) statusEl.innerHTML = '<span class="badge err" title="'+escapeAttr(e.message)+'">✗ فشل</span>';
-          console.error('Failed for', t?.title, e);
-        }
+        await runOne(i, false);
         processed++;
-        $('statDone').textContent = done;
-        $('statFail').textContent = fail;
         $('progressFill').style.width = ((processed/topics.length)*100) + '%';
       }
     }

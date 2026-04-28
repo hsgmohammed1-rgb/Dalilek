@@ -50,23 +50,6 @@
       "es": "Lea \"حصرياً: أسرار المشاهير وكواليس الترند اليوم\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre ثقافة عامة."
     }
   },
-  "powr-mountain-snow": {
-    "id": "9858f7b3-ccba-4ec4-911b-f40fdbb586e5",
-    "title": "سلسلة جبل باور الثلجي: مغامرات و تحديات",
-    "category": "تكنولوجيا",
-    "keywords": {
-      "ar": "جبل باور الثلجي, باور, مغامرات باور, سلسلة واقعية, ترفيه, تكنولوجيا, ذكاء اصطناعي, برمجة, أجهزة ذكية, إنترنت, تطبيقات, ابتكار, مستقبل رقمي, تحول رقمي, أمن معلومات, سحابة, بيانات ضخمة, روبوتات, تعلم آلي",
-      "en": "technology, artificial intelligence, programming, smart devices, internet, apps, innovation, digital future, digital transformation, cybersecurity, cloud computing, big data, robotics, machine learning",
-      "fr": "technologie, intelligence artificielle, programmation, appareils intelligents, internet, applications, innovation, avenir numérique, transformation numérique, cybersécurité, cloud, big data, robotique, apprentissage automatique",
-      "es": "tecnología, inteligencia artificial, programación, dispositivos inteligentes, internet, aplicaciones, innovación, futuro digital, transformación digital, ciberseguridad, nube, big data, robótica, aprendizaje automático"
-    },
-    "description": {
-      "ar": "اكتشف سلسلة جبل باور الثلجي: مغامرات وتحديات في الثلج بالتعاون مع STC TV. عمل ترفيهي جديد كلياً!",
-      "en": "Read \"سلسلة جبل باور الثلجي: مغامرات و تحديات\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تكنولوجيا.",
-      "fr": "Lisez \"سلسلة جبل باور الثلجي: مغامرات و تحديات\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تكنولوجيا.",
-      "es": "Lea \"سلسلة جبل باور الثلجي: مغامرات و تحديات\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
-    }
-  },
   "free-ai-tools-productivity": {
     "id": "afcb9134-30cc-4841-9b52-8d8dba0a5444",
     "title": "أدوات الذكاء الاصطناعي المجانية لزيادة الإنتاجية",
@@ -99,6 +82,23 @@
       "en": "Read \"أسرار التسويق الرقمي الناجح\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تسويق وإعلان.",
       "fr": "Lisez \"أسرار التسويق الرقمي الناجح\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تسويق وإعلان.",
       "es": "Lea \"أسرار التسويق الرقمي الناجح\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تسويق وإعلان."
+    }
+  },
+  "powr-mountain-snow": {
+    "id": "9858f7b3-ccba-4ec4-911b-f40fdbb586e5",
+    "title": "سلسلة جبل باور الثلجي: مغامرات و تحديات",
+    "category": "تكنولوجيا",
+    "keywords": {
+      "ar": "جبل باور الثلجي, باور, مغامرات باور, سلسلة واقعية, ترفيه, تكنولوجيا, ذكاء اصطناعي, برمجة, أجهزة ذكية, إنترنت, تطبيقات, ابتكار, مستقبل رقمي, تحول رقمي, أمن معلومات, سحابة, بيانات ضخمة, روبوتات, تعلم آلي",
+      "en": "technology, artificial intelligence, programming, smart devices, internet, apps, innovation, digital future, digital transformation, cybersecurity, cloud computing, big data, robotics, machine learning",
+      "fr": "technologie, intelligence artificielle, programmation, appareils intelligents, internet, applications, innovation, avenir numérique, transformation numérique, cybersécurité, cloud, big data, robotique, apprentissage automatique",
+      "es": "tecnología, inteligencia artificial, programación, dispositivos inteligentes, internet, aplicaciones, innovación, futuro digital, transformación digital, ciberseguridad, nube, big data, robótica, aprendizaje automático"
+    },
+    "description": {
+      "ar": "اكتشف سلسلة جبل باور الثلجي: مغامرات وتحديات في الثلج بالتعاون مع STC TV. عمل ترفيهي جديد كلياً!",
+      "en": "Read \"سلسلة جبل باور الثلجي: مغامرات و تحديات\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تكنولوجيا.",
+      "fr": "Lisez \"سلسلة جبل باور الثلجي: مغامرات و تحديات\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تكنولوجيا.",
+      "es": "Lea \"سلسلة جبل باور الثلجي: مغامرات و تحديات\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
     }
   },
   "make-money-online-2026": {
