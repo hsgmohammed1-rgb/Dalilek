@@ -1177,6 +1177,45 @@ const CRON_CONFIG_PATH = path.join(__dirname, '.cron-config.json');
 const CRON_LOG_PATH = path.join(__dirname, '.cron-log.json');
 const CRON_LOG_MAX = 50;
 
+// Translate a raw provider error into a clear Arabic explanation that an
+// end-user can act on, without having to read English/JSON tracebacks. Mirrors
+// the explainError helper in bulk-admin.html so logs and UI speak the same
+// language.
+function friendlyAiError(rawMsg, provider) {
+  const msg = String(rawMsg || '');
+  const m = msg.toLowerCase();
+  const providerLabel = provider === 'gemini' ? 'Gemini' : provider === 'groq' ? 'Groq' : 'OpenRouter';
+  if (/429|rate[- ]?limit|too many/.test(m)) {
+    return `تجاوز حد المعدّل لـ ${providerLabel} (طلبات/دقيقة). خفّض عدد المقالات لكل دفعة (مثلاً 3) أو استخدم مزوّداً آخر.`;
+  }
+  if (/quota|exhausted|الحد اليومي|الحد الشهري|daily limit/.test(m)) {
+    return `تم استهلاك حصة مفتاح ${providerLabel} لليوم. انتظر حتى الغد أو استخدم مفتاحاً/مزوّداً آخر.`;
+  }
+  if (/unauthorized|invalid api key|401|api key/.test(m)) {
+    return `مفتاح ${providerLabel} غير صالح أو منتهي. أعد إدخاله في إعدادات التوليد التلقائي.`;
+  }
+  if (/timeout|aborted|تجاوز الوقت/.test(m)) {
+    return `انتهت مهلة الاتصال بـ ${providerLabel}. سيُعاد المحاولة في الدفعة التالية.`;
+  }
+  if (/blocked|safety|رفض|منع/.test(m)) {
+    return `${providerLabel} رفض الموضوع لأسباب أمان/محتوى. غيّر الموضوع.`;
+  }
+  if (/empty|فارغ|finishreason/.test(m)) {
+    return `${providerLabel} رجّع رداً فارغاً. جرّب نموذجاً مختلفاً.`;
+  }
+  if (/json|parse|تحليل|بنية مقال|بدون أقسام/.test(m)) {
+    return `${providerLabel} رجّع تنسيقاً غير صالح. جرّب وضع "الأفضل".`;
+  }
+  if (/supabase|insert|duplicate|unique|slug/.test(m)) {
+    return `فشل حفظ المقال (ربما العنوان مكرر).`;
+  }
+  if (/network|fetch|enotfound|econn/.test(m)) {
+    return `مشكلة شبكة مع ${providerLabel}. تحقّق من الاتصال.`;
+  }
+  // Fallback: keep first 140 chars of the original so the user has SOME signal.
+  return msg.length > 140 ? msg.slice(0, 140) + '…' : msg;
+}
+
 function defaultCronConfig() {
   return {
     enabled: false,
@@ -1291,11 +1330,19 @@ async function runCronBatch({ trigger = 'cron' } = {}) {
     const topics = disc.topics || [];
     if (topics.length === 0) throw new Error('لم يتم اكتشاف أي مواضيع');
 
-    // 2) Generate sequentially. Sequential is intentional here: we're running
-    // unattended in the background, so reliability beats raw speed.
+    // 2) Generate sequentially with a cool-down between articles. Sequential
+    // is intentional here: we're running unattended in the background, so
+    // reliability beats raw speed. The cool-down gives the per-minute quota
+    // (Groq 6000 TPM, Gemini 10 RPM) time to refill between articles —
+    // without it, articles 3..N reliably hit 429 on free tiers.
     const articles = [];
     const errors = [];
-    for (const topic of topics) {
+    // Each article fires 4 calls (1 main + 3 translations). Wait long enough
+    // that the per-minute window has rolled over before the next article.
+    const COOLDOWN_MS = (cfg.provider === 'gemini') ? 15000 : 12000;
+    let consecutiveRateLimits = 0;
+    for (let idx = 0; idx < topics.length; idx++) {
+      const topic = topics[idx];
       try {
         const out = await generateAndPublish({
           provider: cfg.provider, apiKey: cfg.apiKey, model: cfg.model,
@@ -1303,8 +1350,26 @@ async function runCronBatch({ trigger = 'cron' } = {}) {
         });
         articles.push({ title: out.title, slug: out.slug, url: out.url, translations_ok: out.translations_ok });
         cfg.todayCount += 1;
+        consecutiveRateLimits = 0;
       } catch (e) {
-        errors.push(`${topic.title}: ${e.message}`);
+        errors.push(`${topic.title}: ${friendlyAiError(e.message, cfg.provider)}`);
+        // If we keep hitting 429 back-to-back, pause longer to let the
+        // per-minute / per-hour quota fully reset. Avoid burning the
+        // remaining topics on errors that can't possibly succeed yet.
+        if (/429|rate[- ]?limit|too many|الحصة|الحد/i.test(e.message || '')) {
+          consecutiveRateLimits++;
+          if (consecutiveRateLimits >= 2) {
+            const longWait = Math.min(60000, 30000 * consecutiveRateLimits);
+            console.warn(`[cron] ${consecutiveRateLimits} consecutive rate limits, pausing ${longWait/1000}s before next article`);
+            await new Promise(r => setTimeout(r, longWait));
+          }
+        } else {
+          consecutiveRateLimits = 0;
+        }
+      }
+      // Cool-down between articles, but skip after the last one.
+      if (idx < topics.length - 1) {
+        await new Promise(r => setTimeout(r, COOLDOWN_MS));
       }
     }
 
@@ -1328,7 +1393,7 @@ async function runCronBatch({ trigger = 'cron' } = {}) {
       error: e.message, articles: [], errors: [e.message],
     };
     cfg.lastRunAt = startedAt;
-    cfg.lastRunStatus = 'فشل: ' + e.message.slice(0, 80);
+    cfg.lastRunStatus = 'فشل: ' + friendlyAiError(e.message, cfg.provider).slice(0, 140);
     saveCronConfig(cfg);
     appendCronLog(summary);
     return summary;
