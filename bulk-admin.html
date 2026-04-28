@@ -158,15 +158,7 @@
       <svg width="20" height="20" viewBox="0 0 24 24" style="background:#fff;border-radius:50%;padding:2px"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
       تسجيل الدخول بـGoogle
     </button>
-    <a href="/admin" class="btn-secondary" style="display:block;text-decoration:none;padding:12px 24px;border-radius:10px;text-align:center;color:var(--text);font-weight:700">← الذهاب للوحة الإدارة وتسجيل الدخول هناك</a>
-    <details style="margin-top:6px;text-align:right">
-      <summary style="cursor:pointer;color:var(--muted);font-size:12px">طريقة بديلة: ألصق Access Token يدوياً</summary>
-      <div style="margin-top:8px">
-        <input type="text" id="manualToken" placeholder="ألصق access_token هنا" style="font-size:12px;direction:ltr;text-align:left" />
-        <button id="manualTokenBtn" class="btn-secondary" style="margin-top:6px;width:100%;font-size:13px;padding:10px">تحقّق من التوكن</button>
-        <div class="small" style="margin-top:6px">من المتصفح في /admin → DevTools → Application → Local Storage → ابحث عن access_token</div>
-      </div>
-    </details>
+    <div class="small" style="text-align:center;color:var(--muted);font-size:11.5px;margin-top:4px">تسجيل الدخول مقتصر على حساب الإدارة المعتمد فقط.</div>
   </div>
   <div id="gateErr" class="err hidden"></div>
 </div>
@@ -543,52 +535,21 @@
   let providers = {};
   let currentProvider = localStorage.getItem('aiProvider') || 'gemini';
 
-  // ── Smart token discovery: scan ALL localStorage values for any access_token ──
+  // ── Token discovery: ONLY accept a fresh token from the URL hash (after a
+  // Google OAuth redirect). Scanning localStorage caused false positives —
+  // an old/expired Supabase token from a different project would be picked up
+  // and rejected by the server, locking the user out with a confusing error.
   function isJwt(s){ return typeof s==='string' && s.length > 40 && s.split('.').length === 3 && s.startsWith('eyJ'); }
 
   function findSupabaseAccessToken(){
     try {
-      // 1. Check URL hash first (after Supabase OAuth redirect)
       if (location.hash && location.hash.includes('access_token')) {
         const params = new URLSearchParams(location.hash.replace(/^#/, ''));
         const t = params.get('access_token');
         if (isJwt(t)) {
-          // Clean URL
+          // Clean the URL so a refresh doesn't replay the same token.
           history.replaceState(null, '', location.pathname);
           return t;
-        }
-      }
-      // 2. Scan ALL localStorage values for an access_token field (regardless of key name)
-      const keys = Object.keys(localStorage);
-      for (const k of keys) {
-        const raw = localStorage.getItem(k);
-        if (!raw) continue;
-        // Try parse JSON
-        try {
-          const parsed = JSON.parse(raw);
-          if (parsed?.access_token && isJwt(parsed.access_token)) return parsed.access_token;
-          if (parsed?.currentSession?.access_token && isJwt(parsed.currentSession.access_token)) return parsed.currentSession.access_token;
-          if (Array.isArray(parsed) && isJwt(parsed[0])) return parsed[0];
-          // Some Supabase versions wrap: { session: { access_token: ... } }
-          if (parsed?.session?.access_token && isJwt(parsed.session.access_token)) return parsed.session.access_token;
-          // Or: just nested user object — keep scanning fields
-          for (const v of Object.values(parsed || {})) {
-            if (typeof v === 'object' && v?.access_token && isJwt(v.access_token)) return v.access_token;
-          }
-        } catch(e){
-          // Maybe stored as raw JWT
-          if (isJwt(raw)) return raw;
-        }
-      }
-      // 3. Same scan in sessionStorage
-      for (const k of Object.keys(sessionStorage)) {
-        const raw = sessionStorage.getItem(k);
-        if (!raw) continue;
-        try {
-          const parsed = JSON.parse(raw);
-          if (parsed?.access_token && isJwt(parsed.access_token)) return parsed.access_token;
-        } catch(e){
-          if (isJwt(raw)) return raw;
         }
       }
     } catch(e){}
@@ -615,17 +576,17 @@
 
     const accessToken = findSupabaseAccessToken();
     if (!accessToken) {
-      $('gateMsg').innerHTML = '🔍 لم نعثر على جلسة Google نشطة في هذا المتصفح.';
+      $('gateMsg').innerHTML = 'سجّل الدخول بحساب Google المعتمد للمتابعة.';
       $('gateActions').classList.remove('hidden');
       return;
     }
 
-    $('gateMsg').innerHTML = 'تم العثور على توكن، جارٍ التحقق…<span class="loader"></span>';
+    $('gateMsg').innerHTML = 'جارٍ التحقق من الحساب…<span class="loader"></span>';
     try {
       const user = await verifyToken(accessToken);
       showApp(user);
     } catch(e) {
-      $('gateMsg').innerHTML = '⚠ ' + e.message;
+      $('gateMsg').innerHTML = 'تعذّر تسجيل الدخول.';
       $('gateErr').textContent = e.message;
       $('gateErr').classList.remove('hidden');
       $('gateActions').classList.remove('hidden');
@@ -635,34 +596,25 @@
   // Google sign-in via Supabase OAuth (redirect flow)
   async function startGoogleSignIn(){
     try {
-      const cfgR = await fetch('/api/bulk-admin/models');
-      const cfg = await cfgR.json();
-      // Get Supabase URL from a tiny config endpoint we'll add
+      $('gateErr').classList.add('hidden');
       const sbR = await fetch('/api/bulk-admin/public-config');
       const sb = await sbR.json();
-      if (!sb.supabaseUrl) { alert('Supabase URL غير مضبوط على السيرفر'); return; }
+      if (!sb.supabaseUrl) {
+        $('gateErr').textContent = 'Supabase URL غير مضبوط على السيرفر';
+        $('gateErr').classList.remove('hidden');
+        return;
+      }
       const redirectTo = location.origin + location.pathname;
       const url = sb.supabaseUrl.replace(/\/$/, '') + '/auth/v1/authorize?provider=google&redirect_to=' + encodeURIComponent(redirectTo);
       location.href = url;
     } catch(e) {
-      alert('خطأ: ' + e.message);
+      $('gateErr').textContent = 'خطأ: ' + e.message;
+      $('gateErr').classList.remove('hidden');
     }
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     $('googleSignInBtn')?.addEventListener('click', startGoogleSignIn);
-    $('manualTokenBtn')?.addEventListener('click', async () => {
-      const t = $('manualToken').value.trim();
-      if (!isJwt(t)) { alert('التوكن غير صالح (يجب أن يبدأ بـ eyJ)'); return; }
-      $('manualTokenBtn').disabled = true;
-      try {
-        const user = await verifyToken(t);
-        showApp(user);
-      } catch(e) {
-        alert('فشل: ' + e.message);
-        $('manualTokenBtn').disabled = false;
-      }
-    });
   });
 
   function showApp(user){

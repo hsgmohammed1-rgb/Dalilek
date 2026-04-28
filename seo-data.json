@@ -50,6 +50,23 @@
       "es": "Lea \"حصرياً: أسرار المشاهير وكواليس الترند اليوم\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre ثقافة عامة."
     }
   },
+  "powr-mountain-snow": {
+    "id": "9858f7b3-ccba-4ec4-911b-f40fdbb586e5",
+    "title": "سلسلة جبل باور الثلجي: مغامرات و تحديات",
+    "category": "تكنولوجيا",
+    "keywords": {
+      "ar": "جبل باور الثلجي, باور, مغامرات باور, سلسلة واقعية, ترفيه, تكنولوجيا, ذكاء اصطناعي, برمجة, أجهزة ذكية, إنترنت, تطبيقات, ابتكار, مستقبل رقمي, تحول رقمي, أمن معلومات, سحابة, بيانات ضخمة, روبوتات, تعلم آلي",
+      "en": "technology, artificial intelligence, programming, smart devices, internet, apps, innovation, digital future, digital transformation, cybersecurity, cloud computing, big data, robotics, machine learning",
+      "fr": "technologie, intelligence artificielle, programmation, appareils intelligents, internet, applications, innovation, avenir numérique, transformation numérique, cybersécurité, cloud, big data, robotique, apprentissage automatique",
+      "es": "tecnología, inteligencia artificial, programación, dispositivos inteligentes, internet, aplicaciones, innovación, futuro digital, transformación digital, ciberseguridad, nube, big data, robótica, aprendizaje automático"
+    },
+    "description": {
+      "ar": "اكتشف سلسلة جبل باور الثلجي: مغامرات وتحديات في الثلج بالتعاون مع STC TV. عمل ترفيهي جديد كلياً!",
+      "en": "Read \"سلسلة جبل باور الثلجي: مغامرات و تحديات\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تكنولوجيا.",
+      "fr": "Lisez \"سلسلة جبل باور الثلجي: مغامرات و تحديات\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تكنولوجيا.",
+      "es": "Lea \"سلسلة جبل باور الثلجي: مغامرات و تحديات\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
+    }
+  },
   "free-ai-tools-productivity": {
     "id": "afcb9134-30cc-4841-9b52-8d8dba0a5444",
     "title": "أدوات الذكاء الاصطناعي المجانية لزيادة الإنتاجية",
@@ -82,23 +99,6 @@
       "en": "Read \"أسرار التسويق الرقمي الناجح\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تسويق وإعلان.",
       "fr": "Lisez \"أسرار التسويق الرقمي الناجح\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تسويق وإعلان.",
       "es": "Lea \"أسرار التسويق الرقمي الناجح\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تسويق وإعلان."
-    }
-  },
-  "powr-mountain-snow": {
-    "id": "9858f7b3-ccba-4ec4-911b-f40fdbb586e5",
-    "title": "سلسلة جبل باور الثلجي: مغامرات و تحديات",
-    "category": "تكنولوجيا",
-    "keywords": {
-      "ar": "جبل باور الثلجي, باور, مغامرات باور, سلسلة واقعية, ترفيه, تكنولوجيا, ذكاء اصطناعي, برمجة, أجهزة ذكية, إنترنت, تطبيقات, ابتكار, مستقبل رقمي, تحول رقمي, أمن معلومات, سحابة, بيانات ضخمة, روبوتات, تعلم آلي",
-      "en": "technology, artificial intelligence, programming, smart devices, internet, apps, innovation, digital future, digital transformation, cybersecurity, cloud computing, big data, robotics, machine learning",
-      "fr": "technologie, intelligence artificielle, programmation, appareils intelligents, internet, applications, innovation, avenir numérique, transformation numérique, cybersécurité, cloud, big data, robotique, apprentissage automatique",
-      "es": "tecnología, inteligencia artificial, programación, dispositivos inteligentes, internet, aplicaciones, innovación, futuro digital, transformación digital, ciberseguridad, nube, big data, robótica, aprendizaje automático"
-    },
-    "description": {
-      "ar": "اكتشف سلسلة جبل باور الثلجي: مغامرات وتحديات في الثلج بالتعاون مع STC TV. عمل ترفيهي جديد كلياً!",
-      "en": "Read \"سلسلة جبل باور الثلجي: مغامرات و تحديات\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تكنولوجيا.",
-      "fr": "Lisez \"سلسلة جبل باور الثلجي: مغامرات و تحديات\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تكنولوجيا.",
-      "es": "Lea \"سلسلة جبل باور الثلجي: مغامرات و تحديات\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
     }
   },
   "make-money-online-2026": {
@@ -3042,6 +3042,23 @@
       "es": "Lea \"ترفيه رقمي: كيف يمكننا تحسين المجتمعات\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre ترفيه."
     }
   },
+  "mental-health-apps-guide-2026": {
+    "id": "cb775ea6-6e6b-4974-a72e-693e0b12f161",
+    "title": "دليلك الشامل لاستخدام تطبيقات الصحة النفسية في 2026",
+    "category": "صحة",
+    "keywords": {
+      "ar": "صحة نفسية, تطبيقات, دليل, تطبيقات الصحة, صحة عقلية, صحة, طب, علاج, وقاية, غذاء صحي, رياضة, نصائح صحية, جسم سليم, صحة نفسية, مناعة, نوم, تغذية, أمراض, أدوية, صحة عامة",
+      "en": "health, medicine, treatment, prevention, healthy food, fitness, wellness tips, healthy body, mental health, immunity, sleep, nutrition, diseases, medications, public health",
+      "fr": "santé, médecine, traitement, prévention, alimentation saine, remise en forme, conseils santé, corps sain, santé mentale, immunité, sommeil, nutrition, maladies, médicaments",
+      "es": "salud, medicina, tratamiento, prevención, alimentación saludable, fitness, consejos de salud, cuerpo sano, salud mental, inmunidad, sueño, nutrición, enfermedades, medicamentos"
+    },
+    "description": {
+      "ar": "دليلك الشامل لاستخدام تطبيقات الصحة النفسية في 2026، مع نصائح عملية لتحسين صحتك النفسية",
+      "en": "Read \"دليلك الشامل لاستخدام تطبيقات الصحة النفسية في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
+      "fr": "Lisez \"دليلك الشامل لاستخدام تطبيقات الصحة النفسية في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
+      "es": "Lea \"دليلك الشامل لاستخدام تطبيقات الصحة النفسية في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
+    }
+  },
   "educational-vr-tech": {
     "id": "15e8f5ec-addc-407a-8647-8086208f9d15",
     "title": "استفادة الواقع الافتراضي في تعليم المعدات الحديثة",
@@ -3057,6 +3074,23 @@
       "en": "Read \"استفادة الواقع الافتراضي في تعليم المعدات الحديثة\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تعليم.",
       "fr": "Lisez \"استفادة الواقع الافتراضي في تعليم المعدات الحديثة\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تعليم.",
       "es": "Lea \"استفادة الواقع الافتراضي في تعليم المعدات الحديثة\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تعليم."
+    }
+  },
+  "ai-impact-on-automotive-industry-2026": {
+    "id": "0f40e46e-7ecd-40d4-9037-42f0481cdc15",
+    "title": "تأثير الذكاء الاصطناعي على صناعة السيارات في 2026",
+    "category": "تكنولوجيا",
+    "keywords": {
+      "ar": "سيارات, ذكاء اصطناعي, صناعة, تصنيع, سلامة, استدامة, تكنولوجيا, ذكاء اصطناعي, برمجة, أجهزة ذكية, إنترنت, تطبيقات, ابتكار, مستقبل رقمي, تحول رقمي, أمن معلومات, سحابة, بيانات ضخمة, روبوتات, تعلم آلي",
+      "en": "technology, artificial intelligence, programming, smart devices, internet, apps, innovation, digital future, digital transformation, cybersecurity, cloud computing, big data, robotics, machine learning",
+      "fr": "technologie, intelligence artificielle, programmation, appareils intelligents, internet, applications, innovation, avenir numérique, transformation numérique, cybersécurité, cloud, big data, robotique, apprentissage automatique",
+      "es": "tecnología, inteligencia artificial, programación, dispositivos inteligentes, internet, aplicaciones, innovación, futuro digital, transformación digital, ciberseguridad, nube, big data, robótica, aprendizaje automático"
+    },
+    "description": {
+      "ar": "اكتشف كيف يؤثر الذكاء الاصطناعي على صناعة السيارات في 2026. تعرف على تأثير التكنولوجيا على التصميم والتصنيع والسلامة.",
+      "en": "Read \"تأثير الذكاء الاصطناعي على صناعة السيارات في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تكنولوجيا.",
+      "fr": "Lisez \"تأثير الذكاء الاصطناعي على صناعة السيارات في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تكنولوجيا.",
+      "es": "Lea \"تأثير الذكاء الاصطناعي على صناعة السيارات في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
     }
   },
   "smart-lighting-technology-homes": {
@@ -3091,40 +3125,6 @@
       "en": "Read \"استفيد من تقنيات الواقع المعزز في تعليم المستقبل\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تعليم.",
       "fr": "Lisez \"استفيد من تقنيات الواقع المعزز في تعليم المستقبل\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تعليم.",
       "es": "Lea \"استفيد من تقنيات الواقع المعزز في تعليم المستقبل\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تعليم."
-    }
-  },
-  "ai-impact-on-automotive-industry-2026": {
-    "id": "0f40e46e-7ecd-40d4-9037-42f0481cdc15",
-    "title": "تأثير الذكاء الاصطناعي على صناعة السيارات في 2026",
-    "category": "تكنولوجيا",
-    "keywords": {
-      "ar": "سيارات, ذكاء اصطناعي, صناعة, تصنيع, سلامة, استدامة, تكنولوجيا, ذكاء اصطناعي, برمجة, أجهزة ذكية, إنترنت, تطبيقات, ابتكار, مستقبل رقمي, تحول رقمي, أمن معلومات, سحابة, بيانات ضخمة, روبوتات, تعلم آلي",
-      "en": "technology, artificial intelligence, programming, smart devices, internet, apps, innovation, digital future, digital transformation, cybersecurity, cloud computing, big data, robotics, machine learning",
-      "fr": "technologie, intelligence artificielle, programmation, appareils intelligents, internet, applications, innovation, avenir numérique, transformation numérique, cybersécurité, cloud, big data, robotique, apprentissage automatique",
-      "es": "tecnología, inteligencia artificial, programación, dispositivos inteligentes, internet, aplicaciones, innovación, futuro digital, transformación digital, ciberseguridad, nube, big data, robótica, aprendizaje automático"
-    },
-    "description": {
-      "ar": "اكتشف كيف يؤثر الذكاء الاصطناعي على صناعة السيارات في 2026. تعرف على تأثير التكنولوجيا على التصميم والتصنيع والسلامة.",
-      "en": "Read \"تأثير الذكاء الاصطناعي على صناعة السيارات في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تكنولوجيا.",
-      "fr": "Lisez \"تأثير الذكاء الاصطناعي على صناعة السيارات في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تكنولوجيا.",
-      "es": "Lea \"تأثير الذكاء الاصطناعي على صناعة السيارات في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
-    }
-  },
-  "mental-health-apps-guide-2026": {
-    "id": "cb775ea6-6e6b-4974-a72e-693e0b12f161",
-    "title": "دليلك الشامل لاستخدام تطبيقات الصحة النفسية في 2026",
-    "category": "صحة",
-    "keywords": {
-      "ar": "صحة نفسية, تطبيقات, دليل, تطبيقات الصحة, صحة عقلية, صحة, طب, علاج, وقاية, غذاء صحي, رياضة, نصائح صحية, جسم سليم, صحة نفسية, مناعة, نوم, تغذية, أمراض, أدوية, صحة عامة",
-      "en": "health, medicine, treatment, prevention, healthy food, fitness, wellness tips, healthy body, mental health, immunity, sleep, nutrition, diseases, medications, public health",
-      "fr": "santé, médecine, traitement, prévention, alimentation saine, remise en forme, conseils santé, corps sain, santé mentale, immunité, sommeil, nutrition, maladies, médicaments",
-      "es": "salud, medicina, tratamiento, prevención, alimentación saludable, fitness, consejos de salud, cuerpo sano, salud mental, inmunidad, sueño, nutrición, enfermedades, medicamentos"
-    },
-    "description": {
-      "ar": "دليلك الشامل لاستخدام تطبيقات الصحة النفسية في 2026، مع نصائح عملية لتحسين صحتك النفسية",
-      "en": "Read \"دليلك الشامل لاستخدام تطبيقات الصحة النفسية في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
-      "fr": "Lisez \"دليلك الشامل لاستخدام تطبيقات الصحة النفسية في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
-      "es": "Lea \"دليلك الشامل لاستخدام تطبيقات الصحة النفسية في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
     }
   }
 }

@@ -3,8 +3,13 @@
 const https = require('https');
 const crypto = require('crypto');
 
-const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_KEY;
+const SUPABASE_URL = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
+// IMPORTANT: SERVICE_ROLE_API is the secret name used in this project; keep
+// the legacy names too so the module works on either configuration.
+const SUPABASE_KEY = process.env.SERVICE_ROLE_API
+  || process.env.SUPABASE_SERVICE_ROLE_KEY
+  || process.env.SUPABASE_KEY
+  || process.env.ANON_PUBLIC;
 const PEXELS_API_KEY = process.env.PEXELS_API_KEY;
 const ALLOWED_EMAIL = (process.env.BULK_ADMIN_EMAIL || 'cpshzt@gmail.com').toLowerCase();
 
@@ -60,37 +65,41 @@ const FREE_MODELS = PROVIDERS.gemini.models;
 
 // Speed profiles — control prompt depth, output budget, and concurrency.
 // recommendedModel is keyed by provider so we can suggest the right model when the user switches.
+// NOTE on concurrency: each article = 1 main AI call + 3 translation calls
+// (en/fr/es). Free tiers throttle hard (Gemini = 10 RPM, Groq = 6000 TPM).
+// We keep concurrency intentionally low so a 20-article batch doesn't
+// instantly burn through the per-minute quota and reject 70%+ of articles.
 const SPEED_PROFILES = {
   fast: {
     label: '⚡ سريع',
-    description: '3-4 أقسام مختصرة، 5 مقالات بالتوازي (مع 4 لغات لكل واحد)',
+    description: '3-4 أقسام مختصرة، مقالان بالتوازي مع 4 لغات لكل واحد',
     recommendedModel: { gemini: 'gemini-2.5-flash-lite', groq: 'llama-3.1-8b-instant', openrouter: 'nvidia/nemotron-nano-9b-v2:free' },
     maxTokens: 3500,
     minSections: 3, maxSections: 4,
     sectionLength: '100-150 كلمة',
-    concurrency: 5,
+    concurrency: 2,
     skillsCount: 4,
     statsCount: 3,
   },
   medium: {
     label: '⚖️ متوسط',
-    description: '4-5 أقسام متوازنة، 3 مقالات بالتوازي (مع 4 لغات لكل واحد)',
+    description: '4-5 أقسام متوازنة، مقال واحد في كل مرة لتوازن الجودة والسرعة',
     recommendedModel: { gemini: 'gemini-2.5-flash', groq: 'llama-3.3-70b-versatile', openrouter: 'openai/gpt-oss-120b:free' },
     maxTokens: 5500,
     minSections: 4, maxSections: 5,
     sectionLength: '150-220 كلمة',
-    concurrency: 3,
+    concurrency: 1,
     skillsCount: 4,
     statsCount: 3,
   },
   thorough: {
     label: '💎 الأفضل',
-    description: '5-6 أقسام معمّقة، مقالان بالتوازي للجودة القصوى',
+    description: '5-6 أقسام معمّقة، مقال واحد في كل مرة للجودة القصوى',
     recommendedModel: { gemini: 'gemini-2.5-pro', groq: 'openai/gpt-oss-120b', openrouter: 'openai/gpt-oss-120b:free' },
     maxTokens: 6000,
     minSections: 5, maxSections: 6,
     sectionLength: '200-280 كلمة',
-    concurrency: 2,
+    concurrency: 1,
     skillsCount: 5,
     statsCount: 4,
     timeoutMs: 300000,
@@ -163,8 +172,12 @@ function httpsRequestJson({ hostname, path, method = 'GET', headers = {}, body =
 }
 
 // ── Verify Supabase user via access_token ───────────────────────────────────
+// Returns { user } on success or { error } on failure with a clear reason so
+// the caller can surface a specific message to the UI instead of a vague one.
 async function verifySupabaseUser(accessToken) {
-  if (!SUPABASE_URL || !SUPABASE_KEY || !accessToken) return null;
+  if (!SUPABASE_URL) return { error: 'SUPABASE_URL غير مضبوط على الخادم' };
+  if (!SUPABASE_KEY) return { error: 'مفتاح Supabase (SERVICE_ROLE_API) غير مضبوط على الخادم' };
+  if (!accessToken) return { error: 'access_token مفقود' };
   const host = SUPABASE_URL.replace('https://', '').split('/')[0];
   try {
     const r = await httpsRequestJson({
@@ -177,16 +190,29 @@ async function verifySupabaseUser(accessToken) {
       },
       timeout: 10000,
     });
-    if (r.status !== 200 || !r.json) return null;
+    if (r.status === 401 || r.status === 403) {
+      console.warn('[bulk-admin] Supabase auth rejected token:', r.status, (r.body || '').slice(0, 200));
+      return { error: 'الجلسة منتهية أو التوكن غير صالح. سجّل الدخول من Google من جديد.' };
+    }
+    if (r.status !== 200 || !r.json) {
+      console.warn('[bulk-admin] Supabase /auth/v1/user unexpected:', r.status, (r.body || '').slice(0, 200));
+      return { error: `Supabase رجّع ${r.status}. تأكّد أن Google مفعّل في إعدادات Supabase Auth.` };
+    }
+    if (!r.json.email) {
+      return { error: 'تم تسجيل الدخول لكن لم نحصل على البريد. تأكّد أن نطاق "email" مفعّل في موفّر Google.' };
+    }
     return {
-      id: r.json.id,
-      email: (r.json.email || '').toLowerCase(),
-      provider: r.json.app_metadata?.provider,
-      name: r.json.user_metadata?.full_name || r.json.user_metadata?.name,
-      avatar: r.json.user_metadata?.avatar_url || r.json.user_metadata?.picture,
+      user: {
+        id: r.json.id,
+        email: (r.json.email || '').toLowerCase(),
+        provider: r.json.app_metadata?.provider,
+        name: r.json.user_metadata?.full_name || r.json.user_metadata?.name,
+        avatar: r.json.user_metadata?.avatar_url || r.json.user_metadata?.picture,
+      },
     };
   } catch (e) {
-    return null;
+    console.error('[bulk-admin] verifySupabaseUser network error:', e.message);
+    return { error: 'تعذّر الوصول إلى Supabase: ' + e.message };
   }
 }
 
@@ -1367,8 +1393,11 @@ async function handle(req, res) {
       const body = JSON.parse((await readBody(req)) || '{}');
       const accessToken = body.accessToken;
       if (!accessToken) return jsonResponse(res, 400, { error: 'accessToken مطلوب' });
-      const user = await verifySupabaseUser(accessToken);
-      if (!user) return jsonResponse(res, 401, { error: 'فشل التحقق من جلسة Supabase. الرجاء تسجيل الدخول من لوحة الإدارة الرئيسية أولاً.' });
+      const result = await verifySupabaseUser(accessToken);
+      if (!result || result.error) {
+        return jsonResponse(res, 401, { error: result?.error || 'فشل التحقق من الجلسة' });
+      }
+      const user = result.user;
       if (user.email !== ALLOWED_EMAIL) {
         return jsonResponse(res, 403, { error: `هذه اللوحة محصورة بالحساب ${ALLOWED_EMAIL} فقط. أنت داخل بـ ${user.email}.` });
       }
@@ -1391,8 +1420,9 @@ async function handle(req, res) {
       if (!accessToken) return jsonResponse(res, 400, { error: 'accessToken مطلوب' });
       if (!id) return jsonResponse(res, 400, { error: 'id مطلوب' });
 
-      const user = await verifySupabaseUser(accessToken);
-      if (!user) return jsonResponse(res, 401, { error: 'جلسة غير صالحة' });
+      const result = await verifySupabaseUser(accessToken);
+      if (!result || result.error) return jsonResponse(res, 401, { error: result?.error || 'جلسة غير صالحة' });
+      const user = result.user;
       if (user.email !== ALLOWED_EMAIL) {
         return jsonResponse(res, 403, { error: `الحذف محصور بالحساب ${ALLOWED_EMAIL}` });
       }
@@ -1461,7 +1491,29 @@ async function handle(req, res) {
       const templateId = parsedBody.templateId || null;
       const speed = parsedBody.speed || 'medium';
       if (!topic || !topic.title) return jsonResponse(res, 400, { error: 'topic.title مطلوب' });
-      const out = await generateAndPublish({ provider, apiKey, model, topic, templateId, speed });
+
+      // Article-level retry: if every model hit 429/timeout/transient error,
+      // wait a real cool-down (long enough for the per-minute quota to reset)
+      // and try once more before giving up. This is the difference between
+      // "14/20 rejected" and "20/20 succeeded" on free tiers.
+      let out, lastErr;
+      const ATTEMPTS = 3;
+      for (let attempt = 1; attempt <= ATTEMPTS; attempt++) {
+        try {
+          out = await generateAndPublish({ provider, apiKey, model, topic, templateId, speed });
+          break;
+        } catch (e) {
+          lastErr = e;
+          const msg = (e.message || '').toLowerCase();
+          // Don't retry permanent errors (bad key, quota exhausted for the day, validation).
+          const transient = e.status === 429 || e.status === 408 || e.status === 500 || e.status === 502 || e.status === 503 || e.status === 504
+            || /timeout|temporarily|rate[- ]?limit|too many|overloaded|empty|truncat|json|parse|بنية مقال|بدون أقسام|رجّع رد فارغ/i.test(msg);
+          if (!transient || attempt === ATTEMPTS) throw e;
+          const waitMs = 20000 * attempt; // 20s, 40s
+          console.warn(`[bulk-admin] article attempt ${attempt}/${ATTEMPTS} failed (${(e.message||'').slice(0,100)}), retrying in ${waitMs/1000}s…`);
+          await new Promise(rs => setTimeout(rs, waitMs));
+        }
+      }
       return jsonResponse(res, 200, { article: out });
     } catch (e) {
       const topicTitle = parsedBody?.topic?.title || '(no topic)';
