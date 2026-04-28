@@ -525,7 +525,29 @@
   const SITE_URL = location.origin;
 
   let token = sessionStorage.getItem('bulkAdminToken') || '';
-  let topics = [];
+  // Persist discovered topics across page refreshes — losing them after every
+  // refresh was the user's #1 frustration with the discovery flow.
+  const TOPICS_LS_KEY = 'bulkAdminTopics_v1';
+  let topics = (function loadSavedTopics(){
+    try {
+      const raw = localStorage.getItem(TOPICS_LS_KEY);
+      const arr = raw ? JSON.parse(raw) : [];
+      return Array.isArray(arr) ? arr : [];
+    } catch(_) { return []; }
+  })();
+  function saveTopics(){
+    try {
+      // Strip transient UI-only fields (thumbnail blobs, loading flags) to keep storage small.
+      const slim = topics.map(t => ({
+        title: t.title || '',
+        category: t.category || '',
+        keywords: t.keywords || '',
+        image_query: t.image_query || '',
+        video_query: t.video_query || '',
+      }));
+      localStorage.setItem(TOPICS_LS_KEY, JSON.stringify(slim));
+    } catch(_) { /* quota/private mode — silently ignore */ }
+  }
   let results = [];
   let stopRequested = false;
   let timerInterval = null;
@@ -647,6 +669,8 @@
     });
 
     loadModels();
+    // Restore any topic list that was discovered/edited in a previous session.
+    if (topics.length > 0) renderTopics();
   }
 
   function showGate(){
@@ -866,15 +890,17 @@
       inp.addEventListener('input', e => {
         const i = +e.target.dataset.i, f = e.target.dataset.f;
         topics[i][f] = e.target.value;
+        saveTopics();
       });
     });
     list.querySelectorAll('[data-del]').forEach(btn => {
-      btn.onclick = () => { topics.splice(+btn.dataset.del, 1); renderTopics(); };
+      btn.onclick = () => { topics.splice(+btn.dataset.del, 1); saveTopics(); renderTopics(); };
     });
     $('topicCount').textContent = topics.length + ' موضوع';
     $('generateBtn').disabled = topics.length === 0;
     const previewBtn = $('previewMediaBtn');
     if (previewBtn) previewBtn.disabled = topics.length === 0;
+    saveTopics();
   }
 
   function escapeAttr(s){ return String(s||'').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
@@ -910,7 +936,7 @@
     topics.push({ title:'', category: $('category').value || 'ثقافة', keywords:'' });
     renderTopics();
   });
-  $('clearTopicsBtn')?.addEventListener('click', () => { if (confirm('حذف كل المواضيع؟')) { topics=[]; renderTopics(); } });
+  $('clearTopicsBtn')?.addEventListener('click', () => { if (confirm('حذف كل المواضيع؟')) { topics=[]; saveTopics(); renderTopics(); } });
 
   // ── Preview media (Pexels image + video thumbnails per topic) ──
   $('previewMediaBtn')?.addEventListener('click', async () => {

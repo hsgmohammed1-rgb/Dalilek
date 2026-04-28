@@ -1350,7 +1350,9 @@ async function handle(req, res) {
   // Called by an external scheduler (cron-job.org, GitHub Actions, etc).
   // Responds within 1s with {started:true} and runs the batch in the
   // background so we never trip the scheduler's 30s timeout.
-  if (urlPath === '/api/cron/generate-batch' && req.method === 'POST') {
+  // Accepts both GET and POST: cron-job.org defaults to GET, and the user
+  // can also click the URL in a browser to manually verify it works.
+  if (urlPath === '/api/cron/generate-batch' && (req.method === 'POST' || req.method === 'GET')) {
     const cfg = loadCronConfig();
     const qs = req.url.includes('?') ? req.url.slice(req.url.indexOf('?') + 1) : '';
     const keyMatch = qs.match(/(?:^|&)key=([^&]*)/);
@@ -1568,7 +1570,7 @@ async function handle(req, res) {
   if (urlPath === '/api/bulk-admin/cron-config' && req.method === 'GET') {
     const cfg = loadCronConfig();
     const log = loadCronLog();
-    const baseUrl = (process.env.SITE_URL || `http://localhost:5000`).replace(/\/+$/, '');
+    const baseUrl = getPublicBaseUrl(req);
     return jsonResponse(res, 200, {
       config: { ...cfg, apiKey: maskApiKey(cfg.apiKey), hasApiKey: !!cfg.apiKey },
       cronUrl: `${baseUrl}/api/cron/generate-batch?key=${cfg.secret}`,
@@ -1602,7 +1604,7 @@ async function handle(req, res) {
     const cfg = loadCronConfig();
     cfg.secret = crypto.randomBytes(24).toString('hex');
     saveCronConfig(cfg);
-    const baseUrl = (process.env.SITE_URL || `http://localhost:5000`).replace(/\/+$/, '');
+    const baseUrl = getPublicBaseUrl(req);
     return jsonResponse(res, 200, { secret: cfg.secret, cronUrl: `${baseUrl}/api/cron/generate-batch?key=${cfg.secret}` });
   }
 
@@ -1679,6 +1681,30 @@ function publicConfig() {
     supabaseUrl: SUPABASE_URL || '',
     allowedEmail: ALLOWED_EMAIL,
   };
+}
+
+// Build the public-facing base URL for cron links and similar.
+// Priority: SITE_URL → REPLIT_DOMAINS → REPLIT_DEV_DOMAIN → request Host header → localhost.
+// Without this, the cron URL would point to localhost:5000 (useless to an external scheduler).
+function getPublicBaseUrl(req) {
+  const env = process.env;
+  if (env.SITE_URL && /^https?:\/\//i.test(env.SITE_URL)) {
+    return env.SITE_URL.replace(/\/+$/, '');
+  }
+  if (env.REPLIT_DOMAINS) {
+    const dom = env.REPLIT_DOMAINS.split(',')[0].trim();
+    if (dom) return 'https://' + dom;
+  }
+  if (env.REPLIT_DEV_DOMAIN) {
+    return 'https://' + env.REPLIT_DEV_DOMAIN;
+  }
+  if (req && req.headers && req.headers.host) {
+    const host = req.headers.host;
+    const proto = req.headers['x-forwarded-proto']
+      || (host.includes('localhost') || host.startsWith('127.') ? 'http' : 'https');
+    return `${proto}://${host}`;
+  }
+  return 'http://localhost:5000';
 }
 
 module.exports = { handle, FREE_MODELS, publicConfig };
