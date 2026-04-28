@@ -696,6 +696,13 @@ const appHandler = async (req, res) => {
     return bulkAdmin.handle(req, res);
   }
 
+  // ── Admin operations that bypass Supabase RLS (delete/update articles) ─────
+  // Auth happens inside via the user's Supabase access_token.
+  if (urlPath.startsWith('/api/admin/')) {
+    req.app = { refreshSeoFromSupabase };
+    return bulkAdmin.handle(req, res);
+  }
+
   // ── SEO Webhook endpoint ────────────────────────────────────────────────────
   if (urlPath === '/api/seo-webhook' && req.method === 'POST') {
     handleSeoWebhook(req, res);

@@ -70,4 +70,80 @@
   } else {
     start();
   }
+
+  // ── Article-delete interceptor ───────────────────────────────────────────
+  // The admin SPA calls Supabase REST directly with the user's session JWT,
+  // which fails on DELETE because RLS policies block anon-key writes. We
+  // intercept those fetches and reroute them to our server endpoint, which
+  // verifies the user and then deletes via the Supabase service role key.
+  function isJwt(s){ return typeof s==='string' && s.length > 40 && s.split('.').length === 3 && s.startsWith('eyJ'); }
+
+  function findAccessToken(){
+    try {
+      var keys = Object.keys(localStorage);
+      for (var i = 0; i < keys.length; i++) {
+        var raw = localStorage.getItem(keys[i]);
+        if (!raw) continue;
+        try {
+          var p = JSON.parse(raw);
+          if (p && p.access_token && isJwt(p.access_token)) return p.access_token;
+          if (p && p.currentSession && isJwt(p.currentSession.access_token)) return p.currentSession.access_token;
+          if (p && p.session && isJwt(p.session.access_token)) return p.session.access_token;
+          if (p && typeof p === 'object') {
+            for (var k in p) {
+              var v = p[k];
+              if (v && typeof v === 'object' && isJwt(v.access_token)) return v.access_token;
+            }
+          }
+        } catch(e){}
+      }
+    } catch(e){}
+    return null;
+  }
+
+  // Match: /rest/v1/articles?id=eq.123 OR /rest/v1/articles?and=...id.eq.123...
+  function extractArticleId(url){
+    try {
+      var m = url.match(/\/rest\/v1\/articles\?(.+)$/);
+      if (!m) return null;
+      var qs = m[1];
+      // Standard: id=eq.123
+      var idMatch = qs.match(/(?:^|&)id=eq\.([^&]+)/);
+      if (idMatch) return decodeURIComponent(idMatch[1]);
+      // Postgrest "and=(id.eq.123,...)" form
+      var andMatch = qs.match(/id\.eq\.([^,)&]+)/);
+      if (andMatch) return decodeURIComponent(andMatch[1]);
+      return null;
+    } catch(e){ return null; }
+  }
+
+  var origFetch = window.fetch.bind(window);
+  window.fetch = function(input, init){
+    try {
+      var url = typeof input === 'string' ? input : (input && input.url) || '';
+      var method = ((init && init.method) || (input && input.method) || 'GET').toUpperCase();
+      if (method === 'DELETE' && /\/rest\/v1\/articles\?/.test(url)) {
+        var id = extractArticleId(url);
+        var token = findAccessToken();
+        if (id && token) {
+          return origFetch('/api/admin/articles/delete', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ accessToken: token, id: id })
+          }).then(function(r){
+            if (r.ok) {
+              // Mimic Supabase 204 No Content so the SPA's success branch fires.
+              return new Response(null, { status: 204, statusText: 'No Content' });
+            }
+            return r.json().catch(function(){ return { error: 'حذف فشل' }; }).then(function(j){
+              return new Response(JSON.stringify({ message: j.error || 'فشل الحذف', code: 'DELETE_FAILED' }), {
+                status: r.status, headers: { 'Content-Type': 'application/json' }
+              });
+            });
+          });
+        }
+      }
+    } catch(e){ /* fall through to original fetch */ }
+    return origFetch(input, init);
+  };
 })();

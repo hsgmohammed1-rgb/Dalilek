@@ -1363,6 +1363,52 @@ async function handle(req, res) {
     }
   }
 
+  // ── Admin: delete article (PUBLIC route — auth via accessToken inside) ───
+  // The admin SPA calls Supabase REST directly with the user's anon-key
+  // session, which fails on DELETE when RLS blocks writes. We verify the
+  // session belongs to ALLOWED_EMAIL then delete via the service role key.
+  if (urlPath === '/api/admin/articles/delete' && req.method === 'POST') {
+    try {
+      const body = JSON.parse((await readBody(req)) || '{}');
+      const accessToken = body.accessToken;
+      const id = body.id;
+      if (!accessToken) return jsonResponse(res, 400, { error: 'accessToken مطلوب' });
+      if (!id) return jsonResponse(res, 400, { error: 'id مطلوب' });
+
+      const user = await verifySupabaseUser(accessToken);
+      if (!user) return jsonResponse(res, 401, { error: 'جلسة غير صالحة' });
+      if (user.email !== ALLOWED_EMAIL) {
+        return jsonResponse(res, 403, { error: `الحذف محصور بالحساب ${ALLOWED_EMAIL}` });
+      }
+      if (!SUPABASE_URL || !SUPABASE_KEY) {
+        return jsonResponse(res, 500, { error: 'إعدادات Supabase ناقصة على الخادم' });
+      }
+      const host = SUPABASE_URL.replace('https://', '').split('/')[0];
+      const r = await httpsRequestJson({
+        hostname: host,
+        path: `/rest/v1/articles?id=eq.${encodeURIComponent(id)}`,
+        method: 'DELETE',
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_KEY,
+          'Prefer': 'return=representation',
+        },
+        timeout: 15000,
+      });
+      if (r.status >= 200 && r.status < 300) {
+        // Best-effort cache refresh so deleted articles disappear from /seo-data.json.
+        try {
+          const refresh = req.app && req.app.refreshSeoFromSupabase;
+          if (typeof refresh === 'function') refresh();
+        } catch (e) {}
+        return jsonResponse(res, 200, { ok: true, deleted: r.json });
+      }
+      return jsonResponse(res, r.status || 500, { error: r.body || 'فشل الحذف' });
+    } catch (e) {
+      return jsonResponse(res, 500, { error: e.message });
+    }
+  }
+
   if (!isAuthed(req)) return jsonResponse(res, 401, { error: 'انتهت الجلسة، أعد التحميل' });
 
   if (urlPath === '/api/bulk-admin/discover-topics' && req.method === 'POST') {
