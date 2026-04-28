@@ -690,6 +690,12 @@ const appHandler = async (req, res) => {
     return bulkAdmin.handle(req, res);
   }
 
+  // ── Public cron trigger (secret-protected, no session) ─────────────────────
+  if (urlPath.startsWith('/api/cron/')) {
+    req.app = { refreshSeoFromSupabase };
+    return bulkAdmin.handle(req, res);
+  }
+
   // ── SEO Webhook endpoint ────────────────────────────────────────────────────
   if (urlPath === '/api/seo-webhook' && req.method === 'POST') {
     handleSeoWebhook(req, res);

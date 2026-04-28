@@ -3,6 +3,10 @@
 .env.*
 !.env.example
 
+# Bulk-admin auto-generator state (contains secret + API key)
+.cron-config.json
+.cron-log.json
+
 # Node modules
 node_modules/
 npm-debug.log

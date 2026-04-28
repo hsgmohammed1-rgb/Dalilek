@@ -1130,9 +1130,204 @@ async function generateAndPublish({ provider = 'gemini', apiKey, model, topic, t
   };
 }
 
+// ── Auto-Generator (cron) ───────────────────────────────────────────────────
+// Persistent state lives in two JSON files (gitignored). They store the user's
+// settings + an API key so an external cron service (e.g. cron-job.org) can
+// trigger generation without a logged-in browser session.
+const fs = require('fs');
+const path = require('path');
+const CRON_CONFIG_PATH = path.join(__dirname, '.cron-config.json');
+const CRON_LOG_PATH = path.join(__dirname, '.cron-log.json');
+const CRON_LOG_MAX = 50;
+
+function defaultCronConfig() {
+  return {
+    enabled: false,
+    secret: crypto.randomBytes(24).toString('hex'),
+    provider: 'gemini',
+    model: 'gemini-2.5-flash',
+    apiKey: '',
+    speed: 'fast',
+    count: 5,
+    mode: 'auto',
+    category: '',
+    customSeed: '',
+    dailyLimit: 50,
+    todayDate: '',
+    todayCount: 0,
+    lastRunAt: 0,
+    lastRunStatus: '',
+  };
+}
+
+function loadCronConfig() {
+  try {
+    const raw = fs.readFileSync(CRON_CONFIG_PATH, 'utf-8');
+    const parsed = JSON.parse(raw);
+    return Object.assign(defaultCronConfig(), parsed);
+  } catch (e) {
+    const cfg = defaultCronConfig();
+    saveCronConfig(cfg);
+    return cfg;
+  }
+}
+
+function saveCronConfig(cfg) {
+  try {
+    fs.writeFileSync(CRON_CONFIG_PATH, JSON.stringify(cfg, null, 2), { mode: 0o600 });
+  } catch (e) {
+    console.error('[bulk-admin] saveCronConfig failed:', e.message);
+  }
+}
+
+function loadCronLog() {
+  try {
+    const raw = fs.readFileSync(CRON_LOG_PATH, 'utf-8');
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function appendCronLog(entry) {
+  const log = loadCronLog();
+  log.unshift(entry);
+  while (log.length > CRON_LOG_MAX) log.pop();
+  try {
+    fs.writeFileSync(CRON_LOG_PATH, JSON.stringify(log, null, 2));
+  } catch (e) {
+    console.error('[bulk-admin] appendCronLog failed:', e.message);
+  }
+}
+
+// Mask API key before sending config to the browser.
+function maskApiKey(k) {
+  if (!k) return '';
+  if (k.length <= 10) return '••••••';
+  return k.slice(0, 6) + '••••' + k.slice(-4);
+}
+
+// In-memory lock so two cron pings can't double-trigger a batch.
+let cronInFlight = false;
+
+// Core auto-generator: discovers topics, generates them sequentially, and logs
+// the result. Designed to be called either by the public cron endpoint or by
+// the admin "run-now" button. Returns a summary even on partial failure.
+async function runCronBatch({ trigger = 'cron' } = {}) {
+  if (cronInFlight) {
+    return { skipped: 'busy', message: 'دفعة سابقة لا تزال تُنفَّذ' };
+  }
+  cronInFlight = true;
+  const cfg = loadCronConfig();
+  const startedAt = Date.now();
+  const today = new Date().toISOString().slice(0, 10);
+
+  // Reset daily counter on date roll-over.
+  if (cfg.todayDate !== today) {
+    cfg.todayDate = today;
+    cfg.todayCount = 0;
+  }
+
+  try {
+    if (!cfg.apiKey) throw new Error('API key غير مضبوط في إعدادات التوليد التلقائي');
+    if (cfg.todayCount >= cfg.dailyLimit) {
+      const summary = { skipped: 'daily-limit', message: `تم بلوغ الحد اليومي (${cfg.dailyLimit})`, todayCount: cfg.todayCount };
+      cfg.lastRunAt = startedAt;
+      cfg.lastRunStatus = 'skipped: daily limit';
+      saveCronConfig(cfg);
+      appendCronLog({ startedAt, finishedAt: Date.now(), trigger, ...summary, articles: [], errors: [] });
+      return summary;
+    }
+
+    const remaining = cfg.dailyLimit - cfg.todayCount;
+    const count = Math.max(1, Math.min(cfg.count, remaining));
+
+    // 1) Discover topics, excluding the last 100 articles.
+    const recent = await fetchRecentArticles(100);
+    const excludeTitles = recent.map(a => a.title).filter(Boolean);
+    const disc = await discoverTopics({
+      provider: cfg.provider, apiKey: cfg.apiKey, model: cfg.model,
+      count, mode: cfg.mode || 'auto', category: cfg.category || '',
+      customSeed: cfg.customSeed || '', excludeTitles,
+    });
+    const topics = disc.topics || [];
+    if (topics.length === 0) throw new Error('لم يتم اكتشاف أي مواضيع');
+
+    // 2) Generate sequentially. Sequential is intentional here: we're running
+    // unattended in the background, so reliability beats raw speed.
+    const articles = [];
+    const errors = [];
+    for (const topic of topics) {
+      try {
+        const out = await generateAndPublish({
+          provider: cfg.provider, apiKey: cfg.apiKey, model: cfg.model,
+          topic, speed: cfg.speed || 'fast',
+        });
+        articles.push({ title: out.title, slug: out.slug, url: out.url, translations_ok: out.translations_ok });
+        cfg.todayCount += 1;
+      } catch (e) {
+        errors.push(`${topic.title}: ${e.message}`);
+      }
+    }
+
+    const finishedAt = Date.now();
+    const summary = {
+      ok: true, trigger,
+      startedAt, finishedAt, durationMs: finishedAt - startedAt,
+      requested: count, succeeded: articles.length, failed: errors.length,
+      todayCount: cfg.todayCount, dailyLimit: cfg.dailyLimit,
+      modelUsed: disc.modelUsed, articles, errors,
+    };
+    cfg.lastRunAt = startedAt;
+    cfg.lastRunStatus = `${articles.length}/${count} نجح`;
+    saveCronConfig(cfg);
+    appendCronLog(summary);
+    return summary;
+  } catch (e) {
+    const finishedAt = Date.now();
+    const summary = {
+      ok: false, trigger, startedAt, finishedAt, durationMs: finishedAt - startedAt,
+      error: e.message, articles: [], errors: [e.message],
+    };
+    cfg.lastRunAt = startedAt;
+    cfg.lastRunStatus = 'فشل: ' + e.message.slice(0, 80);
+    saveCronConfig(cfg);
+    appendCronLog(summary);
+    return summary;
+  } finally {
+    cronInFlight = false;
+  }
+}
+
 // ── HTTP router ─────────────────────────────────────────────────────────────
 async function handle(req, res) {
   const urlPath = req.url.split('?')[0];
+
+  // ── PUBLIC cron trigger (no session, secret-protected) ───────────────────
+  // Called by an external scheduler (cron-job.org, GitHub Actions, etc).
+  // Responds within 1s with {started:true} and runs the batch in the
+  // background so we never trip the scheduler's 30s timeout.
+  if (urlPath === '/api/cron/generate-batch' && req.method === 'POST') {
+    const cfg = loadCronConfig();
+    const qs = req.url.includes('?') ? req.url.slice(req.url.indexOf('?') + 1) : '';
+    const keyMatch = qs.match(/(?:^|&)key=([^&]*)/);
+    const provided = keyMatch ? decodeURIComponent(keyMatch[1]) : (req.headers['x-cron-key'] || '');
+    if (!provided || provided !== cfg.secret) {
+      return jsonResponse(res, 401, { error: 'invalid key' });
+    }
+    if (!cfg.enabled) {
+      return jsonResponse(res, 200, { skipped: 'disabled', message: 'التوليد التلقائي موقوف' });
+    }
+    if (cronInFlight) {
+      return jsonResponse(res, 200, { skipped: 'busy', message: 'دفعة سابقة لا تزال تُنفَّذ' });
+    }
+    // Fire and forget. Log result via appendCronLog inside runCronBatch.
+    runCronBatch({ trigger: 'cron' }).catch(e => {
+      console.error('[bulk-admin] runCronBatch background error:', e.message);
+    });
+    return jsonResponse(res, 200, { started: true, message: 'تم بدء الدفعة في الخلفية' });
+  }
 
   if (urlPath === '/api/bulk-admin/models' && req.method === 'GET') {
     const profiles = Object.fromEntries(Object.entries(SPEED_PROFILES).map(([k, v]) => [k, {
@@ -1253,6 +1448,60 @@ async function handle(req, res) {
       console.error('[bulk-admin] preview-media failed:', e.message);
       return jsonResponse(res, 500, { error: e.message });
     }
+  }
+
+  // ── Auto-generator admin routes ──────────────────────────────────────────
+  if (urlPath === '/api/bulk-admin/cron-config' && req.method === 'GET') {
+    const cfg = loadCronConfig();
+    const log = loadCronLog();
+    const baseUrl = (process.env.SITE_URL || `http://localhost:5000`).replace(/\/+$/, '');
+    return jsonResponse(res, 200, {
+      config: { ...cfg, apiKey: maskApiKey(cfg.apiKey), hasApiKey: !!cfg.apiKey },
+      cronUrl: `${baseUrl}/api/cron/generate-batch?key=${cfg.secret}`,
+      log,
+      inFlight: cronInFlight,
+    });
+  }
+
+  if (urlPath === '/api/bulk-admin/cron-config' && req.method === 'POST') {
+    try {
+      const body = JSON.parse((await readBody(req)) || '{}');
+      const cfg = loadCronConfig();
+      // Whitelist updatable fields. Only overwrite apiKey when a non-empty
+      // new value is provided (so saving without re-typing keeps the old one).
+      const allowed = ['enabled', 'provider', 'model', 'speed', 'count', 'mode', 'category', 'customSeed', 'dailyLimit'];
+      for (const k of allowed) if (k in body) cfg[k] = body[k];
+      if (typeof body.apiKey === 'string' && body.apiKey.trim() && !body.apiKey.includes('•')) {
+        cfg.apiKey = body.apiKey.trim();
+      }
+      // Coerce numerics + clamp to sane ranges.
+      cfg.count = Math.max(1, Math.min(20, parseInt(cfg.count, 10) || 5));
+      cfg.dailyLimit = Math.max(1, Math.min(500, parseInt(cfg.dailyLimit, 10) || 50));
+      saveCronConfig(cfg);
+      return jsonResponse(res, 200, { ok: true, config: { ...cfg, apiKey: maskApiKey(cfg.apiKey), hasApiKey: !!cfg.apiKey } });
+    } catch (e) {
+      return jsonResponse(res, 500, { error: e.message });
+    }
+  }
+
+  if (urlPath === '/api/bulk-admin/cron-regenerate-secret' && req.method === 'POST') {
+    const cfg = loadCronConfig();
+    cfg.secret = crypto.randomBytes(24).toString('hex');
+    saveCronConfig(cfg);
+    const baseUrl = (process.env.SITE_URL || `http://localhost:5000`).replace(/\/+$/, '');
+    return jsonResponse(res, 200, { secret: cfg.secret, cronUrl: `${baseUrl}/api/cron/generate-batch?key=${cfg.secret}` });
+  }
+
+  if (urlPath === '/api/bulk-admin/cron-run-now' && req.method === 'POST') {
+    const cfg = loadCronConfig();
+    if (!cfg.apiKey) return jsonResponse(res, 400, { error: 'API key غير مضبوط' });
+    if (cronInFlight) return jsonResponse(res, 200, { skipped: 'busy', message: 'دفعة قيد التنفيذ' });
+    runCronBatch({ trigger: 'manual' }).catch(e => console.error('[bulk-admin] manual run error:', e.message));
+    return jsonResponse(res, 200, { started: true });
+  }
+
+  if (urlPath === '/api/bulk-admin/cron-status' && req.method === 'GET') {
+    return jsonResponse(res, 200, { inFlight: cronInFlight, log: loadCronLog().slice(0, 10) });
   }
 
   if (urlPath === '/api/bulk-admin/refresh-cache' && req.method === 'POST') {

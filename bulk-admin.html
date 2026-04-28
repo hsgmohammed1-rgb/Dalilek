@@ -365,6 +365,135 @@
   <div id="urlList" class="url-list" style="margin-top:14px"></div>
 </div>
 
+<!-- Auto-Generator (cron) -->
+<div class="card" id="cronCard">
+  <div class="card-head">
+    <div class="card-num">🤖</div>
+    <h3>التوليد التلقائي 24/7 (مجدوِل خارجي)</h3>
+  </div>
+  <p class="desc">اضبط الإعدادات هنا، انسخ رابط الـ Cron، وسجّله في خدمة مجدولة مجانية مثل <a href="https://cron-job.org" target="_blank" rel="noopener" style="color:var(--brand-2)">cron-job.org</a>. ستستدعي الخدمة الرابط كل بضع ساعات وستولّد المقالات تلقائياً دون أن تفتح الموقع.</p>
+
+  <div class="row cols-2">
+    <div>
+      <label>الحالة</label>
+      <div class="row-actions" style="margin:0">
+        <button class="btn-success" id="cronEnableBtn">تفعيل</button>
+        <button class="btn-danger hidden" id="cronDisableBtn">إيقاف</button>
+        <span id="cronStatusBadge" class="stat-pill" style="align-self:center">⏸ موقوف</span>
+      </div>
+    </div>
+    <div>
+      <label>API Key للتوليد التلقائي <span class="small">(يُحفظ مشفراً على الخادم)</span></label>
+      <input type="text" id="cronApiKey" placeholder="الصق المفتاح هنا — يبقى محفوظاً دائماً" />
+    </div>
+  </div>
+
+  <div class="row cols-3" style="margin-top:14px">
+    <div>
+      <label>المزوّد</label>
+      <select id="cronProvider"></select>
+    </div>
+    <div>
+      <label>النموذج</label>
+      <select id="cronModel"></select>
+    </div>
+    <div>
+      <label>وضع السرعة</label>
+      <select id="cronSpeed">
+        <option value="fast">⚡ سريع (موصى به للجدولة)</option>
+        <option value="medium">⚖️ متوسط</option>
+        <option value="thorough">💎 الأفضل</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row cols-3" style="margin-top:14px">
+    <div>
+      <label>عدد المقالات لكل دفعة</label>
+      <select id="cronCount">
+        <option value="3">3 مقالات</option>
+        <option value="5" selected>5 مقالات (موصى به)</option>
+        <option value="8">8 مقالات</option>
+        <option value="10">10 مقالات</option>
+        <option value="15">15 مقال</option>
+        <option value="20">20 مقال</option>
+      </select>
+    </div>
+    <div>
+      <label>الحد الأقصى يومياً</label>
+      <select id="cronDailyLimit">
+        <option value="20">20 مقال/يوم</option>
+        <option value="30">30 مقال/يوم</option>
+        <option value="50" selected>50 مقال/يوم</option>
+        <option value="100">100 مقال/يوم</option>
+        <option value="200">200 مقال/يوم</option>
+      </select>
+    </div>
+    <div>
+      <label>وضع اكتشاف المواضيع</label>
+      <select id="cronMode">
+        <option value="auto" selected>🤖 ذكي تلقائي</option>
+        <option value="trending">🔥 الأكثر رواجاً</option>
+        <option value="category">📂 فئة محددة</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="cronCategoryWrap" class="hidden" style="margin-top:14px">
+    <label>الفئة (لوضع "فئة محددة" فقط)</label>
+    <select id="cronCategory">
+      <option value="تكنولوجيا">تكنولوجيا</option>
+      <option value="صحة">صحة</option>
+      <option value="مال وأعمال">مال وأعمال</option>
+      <option value="تطوير ذات">تطوير ذات</option>
+      <option value="ثقافة">ثقافة</option>
+      <option value="علوم">علوم</option>
+      <option value="أسلوب حياة">أسلوب حياة</option>
+      <option value="طعام">طعام</option>
+      <option value="رياضة">رياضة</option>
+      <option value="تعليم">تعليم</option>
+      <option value="سفر">سفر</option>
+      <option value="ترفيه">ترفيه</option>
+    </select>
+  </div>
+
+  <div class="row-actions" style="margin-top:18px">
+    <button class="btn-primary" id="cronSaveBtn">💾 حفظ الإعدادات</button>
+    <button class="btn-success" id="cronRunNowBtn">▶ اختبار الآن (دفعة واحدة)</button>
+    <button class="btn-secondary" id="cronRefreshBtn">🔄 تحديث السجل</button>
+  </div>
+
+  <div style="margin-top:22px;padding:16px;background:var(--panel-3);border:1px solid var(--border);border-radius:11px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <b>🔗 رابط الـ Cron (انسخه إلى خدمة الجدولة)</b>
+      <button class="btn-secondary" id="cronRegenBtn" style="padding:6px 10px;font-size:12px">🔄 إعادة توليد السر</button>
+    </div>
+    <div style="display:flex;gap:8px">
+      <input type="text" id="cronUrlBox" readonly style="font-family:monospace;font-size:12px;direction:ltr" />
+      <button class="btn-primary" id="cronCopyUrlBtn" style="padding:8px 14px">📋 نسخ</button>
+    </div>
+    <div class="small" style="margin-top:10px;line-height:1.7">
+      <b>طريقة الاستخدام (مجاني تماماً):</b><br>
+      1. سجّل حساب مجاني في <a href="https://cron-job.org/signup" target="_blank" rel="noopener" style="color:var(--brand-2)">cron-job.org</a><br>
+      2. اضغط "Create cronjob" → الصق الرابط أعلاه في حقل URL<br>
+      3. اختر طريقة الطلب: <code>POST</code><br>
+      4. الجدول الزمني: مثلاً كل 4 ساعات → <code>0 *​/4 * * *</code><br>
+      5. احفظ. سيستدعي cron-job.org الرابط تلقائياً وسيولّد دفعة جديدة كل مرة.
+    </div>
+  </div>
+
+  <div style="margin-top:22px">
+    <h4 style="margin:0 0 10px;color:var(--text)">📊 آخر 10 دفعات</h4>
+    <div id="cronLogList" class="url-list"></div>
+  </div>
+
+  <div class="row" style="margin-top:14px">
+    <div class="stat-pill">اليوم: <b id="cronTodayCount">0</b> / <b id="cronTodayLimit">50</b></div>
+    <div class="stat-pill">آخر تشغيل: <b id="cronLastRun">—</b></div>
+    <div class="stat-pill">الحالة: <b id="cronLastStatus">—</b></div>
+  </div>
+</div>
+
 </main>
 </div>
 
@@ -565,6 +694,14 @@
       },
       body: JSON.stringify(body || {})
     });
+    const j = await r.json().catch(() => ({}));
+    if (r.status === 401) { showGate(); throw new Error('انتهت الجلسة'); }
+    if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
+    return j;
+  }
+
+  async function apiGet(path){
+    const r = await fetch(path, { headers:{ 'X-Bulk-Admin-Token': token } });
     const j = await r.json().catch(() => ({}));
     if (r.status === 401) { showGate(); throw new Error('انتهت الجلسة'); }
     if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
@@ -950,6 +1087,196 @@
     } catch(e) { toast(e.message, 'error'); }
     $('refreshSeoBtn').disabled = false;
   });
+
+  // ── Auto-Generator (cron) controls ───────────────────────────────────────
+  let cronCfg = null;
+
+  function fmtTimeAgo(ts){
+    if (!ts) return '—';
+    const sec = Math.floor((Date.now() - ts) / 1000);
+    if (sec < 60) return `قبل ${sec} ثانية`;
+    if (sec < 3600) return `قبل ${Math.floor(sec/60)} دقيقة`;
+    if (sec < 86400) return `قبل ${Math.floor(sec/3600)} ساعة`;
+    return `قبل ${Math.floor(sec/86400)} يوم`;
+  }
+
+  function populateCronProviders(){
+    const sel = $('cronProvider');
+    sel.innerHTML = '';
+    Object.values(providers).forEach(p => {
+      const opt = document.createElement('option');
+      opt.value = p.id; opt.textContent = p.label;
+      sel.appendChild(opt);
+    });
+  }
+
+  function populateCronModels(providerId){
+    const sel = $('cronModel');
+    sel.innerHTML = '';
+    const p = providers[providerId];
+    if (!p) return;
+    p.models.forEach(m => {
+      const opt = document.createElement('option');
+      opt.value = m.id; opt.textContent = m.label;
+      sel.appendChild(opt);
+    });
+  }
+
+  function renderCronLog(log){
+    const wrap = $('cronLogList');
+    if (!log || log.length === 0) { wrap.innerHTML = '<div class="small" style="padding:12px;text-align:center">لا توجد دفعات بعد. جرّب "اختبار الآن" لتشغيل الدفعة الأولى.</div>'; return; }
+    wrap.innerHTML = log.map(e => {
+      const when = new Date(e.startedAt).toLocaleString('ar-EG', { dateStyle:'short', timeStyle:'short' });
+      const dur = e.durationMs ? Math.round(e.durationMs/1000) + 's' : '—';
+      const trig = e.trigger === 'manual' ? '👆 يدوي' : '🤖 تلقائي';
+      let body = '';
+      if (e.skipped) {
+        body = `<span style="color:var(--muted)">تخطّي: ${e.message || e.skipped}</span>`;
+      } else if (e.ok === false || e.error) {
+        body = `<span style="color:#ef4444">فشل: ${e.error || ''}</span>`;
+      } else {
+        body = `<span style="color:#10b981">✓ ${e.succeeded||0}/${e.requested||0} نجح</span>`;
+        if (e.failed) body += ` <span style="color:#f59e0b">| ${e.failed} فشل</span>`;
+      }
+      return `<div style="padding:10px 12px;background:var(--panel-3);border:1px solid var(--border);border-radius:8px;margin-bottom:6px">
+        <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+          <div><b>${trig}</b> · ${when} · <span class="small">${dur}</span></div>
+          <div>${body}</div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function renderCronCard(data){
+    cronCfg = data.config;
+    const c = data.config;
+    $('cronApiKey').value = '';
+    $('cronApiKey').placeholder = c.hasApiKey ? `محفوظ: ${c.apiKey} (اتركه فارغاً للإبقاء عليه)` : 'الصق المفتاح هنا — يبقى محفوظاً دائماً';
+    populateCronProviders();
+    $('cronProvider').value = c.provider || 'gemini';
+    populateCronModels($('cronProvider').value);
+    $('cronModel').value = c.model || providers[c.provider]?.models[0]?.id || '';
+    $('cronSpeed').value = c.speed || 'fast';
+    $('cronCount').value = String(c.count || 5);
+    $('cronDailyLimit').value = String(c.dailyLimit || 50);
+    $('cronMode').value = c.mode || 'auto';
+    if (c.category) $('cronCategory').value = c.category;
+    $('cronCategoryWrap').classList.toggle('hidden', c.mode !== 'category');
+    $('cronUrlBox').value = data.cronUrl || '';
+
+    const enabled = !!c.enabled;
+    $('cronEnableBtn').classList.toggle('hidden', enabled);
+    $('cronDisableBtn').classList.toggle('hidden', !enabled);
+    $('cronStatusBadge').textContent = enabled ? '✅ مفعّل' : '⏸ موقوف';
+    $('cronStatusBadge').style.color = enabled ? '#10b981' : 'var(--muted)';
+
+    $('cronTodayCount').textContent = c.todayCount || 0;
+    $('cronTodayLimit').textContent = c.dailyLimit || 50;
+    $('cronLastRun').textContent = fmtTimeAgo(c.lastRunAt);
+    $('cronLastStatus').textContent = c.lastRunStatus || '—';
+
+    renderCronLog(data.log || []);
+  }
+
+  async function loadCronCard(){
+    try {
+      const data = await apiGet('/api/bulk-admin/cron-config');
+      renderCronCard(data);
+    } catch(e) { console.warn('loadCronCard failed:', e.message); }
+  }
+
+  function gatherCronForm(){
+    return {
+      provider: $('cronProvider').value,
+      model: $('cronModel').value,
+      apiKey: $('cronApiKey').value.trim(),  // empty → server keeps existing
+      speed: $('cronSpeed').value,
+      count: parseInt($('cronCount').value, 10),
+      dailyLimit: parseInt($('cronDailyLimit').value, 10),
+      mode: $('cronMode').value,
+      category: $('cronCategory').value,
+    };
+  }
+
+  $('cronProvider').addEventListener('change', () => {
+    populateCronModels($('cronProvider').value);
+  });
+  $('cronMode').addEventListener('change', () => {
+    $('cronCategoryWrap').classList.toggle('hidden', $('cronMode').value !== 'category');
+  });
+
+  $('cronSaveBtn').addEventListener('click', async () => {
+    const btn = $('cronSaveBtn');
+    btn.disabled = true; btn.textContent = '⏳ يحفظ...';
+    try {
+      await api('/api/bulk-admin/cron-config', gatherCronForm());
+      toast('تم حفظ الإعدادات', 'success');
+      await loadCronCard();
+    } catch(e) { toast(e.message, 'error'); }
+    btn.disabled = false; btn.textContent = '💾 حفظ الإعدادات';
+  });
+
+  async function setCronEnabled(enabled){
+    try {
+      // First save the form so the API key + settings are persisted before enabling.
+      await api('/api/bulk-admin/cron-config', { ...gatherCronForm(), enabled });
+      toast(enabled ? 'تم تفعيل التوليد التلقائي' : 'تم إيقاف التوليد التلقائي', 'success');
+      await loadCronCard();
+    } catch(e) { toast(e.message, 'error'); }
+  }
+  $('cronEnableBtn').addEventListener('click', () => setCronEnabled(true));
+  $('cronDisableBtn').addEventListener('click', () => setCronEnabled(false));
+
+  $('cronRunNowBtn').addEventListener('click', async () => {
+    const btn = $('cronRunNowBtn');
+    btn.disabled = true; btn.textContent = '⏳ تشغيل...';
+    try {
+      // Save first so manual run uses the latest settings.
+      await api('/api/bulk-admin/cron-config', gatherCronForm());
+      const r = await api('/api/bulk-admin/cron-run-now', {});
+      if (r.skipped) { toast(r.message || 'تم التخطي', 'info'); }
+      else {
+        toast('بدأت الدفعة في الخلفية. حدّث السجل بعد دقائق لرؤية النتيجة.', 'success');
+        // Auto-refresh log every 10s for 2 minutes.
+        let ticks = 0;
+        const iv = setInterval(async () => {
+          ticks++;
+          try { await loadCronCard(); } catch(e){}
+          if (ticks >= 12) clearInterval(iv);
+        }, 10000);
+      }
+    } catch(e) { toast(e.message, 'error'); }
+    btn.disabled = false; btn.textContent = '▶ اختبار الآن (دفعة واحدة)';
+  });
+
+  $('cronRefreshBtn').addEventListener('click', async () => {
+    await loadCronCard();
+    toast('تم التحديث', 'success');
+  });
+
+  $('cronCopyUrlBtn').addEventListener('click', async () => {
+    const url = $('cronUrlBox').value;
+    if (!url) return;
+    try { await navigator.clipboard.writeText(url); toast('تم نسخ الرابط', 'success'); }
+    catch(e) { $('cronUrlBox').select(); document.execCommand('copy'); toast('تم النسخ', 'success'); }
+  });
+
+  $('cronRegenBtn').addEventListener('click', async () => {
+    if (!confirm('سيتم تغيير الرابط القديم وإبطاله. هل أنت متأكد؟')) return;
+    try {
+      const r = await api('/api/bulk-admin/cron-regenerate-secret', {});
+      $('cronUrlBox').value = r.cronUrl || '';
+      toast('تم توليد سر جديد. حدّث الرابط في خدمة الجدولة.', 'success');
+    } catch(e) { toast(e.message, 'error'); }
+  });
+
+  // Hook into the existing post-login flow: load cron card whenever models load.
+  const _origLoadModels = loadModels;
+  loadModels = async function(){
+    await _origLoadModels.apply(this, arguments);
+    // Wait for providers to populate, then render the cron card.
+    if (Object.keys(providers).length) loadCronCard();
+  };
 })();
 </script>
 </body>
