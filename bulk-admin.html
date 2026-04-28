@@ -494,6 +494,36 @@
   </div>
 </div>
 
+<div class="card" id="indexnow-card" style="margin-top:24px">
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+    <span style="font-size:24px">🚀</span>
+    <h3>الفهرسة الفورية في محركات البحث (IndexNow)</h3>
+  </div>
+  <p class="desc">كل مقال جديد يُنشر تلقائياً يُرسَل فوراً إلى Bing وYandex وDuckDuckGo وSeznam وNaver عبر بروتوكول IndexNow. هذا يُسرّع الفهرسة من أسابيع إلى ساعات. لإعادة إرسال جميع المقالات الموجودة دفعة واحدة (مفيد بعد إصلاح مشاكل الـ SEO أو لإعادة فهرسة الموقع كاملاً)، اضغط الزر أدناه.</p>
+
+  <div style="margin-top:14px;padding:14px;background:var(--panel-3);border:1px solid var(--border);border-radius:11px">
+    <div class="small" style="line-height:1.8">
+      <b>🔑 مفتاح IndexNow:</b> <code id="indexnowKeyBox" style="direction:ltr">—</code><br>
+      <b>📄 رابط التحقق من الملكية:</b> <a id="indexnowKeyUrl" target="_blank" rel="noopener" style="color:var(--brand-2);direction:ltr;display:inline-block">—</a><br>
+      <b>📚 عدد المقالات في الكاش:</b> <b id="indexnowArticleCount">—</b> · <b>🌐 إجمالي الروابط عند إعادة الإرسال:</b> <b id="indexnowTotalUrls">—</b>
+    </div>
+  </div>
+
+  <div class="row-actions" style="margin-top:16px">
+    <button class="btn-primary" id="indexnowResubmitBtn">📤 إعادة إرسال جميع الروابط الآن</button>
+    <button class="btn-secondary" id="indexnowRefreshBtn">🔄 تحديث الإحصائيات</button>
+  </div>
+
+  <div id="indexnowResultBox" class="hidden" style="margin-top:16px;padding:14px;background:var(--panel-3);border:1px solid var(--border);border-radius:11px;font-family:monospace;font-size:13px;direction:ltr"></div>
+
+  <div class="small" style="margin-top:14px;line-height:1.7;padding:12px;background:rgba(99,102,241,.08);border-right:3px solid var(--brand-2);border-radius:8px">
+    <b>💡 ملاحظات مهمة:</b><br>
+    • IndexNow لا يضمن الفهرسة، لكنه يُخبر محركات البحث فوراً بوجود محتوى جديد فيقوموا بزيارته بسرعة بدلاً من الانتظار.<br>
+    • يعمل مع Bing وYandex وDuckDuckGo وSeznam وNaver. <b>Google لا يدعم IndexNow رسمياً</b> — لكن لديه طرق أخرى مذكورة أدناه.<br>
+    • للحصول على فهرسة Google السريعة: في Google Search Console → "فحص عنوان URL" → الصق الرابط → اضغط "طلب الفهرسة". مع نشر مقالات جديدة باستمرار وروابط داخلية، Google سيكتشف باقي الموقع تلقائياً.
+  </div>
+</div>
+
 </main>
 </div>
 
@@ -1270,12 +1300,50 @@
     } catch(e) { toast(e.message, 'error'); }
   });
 
+  // ── IndexNow card ──────────────────────────────────────────────────────────
+  async function loadIndexNowCard() {
+    try {
+      const r = await apiGet('/api/bulk-admin/indexnow-status');
+      $('indexnowKeyBox').textContent = r.key || '—';
+      const a = $('indexnowKeyUrl');
+      if (r.keyUrl) { a.href = r.keyUrl; a.textContent = r.keyUrl; } else { a.textContent = '—'; a.removeAttribute('href'); }
+      $('indexnowArticleCount').textContent = (r.articleCount ?? '—');
+      $('indexnowTotalUrls').textContent = (r.totalUrlsIfResubmit ?? '—');
+    } catch(e) { /* not authed yet — silent */ }
+  }
+
+  $('indexnowRefreshBtn') && $('indexnowRefreshBtn').addEventListener('click', async () => {
+    await loadIndexNowCard();
+    toast('تم التحديث', 'success');
+  });
+
+  $('indexnowResubmitBtn') && $('indexnowResubmitBtn').addEventListener('click', async () => {
+    const btn = $('indexnowResubmitBtn');
+    const box = $('indexnowResultBox');
+    if (!confirm('سيتم إرسال جميع روابط المقالات (5 روابط لكل مقال × عدد المقالات) إلى محركات البحث الآن. متابعة؟')) return;
+    btn.disabled = true; btn.textContent = '⏳ جاري الإرسال...';
+    box.classList.remove('hidden'); box.textContent = 'جاري الإرسال...';
+    try {
+      const r = await api('/api/bulk-admin/indexnow-resubmit-all', {});
+      box.textContent = `✅ تم إرسال ${r.totalUrls} رابط في ${r.batches.length} دفعة:\n` + r.batches.map((b,i) => `Batch ${i+1}: ${b.count} URLs → HTTP ${b.status} ${b.ok?'✓':'✗'}`).join('\n');
+      toast(`تم إرسال ${r.totalUrls} رابط إلى محركات البحث`, 'success');
+    } catch(e) {
+      box.textContent = '❌ ' + e.message;
+      toast(e.message, 'error');
+    } finally {
+      btn.disabled = false; btn.textContent = '📤 إعادة إرسال جميع الروابط الآن';
+    }
+  });
+
   // Hook into the existing post-login flow: load cron card whenever models load.
   const _origLoadModels = loadModels;
   loadModels = async function(){
     await _origLoadModels.apply(this, arguments);
-    // Wait for providers to populate, then render the cron card.
-    if (Object.keys(providers).length) loadCronCard();
+    // Wait for providers to populate, then render the cron + IndexNow cards.
+    if (Object.keys(providers).length) {
+      loadCronCard();
+      loadIndexNowCard();
+    }
   };
 })();
 </script>

@@ -792,7 +792,18 @@ async function insertArticle(record) {
     body: record,
     timeout: 30000,
   });
-  if (r.status >= 200 && r.status < 300 && Array.isArray(r.json) && r.json.length > 0) return r.json[0];
+  if (r.status >= 200 && r.status < 300 && Array.isArray(r.json) && r.json.length > 0) {
+    const inserted = r.json[0];
+    // Fire-and-forget: notify search engines via IndexNow about the new URL.
+    // We push the canonical + 4-language URLs so all variants get crawled.
+    try {
+      if (insertArticle._app && typeof insertArticle._app.submitIndexNow === 'function' && inserted.slug) {
+        const urls = insertArticle._app.articleUrlsForIndexNow(inserted.slug);
+        insertArticle._app.submitIndexNow(urls).catch(() => {});
+      }
+    } catch (e) {}
+    return inserted;
+  }
   const msg = (r.json && (r.json.message || r.json.hint || r.json.details)) || r.body.slice(0, 300);
   const err = new Error(`Supabase insert ${r.status}: ${msg}`);
   err.status = r.status;
@@ -1302,6 +1313,11 @@ async function runCronBatch({ trigger = 'cron' } = {}) {
 
 // ── HTTP router ─────────────────────────────────────────────────────────────
 async function handle(req, res) {
+  // Expose server-side helpers (IndexNow, SEO cache) to insertArticle so it
+  // can fire-and-forget IndexNow pings on every successful publish without
+  // tightly coupling modules.
+  if (req.app) insertArticle._app = req.app;
+
   const urlPath = req.url.split('?')[0];
 
   // ── PUBLIC cron trigger (no session, secret-protected) ───────────────────
@@ -1548,6 +1564,48 @@ async function handle(req, res) {
 
   if (urlPath === '/api/bulk-admin/cron-status' && req.method === 'GET') {
     return jsonResponse(res, 200, { inFlight: cronInFlight, log: loadCronLog().slice(0, 10) });
+  }
+
+  // ── IndexNow: status + bulk resubmit of ALL articles ───────────────────────
+  if (urlPath === '/api/bulk-admin/indexnow-status' && req.method === 'GET') {
+    const app = req.app || {};
+    const cache = app.seoDataCache || {};
+    const slugs = Object.keys(cache);
+    return jsonResponse(res, 200, {
+      key: app.INDEXNOW_KEY || null,
+      keyUrl: (app.INDEXNOW_KEY && app.SITE_URL) ? `${app.SITE_URL}/${app.INDEXNOW_KEY}.txt` : null,
+      articleCount: slugs.length,
+      totalUrlsIfResubmit: slugs.length * 5,
+    });
+  }
+
+  if (urlPath === '/api/bulk-admin/indexnow-resubmit-all' && req.method === 'POST') {
+    const app = req.app || {};
+    if (typeof app.submitIndexNow !== 'function') {
+      return jsonResponse(res, 500, { error: 'IndexNow غير متاح' });
+    }
+    const slugs = Object.keys(app.seoDataCache || {});
+    if (slugs.length === 0) return jsonResponse(res, 200, { ok: true, sent: 0, message: 'الكاش فارغ' });
+
+    // Collect every URL (canonical + 4 langs) for every article + key static pages.
+    const langs = ['ar', 'en', 'fr', 'es'];
+    const urls = [];
+    const staticPaths = ['/', '/articles', '/categories', '/about'];
+    for (const p of staticPaths) {
+      urls.push(`${app.SITE_URL}${p}`);
+      for (const l of langs) urls.push(`${app.SITE_URL}/${l}${p === '/' ? '/' : p}`);
+    }
+    for (const slug of slugs) urls.push(...app.articleUrlsForIndexNow(slug));
+
+    // IndexNow accepts up to 10k URLs per request — chunk to be safe.
+    const chunks = [];
+    for (let i = 0; i < urls.length; i += 1000) chunks.push(urls.slice(i, i + 1000));
+    const results = [];
+    for (const chunk of chunks) {
+      const r = await app.submitIndexNow(chunk);
+      results.push({ count: chunk.length, status: r.status, ok: r.ok });
+    }
+    return jsonResponse(res, 200, { ok: true, totalUrls: urls.length, batches: results });
   }
 
   if (urlPath === '/api/bulk-admin/refresh-cache' && req.method === 'POST') {

@@ -66,3 +66,26 @@ node server.js
 - `admin-sidebar-injector.js` (root, served via static-file allowlist) is loaded from `index.html`
 - On any `/admin*` page it watches the DOM, finds the React sidebar button "إنشاء مقال ذكي", and inserts a styled "إنشاء مقالات كثيرة" button right after it that navigates to `/admin/bulk`
 - The compiled React bundle (`assets/index-CdSb2jcH.js`) is not modified — the injector reuses the existing Tailwind classes so the new button visually matches
+
+## SEO & Indexing (Apr 28, 2026)
+
+### Diagnosis (from Google Search Console)
+- 75 indexed / 131 not indexed (~36% indexing rate)
+- 80% of indexed pages were submitted manually via URL Inspector
+- Old `sitemap.xml` was static with `2026-04-10` lastmod (never refreshed)
+- Stub files `sitemap-{ar,en,fr,es}.xml` were 242-byte empty placeholders
+- No automatic search-engine notification when articles are published
+
+### Fixes implemented
+1. **`sitemap.xml`** — now generated dynamically per request with today's `lastmod`, full hreflang for all 4 languages, and all 8 category pages
+2. **`sitemap-{ar,en,fr,es}.xml`** — each is generated dynamically and lists every article slug under its language prefix (e.g. `/ar/articles/<slug>`), so each language's variant gets its own sitemap entry
+3. **IndexNow** — `submitIndexNow(urls)` posts canonical + 4-language URLs to `api.indexnow.org` whenever `insertArticle()` succeeds. Live test with production URL returned `HTTP 202`. Key file at `/.indexnow-key` (gitignored), exposed as `/{key}.txt` for ownership verification
+4. **Admin UI** — new IndexNow card in `/admin/bulk-tools` shows the verification key URL + a "Resubmit all" button that pushes every cached article to IndexNow in 1k-URL batches
+5. **Endpoints**:
+   - `GET /api/bulk-admin/indexnow-status` — key + counts
+   - `POST /api/bulk-admin/indexnow-resubmit-all` — push everything
+   - `GET /{indexnow-key}.txt` — IndexNow ownership verification
+
+### Manual steps still required by the user
+- Submit `https://dalilek.online/sitemap-index.xml` in Bing Webmaster Tools (one-time)
+- For Google: keep using "URL Inspector → Request Indexing" for high-priority articles (the 24/7 cron adds new content + IndexNow + sitemap freshness will accelerate auto-discovery)

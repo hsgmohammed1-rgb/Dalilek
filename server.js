@@ -51,13 +51,75 @@ const mimeTypes = {
   '.xsl':  'text/xsl; charset=utf-8',
 };
 
+// Note: sitemap.xml + sitemap-{lang}.xml are now generated DYNAMICALLY below
+// (so lastmod stays fresh and reflects the live article cache). Only the
+// static stylesheet + brand assets are served from disk.
 const ROOT_SEO_FILES = [
-  '/robots.txt','/sitemap.xml',
-  '/sitemap-ar.xml','/sitemap-en.xml','/sitemap-fr.xml','/sitemap-es.xml',
+  '/robots.txt',
   '/sitemap-style.xsl',
   '/favicon.svg','/logo.png','/opengraph.jpg',
   '/ads.txt'
 ];
+
+// ── IndexNow (Bing/Yandex/DuckDuckGo/Naver/Seznam instant indexing) ─────────
+// IndexNow lets us push new/updated URLs to multiple search engines without
+// auth — they fetch /{key}.txt to verify ownership, then crawl the URLs.
+const INDEXNOW_KEY_FILE = path.join(ROOT, '.indexnow-key');
+let INDEXNOW_KEY = '';
+try {
+  if (fs.existsSync(INDEXNOW_KEY_FILE)) {
+    INDEXNOW_KEY = fs.readFileSync(INDEXNOW_KEY_FILE, 'utf-8').trim();
+  }
+  if (!INDEXNOW_KEY) {
+    INDEXNOW_KEY = require('crypto').randomBytes(16).toString('hex');
+    fs.writeFileSync(INDEXNOW_KEY_FILE, INDEXNOW_KEY);
+  }
+} catch (e) { console.warn('IndexNow key init failed:', e.message); }
+
+// Submit a list of canonical URLs to IndexNow. Fire-and-forget; never throws.
+function submitIndexNow(urls) {
+  return new Promise((resolve) => {
+    try {
+      if (!INDEXNOW_KEY || !Array.isArray(urls) || urls.length === 0) return resolve({ ok: false, skipped: true });
+      const host = SITE_URL.replace(/^https?:\/\//, '').split('/')[0];
+      const payload = JSON.stringify({
+        host,
+        key: INDEXNOW_KEY,
+        keyLocation: `${SITE_URL}/${INDEXNOW_KEY}.txt`,
+        urlList: urls.slice(0, 10000),
+      });
+      const req = https.request({
+        hostname: 'api.indexnow.org',
+        path: '/indexnow',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Content-Length': Buffer.byteLength(payload),
+          'User-Agent': 'dalilek-indexnow/1.0',
+        },
+        timeout: 10000,
+      }, (res) => {
+        let body = '';
+        res.on('data', d => body += d);
+        res.on('end', () => {
+          console.log(`[IndexNow] ${res.statusCode} for ${urls.length} URLs`);
+          resolve({ ok: res.statusCode >= 200 && res.statusCode < 300, status: res.statusCode, body: body.slice(0, 200) });
+        });
+      });
+      req.on('error', (e) => { console.warn('[IndexNow] error:', e.message); resolve({ ok: false, error: e.message }); });
+      req.on('timeout', () => { req.destroy(); resolve({ ok: false, error: 'timeout' }); });
+      req.write(payload);
+      req.end();
+    } catch (e) { resolve({ ok: false, error: e.message }); }
+  });
+}
+
+// Build the full multilingual URL list for an article (canonical + 4 langs).
+function articleUrlsForIndexNow(slug) {
+  if (!slug) return [];
+  const langs = ['ar', 'en', 'fr', 'es'];
+  return [`${SITE_URL}/articles/${slug}`, ...langs.map(l => `${SITE_URL}/${l}/articles/${slug}`)];
+}
 
 const BANNERS = {
   ar: {
@@ -162,6 +224,67 @@ ${xDefault}
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${urls}
+</urlset>`;
+}
+
+// ── Dynamic sitemap.xml (master, fresh lastmod every request) ───────────────
+function generateMasterSitemapXml() {
+  const today = new Date().toISOString().split('T')[0];
+  const langs = ['ar', 'en', 'fr', 'es'];
+  const staticPaths = [
+    { p: '/',           pri: '1.00', cf: 'daily'   },
+    { p: '/articles',   pri: '0.90', cf: 'hourly'  },
+    { p: '/categories', pri: '0.80', cf: 'weekly'  },
+    { p: '/about',      pri: '0.50', cf: 'monthly' },
+    { p: '/contact',    pri: '0.50', cf: 'monthly' },
+  ];
+  const categories = ['technology','health','business','science','culture','arts','sports','self-development'];
+  staticPaths.push(...categories.map(c => ({ p: `/categories/${c}`, pri: '0.70', cf: 'weekly' })));
+
+  const urlBlock = (pathStr, pri, cf) => {
+    const canonical = `${SITE_URL}${pathStr}`;
+    const alts = langs.map(l =>
+      `    <xhtml:link rel="alternate" hreflang="${l}" href="${SITE_URL}/${l}${pathStr === '/' ? '/' : pathStr}" />`
+    ).join('\n');
+    return `  <url>
+    <loc>${canonical}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${cf}</changefreq>
+    <priority>${pri}</priority>
+${alts}
+    <xhtml:link rel="alternate" hreflang="x-default" href="${canonical}" />
+  </url>`;
+  };
+
+  const urls = staticPaths.map(s => urlBlock(s.p, s.pri, s.cf)).join('\n');
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap-style.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${urls}
+</urlset>`;
+}
+
+// ── Dynamic sitemap-{lang}.xml (per-language article URLs) ──────────────────
+function generateLangSitemapXml(lang) {
+  const today = new Date().toISOString().split('T')[0];
+  const langs = ['ar', 'en', 'fr', 'es'];
+  if (!langs.includes(lang)) lang = 'ar';
+
+  let urls = '';
+  // Static per-lang pages
+  const staticPaths = ['/', '/articles', '/categories', '/about', '/contact'];
+  for (const p of staticPaths) {
+    const loc = `${SITE_URL}/${lang}${p === '/' ? '/' : p}`;
+    urls += `\n  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n  </url>`;
+  }
+  // Per-lang article URLs
+  for (const slug of Object.keys(seoDataCache)) {
+    const loc = `${SITE_URL}/${lang}/articles/${slug}`;
+    urls += `\n  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`;
+  }
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}
 </urlset>`;
 }
 
@@ -686,20 +809,20 @@ const appHandler = async (req, res) => {
 
   // ── Bulk Admin API ─────────────────────────────────────────────────────────
   if (urlPath.startsWith('/api/bulk-admin/')) {
-    req.app = { refreshSeoFromSupabase };
+    req.app = { refreshSeoFromSupabase, submitIndexNow, articleUrlsForIndexNow, seoDataCache, SITE_URL, INDEXNOW_KEY };
     return bulkAdmin.handle(req, res);
   }
 
   // ── Public cron trigger (secret-protected, no session) ─────────────────────
   if (urlPath.startsWith('/api/cron/')) {
-    req.app = { refreshSeoFromSupabase };
+    req.app = { refreshSeoFromSupabase, submitIndexNow, articleUrlsForIndexNow, seoDataCache, SITE_URL, INDEXNOW_KEY };
     return bulkAdmin.handle(req, res);
   }
 
   // ── Admin operations that bypass Supabase RLS (delete/update articles) ─────
   // Auth happens inside via the user's Supabase access_token.
   if (urlPath.startsWith('/api/admin/')) {
-    req.app = { refreshSeoFromSupabase };
+    req.app = { refreshSeoFromSupabase, submitIndexNow, articleUrlsForIndexNow, seoDataCache, SITE_URL, INDEXNOW_KEY };
     return bulkAdmin.handle(req, res);
   }
 
@@ -824,6 +947,38 @@ const appHandler = async (req, res) => {
       'Cache-Control': 'public, max-age=300',
     });
     res.end(xml);
+    return;
+  }
+
+  // ── Dynamic master sitemap.xml (fresh lastmod, all static + lang pages) ────
+  if (urlPath === '/sitemap.xml') {
+    const xml = generateMasterSitemapXml();
+    res.writeHead(200, {
+      'Content-Type': 'application/xml; charset=utf-8',
+      'Cache-Control': 'public, max-age=300',
+    });
+    res.end(xml);
+    return;
+  }
+
+  // ── Dynamic per-language sitemaps (sitemap-ar.xml, sitemap-en.xml, …) ──────
+  {
+    const m = urlPath.match(/^\/sitemap-(ar|en|fr|es)\.xml$/);
+    if (m) {
+      const xml = generateLangSitemapXml(m[1]);
+      res.writeHead(200, {
+        'Content-Type': 'application/xml; charset=utf-8',
+        'Cache-Control': 'public, max-age=300',
+      });
+      res.end(xml);
+      return;
+    }
+  }
+
+  // ── IndexNow ownership verification key ─────────────────────────────────────
+  if (INDEXNOW_KEY && urlPath === `/${INDEXNOW_KEY}.txt`) {
+    res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end(INDEXNOW_KEY);
     return;
   }
 
