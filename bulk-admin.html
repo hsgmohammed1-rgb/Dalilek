@@ -1335,16 +1335,23 @@
     }
   });
 
-  // Hook into the existing post-login flow: load cron card whenever models load.
-  const _origLoadModels = loadModels;
-  loadModels = async function(){
-    await _origLoadModels.apply(this, arguments);
-    // Wait for providers to populate, then render the cron + IndexNow cards.
-    if (Object.keys(providers).length) {
-      loadCronCard();
-      loadIndexNowCard();
+  // Load the cron + IndexNow cards as soon as both (a) providers are populated
+  // and (b) the user is authenticated. We poll for that combo because the
+  // legacy init() runs loadModels() before this IIFE wraps it. Once both
+  // conditions are met we fire each loader exactly once and stop.
+  let _cronLoaded = false;
+  let _indexNowLoaded = false;
+  const _readyTimer = setInterval(() => {
+    const providersReady = Object.keys(providers).length > 0;
+    const authed = !!token;
+    if (providersReady && authed) {
+      if (!_cronLoaded) { _cronLoaded = true; loadCronCard().catch(()=>{}); }
+      if (!_indexNowLoaded) { _indexNowLoaded = true; loadIndexNowCard().catch(()=>{}); }
+      if (_cronLoaded && _indexNowLoaded) clearInterval(_readyTimer);
     }
-  };
+  }, 500);
+  // Stop polling after 30s no matter what (avoid runaway timer).
+  setTimeout(() => clearInterval(_readyTimer), 30000);
 })();
 </script>
 </body>
