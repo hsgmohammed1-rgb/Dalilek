@@ -1166,6 +1166,14 @@ const startRoutine = async (protocol, host, port) => {
   setInterval(() => refreshSeoFromSupabase(), 10 * 60 * 1000);
 };
 
+// Generous request timeout: an article-generation POST can legitimately take
+// 60-120s when retrying through 3 fallback models, so we allow 5 minutes.
+// Anything beyond that is almost certainly a stuck socket and should be freed
+// to avoid leaking file descriptors / memory.
+httpServer.requestTimeout = 5 * 60 * 1000;
+httpServer.headersTimeout = 65 * 1000;
+httpServer.keepAliveTimeout = 60 * 1000;
+
 httpServer.listen(PORT, HOST, () => {
   if (!httpsServer) startRoutine('HTTP', HOST, PORT);
 });

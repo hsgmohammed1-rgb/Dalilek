@@ -110,6 +110,35 @@ const SPEED_PROFILES = {
 const sessions = new Map();
 const SESSION_TTL_MS = 4 * 60 * 60 * 1000;
 
+// ── Server-wide generation semaphore ──
+// Cap how many `/api/bulk-admin/generate-one` requests can run *inside* this
+// server process at any time. Anything beyond the cap waits in a FIFO queue.
+// This is the single most important safeguard against the "20 of 20 failed
+// with HTTP 502" symptom: without it, a 20-topic batch + the auto-cron
+// firing simultaneously creates 30+ in-flight workflows, blows past the
+// container's memory budget, and Replit kills the process. With the cap,
+// the worst case is "everything finishes more slowly", not "everything fails".
+const GENERATION_SLOTS = parseInt(process.env.BULK_ADMIN_MAX_CONCURRENT, 10) || 2;
+let generationActive = 0;
+const generationQueue = [];
+function acquireGenerationSlot() {
+  return new Promise((resolve) => {
+    const grant = () => {
+      generationActive++;
+      let released = false;
+      resolve(() => {
+        if (released) return;
+        released = true;
+        generationActive = Math.max(0, generationActive - 1);
+        const next = generationQueue.shift();
+        if (next) next();
+      });
+    };
+    if (generationActive < GENERATION_SLOTS) grant();
+    else generationQueue.push(grant);
+  });
+}
+
 function newSession(email) {
   const token = crypto.randomBytes(32).toString('hex');
   sessions.set(token, { createdAt: Date.now(), email });
@@ -1549,6 +1578,7 @@ async function handle(req, res) {
 
   if (urlPath === '/api/bulk-admin/generate-one' && req.method === 'POST') {
     let parsedBody = null;
+    let releaseSlot = null;
     try {
       parsedBody = JSON.parse((await readBody(req)) || '{}');
       const provider = (parsedBody.provider && PROVIDERS[parsedBody.provider]) ? parsedBody.provider : 'gemini';
@@ -1559,10 +1589,20 @@ async function handle(req, res) {
       const speed = parsedBody.speed || 'medium';
       if (!topic || !topic.title) return jsonResponse(res, 400, { error: 'topic.title مطلوب' });
 
+      // ── Server-side concurrency gate ──
+      // Why this exists: when the user hits "Generate" on 20 topics, the
+      // browser fires up to N parallel POSTs to this endpoint. Each one then
+      // does 1 article + 3 translation calls + image fetches + DB writes.
+      // Without a gate the server's memory footprint balloons (open sockets,
+      // pending promises, retry timers) and Replit's container kills the
+      // process — which the user sees as "HTTP 502" on every subsequent
+      // request. The gate lets through GENERATION_SLOTS workers at a time;
+      // anyone else waits in line. Way better than crashing.
+      releaseSlot = await acquireGenerationSlot();
+
       // Article-level retry: if every model hit 429/timeout/transient error,
       // wait a real cool-down (long enough for the per-minute quota to reset)
-      // and try once more before giving up. This is the difference between
-      // "14/20 rejected" and "20/20 succeeded" on free tiers.
+      // and try once more before giving up.
       let out, lastErr;
       const ATTEMPTS = 3;
       for (let attempt = 1; attempt <= ATTEMPTS; attempt++) {
@@ -1590,6 +1630,8 @@ async function handle(req, res) {
       if (e.providerBody) console.error('[bulk-admin] provider body:', JSON.stringify(e.providerBody).slice(0, 500));
       if (e.stack) console.error('[bulk-admin] stack:', e.stack.split('\n').slice(0, 5).join('\n'));
       return jsonResponse(res, 500, { error: e.message });
+    } finally {
+      if (releaseSlot) releaseSlot();
     }
   }
 
