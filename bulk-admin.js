@@ -21,12 +21,12 @@ const PROVIDERS = {
     keyHint: 'AIza...',
     keyUrl: 'https://aistudio.google.com/apikey',
     models: [
-      { id: 'gemini-2.5-flash',       label: 'Gemini 2.5 Flash (موصى به)' },
-      { id: 'gemini-2.5-pro',         label: 'Gemini 2.5 Pro (الأقوى)' },
-      { id: 'gemini-2.5-flash-lite',  label: 'Gemini 2.5 Flash Lite (الأسرع)' },
-      { id: 'gemini-2.0-flash',       label: 'Gemini 2.0 Flash' },
-      { id: 'gemini-2.0-flash-lite',  label: 'Gemini 2.0 Flash Lite' },
-      { id: 'gemini-1.5-flash',       label: 'Gemini 1.5 Flash (احتياطي)' },
+      { id: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash (موصى به)' },
+      { id: 'gemini-2.5-pro', label: 'Gemini 2.5 Pro (الأقوى)' },
+      { id: 'gemini-2.5-flash-lite', label: 'Gemini 2.5 Flash Lite (الأسرع)' },
+      { id: 'gemini-2.0-flash', label: 'Gemini 2.0 Flash' },
+      { id: 'gemini-2.0-flash-lite', label: 'Gemini 2.0 Flash Lite' },
+      { id: 'gemini-1.5-flash', label: 'Gemini 1.5 Flash (احتياطي)' },
     ],
   },
   groq: {
@@ -37,11 +37,11 @@ const PROVIDERS = {
     // Models removed: 'moonshotai/kimi-k2-instruct' & 'meta-llama/llama-4-maverick-17b-128e-instruct'
     // (both return 404 — Groq deprecated them).
     models: [
-      { id: 'llama-3.3-70b-versatile',  label: 'Llama 3.3 70B Versatile (موصى به)' },
-      { id: 'openai/gpt-oss-120b',      label: 'OpenAI GPT-OSS 120B (الأقوى)' },
-      { id: 'openai/gpt-oss-20b',       label: 'OpenAI GPT-OSS 20B (سريع)' },
-      { id: 'qwen/qwen3-32b',           label: 'Qwen 3 32B (ممتاز للعربي)' },
-      { id: 'llama-3.1-8b-instant',     label: 'Llama 3.1 8B Instant (الأسرع)' },
+      { id: 'llama-3.3-70b-versatile', label: 'Llama 3.3 70B Versatile (موصى به)' },
+      { id: 'openai/gpt-oss-120b', label: 'OpenAI GPT-OSS 120B (الأقوى)' },
+      { id: 'openai/gpt-oss-20b', label: 'OpenAI GPT-OSS 20B (سريع)' },
+      { id: 'qwen/qwen3-32b', label: 'Qwen 3 32B (ممتاز للعربي)' },
+      { id: 'llama-3.1-8b-instant', label: 'Llama 3.1 8B Instant (الأسرع)' },
     ],
   },
   openrouter: {
@@ -49,13 +49,13 @@ const PROVIDERS = {
     keyHint: 'sk-or-v1-...',
     keyUrl: 'https://openrouter.ai/keys',
     models: [
-      { id: 'openai/gpt-oss-120b:free',              label: 'OpenAI GPT-OSS 120B (الأقوى — موصى به)' },
+      { id: 'openai/gpt-oss-120b:free', label: 'OpenAI GPT-OSS 120B (الأقوى — موصى به)' },
       { id: 'qwen/qwen3-next-80b-a3b-instruct:free', label: 'Qwen 3 Next 80B (ممتاز للعربي)' },
       { id: 'meta-llama/llama-3.3-70b-instruct:free', label: 'Llama 3.3 70B' },
-      { id: 'z-ai/glm-4.5-air:free',                 label: 'GLM 4.5 Air' },
-      { id: 'google/gemma-3-27b-it:free',            label: 'Google Gemma 3 27B' },
-      { id: 'openai/gpt-oss-20b:free',               label: 'OpenAI GPT-OSS 20B (سريع)' },
-      { id: 'nvidia/nemotron-nano-9b-v2:free',       label: 'Nvidia Nemotron Nano 9B (سريع)' },
+      { id: 'z-ai/glm-4.5-air:free', label: 'GLM 4.5 Air' },
+      { id: 'google/gemma-3-27b-it:free', label: 'Google Gemma 3 27B' },
+      { id: 'openai/gpt-oss-20b:free', label: 'OpenAI GPT-OSS 20B (سريع)' },
+      { id: 'nvidia/nemotron-nano-9b-v2:free', label: 'Nvidia Nemotron Nano 9B (سريع)' },
     ],
   },
 };
@@ -71,15 +71,15 @@ const FREE_MODELS = PROVIDERS.gemini.models;
 // instantly burn through the per-minute quota and reject 70%+ of articles.
 const SPEED_PROFILES = {
   fast: {
-    label: '⚡ سريع',
-    description: '3-4 أقسام مختصرة، مقالان بالتوازي مع 4 لغات لكل واحد',
-    recommendedModel: { gemini: 'gemini-2.5-flash-lite', groq: 'llama-3.1-8b-instant', openrouter: 'nvidia/nemotron-nano-9b-v2:free' },
-    maxTokens: 3500,
-    minSections: 3, maxSections: 4,
-    sectionLength: '100-150 كلمة',
-    concurrency: 2,
-    skillsCount: 4,
-    statsCount: 3,
+    label: '⚡ سريع جداً',
+    description: 'مقال ضخم (6-8 أقسام، 300-400 كلمة للقسم)، SEO كامل (7 مهارات)، 4 لغات. محسّن لتفادي حظر الشبكة.',
+    recommendedModel: { gemini: 'gemini-2.5-flash-lite', groq: 'llama-3.1-8b-instant', openrouter: 'openai/gpt-oss-20b:free' },
+    maxTokens: 8000,
+    minSections: 6, maxSections: 8,
+    sectionLength: '300-400 كلمة',
+    concurrency: 3,
+    skillsCount: 7,
+    statsCount: 5,
   },
   medium: {
     label: '⚖️ متوسط',
@@ -108,7 +108,23 @@ const SPEED_PROFILES = {
 };
 
 const sessions = new Map();
-const SESSION_TTL_MS = 4 * 60 * 60 * 1000;
+const SESSION_TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
+
+const path = require('path');
+const fs = require('fs');
+const SESSIONS_FILE = path.join(__dirname, '.admin-sessions.json');
+try {
+  const raw = fs.readFileSync(SESSIONS_FILE, 'utf8');
+  const obj = JSON.parse(raw);
+  for (const [k, v] of Object.entries(obj)) sessions.set(k, v);
+} catch (e) { }
+
+function saveSessions() {
+  try {
+    const obj = Object.fromEntries(sessions.entries());
+    fs.writeFileSync(SESSIONS_FILE, JSON.stringify(obj));
+  } catch (e) { }
+}
 
 // ── Server-wide generation semaphore ──
 // Cap how many `/api/bulk-admin/generate-one` requests can run *inside* this
@@ -118,7 +134,7 @@ const SESSION_TTL_MS = 4 * 60 * 60 * 1000;
 // firing simultaneously creates 30+ in-flight workflows, blows past the
 // container's memory budget, and Replit kills the process. With the cap,
 // the worst case is "everything finishes more slowly", not "everything fails".
-const GENERATION_SLOTS = parseInt(process.env.BULK_ADMIN_MAX_CONCURRENT, 10) || 2;
+const GENERATION_SLOTS = parseInt(process.env.BULK_ADMIN_MAX_CONCURRENT, 10) || 10;
 let generationActive = 0;
 const generationQueue = [];
 function acquireGenerationSlot() {
@@ -142,6 +158,7 @@ function acquireGenerationSlot() {
 function newSession(email) {
   const token = crypto.randomBytes(32).toString('hex');
   sessions.set(token, { createdAt: Date.now(), email });
+  saveSessions();
   return token;
 }
 
@@ -152,6 +169,7 @@ function isAuthed(req) {
   if (!s) return false;
   if (Date.now() - s.createdAt > SESSION_TTL_MS) {
     sessions.delete(token);
+    saveSessions();
     return false;
   }
   return true;
@@ -282,7 +300,7 @@ async function callOpenAICompat({ provider, apiKey, model, messages, jsonMode = 
 
     const r = await httpsRequestJson({
       hostname: isGroq ? 'api.groq.com' : 'openrouter.ai',
-      path:     isGroq ? '/openai/v1/chat/completions' : '/api/v1/chat/completions',
+      path: isGroq ? '/openai/v1/chat/completions' : '/api/v1/chat/completions',
       method: 'POST',
       headers,
       body: payload,
@@ -442,7 +460,7 @@ async function callAIWithFallback({ provider = 'gemini', apiKey, model, messages
         MODEL_COOLDOWN.set(cooldownKey(m), Date.now() + COOLDOWN_MS);
         console.warn(`[bulk-admin] ${provider}/${m} rate-limited (429), cooling down 60s, trying next model...`);
       } else {
-        console.warn(`[bulk-admin] ${provider}/${m} failed (${e.status || 'no-status'}: ${(e.message||'').slice(0,120)}), trying next model...`);
+        console.warn(`[bulk-admin] ${provider}/${m} failed (${e.status || 'no-status'}: ${(e.message || '').slice(0, 120)}), trying next model...`);
       }
       await new Promise(r => setTimeout(r, 200));
       continue;
@@ -505,10 +523,12 @@ function extractJson(str) {
       if (inStr) { if (esc) { esc = false; } else if (ch === '\\') { esc = true; } else if (ch === '"') inStr = false; continue; }
       if (ch === '"') { inStr = true; continue; }
       if (ch === '{') depth++;
-      else if (ch === '}') { depth--; if (depth === 0) {
-        const j = tryParse(str.slice(start, i + 1)); if (j) return j;
-        break;
-      }}
+      else if (ch === '}') {
+        depth--; if (depth === 0) {
+          const j = tryParse(str.slice(start, i + 1)); if (j) return j;
+          break;
+        }
+      }
     }
   }
   // Last resort: try to repair a truncated JSON object
@@ -520,7 +540,7 @@ function extractJson(str) {
 // ── Topic discovery ────────────────────────────────────────────────────────
 // Today's date for "auto" mode prompts so the AI knows what's actually current.
 function todayArabic() {
-  const months = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  const months = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
   const d = new Date();
   return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
 }
@@ -854,9 +874,9 @@ async function insertArticle(record) {
     try {
       if (insertArticle._app && typeof insertArticle._app.submitIndexNow === 'function' && inserted.slug) {
         const urls = insertArticle._app.articleUrlsForIndexNow(inserted.slug);
-        insertArticle._app.submitIndexNow(urls).catch(() => {});
+        insertArticle._app.submitIndexNow(urls).catch(() => { });
       }
-    } catch (e) {}
+    } catch (e) { }
     return inserted;
   }
   const msg = (r.json && (r.json.message || r.json.hint || r.json.details)) || r.body.slice(0, 300);
@@ -980,7 +1000,7 @@ async function translateArticleWithRetry(opts, { attempts = 3, baseDelayMs = 400
       // Short backoff: 4s, 8s. Long enough for a transient 429/timeout to clear
       // but short enough that bulk runs stay fast.
       const delay = baseDelayMs * (i + 1);
-      console.warn(`[bulk-admin] translation ${opts.targetLang} failed (${(lastErr.message||'').slice(0,80)}), retrying in ${delay/1000}s…`);
+      console.warn(`[bulk-admin] translation ${opts.targetLang} failed (${(lastErr.message || '').slice(0, 80)}), retrying in ${delay / 1000}s…`);
       await new Promise(rs => setTimeout(rs, delay));
     }
   }
@@ -1389,7 +1409,7 @@ async function runCronBatch({ trigger = 'cron' } = {}) {
           consecutiveRateLimits++;
           if (consecutiveRateLimits >= 2) {
             const longWait = Math.min(60000, 30000 * consecutiveRateLimits);
-            console.warn(`[cron] ${consecutiveRateLimits} consecutive rate limits, pausing ${longWait/1000}s before next article`);
+            console.warn(`[cron] ${consecutiveRateLimits} consecutive rate limits, pausing ${longWait / 1000}s before next article`);
             await new Promise(r => setTimeout(r, longWait));
           }
         } else {
@@ -1542,7 +1562,7 @@ async function handle(req, res) {
         try {
           const refresh = req.app && req.app.refreshSeoFromSupabase;
           if (typeof refresh === 'function') refresh();
-        } catch (e) {}
+        } catch (e) { }
         return jsonResponse(res, 200, { ok: true, deleted: r.json });
       }
       return jsonResponse(res, r.status || 500, { error: r.body || 'فشل الحذف' });
@@ -1617,7 +1637,7 @@ async function handle(req, res) {
             || /timeout|temporarily|rate[- ]?limit|too many|overloaded|empty|truncat|json|parse|بنية مقال|بدون أقسام|رجّع رد فارغ/i.test(msg);
           if (!transient || attempt === ATTEMPTS) throw e;
           const waitMs = 20000 * attempt; // 20s, 40s
-          console.warn(`[bulk-admin] article attempt ${attempt}/${ATTEMPTS} failed (${(e.message||'').slice(0,100)}), retrying in ${waitMs/1000}s…`);
+          console.warn(`[bulk-admin] article attempt ${attempt}/${ATTEMPTS} failed (${(e.message || '').slice(0, 100)}), retrying in ${waitMs / 1000}s…`);
           await new Promise(rs => setTimeout(rs, waitMs));
         }
       }
