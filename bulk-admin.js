@@ -112,7 +112,10 @@ const SESSION_TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
 
 const path = require('path');
 const fs = require('fs');
-const SESSIONS_FILE = path.join(__dirname, '.admin-sessions.json');
+
+const isVercel = !!process.env.VERCEL;
+const tmpDir = isVercel ? '/tmp' : __dirname;
+const SESSIONS_FILE = path.join(tmpDir, '.admin-sessions.json');
 try {
   const raw = fs.readFileSync(SESSIONS_FILE, 'utf8');
   const obj = JSON.parse(raw);
@@ -1220,10 +1223,9 @@ async function generateAndPublish({ provider = 'gemini', apiKey, model, topic, t
 // Persistent state lives in two JSON files (gitignored). They store the user's
 // settings + an API key so an external cron service (e.g. cron-job.org) can
 // trigger generation without a logged-in browser session.
-const fs = require('fs');
-const path = require('path');
-const CRON_CONFIG_PATH = path.join(__dirname, '.cron-config.json');
-const CRON_LOG_PATH = path.join(__dirname, '.cron-log.json');
+
+const CRON_CONFIG_PATH = path.join(tmpDir, '.cron-config.json');
+const CRON_LOG_PATH = path.join(tmpDir, '.cron-log.json');
 const CRON_LOG_MAX = 50;
 
 // Translate a raw provider error into a clear Arabic explanation that an
