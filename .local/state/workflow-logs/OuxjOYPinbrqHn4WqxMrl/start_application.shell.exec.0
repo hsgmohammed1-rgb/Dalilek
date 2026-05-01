@@ -1,0 +1,7 @@
+◇ injecting env (0) from .env [2m// tip: ⌘ multiple files { path: ['.env.local', '.env'] }[0m
+✅ HTTP Server running at http://0.0.0.0:5000
+SEO articles cached: 184
+◇ injecting env (0) from .env [2m// tip: ⌘ enable debugging { debug: true }[0m
+SEO cache refreshed: 189 articles
+Sitemap regenerated: 189 articles
+SEO articles after refresh: 189

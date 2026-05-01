@@ -1,0 +1,7 @@
+◇ injecting env (0) from .env [2m// tip: ⌘ suppress logs { quiet: true }[0m
+✅ HTTP Server running at http://0.0.0.0:5000
+SEO articles cached: 181
+◇ injecting env (0) from .env [2m// tip: ⌘ suppress logs { quiet: true }[0m
+SEO cache refreshed: 181 articles
+Sitemap regenerated: 181 articles
+SEO articles after refresh: 181

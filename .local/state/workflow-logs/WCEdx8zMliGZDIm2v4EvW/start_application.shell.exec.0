@@ -1,0 +1,8 @@
+◇ injecting env (0) from .env [2m// tip: ⌘ enable debugging { debug: true }[0m
+✅ HTTP Server running at http://0.0.0.0:5000
+SEO articles cached: 184
+◇ injecting env (0) from .env [2m// tip: ⌘ custom filepath { path: '/custom/path/.env' }[0m
+SEO cache refreshed: 184 articles
+[bulk-admin] Supabase auth rejected token: [33m403[39m {"code":403,"error_code":"bad_jwt","msg":"invalid JWT: unable to parse or verify signature, token is malformed: could not JSON decode header: invalid character '\\u008a' looking for beginning of value
+Sitemap regenerated: 184 articles
+SEO articles after refresh: 184
