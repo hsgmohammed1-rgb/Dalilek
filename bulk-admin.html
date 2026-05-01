@@ -376,8 +376,8 @@
 
   <div class="row cols-2">
     <div>
-      <label id="keyLabel">مفتاح API</label>
-      <input type="password" id="orKey" placeholder="..." autocomplete="off" />
+      <label id="keyLabel">مفاتيح API</label>
+      <textarea id="orKey" placeholder="أدخل مفاتيح API هنا (كل مفتاح في سطر مستقل)&#10;سيتم توزيع المقالات عليها تلقائياً" autocomplete="off" style="height: 110px; line-height: 1.6; font-family: monospace; font-size: 13px;" dir="ltr"></textarea>
       <div class="mini-row">
         <span id="keyStatus" class="key-status hidden">✓ المفتاح محفوظ</span>
         <span class="small">احصل على مفتاح مجاني من <a class="key-link" id="keyLink" href="#" target="_blank" rel="noopener">—</a></span>
@@ -735,9 +735,9 @@
     // Update key field for this provider
     const keyEl = $('orKey');
     keyEl.value = localStorage.getItem('apiKey_' + id) || '';
-    keyEl.placeholder = p.keyHint || '...';
+    keyEl.placeholder = 'أدخل مفاتيح ' + p.label + ' هنا (كل مفتاح في سطر مستقل)\nمثال:\n' + (p.keyHint || '...');
     $('keyStatus').classList.toggle('hidden', !keyEl.value);
-    $('keyLabel').textContent = 'مفتاح ' + p.label;
+    $('keyLabel').textContent = 'مفاتيح ' + p.label;
     const link = $('keyLink');
     if (p.keyUrl) {
       link.href = p.keyUrl;
@@ -871,9 +871,10 @@
 
   // ── Discover ──
   $('discoverBtn')?.addEventListener('click', async () => {
-    const apiKey = $('orKey').value.trim();
+    const apiKeys = $('orKey').value.trim().split('\n').map(k => k.trim()).filter(Boolean);
     const provLabel = (providers[currentProvider] && providers[currentProvider].label) || 'الذكاء الاصطناعي';
-    if (!apiKey) { toast('أدخل مفتاح ' + provLabel + ' أولاً', 'error'); return; }
+    if (!apiKeys.length) { toast('أدخل مفاتيح ' + provLabel + ' أولاً', 'error'); return; }
+    const apiKey = apiKeys[0];
     const btn = $('discoverBtn');
     btn.disabled = true; btn.textContent = '⏳ جارٍ الاكتشاف...';
     try {
@@ -951,9 +952,9 @@
   // ── Generate (with concurrency based on speed profile) ──
   $('generateBtn')?.addEventListener('click', async () => {
     if (topics.length === 0) return;
-    const apiKey = $('orKey').value.trim();
+    const apiKeys = $('orKey').value.trim().split('\n').map(k => k.trim()).filter(Boolean);
     const provLabelGen = (providers[currentProvider] && providers[currentProvider].label) || 'الذكاء الاصطناعي';
-    if (!apiKey) { toast('أدخل مفتاح ' + provLabelGen + ' أولاً', 'error'); return; }
+    if (!apiKeys.length) { toast('أدخل مفاتيح ' + provLabelGen + ' أولاً', 'error'); return; }
     const profile = speedProfiles[currentSpeed] || { concurrency: 1 };
     const concurrency = Math.max(1, profile.concurrency || 1);
     if (!confirm('سيُنشر ' + topics.length + ' مقال على الموقع بوضع "' + (profile.label||currentSpeed) + '" (تزامن ' + concurrency + 'x). متابعة؟')) return;
@@ -1021,8 +1022,9 @@
       });
     }
 
-    async function runOne(i, isRetry){
+    async function runOne(i, isRetry, apiKeyToUse){
       const t = topics[i];
+      const currentApiKey = apiKeyToUse || apiKeys[i % apiKeys.length];
       const statusEl = $('status-' + i);
       if (statusEl && !isRetry) statusEl.innerHTML = '<span class="badge warn">⏳ جارٍ التوليد</span>';
       else if (statusEl && isRetry) statusEl.innerHTML = '<span class="badge warn">⏳ إعادة المحاولة…</span>';
@@ -1030,7 +1032,7 @@
         const tplId = tplMode === 'random' ? null : parseInt(tplMode, 10);
         const out = await api('/api/bulk-admin/generate-one', {
           provider: currentProvider,
-          apiKey, model, topic: t, templateId: tplId, speed: currentSpeed
+          apiKey: currentApiKey, model, topic: t, templateId: tplId, speed: currentSpeed
         });
         results.push(out.article);
         if (!isRetry) done++; else { done++; fail--; }
@@ -1065,16 +1067,21 @@
     const queue = topics.map((_, i) => i);
     const workers = [];
 
-    async function worker() {
+    async function worker(apiKeyForWorker) {
       while (queue.length > 0 && !stopRequested) {
         const i = queue.shift();
-        await runOne(i, false);
+        await runOne(i, false, apiKeyForWorker);
         processed++;
         $('progressFill').style.width = ((processed/topics.length)*100) + '%';
       }
     }
 
-    for (let w = 0; w < concurrency; w++) workers.push(worker());
+    // Spawn workers per API key. If a profile allows 2 concurrent, and we have 3 keys, we spawn 6 workers (2 per key).
+    for (const key of apiKeys) {
+      for (let w = 0; w < concurrency; w++) {
+        workers.push(worker(key));
+      }
+    }
     await Promise.all(workers);
 
     clearInterval(timerInterval);
