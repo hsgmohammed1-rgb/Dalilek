@@ -171,6 +171,13 @@
       window.__uspapi = uspStubFunction;
       var uspInterval = setInterval(checkIfUspIsReady, 6000);
     }
+    
+    // Force the Consent UI to show for testing/display purposes
+    setTimeout(function() {
+      if (typeof window.__tcfapi === 'function') {
+        window.__tcfapi('displayConsentUi', 2, function() {});
+      }
+    }, 2500);
   })();
   </script>
   <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.3) -->
