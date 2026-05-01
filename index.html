@@ -79,8 +79,7 @@
               tag_version: 'V3',
               displayLanguage: siteLang,
               language: siteLang,
-              forceLocale: siteLang,
-              gdprAppliesGlobally: true
+              forceLocale: siteLang
             });
           }
           queue.push(args);
@@ -171,13 +170,6 @@
       window.__uspapi = uspStubFunction;
       var uspInterval = setInterval(checkIfUspIsReady, 6000);
     }
-    
-    // Force the Consent UI to show for testing/display purposes
-    setTimeout(function() {
-      if (typeof window.__tcfapi === 'function') {
-        window.__tcfapi('displayConsentUi', 2, function() {});
-      }
-    }, 2500);
   })();
   </script>
   <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.3) -->
@@ -699,52 +691,7 @@
       background: transparent;
     }
 
-    /* InMobi Choice CMP Consent Banner Custom Design */
-    .qc-cmp2-container, #qc-cmp2-ui {
-      font-family: 'Tajawal', sans-serif !important;
-    }
-    .qc-cmp-persistent-link, 
-    #qc-cmp2-ui .qc-cmp2-main-info,
-    #qc-cmp2-ui .qc-cmp2-nav-bar,
-    #qc-cmp2-ui {
-      background-color: #040d1a !important; /* Match site dark theme */
-      color: #ffffff !important;
-    }
-    #qc-cmp2-ui .qc-cmp2-summary-buttons button[mode="primary"],
-    .qc-cmp2-container button.qc-cmp2-btn-primary {
-      background-color: #00e6c8 !important; /* Theme accent color */
-      color: #040d1a !important;
-      border-radius: 8px !important;
-      font-weight: bold !important;
-      border: none !important;
-      padding: 10px 20px !important;
-    }
-    #qc-cmp2-ui .qc-cmp2-summary-buttons button[mode="secondary"],
-    .qc-cmp2-container button.qc-cmp2-btn-secondary {
-      background-color: transparent !important;
-      color: #ffffff !important;
-      border: 1px solid #ffffff !important;
-      border-radius: 8px !important;
-      padding: 10px 20px !important;
-    }
-    #qc-cmp2-ui .qc-cmp2-summary-buttons button[mode="secondary"]:hover,
-    .qc-cmp2-container button.qc-cmp2-btn-secondary:hover {
-      background-color: rgba(255, 255, 255, 0.1) !important;
-    }
-    #qc-cmp2-ui .qc-cmp2-summary-buttons button[mode="primary"]:hover,
-    .qc-cmp2-container button.qc-cmp2-btn-primary:hover {
-      background-color: #00ffde !important;
-    }
-    #qc-cmp2-ui h2, #qc-cmp2-ui h3, #qc-cmp2-ui h4, #qc-cmp2-ui p {
-      color: #ffffff !important;
-    }
-    #qc-cmp2-ui a {
-      color: #00e6c8 !important;
-      text-decoration: none !important;
-    }
-    #qc-cmp2-ui a:hover {
-      text-decoration: underline !important;
-    }
+
   </style>
   <script type="module" crossorigin src="/assets/index-CdSb2jcH.v3.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-DCMX2uWH.css">
