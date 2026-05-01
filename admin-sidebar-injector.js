@@ -1,20 +1,26 @@
 (function () {
   'use strict';
 
-  if (!/^\/admin(\/|$)/.test(location.pathname)) return;
+  if (!/^\/(ar|en|fr|es)?\/?admin(\/|$)/.test(location.pathname)) return;
 
   var BULK_URL = '/admin/bulk';
-  var NEW_LABEL = 'إنشاء مقالات كثيرة';
+  var NEW_LABEL = 'عمل مقالات';
   var ANCHOR_TEXT = 'إنشاء مقال ذكي';
   var INJECTED_FLAG = 'data-bulk-articles-injected';
 
-  function findAnchorButton() {
-    var buttons = document.querySelectorAll('button');
-    for (var i = 0; i < buttons.length; i++) {
-      var b = buttons[i];
-      if ((b.textContent || '').indexOf(ANCHOR_TEXT) !== -1) return b;
+  function findAnchorButtons() {
+    var results = [];
+    var elements = document.querySelectorAll('a, button, [role="button"]');
+    for (var i = 0; i < elements.length; i++) {
+      var b = elements[i];
+      if ((b.textContent || '').indexOf(ANCHOR_TEXT) !== -1) {
+        // Avoid adding to our own injected button if its text somehow matched
+        if (!b.getAttribute(INJECTED_FLAG)) {
+          results.push(b);
+        }
+      }
     }
-    return null;
+    return results;
   }
 
   function makeButton(template) {
@@ -40,27 +46,36 @@
     btn.addEventListener('click', function (ev) {
       ev.preventDefault();
       ev.stopPropagation();
-      window.location.assign(BULK_URL);
+      var langMatch = location.pathname.match(/^\/(ar|en|fr|es)(\/|$)/);
+      var prefix = langMatch ? '/' + langMatch[1] : '';
+      window.location.assign(prefix + BULK_URL);
     });
 
     return btn;
   }
 
   function inject() {
-    if (document.querySelector('button[' + INJECTED_FLAG + ']')) return true;
-    var anchor = findAnchorButton();
-    if (!anchor || !anchor.parentNode) return false;
-    var newBtn = makeButton(anchor);
-    anchor.parentNode.insertBefore(newBtn, anchor.nextSibling);
-    return true;
+    var anchors = findAnchorButtons();
+    var injectedAny = false;
+    for (var i = 0; i < anchors.length; i++) {
+      var anchor = anchors[i];
+      // Check if we already injected next to this specific anchor
+      if (anchor.nextSibling && anchor.nextSibling.nodeType === 1 && anchor.nextSibling.getAttribute(INJECTED_FLAG)) {
+        continue;
+      }
+      if (anchor.parentNode) {
+        var newBtn = makeButton();
+        anchor.parentNode.insertBefore(newBtn, anchor.nextSibling);
+        injectedAny = true;
+      }
+    }
+    return injectedAny;
   }
 
   function start() {
-    if (inject()) return;
+    inject();
     var observer = new MutationObserver(function () {
-      if (!document.querySelector('button[' + INJECTED_FLAG + ']')) {
-        inject();
-      }
+      inject();
     });
     observer.observe(document.body, { childList: true, subtree: true });
   }

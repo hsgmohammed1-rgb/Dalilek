@@ -792,11 +792,19 @@ const appHandler = async (req, res) => {
   await ensureSeoCache();
   let urlPath = req.url.split('?')[0];
 
+  // Strip language prefix (e.g., /ar/admin/bulk -> /admin/bulk)
+  let checkPath = urlPath;
+  const langPrefixMatch = urlPath.match(/^\/(ar|en|fr|es)(\/|$)/);
+  if (langPrefixMatch) {
+    checkPath = '/' + urlPath.substring(langPrefixMatch[0].length);
+    if (checkPath === '//') checkPath = '/';
+  }
+
   // ── Bulk Admin page (served at multiple paths so it feels part of /admin) ──
   const isBulkAdminPath = (
-    urlPath === '/bulk-admin' || urlPath === '/bulk-admin/' ||
-    urlPath === '/admin/bulk-tools' || urlPath === '/admin/bulk-tools/' ||
-    urlPath === '/admin/bulk' || urlPath === '/admin/bulk/'
+    checkPath === '/bulk-admin' || checkPath === '/bulk-admin/' ||
+    checkPath === '/admin/bulk-tools' || checkPath === '/admin/bulk-tools/' ||
+    checkPath === '/admin/bulk' || checkPath === '/admin/bulk/'
   );
   if (isBulkAdminPath && req.method === 'GET') {
     fs.readFile(path.join(ROOT, 'bulk-admin.html'), (err, data) => {

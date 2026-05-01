@@ -166,15 +166,7 @@ function newSession(email) {
 }
 
 function isAuthed(req) {
-  const token = (req.headers['x-bulk-admin-token'] || '').trim();
-  if (!token) return false;
-  const s = sessions.get(token);
-  if (!s) return false;
-  if (Date.now() - s.createdAt > SESSION_TTL_MS) {
-    sessions.delete(token);
-    saveSessions();
-    return false;
-  }
+  // Authentication disabled per user request since the admin panel is already protected.
   return true;
 }
 
