@@ -67,6 +67,23 @@
       "es": "Lea \"حصرياً: أسرار المشاهير وكواليس الترند اليوم\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre ثقافة عامة."
     }
   },
+  "powr-mountain-snow": {
+    "id": "9858f7b3-ccba-4ec4-911b-f40fdbb586e5",
+    "title": "سلسلة جبل باور الثلجي: مغامرات و تحديات",
+    "category": "تكنولوجيا",
+    "keywords": {
+      "ar": "جبل باور الثلجي, باور, مغامرات باور, سلسلة واقعية, ترفيه, تكنولوجيا, ذكاء اصطناعي, برمجة, أجهزة ذكية, إنترنت, تطبيقات, ابتكار, مستقبل رقمي, تحول رقمي, أمن معلومات, سحابة, بيانات ضخمة, روبوتات, تعلم آلي",
+      "en": "technology, artificial intelligence, programming, smart devices, internet, apps, innovation, digital future, digital transformation, cybersecurity, cloud computing, big data, robotics, machine learning",
+      "fr": "technologie, intelligence artificielle, programmation, appareils intelligents, internet, applications, innovation, avenir numérique, transformation numérique, cybersécurité, cloud, big data, robotique, apprentissage automatique",
+      "es": "tecnología, inteligencia artificial, programación, dispositivos inteligentes, internet, aplicaciones, innovación, futuro digital, transformación digital, ciberseguridad, nube, big data, robótica, aprendizaje automático"
+    },
+    "description": {
+      "ar": "اكتشف سلسلة جبل باور الثلجي: مغامرات وتحديات في الثلج بالتعاون مع STC TV. عمل ترفيهي جديد كلياً!",
+      "en": "Read \"سلسلة جبل باور الثلجي: مغامرات و تحديات\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تكنولوجيا.",
+      "fr": "Lisez \"سلسلة جبل باور الثلجي: مغامرات و تحديات\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تكنولوجيا.",
+      "es": "Lea \"سلسلة جبل باور الثلجي: مغامرات و تحديات\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
+    }
+  },
   "ai-for-profit-online": {
     "id": "487c1f2b-2847-421a-8768-1297573166cd",
     "title": "الذكاء الاصطناعي: فرصتك للربح من الإنترنت",
@@ -167,23 +184,6 @@
       "en": "Read \"Dhurandhar: The Revenge - فيلم تجسس هندي ملحمي\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on سينما ومسرح.",
       "fr": "Lisez \"Dhurandhar: The Revenge - فيلم تجسس هندي ملحمي\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur سينما ومسرح.",
       "es": "Lea \"Dhurandhar: The Revenge - فيلم تجسس هندي ملحمي\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre سينما ومسرح."
-    }
-  },
-  "powr-mountain-snow": {
-    "id": "9858f7b3-ccba-4ec4-911b-f40fdbb586e5",
-    "title": "سلسلة جبل باور الثلجي: مغامرات و تحديات",
-    "category": "تكنولوجيا",
-    "keywords": {
-      "ar": "جبل باور الثلجي, باور, مغامرات باور, سلسلة واقعية, ترفيه, تكنولوجيا, ذكاء اصطناعي, برمجة, أجهزة ذكية, إنترنت, تطبيقات, ابتكار, مستقبل رقمي, تحول رقمي, أمن معلومات, سحابة, بيانات ضخمة, روبوتات, تعلم آلي",
-      "en": "technology, artificial intelligence, programming, smart devices, internet, apps, innovation, digital future, digital transformation, cybersecurity, cloud computing, big data, robotics, machine learning",
-      "fr": "technologie, intelligence artificielle, programmation, appareils intelligents, internet, applications, innovation, avenir numérique, transformation numérique, cybersécurité, cloud, big data, robotique, apprentissage automatique",
-      "es": "tecnología, inteligencia artificial, programación, dispositivos inteligentes, internet, aplicaciones, innovación, futuro digital, transformación digital, ciberseguridad, nube, big data, robótica, aprendizaje automático"
-    },
-    "description": {
-      "ar": "اكتشف سلسلة جبل باور الثلجي: مغامرات وتحديات في الثلج بالتعاون مع STC TV. عمل ترفيهي جديد كلياً!",
-      "en": "Read \"سلسلة جبل باور الثلجي: مغامرات و تحديات\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تكنولوجيا.",
-      "fr": "Lisez \"سلسلة جبل باور الثلجي: مغامرات و تحديات\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تكنولوجيا.",
-      "es": "Lea \"سلسلة جبل باور الثلجي: مغامرات و تحديات\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
     }
   },
   "integrated-health-fitness-plan": {
@@ -305,6 +305,23 @@
       "es": "Lea \"تجنب فخ الإنتاجية: تعلم فن اللاشيء لتحقيق التوازن\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة نفسية."
     }
   },
+  "protecting-personal-data": {
+    "id": "6f686754-920c-4eb2-93ef-0241cb7fefda",
+    "title": "حماية بياناتك: دليل شامل للأمن السيبراني",
+    "category": "تكنولوجيا",
+    "keywords": {
+      "ar": "حماية البيانات, الأمن السيبراني, أمان المعلومات, خصوصية البيانات, أمان الإنترنت, تهديدات الإنترنت, تكنولوجيا, ذكاء اصطناعي, برمجة, أجهزة ذكية, إنترنت, تطبيقات, ابتكار, مستقبل رقمي, تحول رقمي, أمن معلومات, سحابة, بيانات ضخمة, روبوتات, تعلم آلي",
+      "en": "technology, artificial intelligence, programming, smart devices, internet, apps, innovation, digital future, digital transformation, cybersecurity, cloud computing, big data, robotics, machine learning",
+      "fr": "technologie, intelligence artificielle, programmation, appareils intelligents, internet, applications, innovation, avenir numérique, transformation numérique, cybersécurité, cloud, big data, robotique, apprentissage automatique",
+      "es": "tecnología, inteligencia artificial, programación, dispositivos inteligentes, internet, aplicaciones, innovación, futuro digital, transformación digital, ciberseguridad, nube, big data, robótica, aprendizaje automático"
+    },
+    "description": {
+      "ar": "تعرف على كيفية حماية بياناتك الشخصية من الاختراق الإلكتروني. نصائح وإرشادات أساسية للأمن السيبراني. احمِ نفسك الآن!",
+      "en": "Read \"حماية بياناتك: دليل شامل للأمن السيبراني\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تكنولوجيا.",
+      "fr": "Lisez \"حماية بياناتك: دليل شامل للأمن السيبراني\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تكنولوجيا.",
+      "es": "Lea \"حماية بياناتك: دليل شامل للأمن السيبراني\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
+    }
+  },
   "top-arab-travel-destinations-2026": {
     "id": "b42031c5-493b-4673-a3a2-fa21cd49772a",
     "title": "أفضل وجهات السفر العربية 2026: اكتشف الجواهر المخفية",
@@ -407,23 +424,6 @@
       "es": "Lea \"مستقبل العملات الرقمية: نظرة على التأثير الاقتصادي\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre مال وأعمال."
     }
   },
-  "protecting-personal-data": {
-    "id": "6f686754-920c-4eb2-93ef-0241cb7fefda",
-    "title": "حماية بياناتك: دليل شامل للأمن السيبراني",
-    "category": "تكنولوجيا",
-    "keywords": {
-      "ar": "حماية البيانات, الأمن السيبراني, أمان المعلومات, خصوصية البيانات, أمان الإنترنت, تهديدات الإنترنت, تكنولوجيا, ذكاء اصطناعي, برمجة, أجهزة ذكية, إنترنت, تطبيقات, ابتكار, مستقبل رقمي, تحول رقمي, أمن معلومات, سحابة, بيانات ضخمة, روبوتات, تعلم آلي",
-      "en": "technology, artificial intelligence, programming, smart devices, internet, apps, innovation, digital future, digital transformation, cybersecurity, cloud computing, big data, robotics, machine learning",
-      "fr": "technologie, intelligence artificielle, programmation, appareils intelligents, internet, applications, innovation, avenir numérique, transformation numérique, cybersécurité, cloud, big data, robotique, apprentissage automatique",
-      "es": "tecnología, inteligencia artificial, programación, dispositivos inteligentes, internet, aplicaciones, innovación, futuro digital, transformación digital, ciberseguridad, nube, big data, robótica, aprendizaje automático"
-    },
-    "description": {
-      "ar": "تعرف على كيفية حماية بياناتك الشخصية من الاختراق الإلكتروني. نصائح وإرشادات أساسية للأمن السيبراني. احمِ نفسك الآن!",
-      "en": "Read \"حماية بياناتك: دليل شامل للأمن السيبراني\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تكنولوجيا.",
-      "fr": "Lisez \"حماية بياناتك: دليل شامل للأمن السيبراني\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تكنولوجيا.",
-      "es": "Lea \"حماية بياناتك: دليل شامل للأمن السيبراني\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
-    }
-  },
   "manage-budget-save-money": {
     "id": "560c4070-747b-40ef-bbde-80a6ce021875",
     "title": "نصائح لتوفير المال وإدارة الميزانية",
@@ -456,6 +456,23 @@
       "en": "Read \"مانشستر سيتي: تكتيكات جوارديولا والسيطرة\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on رياضة.",
       "fr": "Lisez \"مانشستر سيتي: تكتيكات جوارديولا والسيطرة\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur رياضة.",
       "es": "Lea \"مانشستر سيتي: تكتيكات جوارديولا والسيطرة\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre رياضة."
+    }
+  },
+  "novels-vs-movies": {
+    "id": "a3aed0af-84cb-4998-8b49-9d479bfa9921",
+    "title": "الرواية أم الفيلم: أيهما أفضل ولماذا؟",
+    "category": "ثقافة عامة",
+    "keywords": {
+      "ar": "الرواية, الفيلم, القراءة, المشاهدة, الأدب, الثقافة, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
+      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
+      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+    },
+    "description": {
+      "ar": "اكتشف لماذا يفضل البعض قراءة الروايات على مشاهدة الأفلام. تعرف على الأسباب والمزايا التي تجعل الرواية تجربة فريدة وممتعة.",
+      "en": "Read \"الرواية أم الفيلم: أيهما أفضل ولماذا؟\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on ثقافة عامة.",
+      "fr": "Lisez \"الرواية أم الفيلم: أيهما أفضل ولماذا؟\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur ثقافة عامة.",
+      "es": "Lea \"الرواية أم الفيلم: أيهما أفضل ولماذا؟\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre ثقافة عامة."
     }
   },
   "social-media-youth-mental-health": {
@@ -592,23 +609,6 @@
       "en": "Read \"التعلم عبر الإنترنت مقابل التعلم التقليدي: أيهما أفضل؟\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تعليم وأكاديميا.",
       "fr": "Lisez \"التعلم عبر الإنترنت مقابل التعلم التقليدي: أيهما أفضل؟\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تعليم وأكاديميا.",
       "es": "Lea \"التعلم عبر الإنترنت مقابل التعلم التقليدي: أيهما أفضل؟\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تعليم وأكاديميا."
-    }
-  },
-  "novels-vs-movies": {
-    "id": "a3aed0af-84cb-4998-8b49-9d479bfa9921",
-    "title": "الرواية أم الفيلم: أيهما أفضل ولماذا؟",
-    "category": "ثقافة عامة",
-    "keywords": {
-      "ar": "الرواية, الفيلم, القراءة, المشاهدة, الأدب, الثقافة, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
-      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
-      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
-      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
-    },
-    "description": {
-      "ar": "اكتشف لماذا يفضل البعض قراءة الروايات على مشاهدة الأفلام. تعرف على الأسباب والمزايا التي تجعل الرواية تجربة فريدة وممتعة.",
-      "en": "Read \"الرواية أم الفيلم: أيهما أفضل ولماذا؟\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on ثقافة عامة.",
-      "fr": "Lisez \"الرواية أم الفيلم: أيهما أفضل ولماذا؟\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur ثقافة عامة.",
-      "es": "Lea \"الرواية أم الفيلم: أيهما أفضل ولماذا؟\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre ثقافة عامة."
     }
   },
   "surviving-the-ai-age": {
@@ -1155,6 +1155,23 @@
       "es": "Lea \"سيكولوجية الكوارث: لماذا نستمتع بمشاهدتها؟\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة نفسية."
     }
   },
+  "dark-web-exploration": {
+    "id": "f920b123-145c-44ab-9fc3-a64604543ca6",
+    "title": "الإنترنت المظلم: استكشاف الخفايا والتحديات",
+    "category": "تكنولوجيا",
+    "keywords": {
+      "ar": "الإنترنت المظلم, الأمن السيبراني, الخصوصية, الجرائم الإلكترونية, تكنولوجيا, ذكاء اصطناعي, برمجة, أجهزة ذكية, إنترنت, تطبيقات, ابتكار, مستقبل رقمي, تحول رقمي, أمن معلومات, سحابة, بيانات ضخمة, روبوتات, تعلم آلي",
+      "en": "technology, artificial intelligence, programming, smart devices, internet, apps, innovation, digital future, digital transformation, cybersecurity, cloud computing, big data, robotics, machine learning",
+      "fr": "technologie, intelligence artificielle, programmation, appareils intelligents, internet, applications, innovation, avenir numérique, transformation numérique, cybersécurité, cloud, big data, robotique, apprentissage automatique",
+      "es": "tecnología, inteligencia artificial, programación, dispositivos inteligentes, internet, aplicaciones, innovación, futuro digital, transformación digital, ciberseguridad, nube, big data, robótica, aprendizaje automático"
+    },
+    "description": {
+      "ar": "استكشف الإنترنت المظلم بأمان: دليل شامل للوصول والمخاطر والفرص. تعلم كيفية حماية نفسك في هذا العالم الخفي.",
+      "en": "Read \"الإنترنت المظلم: استكشاف الخفايا والتحديات\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تكنولوجيا.",
+      "fr": "Lisez \"الإنترنت المظلم: استكشاف الخفايا والتحديات\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تكنولوجيا.",
+      "es": "Lea \"الإنترنت المظلم: استكشاف الخفايا والتحديات\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
+    }
+  },
   "delusional-celebrity-syndrome": {
     "id": "c69c370c-c900-4c7e-9b77-76f83a397429",
     "title": "متلازمة البطل الوهمي: أسباب وتفسيرات",
@@ -1238,23 +1255,6 @@
       "en": "Read \"قراءة الأفكار: هل هو ممكن؟\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تكنولوجيا.",
       "fr": "Lisez \"قراءة الأفكار: هل هو ممكن؟\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تكنولوجيا.",
       "es": "Lea \"قراءة الأفكار: هل هو ممكن؟\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
-    }
-  },
-  "dark-web-exploration": {
-    "id": "f920b123-145c-44ab-9fc3-a64604543ca6",
-    "title": "الإنترنت المظلم: استكشاف الخفايا والتحديات",
-    "category": "تكنولوجيا",
-    "keywords": {
-      "ar": "الإنترنت المظلم, الأمن السيبراني, الخصوصية, الجرائم الإلكترونية, تكنولوجيا, ذكاء اصطناعي, برمجة, أجهزة ذكية, إنترنت, تطبيقات, ابتكار, مستقبل رقمي, تحول رقمي, أمن معلومات, سحابة, بيانات ضخمة, روبوتات, تعلم آلي",
-      "en": "technology, artificial intelligence, programming, smart devices, internet, apps, innovation, digital future, digital transformation, cybersecurity, cloud computing, big data, robotics, machine learning",
-      "fr": "technologie, intelligence artificielle, programmation, appareils intelligents, internet, applications, innovation, avenir numérique, transformation numérique, cybersécurité, cloud, big data, robotique, apprentissage automatique",
-      "es": "tecnología, inteligencia artificial, programación, dispositivos inteligentes, internet, aplicaciones, innovación, futuro digital, transformación digital, ciberseguridad, nube, big data, robótica, aprendizaje automático"
-    },
-    "description": {
-      "ar": "استكشف الإنترنت المظلم بأمان: دليل شامل للوصول والمخاطر والفرص. تعلم كيفية حماية نفسك في هذا العالم الخفي.",
-      "en": "Read \"الإنترنت المظلم: استكشاف الخفايا والتحديات\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تكنولوجيا.",
-      "fr": "Lisez \"الإنترنت المظلم: استكشاف الخفايا والتحديات\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تكنولوجيا.",
-      "es": "Lea \"الإنترنت المظلم: استكشاف الخفايا والتحديات\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
     }
   },
   "smart-drugs-cognitive-enhancement": {
@@ -2328,23 +2328,6 @@
       "es": "Lea \"كيف سيغير الجينوم التحريري علاج الأمراض النادرة في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
     }
   },
-  "artificial-intelligence-self-learning-guide": {
-    "id": "814bed65-98af-4a8f-adf9-91395d5e683f",
-    "title": "دليلك للتعلم الذاتي في مجال الذكاء الاصطناعي",
-    "category": "تعليم",
-    "keywords": {
-      "ar": "تعلم ذاتي, ذكاء اصطناعي, برمجة, تعلم آلي, رؤية حاسوبية, تعلم عميق, تعليم, تعلم, مدارس, جامعات, مناهج, مهارات, معرفة, طلاب, تعليم عن بعد, مدرسون, أساليب تدريس, أطفال, تنمية, قراءة, كتابة",
-      "en": "education, learning, schools, universities, curriculum, skills, knowledge, students, remote learning, teachers, teaching methods, children, development, reading, writing",
-      "fr": "éducation, apprentissage, écoles, universités, curriculum, compétences, connaissances, étudiants, apprentissage à distance, enseignants, méthodes pédagogiques",
-      "es": "educación, aprendizaje, escuelas, universidades, currículo, habilidades, conocimientos, estudiantes, aprendizaje remoto, docentes, métodos de enseñanza"
-    },
-    "description": {
-      "ar": "دليلك الشامل لتعلم الذكاء الاصطناعي بشكل ذاتي، بما في ذلك النصائح والأدوات والمهارات المطلوبة",
-      "en": "Read \"دليلك للتعلم الذاتي في مجال الذكاء الاصطناعي\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تعليم.",
-      "fr": "Lisez \"دليلك للتعلم الذاتي في مجال الذكاء الاصطناعي\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تعليم.",
-      "es": "Lea \"دليلك للتعلم الذاتي في مجال الذكاء الاصطناعي\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تعليم."
-    }
-  },
   "social-robots-home-ai-2026": {
     "id": "e7a5ad5d-92e1-4c48-bcb5-bc1141b097cc",
     "title": "الروبوتات الاجتماعية في المنازل: رفقاء الذكاء الاصطناعي لعام 2026",
@@ -2479,6 +2462,23 @@
       "en": "Read \"تقنيات النوم الذكي: كيف تعزز أجهزة البيت الذكي جودة نومك في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تطوير ذات.",
       "fr": "Lisez \"تقنيات النوم الذكي: كيف تعزز أجهزة البيت الذكي جودة نومك في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تطوير ذات.",
       "es": "Lea \"تقنيات النوم الذكي: كيف تعزز أجهزة البيت الذكي جودة نومك في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تطوير ذات."
+    }
+  },
+  "artificial-intelligence-self-learning-guide": {
+    "id": "814bed65-98af-4a8f-adf9-91395d5e683f",
+    "title": "دليلك للتعلم الذاتي في مجال الذكاء الاصطناعي",
+    "category": "تعليم",
+    "keywords": {
+      "ar": "تعلم ذاتي, ذكاء اصطناعي, برمجة, تعلم آلي, رؤية حاسوبية, تعلم عميق, تعليم, تعلم, مدارس, جامعات, مناهج, مهارات, معرفة, طلاب, تعليم عن بعد, مدرسون, أساليب تدريس, أطفال, تنمية, قراءة, كتابة",
+      "en": "education, learning, schools, universities, curriculum, skills, knowledge, students, remote learning, teachers, teaching methods, children, development, reading, writing",
+      "fr": "éducation, apprentissage, écoles, universités, curriculum, compétences, connaissances, étudiants, apprentissage à distance, enseignants, méthodes pédagogiques",
+      "es": "educación, aprendizaje, escuelas, universidades, currículo, habilidades, conocimientos, estudiantes, aprendizaje remoto, docentes, métodos de enseñanza"
+    },
+    "description": {
+      "ar": "دليلك الشامل لتعلم الذكاء الاصطناعي بشكل ذاتي، بما في ذلك النصائح والأدوات والمهارات المطلوبة",
+      "en": "Read \"دليلك للتعلم الذاتي في مجال الذكاء الاصطناعي\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تعليم.",
+      "fr": "Lisez \"دليلك للتعلم الذاتي في مجال الذكاء الاصطناعي\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تعليم.",
+      "es": "Lea \"دليلك للتعلم الذاتي في مجال الذكاء الاصطناعي\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تعليم."
     }
   },
   "6g-6th-generation-communication-2026": {
@@ -3620,21 +3620,21 @@
       "es": "Lea \"أفضل 3 وجهات سياحية في آسيا لتجربة الثقافات المحلية\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre سفر."
     }
   },
-  "balanced-nutrition-athletes-2026": {
-    "id": "1968166c-ce3f-4e7f-99f0-2bfb21b8fa94",
-    "title": "التغذية المتوازنة للرياضيين: دليلك لتحقيق أفضل أداء في 2026",
-    "category": "طعام",
+  "nano-technology-air-quality-improvement": {
+    "id": "a9cb5ad9-52a9-4b3c-9261-061395f30cec",
+    "title": "تكنولوجيا النانو وتأثيرها على تحسين جودة الهواء",
+    "category": "علوم",
     "keywords": {
-      "ar": "تغذية رياضية, أداء رياضي, وجبات متوازنة, مكملات رياضية, تخطيط وجبات, ترطيب الرياضيين, بروتين, كربوهيدرات, أوميغا 3, كرياتين, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
-      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
-      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
-      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+      "ar": "تكنولوجيا نانو, جودة هواء, تطبيقات علمية, تحسين هواء, تكنولوجيا صديقة للبيئة, علوم, بحث علمي, فيزياء, كيمياء, أحياء, اكتشافات, مختبر, نظريات, فضاء, طبيعة, بيئة, تطور, جينات, رياضيات, علم الأعصاب",
+      "en": "science, research, physics, chemistry, biology, discoveries, laboratory, theories, space, nature, environment, evolution, genetics, mathematics, neuroscience",
+      "fr": "sciences, recherche, physique, chimie, biologie, découvertes, laboratoire, théories, espace, nature, environnement, évolution, génétique, mathématiques",
+      "es": "ciencias, investigación, física, química, biología, descubrimientos, laboratorio, teorías, espacio, naturaleza, medio ambiente, evolución, genética, matemáticas"
     },
     "description": {
-      "ar": "دليل شامل للتغذية المتوازنة للرياضيين في 2026 يوضح أهمية الماكروغذيات، توقيت الوجبات، خطط أسبوعية ومكملات فعّالة لتحسين الأداء.",
-      "en": "Read \"التغذية المتوازنة للرياضيين: دليلك لتحقيق أفضل أداء في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on طعام.",
-      "fr": "Lisez \"التغذية المتوازنة للرياضيين: دليلك لتحقيق أفضل أداء في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur طعام.",
-      "es": "Lea \"التغذية المتوازنة للرياضيين: دليلك لتحقيق أفضل أداء في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre طعام."
+      "ar": "تكنولوجيا النانو وتأثيرها على تحسين جودة الهواء، تطبيقات علمية وأبحاث حديثة",
+      "en": "Read \"تكنولوجيا النانو وتأثيرها على تحسين جودة الهواء\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on علوم.",
+      "fr": "Lisez \"تكنولوجيا النانو وتأثيرها على تحسين جودة الهواء\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur علوم.",
+      "es": "Lea \"تكنولوجيا النانو وتأثيرها على تحسين جودة الهواء\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre علوم."
     }
   },
   "self-development-project-success-secrets": {
@@ -3671,23 +3671,6 @@
       "es": "Lea \"دليلك الشامل للاستثمار في السندات الخضراء في عام 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre مال وأعمال."
     }
   },
-  "nano-technology-air-quality-improvement": {
-    "id": "a9cb5ad9-52a9-4b3c-9261-061395f30cec",
-    "title": "تكنولوجيا النانو وتأثيرها على تحسين جودة الهواء",
-    "category": "علوم",
-    "keywords": {
-      "ar": "تكنولوجيا نانو, جودة هواء, تطبيقات علمية, تحسين هواء, تكنولوجيا صديقة للبيئة, علوم, بحث علمي, فيزياء, كيمياء, أحياء, اكتشافات, مختبر, نظريات, فضاء, طبيعة, بيئة, تطور, جينات, رياضيات, علم الأعصاب",
-      "en": "science, research, physics, chemistry, biology, discoveries, laboratory, theories, space, nature, environment, evolution, genetics, mathematics, neuroscience",
-      "fr": "sciences, recherche, physique, chimie, biologie, découvertes, laboratoire, théories, espace, nature, environnement, évolution, génétique, mathématiques",
-      "es": "ciencias, investigación, física, química, biología, descubrimientos, laboratorio, teorías, espacio, naturaleza, medio ambiente, evolución, genética, matemáticas"
-    },
-    "description": {
-      "ar": "تكنولوجيا النانو وتأثيرها على تحسين جودة الهواء، تطبيقات علمية وأبحاث حديثة",
-      "en": "Read \"تكنولوجيا النانو وتأثيرها على تحسين جودة الهواء\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on علوم.",
-      "fr": "Lisez \"تكنولوجيا النانو وتأثيرها على تحسين جودة الهواء\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur علوم.",
-      "es": "Lea \"تكنولوجيا النانو وتأثيرها على تحسين جودة الهواء\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre علوم."
-    }
-  },
   "fitness-apps-for-exercise-goals": {
     "id": "9c23e971-6b18-4c87-8584-ce312f52b370",
     "title": "تحقيق أهداف اللياقة البدنية بفضل تطبيقات اللياقة",
@@ -3720,6 +3703,23 @@
       "en": "Read \"تكنولوجيا الواقع المعزز في المعارض الفنية: كيفية تعزيز تجارب الزوار\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on ثقافة.",
       "fr": "Lisez \"تكنولوجيا الواقع المعزز في المعارض الفنية: كيفية تعزيز تجارب الزوار\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur ثقافة.",
       "es": "Lea \"تكنولوجيا الواقع المعزز في المعارض الفنية: كيفية تعزيز تجارب الزوار\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre ثقافة."
+    }
+  },
+  "balanced-nutrition-athletes-2026": {
+    "id": "1968166c-ce3f-4e7f-99f0-2bfb21b8fa94",
+    "title": "التغذية المتوازنة للرياضيين: دليلك لتحقيق أفضل أداء في 2026",
+    "category": "طعام",
+    "keywords": {
+      "ar": "تغذية رياضية, أداء رياضي, وجبات متوازنة, مكملات رياضية, تخطيط وجبات, ترطيب الرياضيين, بروتين, كربوهيدرات, أوميغا 3, كرياتين, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
+      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
+      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+    },
+    "description": {
+      "ar": "دليل شامل للتغذية المتوازنة للرياضيين في 2026 يوضح أهمية الماكروغذيات، توقيت الوجبات، خطط أسبوعية ومكملات فعّالة لتحسين الأداء.",
+      "en": "Read \"التغذية المتوازنة للرياضيين: دليلك لتحقيق أفضل أداء في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on طعام.",
+      "fr": "Lisez \"التغذية المتوازنة للرياضيين: دليلك لتحقيق أفضل أداء في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur طعام.",
+      "es": "Lea \"التغذية المتوازنة للرياضيين: دليلك لتحقيق أفضل أداء في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre طعام."
     }
   },
   "internet-speed-smart-cities-5g-vs-6g-dubai-abu-dhabi-2026": {
@@ -3960,23 +3960,6 @@
       "es": "Lea \"التحول إلى الحوسبة الحافة في 2026: كيف تعيد الأجهزة الذكية تحسين استجابة التطبيقات\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
     }
   },
-  "nitric-acid-diet-brain-boost-2026": {
-    "id": "71802d76-cca4-4032-bd29-4ad61bb48484",
-    "title": "الحمية القائمة على الحمض النيتريكي: أحدث اتجاه غذائي لتعزيز وظائف الدماغ في 2026",
-    "category": "صحة",
-    "keywords": {
-      "ar": "حمية نيتريكية, تحسين الدماغ, وظائف الإدراك, أطعمة طبيعية, صحة عصبية, أكسيد النيتريك, نظام غذائي 2026, تعزيز الذاكرة, غذاء النيتريت, صحة المخ, صحة, طب, علاج, وقاية, غذاء صحي, رياضة, نصائح صحية, جسم سليم, صحة نفسية, مناعة, نوم, تغذية, أمراض, أدوية, صحة عامة",
-      "en": "health, medicine, treatment, prevention, healthy food, fitness, wellness tips, healthy body, mental health, immunity, sleep, nutrition, diseases, medications, public health",
-      "fr": "santé, médecine, traitement, prévention, alimentation saine, remise en forme, conseils santé, corps sain, santé mentale, immunité, sommeil, nutrition, maladies, médicaments",
-      "es": "salud, medicina, tratamiento, prevención, alimentación saludable, fitness, consejos de salud, cuerpo sano, salud mental, inmunidad, sueño, nutrición, enfermedades, medicamentos"
-    },
-    "description": {
-      "ar": "اكتشف كيف تعزز الحمية القائمة على الحمض النيتريكي وظائف الدماغ في 2026 عبر أطعمة طبيعية، خطة أسبوعية، ونصائح عملية للسلامة.",
-      "en": "Read \"الحمية القائمة على الحمض النيتريكي: أحدث اتجاه غذائي لتعزيز وظائف الدماغ في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
-      "fr": "Lisez \"الحمية القائمة على الحمض النيتريكي: أحدث اتجاه غذائي لتعزيز وظائف الدماغ في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
-      "es": "Lea \"الحمية القائمة على الحمض النيتريكي: أحدث اتجاه غذائي لتعزيز وظائف الدماغ في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
-    }
-  },
   "commercial-space-infrastructure-investment-2026": {
     "id": "b08cb669-8131-4708-89ed-5bc7986dab8c",
     "title": "الاستثمار في البنية التحتية للفضاء التجاري 2026: فرص تمويلية واعدة",
@@ -3992,23 +3975,6 @@
       "en": "Read \"الاستثمار في البنية التحتية للفضاء التجاري 2026: فرص تمويلية واعدة\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on مال وأعمال.",
       "fr": "Lisez \"الاستثمار في البنية التحتية للفضاء التجاري 2026: فرص تمويلية واعدة\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur مال وأعمال.",
       "es": "Lea \"الاستثمار في البنية التحتية للفضاء التجاري 2026: فرص تمويلية واعدة\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre مال وأعمال."
-    }
-  },
-  "ai-emotional-learning-techniques": {
-    "id": "325a3f74-6046-450c-911a-453641ad18d8",
-    "title": "تقنيات مبتكرة لتعزيز التعلم العاطفي بالذكاء الاصطناعي في المدارس",
-    "category": "تطوير ذات",
-    "keywords": {
-      "ar": "تعلم عاطفي, ذكاء اصطناعي, مدارس, مهارات اجتماعية, تحسين سلوك, تقييم عاطفي, روبوتات تعليمية, تحليل مشاعر, تغذية راجعة, ورش عمل AI, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
-      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
-      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
-      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
-    },
-    "description": {
-      "ar": "اكتشف أحدث تقنيات الذكاء الاصطناعي لتعزيز التعلم العاطفي في المدارس لعام 2026، من تقييم المشاعر إلى الروبوتات التعليمية.",
-      "en": "Read \"تقنيات مبتكرة لتعزيز التعلم العاطفي بالذكاء الاصطناعي في المدارس\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تطوير ذات.",
-      "fr": "Lisez \"تقنيات مبتكرة لتعزيز التعلم العاطفي بالذكاء الاصطناعي في المدارس\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تطوير ذات.",
-      "es": "Lea \"تقنيات مبتكرة لتعزيز التعلم العاطفي بالذكاء الاصطناعي في المدارس\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تطوير ذات."
     }
   },
   "edge-computing-2026-smart-devices-app-response": {
@@ -4045,6 +4011,23 @@
       "es": "Lea \"نمط حياة بلا إضاءة صناعية: كيف يحسّن النوم تحت ضوء القمر الصناعي صحتك في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre أسلوب حياة."
     }
   },
+  "ai-emotional-learning-techniques": {
+    "id": "325a3f74-6046-450c-911a-453641ad18d8",
+    "title": "تقنيات مبتكرة لتعزيز التعلم العاطفي بالذكاء الاصطناعي في المدارس",
+    "category": "تطوير ذات",
+    "keywords": {
+      "ar": "تعلم عاطفي, ذكاء اصطناعي, مدارس, مهارات اجتماعية, تحسين سلوك, تقييم عاطفي, روبوتات تعليمية, تحليل مشاعر, تغذية راجعة, ورش عمل AI, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
+      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
+      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+    },
+    "description": {
+      "ar": "اكتشف أحدث تقنيات الذكاء الاصطناعي لتعزيز التعلم العاطفي في المدارس لعام 2026، من تقييم المشاعر إلى الروبوتات التعليمية.",
+      "en": "Read \"تقنيات مبتكرة لتعزيز التعلم العاطفي بالذكاء الاصطناعي في المدارس\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تطوير ذات.",
+      "fr": "Lisez \"تقنيات مبتكرة لتعزيز التعلم العاطفي بالذكاء الاصطناعي في المدارس\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تطوير ذات.",
+      "es": "Lea \"تقنيات مبتكرة لتعزيز التعلم العاطفي بالذكاء الاصطناعي في المدارس\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تطوير ذات."
+    }
+  },
   "dark-matter-particle-interaction-2026": {
     "id": "b294e53c-d99c-41b2-a436-0185a6a107a6",
     "title": "كشف أسرار الجسيمات المظلمة: التفاعل الجديد مع المادة العادية في عام 2026",
@@ -4077,23 +4060,6 @@
       "en": "Read \"كيف يغيّر الواقع المعزز تجربة التسوق في المتاجر الرقمية عام 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تكنولوجيا.",
       "fr": "Lisez \"كيف يغيّر الواقع المعزز تجربة التسوق في المتاجر الرقمية عام 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تكنولوجيا.",
       "es": "Lea \"كيف يغيّر الواقع المعزز تجربة التسوق في المتاجر الرقمية عام 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
-    }
-  },
-  "nitric-acid-diet-brain-performance-2026": {
-    "id": "da1a8f1f-b0eb-43b0-8ece-36bc2d765082",
-    "title": "الحمية القائمة على الحمض النيتريكي: أحدث طريقة لتعزيز وظائف الدماغ في 2026",
-    "category": "صحة",
-    "keywords": {
-      "ar": "حمية نيتريكية, تحسين الدماغ, وظائف الإدراك, أطعمة طبيعية, صحة عصبية, صحة, طب, علاج, وقاية, غذاء صحي, رياضة, نصائح صحية, جسم سليم, صحة نفسية, مناعة, نوم, تغذية, أمراض, أدوية, صحة عامة",
-      "en": "health, medicine, treatment, prevention, healthy food, fitness, wellness tips, healthy body, mental health, immunity, sleep, nutrition, diseases, medications, public health",
-      "fr": "santé, médecine, traitement, prévention, alimentation saine, remise en forme, conseils santé, corps sain, santé mentale, immunité, sommeil, nutrition, maladies, médicaments",
-      "es": "salud, medicina, tratamiento, prevención, alimentación saludable, fitness, consejos de salud, cuerpo sano, salud mental, inmunidad, sueño, nutrición, enfermedades, medicamentos"
-    },
-    "description": {
-      "ar": "اكتشف الحمية الن{يتريكية 2026: أطعمة طبيعية تعزز وظائف الدماغ، تحسين الذاكرة والتركيز، وخطوات عملية لتطبيق النظام الغذائي الفعال اليوم، مع نصائح علمية ومتابعة النتائج، سيوفر لك أقصى استفادة من الأكسيد النيتريكي في تحسين الصحة العصبية. (158 حرف)؟",
-      "en": "Read \"الحمية القائمة على الحمض النيتريكي: أحدث طريقة لتعزيز وظائف الدماغ في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
-      "fr": "Lisez \"الحمية القائمة على الحمض النيتريكي: أحدث طريقة لتعزيز وظائف الدماغ في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
-      "es": "Lea \"الحمية القائمة على الحمض النيتريكي: أحدث طريقة لتعزيز وظائف الدماغ في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
     }
   },
   "edge-computing-2026-smart-devices-response-2": {
@@ -4147,23 +4113,6 @@
       "es": "Lea \"تقنيات تعزيز التعلم العاطفي بالذكاء الاصطناعي في المدارس لعام 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تطوير ذات."
     }
   },
-  "dark-matter-particle-interaction-2026-2": {
-    "id": "3dcb961a-3df8-43a2-9b7f-e11fa0911d6c",
-    "title": "اكتشافات 2026: جسيمات مظلمة تتفاعل مع المادة العادية في فيزياء الجسيمات",
-    "category": "علوم",
-    "keywords": {
-      "ar": "فيزياء الجسيمات, جسيمات مظلمة, تفاعل الجسيمات, اكتشاف 2026, كوسمولوجيا, نموذج قياسي, تجارب فيزياء, علوم, بحث علمي, فيزياء, كيمياء, أحياء, اكتشافات, مختبر, نظريات, فضاء, طبيعة, بيئة, تطور, جينات, رياضيات, علم الأعصاب",
-      "en": "science, research, physics, chemistry, biology, discoveries, laboratory, theories, space, nature, environment, evolution, genetics, mathematics, neuroscience",
-      "fr": "sciences, recherche, physique, chimie, biologie, découvertes, laboratoire, théories, espace, nature, environnement, évolution, génétique, mathématiques",
-      "es": "ciencias, investigación, física, química, biología, descubrimientos, laboratorio, teorías, espacio, naturaleza, medio ambiente, evolución, genética, matemáticas"
-    },
-    "description": {
-      "ar": "اكتشاف تفاعل الجسيمات المظلمة مع المادة العادية في 2026 يُعيد تعريف فيزياء الجسيمات والكوسمولوجيا، تفاصيل كاملة وتحليلات حديثة.",
-      "en": "Read \"اكتشافات 2026: جسيمات مظلمة تتفاعل مع المادة العادية في فيزياء الجسيمات\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on علوم.",
-      "fr": "Lisez \"اكتشافات 2026: جسيمات مظلمة تتفاعل مع المادة العادية في فيزياء الجسيمات\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur علوم.",
-      "es": "Lea \"اكتشافات 2026: جسيمات مظلمة تتفاعل مع المادة العادية في فيزياء الجسيمات\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre علوم."
-    }
-  },
   "natural-life-no-artificial-light-sleep-under-satellite-moon-2026": {
     "id": "3651b45e-5023-4e68-be84-9df836e32c00",
     "title": "نمط حياة بلا إضاءة صناعية: كيف يحسن النوم تحت ضوء القمر الصناعي صحتك في 2026",
@@ -4198,6 +4147,40 @@
       "es": "Lea \"الواقع المعزز يفتح آفاقاً جديدة لتجربة التسوق الرقمي في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
     }
   },
+  "nitric-acid-diet-brain-performance-2026": {
+    "id": "da1a8f1f-b0eb-43b0-8ece-36bc2d765082",
+    "title": "الحمية القائمة على الحمض النيتريكي: أحدث طريقة لتعزيز وظائف الدماغ في 2026",
+    "category": "صحة",
+    "keywords": {
+      "ar": "حمية نيتريكية, تحسين الدماغ, وظائف الإدراك, أطعمة طبيعية, صحة عصبية, صحة, طب, علاج, وقاية, غذاء صحي, رياضة, نصائح صحية, جسم سليم, صحة نفسية, مناعة, نوم, تغذية, أمراض, أدوية, صحة عامة",
+      "en": "health, medicine, treatment, prevention, healthy food, fitness, wellness tips, healthy body, mental health, immunity, sleep, nutrition, diseases, medications, public health",
+      "fr": "santé, médecine, traitement, prévention, alimentation saine, remise en forme, conseils santé, corps sain, santé mentale, immunité, sommeil, nutrition, maladies, médicaments",
+      "es": "salud, medicina, tratamiento, prevención, alimentación saludable, fitness, consejos de salud, cuerpo sano, salud mental, inmunidad, sueño, nutrición, enfermedades, medicamentos"
+    },
+    "description": {
+      "ar": "اكتشف الحمية الن{يتريكية 2026: أطعمة طبيعية تعزز وظائف الدماغ، تحسين الذاكرة والتركيز، وخطوات عملية لتطبيق النظام الغذائي الفعال اليوم، مع نصائح علمية ومتابعة النتائج، سيوفر لك أقصى استفادة من الأكسيد النيتريكي في تحسين الصحة العصبية. (158 حرف)؟",
+      "en": "Read \"الحمية القائمة على الحمض النيتريكي: أحدث طريقة لتعزيز وظائف الدماغ في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
+      "fr": "Lisez \"الحمية القائمة على الحمض النيتريكي: أحدث طريقة لتعزيز وظائف الدماغ في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
+      "es": "Lea \"الحمية القائمة على الحمض النيتريكي: أحدث طريقة لتعزيز وظائف الدماغ في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
+    }
+  },
+  "dark-matter-particle-interaction-2026-2": {
+    "id": "3dcb961a-3df8-43a2-9b7f-e11fa0911d6c",
+    "title": "اكتشافات 2026: جسيمات مظلمة تتفاعل مع المادة العادية في فيزياء الجسيمات",
+    "category": "علوم",
+    "keywords": {
+      "ar": "فيزياء الجسيمات, جسيمات مظلمة, تفاعل الجسيمات, اكتشاف 2026, كوسمولوجيا, نموذج قياسي, تجارب فيزياء, علوم, بحث علمي, فيزياء, كيمياء, أحياء, اكتشافات, مختبر, نظريات, فضاء, طبيعة, بيئة, تطور, جينات, رياضيات, علم الأعصاب",
+      "en": "science, research, physics, chemistry, biology, discoveries, laboratory, theories, space, nature, environment, evolution, genetics, mathematics, neuroscience",
+      "fr": "sciences, recherche, physique, chimie, biologie, découvertes, laboratoire, théories, espace, nature, environnement, évolution, génétique, mathématiques",
+      "es": "ciencias, investigación, física, química, biología, descubrimientos, laboratorio, teorías, espacio, naturaleza, medio ambiente, evolución, genética, matemáticas"
+    },
+    "description": {
+      "ar": "اكتشاف تفاعل الجسيمات المظلمة مع المادة العادية في 2026 يُعيد تعريف فيزياء الجسيمات والكوسمولوجيا، تفاصيل كاملة وتحليلات حديثة.",
+      "en": "Read \"اكتشافات 2026: جسيمات مظلمة تتفاعل مع المادة العادية في فيزياء الجسيمات\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on علوم.",
+      "fr": "Lisez \"اكتشافات 2026: جسيمات مظلمة تتفاعل مع المادة العادية في فيزياء الجسيمات\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur علوم.",
+      "es": "Lea \"اكتشافات 2026: جسيمات مظلمة تتفاعل مع المادة العادية في فيزياء الجسيمات\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre علوم."
+    }
+  },
   "digital-heritage-arabic-calligraphy": {
     "id": "2a0fac99-28af-4356-9394-8eb89f5c00f7",
     "title": "التراث الرقمي للخط العربي: كيف تُحافظ التكنولوجيا على الفنون الخطية التقليدية",
@@ -4213,23 +4196,6 @@
       "en": "Read \"التراث الرقمي للخط العربي: كيف تُحافظ التكنولوجيا على الفنون الخطية التقليدية\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on ثقافة.",
       "fr": "Lisez \"التراث الرقمي للخط العربي: كيف تُحافظ التكنولوجيا على الفنون الخطية التقليدية\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur ثقافة.",
       "es": "Lea \"التراث الرقمي للخط العربي: كيف تُحافظ التكنولوجيا على الفنون الخطية التقليدية\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre ثقافة."
-    }
-  },
-  "skin-microbiome-probiotics-eczema-2026": {
-    "id": "e95dac94-9791-4594-bd0f-e994ae4084e8",
-    "title": "الصحة الميكروبيومية للجلد: أحدث بروبيوتيكات موضعية لعلاج الأكزيما في 2026",
-    "category": "صحة",
-    "keywords": {
-      "ar": "ميكروبيوم الجلد, بروبيوتيك موضعي, علاج الأكزيما, صحة البشرة, بروبيوتيك 2026, كريم بروبيوتيك, سيروم بروبيوتيك, توازن الميكروبيوم, حكة الجلد, منتجات جلدية طبيعية, صحة, طب, علاج, وقاية, غذاء صحي, رياضة, نصائح صحية, جسم سليم, صحة نفسية, مناعة, نوم, تغذية, أمراض, أدوية, صحة عامة",
-      "en": "health, medicine, treatment, prevention, healthy food, fitness, wellness tips, healthy body, mental health, immunity, sleep, nutrition, diseases, medications, public health",
-      "fr": "santé, médecine, traitement, prévention, alimentation saine, remise en forme, conseils santé, corps sain, santé mentale, immunité, sommeil, nutrition, maladies, médicaments",
-      "es": "salud, medicina, tratamiento, prevención, alimentación saludable, fitness, consejos de salud, cuerpo sano, salud mental, inmunidad, sueño, nutrición, enfermedades, medicamentos"
-    },
-    "description": {
-      "ar": "اكتشف أحدث بروبيوتيكات موضعية لعلاج الأكزيما في 2026 وكيفية تحسين صحة الميكروبيوم الجلدي بخطوات عملية وآمنة.",
-      "en": "Read \"الصحة الميكروبيومية للجلد: أحدث بروبيوتيكات موضعية لعلاج الأكزيما في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
-      "fr": "Lisez \"الصحة الميكروبيومية للجلد: أحدث بروبيوتيكات موضعية لعلاج الأكزيما في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
-      "es": "Lea \"الصحة الميكروبيومية للجلد: أحدث بروبيوتيكات موضعية لعلاج الأكزيما في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
     }
   },
   "emotional-intelligence-remote-work-productivity": {
@@ -4283,40 +4249,6 @@
       "es": "Lea \"لقاحات mRNA المعدلة للسرطان: أحدث ما وصل إليه العلم في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre علوم."
     }
   },
-  "mental-health-practices-in-digital-age": {
-    "id": "669107aa-25cd-4e4b-a69f-e81f0f6760d7",
-    "title": "5 ممارسات صحية للعقل في العصر الرقمي",
-    "category": "صحة",
-    "keywords": {
-      "ar": "صحة نفسية, ممارسات صحية, عصور رقمية, صحة العقل, تأمل, نوم كاف, تغذية صحية, صحة, طب, علاج, وقاية, غذاء صحي, رياضة, نصائح صحية, جسم سليم, صحة نفسية, مناعة, نوم, تغذية, أمراض, أدوية, صحة عامة",
-      "en": "health, medicine, treatment, prevention, healthy food, fitness, wellness tips, healthy body, mental health, immunity, sleep, nutrition, diseases, medications, public health",
-      "fr": "santé, médecine, traitement, prévention, alimentation saine, remise en forme, conseils santé, corps sain, santé mentale, immunité, sommeil, nutrition, maladies, médicaments",
-      "es": "salud, medicina, tratamiento, prevención, alimentación saludable, fitness, consejos de salud, cuerpo sano, salud mental, inmunidad, sueño, nutrición, enfermedades, medicamentos"
-    },
-    "description": {
-      "ar": "تعلم كيف تحافظ على صحتك النفسية في العصر الرقمي. اقرأ عن أفضل الممارسات لتحسين صحتك النفسية.",
-      "en": "Read \"5 ممارسات صحية للعقل في العصر الرقمي\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
-      "fr": "Lisez \"5 ممارسات صحية للعقل في العصر الرقمي\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
-      "es": "Lea \"5 ممارسات صحية للعقل في العصر الرقمي\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
-    }
-  },
-  "improve-english-skills-with-ai-apps": {
-    "id": "264e1aaf-c54f-4f24-9589-afb62a473be8",
-    "title": "تعلم اللغة الإنجليزية بسهولة مع تطبيقات الذكاء الاصطناعي",
-    "category": "تعليم",
-    "keywords": {
-      "ar": "تعلم اللغة الإنجليزية, تطبيقات الذكاء الاصطناعي, تعلم لغة أجنبية, مهارات لغة إنجليزية, تعليم, تعلم, مدارس, جامعات, مناهج, مهارات, معرفة, طلاب, تعليم عن بعد, مدرسون, أساليب تدريس, أطفال, تنمية, قراءة, كتابة",
-      "en": "education, learning, schools, universities, curriculum, skills, knowledge, students, remote learning, teachers, teaching methods, children, development, reading, writing",
-      "fr": "éducation, apprentissage, écoles, universités, curriculum, compétences, connaissances, étudiants, apprentissage à distance, enseignants, méthodes pédagogiques",
-      "es": "educación, aprendizaje, escuelas, universidades, currículo, habilidades, conocimientos, estudiantes, aprendizaje remoto, docentes, métodos de enseñanza"
-    },
-    "description": {
-      "ar": "تعلم اللغة الإنجليزية بسهولة مع تطبيقات الذكاء الاصطناعي. تحسين مهاراتك اللغوية من خلال التطبيقات الذكية",
-      "en": "Read \"تعلم اللغة الإنجليزية بسهولة مع تطبيقات الذكاء الاصطناعي\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تعليم.",
-      "fr": "Lisez \"تعلم اللغة الإنجليزية بسهولة مع تطبيقات الذكاء الاصطناعي\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تعليم.",
-      "es": "Lea \"تعلم اللغة الإنجليزية بسهولة مع تطبيقات الذكاء الاصطناعي\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تعليم."
-    }
-  },
   "augmented-reality-technology-in-education-guide": {
     "id": "3c31df26-7d62-4659-8cd1-e137c5534a12",
     "title": "دليلك الشامل لاستخدام تكنولوجيا الواقع المعزز في التعليم",
@@ -4351,38 +4283,21 @@
       "es": "Lea \"كيف تحقق النجاح في مشاريع التمويل الجماعي عبر الإنترنت\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre مال وأعمال."
     }
   },
-  "benefits-of-sports-for-mental-health": {
-    "id": "b1e71054-f0a0-480c-896f-f2cc0519e667",
-    "title": "كيف تساهم الرياضة في تحسين الصحة النفسية",
-    "category": "رياضة",
+  "best-daily-meditation-techniques-for-calm-life": {
+    "id": "14bca0af-2e9c-46fc-b0f7-d4eb085acbfe",
+    "title": "كن هادئاً مع أفضل أساليب التأمل لتحسين يومك",
+    "category": "تطوير ذات",
     "keywords": {
-      "ar": "رياضة وصحة, صحة نفسية, رياضة ومزاج, تأثير الرياضة, تحسين المزاج, تخفيف القلق, علاج الاكتئاب, تحسين الصحة العامة, رياضة, لياقة بدنية, كرة القدم, تمارين, صحة جسدية, بطولة, رياضيون, تدريب, أولمبياد, كرة السلة, سباحة, ركض, رياضة احترافية, إنجازات رياضية",
-      "en": "sports, fitness, football, exercises, physical health, championship, athletes, training, olympics, basketball, swimming, running, professional sports, sporting achievements",
-      "fr": "sport, fitness, football, exercices, santé physique, championnat, athlètes, entraînement, olympiades, basketball, natation, course à pied, sport professionnel",
-      "es": "deporte, fitness, fútbol, ejercicios, salud física, campeonato, atletas, entrenamiento, olimpiadas, baloncesto, natación, running, deporte profesional"
-    },
-    "description": {
-      "ar": "الرياضة تساهم في تحسين الصحة النفسية. تعرف على كيفية تحسين المزاج، تخفيف القلق، علاج الاكتئاب، و تحسين الصحة العامة من خلال ممارسة الرياضة.",
-      "en": "Read \"كيف تساهم الرياضة في تحسين الصحة النفسية\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on رياضة.",
-      "fr": "Lisez \"كيف تساهم الرياضة في تحسين الصحة النفسية\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur رياضة.",
-      "es": "Lea \"كيف تساهم الرياضة في تحسين الصحة النفسية\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre رياضة."
-    }
-  },
-  "ai-tourism-industry-2026": {
-    "id": "97b21850-049e-4b11-9ab9-483ed167a5b4",
-    "title": "كيف سيُعيد الذكاء الاصطناعي تشكيل صناعة السياحة في 2026",
-    "category": "سفر",
-    "keywords": {
-      "ar": "ذكاء اصطناعي, سياحة, تكنولوجيا السفر, مستقبل السفر, تجربة المسافر, تحليلات البيانات, أمان السفر, حجز ذكي, توصيات شخصية, تسويق سياحي, رحلات افتراضية, تخطيط رحلات, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "ar": "تأمل يومي, أساليب تأمل, حياة هادئة, استرخاء نفسي, تحسين التركيز, تخفيف التوتر, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
       "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
       "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
       "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
     },
     "description": {
-      "ar": "اكتشف كيف يُعيد الذكاء الاصطناعي تشكيل صناعة السياحة في 2026 من خلال تخصيص التجربة، تحليل البيانات، وتعزيز الأمان للرحلات.",
-      "en": "Read \"كيف سيُعيد الذكاء الاصطناعي تشكيل صناعة السياحة في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on سفر.",
-      "fr": "Lisez \"كيف سيُعيد الذكاء الاصطناعي تشكيل صناعة السياحة في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur سفر.",
-      "es": "Lea \"كيف سيُعيد الذكاء الاصطناعي تشكيل صناعة السياحة في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre سفر."
+      "ar": "تعلم أفضل الطرق لتطبيق أساليب التأمل في حياتك اليومية لتحسين هدوئك ورفاهيتك النفسية. اكتشف الفوائد العملية للتأمل واطّلع على نصائح سهلة للتطبيق.",
+      "en": "Read \"كن هادئاً مع أفضل أساليب التأمل لتحسين يومك\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تطوير ذات.",
+      "fr": "Lisez \"كن هادئاً مع أفضل أساليب التأمل لتحسين يومك\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تطوير ذات.",
+      "es": "Lea \"كن هادئاً مع أفضل أساليب التأمل لتحسين يومك\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تطوير ذات."
     }
   },
   "nano-technology-for-sustainable-living": {
@@ -4402,72 +4317,123 @@
       "es": "Lea \"تكنولوجيا النانو: التحول إلى حياة أكثر استدامة\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
     }
   },
-  "best-daily-meditation-techniques-for-calm-life": {
-    "id": "14bca0af-2e9c-46fc-b0f7-d4eb085acbfe",
-    "title": "كن هادئاً مع أفضل أساليب التأمل لتحسين يومك",
-    "category": "تطوير ذات",
+  "ai-tourism-industry-2026": {
+    "id": "97b21850-049e-4b11-9ab9-483ed167a5b4",
+    "title": "كيف سيُعيد الذكاء الاصطناعي تشكيل صناعة السياحة في 2026",
+    "category": "سفر",
     "keywords": {
-      "ar": "تأمل يومي, أساليب تأمل, حياة هادئة, استرخاء نفسي, تحسين التركيز, تخفيف التوتر, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "ar": "ذكاء اصطناعي, سياحة, تكنولوجيا السفر, مستقبل السفر, تجربة المسافر, تحليلات البيانات, أمان السفر, حجز ذكي, توصيات شخصية, تسويق سياحي, رحلات افتراضية, تخطيط رحلات, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
       "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
       "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
       "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
     },
     "description": {
-      "ar": "تعلم أفضل الطرق لتطبيق أساليب التأمل في حياتك اليومية لتحسين هدوئك ورفاهيتك النفسية. اكتشف الفوائد العملية للتأمل واطّلع على نصائح سهلة للتطبيق.",
-      "en": "Read \"كن هادئاً مع أفضل أساليب التأمل لتحسين يومك\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تطوير ذات.",
-      "fr": "Lisez \"كن هادئاً مع أفضل أساليب التأمل لتحسين يومك\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تطوير ذات.",
-      "es": "Lea \"كن هادئاً مع أفضل أساليب التأمل لتحسين يومك\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تطوير ذات."
+      "ar": "اكتشف كيف يُعيد الذكاء الاصطناعي تشكيل صناعة السياحة في 2026 من خلال تخصيص التجربة، تحليل البيانات، وتعزيز الأمان للرحلات.",
+      "en": "Read \"كيف سيُعيد الذكاء الاصطناعي تشكيل صناعة السياحة في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on سفر.",
+      "fr": "Lisez \"كيف سيُعيد الذكاء الاصطناعي تشكيل صناعة السياحة في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur سفر.",
+      "es": "Lea \"كيف سيُعيد الذكاء الاصطناعي تشكيل صناعة السياحة في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre سفر."
     }
   },
-  "becoming-a-skilled-english-speaker": {
-    "id": "c73648d0-866c-4ce7-9e41-001bd8ec0dc2",
-    "title": "كيف تصبح متحدثًا ماهرًا في اللغة الإنجليزية بسرعة",
+  "benefits-of-sports-for-mental-health": {
+    "id": "b1e71054-f0a0-480c-896f-f2cc0519e667",
+    "title": "كيف تساهم الرياضة في تحسين الصحة النفسية",
+    "category": "رياضة",
+    "keywords": {
+      "ar": "رياضة وصحة, صحة نفسية, رياضة ومزاج, تأثير الرياضة, تحسين المزاج, تخفيف القلق, علاج الاكتئاب, تحسين الصحة العامة, رياضة, لياقة بدنية, كرة القدم, تمارين, صحة جسدية, بطولة, رياضيون, تدريب, أولمبياد, كرة السلة, سباحة, ركض, رياضة احترافية, إنجازات رياضية",
+      "en": "sports, fitness, football, exercises, physical health, championship, athletes, training, olympics, basketball, swimming, running, professional sports, sporting achievements",
+      "fr": "sport, fitness, football, exercices, santé physique, championnat, athlètes, entraînement, olympiades, basketball, natation, course à pied, sport professionnel",
+      "es": "deporte, fitness, fútbol, ejercicios, salud física, campeonato, atletas, entrenamiento, olimpiadas, baloncesto, natación, running, deporte profesional"
+    },
+    "description": {
+      "ar": "الرياضة تساهم في تحسين الصحة النفسية. تعرف على كيفية تحسين المزاج، تخفيف القلق، علاج الاكتئاب، و تحسين الصحة العامة من خلال ممارسة الرياضة.",
+      "en": "Read \"كيف تساهم الرياضة في تحسين الصحة النفسية\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on رياضة.",
+      "fr": "Lisez \"كيف تساهم الرياضة في تحسين الصحة النفسية\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur رياضة.",
+      "es": "Lea \"كيف تساهم الرياضة في تحسين الصحة النفسية\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre رياضة."
+    }
+  },
+  "improve-english-skills-with-ai-apps": {
+    "id": "264e1aaf-c54f-4f24-9589-afb62a473be8",
+    "title": "تعلم اللغة الإنجليزية بسهولة مع تطبيقات الذكاء الاصطناعي",
     "category": "تعليم",
     "keywords": {
-      "ar": "تعلم لغة, لغة إنجليزية, متحدث ماهر, مهارات لغوية, تعلم اللغة بسرعة, تعليم, تعلم, مدارس, جامعات, مناهج, مهارات, معرفة, طلاب, تعليم عن بعد, مدرسون, أساليب تدريس, أطفال, تنمية, قراءة, كتابة",
+      "ar": "تعلم اللغة الإنجليزية, تطبيقات الذكاء الاصطناعي, تعلم لغة أجنبية, مهارات لغة إنجليزية, تعليم, تعلم, مدارس, جامعات, مناهج, مهارات, معرفة, طلاب, تعليم عن بعد, مدرسون, أساليب تدريس, أطفال, تنمية, قراءة, كتابة",
       "en": "education, learning, schools, universities, curriculum, skills, knowledge, students, remote learning, teachers, teaching methods, children, development, reading, writing",
       "fr": "éducation, apprentissage, écoles, universités, curriculum, compétences, connaissances, étudiants, apprentissage à distance, enseignants, méthodes pédagogiques",
       "es": "educación, aprendizaje, escuelas, universidades, currículo, habilidades, conocimientos, estudiantes, aprendizaje remoto, docentes, métodos de enseñanza"
     },
     "description": {
-      "ar": "تعلم اللغة الإنجليزية بسرعة وفعالية من خلال نصائح عملية ومحدثة. تحسين الاستماع والقراءة والكلام والكتابة",
-      "en": "Read \"كيف تصبح متحدثًا ماهرًا في اللغة الإنجليزية بسرعة\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تعليم.",
-      "fr": "Lisez \"كيف تصبح متحدثًا ماهرًا في اللغة الإنجليزية بسرعة\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تعليم.",
-      "es": "Lea \"كيف تصبح متحدثًا ماهرًا في اللغة الإنجليزية بسرعة\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تعليم."
+      "ar": "تعلم اللغة الإنجليزية بسهولة مع تطبيقات الذكاء الاصطناعي. تحسين مهاراتك اللغوية من خلال التطبيقات الذكية",
+      "en": "Read \"تعلم اللغة الإنجليزية بسهولة مع تطبيقات الذكاء الاصطناعي\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تعليم.",
+      "fr": "Lisez \"تعلم اللغة الإنجليزية بسهولة مع تطبيقات الذكاء الاصطناعي\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تعليم.",
+      "es": "Lea \"تعلم اللغة الإنجليزية بسهولة مع تطبيقات الذكاء الاصطناعي\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تعليم."
     }
   },
-  "improve-online-investment-skills-2026": {
-    "id": "7c2505e6-d054-468d-adc9-55aa9ee65698",
-    "title": "كيف تطوّر مهاراتك في الاستثمار عبر الإنترنت في 2026",
-    "category": "مال وأعمال",
+  "mental-health-practices-in-digital-age": {
+    "id": "669107aa-25cd-4e4b-a69f-e81f0f6760d7",
+    "title": "5 ممارسات صحية للعقل في العصر الرقمي",
+    "category": "صحة",
     "keywords": {
-      "ar": "استثمار عبر الإنترنت, مهارات استثمارية, استثمار ذكي, استثمارات ناجحة, تحليل سوق, إدارة مخاطر, أدوات رقمية, منصة تداول, تعلم مستمر, استراتيجيات مالية, تداول إلكتروني, سوق الأسهم, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
-      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
-      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
-      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+      "ar": "صحة نفسية, ممارسات صحية, عصور رقمية, صحة العقل, تأمل, نوم كاف, تغذية صحية, صحة, طب, علاج, وقاية, غذاء صحي, رياضة, نصائح صحية, جسم سليم, صحة نفسية, مناعة, نوم, تغذية, أمراض, أدوية, صحة عامة",
+      "en": "health, medicine, treatment, prevention, healthy food, fitness, wellness tips, healthy body, mental health, immunity, sleep, nutrition, diseases, medications, public health",
+      "fr": "santé, médecine, traitement, prévention, alimentation saine, remise en forme, conseils santé, corps sain, santé mentale, immunité, sommeil, nutrition, maladies, médicaments",
+      "es": "salud, medicina, tratamiento, prevención, alimentación saludable, fitness, consejos de salud, cuerpo sano, salud mental, inmunidad, sueño, nutrición, enfermedades, medicamentos"
     },
     "description": {
-      "ar": "اكتشف كيف تطوّر مهاراتك في الاستثمار عبر الإنترنت لعام 2026 مع استراتيجيات حديثة، أدوات تحليلية، وإدارة مخاطر فعّالة لتحقيق أرباح مستدامة.",
-      "en": "Read \"كيف تطوّر مهاراتك في الاستثمار عبر الإنترنت في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on مال وأعمال.",
-      "fr": "Lisez \"كيف تطوّر مهاراتك في الاستثمار عبر الإنترنت في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur مال وأعمال.",
-      "es": "Lea \"كيف تطوّر مهاراتك في الاستثمار عبر الإنترنت في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre مال وأعمال."
+      "ar": "تعلم كيف تحافظ على صحتك النفسية في العصر الرقمي. اقرأ عن أفضل الممارسات لتحسين صحتك النفسية.",
+      "en": "Read \"5 ممارسات صحية للعقل في العصر الرقمي\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
+      "fr": "Lisez \"5 ممارسات صحية للعقل في العصر الرقمي\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
+      "es": "Lea \"5 ممارسات صحية للعقل في العصر الرقمي\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
     }
   },
-  "virtual-reality-language-learning-2026": {
-    "id": "7a70724e-f76a-42b1-8acf-06d307cee473",
-    "title": "ثورة في تعلم اللغات: كيف يغير الواقع الافتراضي المناهج في 2026",
-    "category": "تعليم",
+  "sports-role-in-mental-health-for-teenagers": {
+    "id": "076426ac-5ca9-48e3-85ea-48af74fac12d",
+    "title": "دور الرياضة في تحسين الصحة النفسية للمراهقين",
+    "category": "رياضة",
     "keywords": {
-      "ar": "تعلم اللغات, الواقع الافتراضي, تكنولوجيا التعليم, لغات أجنبية, تعلم اللغات عبر الإنترنت, تكنولوجيا التعليم الحديثة, تعليم, تعلم, مدارس, جامعات, مناهج, مهارات, معرفة, طلاب, تعليم عن بعد, مدرسون, أساليب تدريس, أطفال, تنمية, قراءة, كتابة",
-      "en": "education, learning, schools, universities, curriculum, skills, knowledge, students, remote learning, teachers, teaching methods, children, development, reading, writing",
-      "fr": "éducation, apprentissage, écoles, universités, curriculum, compétences, connaissances, étudiants, apprentissage à distance, enseignants, méthodes pédagogiques",
-      "es": "educación, aprendizaje, escuelas, universidades, currículo, habilidades, conocimientos, estudiantes, aprendizaje remoto, docentes, métodos de enseñanza"
+      "ar": "رياضة, صحة نفسية, مراهقون, تحفيز ذاتي, تواصل اجتماعي, تعاون جماعي, رياضة, لياقة بدنية, كرة القدم, تمارين, صحة جسدية, بطولة, رياضيون, تدريب, أولمبياد, كرة السلة, سباحة, ركض, رياضة احترافية, إنجازات رياضية",
+      "en": "sports, fitness, football, exercises, physical health, championship, athletes, training, olympics, basketball, swimming, running, professional sports, sporting achievements",
+      "fr": "sport, fitness, football, exercices, santé physique, championnat, athlètes, entraînement, olympiades, basketball, natation, course à pied, sport professionnel",
+      "es": "deporte, fitness, fútbol, ejercicios, salud física, campeonato, atletas, entrenamiento, olimpiadas, baloncesto, natación, running, deporte profesional"
     },
     "description": {
-      "ar": "اكتشف كيف يغير الواقع الافتراضي تعلم اللغات الأجنبية في 2026، واطلع على أحدث التكنولوجيا والمناهج التعليمية التي تسهل تعلم اللغات بطرق تفاعلية",
-      "en": "Read \"ثورة في تعلم اللغات: كيف يغير الواقع الافتراضي المناهج في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تعليم.",
-      "fr": "Lisez \"ثورة في تعلم اللغات: كيف يغير الواقع الافتراضي المناهج في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تعليم.",
-      "es": "Lea \"ثورة في تعلم اللغات: كيف يغير الواقع الافتراضي المناهج في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تعليم."
+      "ar": "دور الرياضة في تحسين الصحة النفسية للمراهقين، وتأثيرها الإيجابي على نموهم الشخصي والاجتماعي.",
+      "en": "Read \"دور الرياضة في تحسين الصحة النفسية للمراهقين\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on رياضة.",
+      "fr": "Lisez \"دور الرياضة في تحسين الصحة النفسية للمراهقين\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur رياضة.",
+      "es": "Lea \"دور الرياضة في تحسين الصحة النفسية للمراهقين\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre رياضة."
+    }
+  },
+  "best-mental-health-apps-2026": {
+    "id": "5451cff9-dbd2-4bf3-9d24-adf167348ee0",
+    "title": "أفضل 5 تطبيقات لتعزيز الصحة النفسية في عام 2026",
+    "category": "صحة",
+    "keywords": {
+      "ar": "صحة نفسية, تطبيقات الصحة, تنمية ذات, تأمل, استرخاء, تمارين رياضية, توجيه نفسي, صحة, طب, علاج, وقاية, غذاء صحي, رياضة, نصائح صحية, جسم سليم, صحة نفسية, مناعة, نوم, تغذية, أمراض, أدوية, صحة عامة",
+      "en": "health, medicine, treatment, prevention, healthy food, fitness, wellness tips, healthy body, mental health, immunity, sleep, nutrition, diseases, medications, public health",
+      "fr": "santé, médecine, traitement, prévention, alimentation saine, remise en forme, conseils santé, corps sain, santé mentale, immunité, sommeil, nutrition, maladies, médicaments",
+      "es": "salud, medicina, tratamiento, prevención, alimentación saludable, fitness, consejos de salud, cuerpo sano, salud mental, inmunidad, sueño, nutrición, enfermedades, medicamentos"
+    },
+    "description": {
+      "ar": "اكتشف أفضل 5 تطبيقات لتعزيز الصحة النفسية في عام 2026. تعلم كيفية تحسين صحتك النفسية ورفاهك العام من خلال التطبيقات الرائعة.",
+      "en": "Read \"أفضل 5 تطبيقات لتعزيز الصحة النفسية في عام 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
+      "fr": "Lisez \"أفضل 5 تطبيقات لتعزيز الصحة النفسية في عام 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
+      "es": "Lea \"أفضل 5 تطبيقات لتعزيز الصحة النفسية في عام 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
+    }
+  },
+  "ai-techniques-for-small-business-productivity-2026": {
+    "id": "82a0289b-96b1-4347-8d66-d235f847023c",
+    "title": "5 تقنيات ذكاء اصطناعي لتحسين إنتاجية الشركات الصغيرة 2026",
+    "category": "تكنولوجيا",
+    "keywords": {
+      "ar": "ذكاء اصطناعي, إنتاجية, شركات صغيرة, تكنولوجيا, تحليل بيانات, تسويق رقمي, تكنولوجيا, ذكاء اصطناعي, برمجة, أجهزة ذكية, إنترنت, تطبيقات, ابتكار, مستقبل رقمي, تحول رقمي, أمن معلومات, سحابة, بيانات ضخمة, روبوتات, تعلم آلي",
+      "en": "technology, artificial intelligence, programming, smart devices, internet, apps, innovation, digital future, digital transformation, cybersecurity, cloud computing, big data, robotics, machine learning",
+      "fr": "technologie, intelligence artificielle, programmation, appareils intelligents, internet, applications, innovation, avenir numérique, transformation numérique, cybersécurité, cloud, big data, robotique, apprentissage automatique",
+      "es": "tecnología, inteligencia artificial, programación, dispositivos inteligentes, internet, aplicaciones, innovación, futuro digital, transformación digital, ciberseguridad, nube, big data, robótica, aprendizaje automático"
+    },
+    "description": {
+      "ar": "تكنولوجيا الذكاء الاصطناعي تعزز الإنتاجية في الشركات الصغيرة 2026",
+      "en": "Read \"5 تقنيات ذكاء اصطناعي لتحسين إنتاجية الشركات الصغيرة 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تكنولوجيا.",
+      "fr": "Lisez \"5 تقنيات ذكاء اصطناعي لتحسين إنتاجية الشركات الصغيرة 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تكنولوجيا.",
+      "es": "Lea \"5 تقنيات ذكاء اصطناعي لتحسين إنتاجية الشركات الصغيرة 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
     }
   },
   "venture-investment-guide-2026": {
@@ -4487,21 +4453,38 @@
       "es": "Lea \"دليلك الشامل لاستثمار الفينتشير في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre مال وأعمال."
     }
   },
-  "best-mental-health-apps-2026": {
-    "id": "5451cff9-dbd2-4bf3-9d24-adf167348ee0",
-    "title": "أفضل 5 تطبيقات لتعزيز الصحة النفسية في عام 2026",
-    "category": "صحة",
+  "enhance-museum-experience-augmented-reality-2026": {
+    "id": "0796cec3-0384-40a9-9612-8dde4200a25e",
+    "title": "كيف تُعزّز تقنيات الواقع المعزز تجربة المتاحف في عام 2026",
+    "category": "ثقافة",
     "keywords": {
-      "ar": "صحة نفسية, تطبيقات الصحة, تنمية ذات, تأمل, استرخاء, تمارين رياضية, توجيه نفسي, صحة, طب, علاج, وقاية, غذاء صحي, رياضة, نصائح صحية, جسم سليم, صحة نفسية, مناعة, نوم, تغذية, أمراض, أدوية, صحة عامة",
-      "en": "health, medicine, treatment, prevention, healthy food, fitness, wellness tips, healthy body, mental health, immunity, sleep, nutrition, diseases, medications, public health",
-      "fr": "santé, médecine, traitement, prévention, alimentation saine, remise en forme, conseils santé, corps sain, santé mentale, immunité, sommeil, nutrition, maladies, médicaments",
-      "es": "salud, medicina, tratamiento, prevención, alimentación saludable, fitness, consejos de salud, cuerpo sano, salud mental, inmunidad, sueño, nutrición, enfermedades, medicamentos"
+      "ar": "واقع معزز, متاحف, تجربة الزائر, تكنولوجيا المتاحف, محتوى تفاعلي, استراتيجيات تقنية, تحسين الزيارة, ثقافة, معارض رقمية, ثقافة, فنون, أدب, تراث, حضارة, إبداع, مجتمع, هوية, موسيقى, سينما, مسرح, شعر, روايات, تقاليد, تاريخ",
+      "en": "culture, arts, literature, heritage, civilization, creativity, society, identity, music, cinema, theater, poetry, novels, traditions, history",
+      "fr": "culture, arts, littérature, patrimoine, civilisation, créativité, société, identité, musique, cinéma, théâtre, poésie, romans, traditions, histoire",
+      "es": "cultura, artes, literatura, patrimonio, civilización, creatividad, sociedad, identidad, música, cine, teatro, poesía, novelas, tradiciones, historia"
     },
     "description": {
-      "ar": "اكتشف أفضل 5 تطبيقات لتعزيز الصحة النفسية في عام 2026. تعلم كيفية تحسين صحتك النفسية ورفاهك العام من خلال التطبيقات الرائعة.",
-      "en": "Read \"أفضل 5 تطبيقات لتعزيز الصحة النفسية في عام 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
-      "fr": "Lisez \"أفضل 5 تطبيقات لتعزيز الصحة النفسية في عام 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
-      "es": "Lea \"أفضل 5 تطبيقات لتعزيز الصحة النفسية في عام 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
+      "ar": "اكتشف كيف يعزز الواقع المعزز تجربة المتاحف في 2026 من خلال تجارب تفاعلية مخصصة، حلول تقنية مبتكرة، ونصائح عملية للمتاحف.",
+      "en": "Read \"كيف تُعزّز تقنيات الواقع المعزز تجربة المتاحف في عام 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on ثقافة.",
+      "fr": "Lisez \"كيف تُعزّز تقنيات الواقع المعزز تجربة المتاحف في عام 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur ثقافة.",
+      "es": "Lea \"كيف تُعزّز تقنيات الواقع المعزز تجربة المتاحف في عام 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre ثقافة."
+    }
+  },
+  "improve-online-investment-skills-2026": {
+    "id": "7c2505e6-d054-468d-adc9-55aa9ee65698",
+    "title": "كيف تطوّر مهاراتك في الاستثمار عبر الإنترنت في 2026",
+    "category": "مال وأعمال",
+    "keywords": {
+      "ar": "استثمار عبر الإنترنت, مهارات استثمارية, استثمار ذكي, استثمارات ناجحة, تحليل سوق, إدارة مخاطر, أدوات رقمية, منصة تداول, تعلم مستمر, استراتيجيات مالية, تداول إلكتروني, سوق الأسهم, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
+      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
+      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+    },
+    "description": {
+      "ar": "اكتشف كيف تطوّر مهاراتك في الاستثمار عبر الإنترنت لعام 2026 مع استراتيجيات حديثة، أدوات تحليلية، وإدارة مخاطر فعّالة لتحقيق أرباح مستدامة.",
+      "en": "Read \"كيف تطوّر مهاراتك في الاستثمار عبر الإنترنت في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on مال وأعمال.",
+      "fr": "Lisez \"كيف تطوّر مهاراتك في الاستثمار عبر الإنترنت في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur مال وأعمال.",
+      "es": "Lea \"كيف تطوّر مهاراتك في الاستثمار عبر الإنترنت في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre مال وأعمال."
     }
   },
   "artificial-intelligence-media-industry-2026": {
@@ -4536,6 +4519,431 @@
       "en": "Read \"أفضل 3 وجهات للسياحة المستدامة في الشرق الأوسط 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on سفر.",
       "fr": "Lisez \"أفضل 3 وجهات للسياحة المستدامة في الشرق الأوسط 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur سفر.",
       "es": "Lea \"أفضل 3 وجهات للسياحة المستدامة في الشرق الأوسط 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre سفر."
+    }
+  },
+  "smart-sports-and-ai-for-fitness": {
+    "id": "4a6784a6-fc49-4399-bb06-216bfe9ac90e",
+    "title": "الرياضة الذكية: تحكم في لياقتك البدنية بفهم الذكاء الاصطناعي",
+    "category": "رياضة",
+    "keywords": {
+      "ar": "رياضة ذكية, لياقة بدنية, ذكاء اصطناعي, تحليل البيانات, التخطيط الاستراتيجي, رياضة, لياقة بدنية, كرة القدم, تمارين, صحة جسدية, بطولة, رياضيون, تدريب, أولمبياد, كرة السلة, سباحة, ركض, رياضة احترافية, إنجازات رياضية",
+      "en": "sports, fitness, football, exercises, physical health, championship, athletes, training, olympics, basketball, swimming, running, professional sports, sporting achievements",
+      "fr": "sport, fitness, football, exercices, santé physique, championnat, athlètes, entraînement, olympiades, basketball, natation, course à pied, sport professionnel",
+      "es": "deporte, fitness, fútbol, ejercicios, salud física, campeonato, atletas, entrenamiento, olimpiadas, baloncesto, natación, running, deporte profesional"
+    },
+    "description": {
+      "ar": "تعلم كيف يمكن للرياضة الذكية أن تساعدك في تحسين لياقتك البدنية وتحقيق نتائج أفضل في الرياضة. استخدم الذكاء الاصطناعي لتحليل أدائك وتحديد النقاط الضعيفة.",
+      "en": "Read \"الرياضة الذكية: تحكم في لياقتك البدنية بفهم الذكاء الاصطناعي\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on رياضة.",
+      "fr": "Lisez \"الرياضة الذكية: تحكم في لياقتك البدنية بفهم الذكاء الاصطناعي\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur رياضة.",
+      "es": "Lea \"الرياضة الذكية: تحكم في لياقتك البدنية بفهم الذكاء الاصطناعي\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre رياضة."
+    }
+  },
+  "virtual-reality-language-learning-2026": {
+    "id": "7a70724e-f76a-42b1-8acf-06d307cee473",
+    "title": "ثورة في تعلم اللغات: كيف يغير الواقع الافتراضي المناهج في 2026",
+    "category": "تعليم",
+    "keywords": {
+      "ar": "تعلم اللغات, الواقع الافتراضي, تكنولوجيا التعليم, لغات أجنبية, تعلم اللغات عبر الإنترنت, تكنولوجيا التعليم الحديثة, تعليم, تعلم, مدارس, جامعات, مناهج, مهارات, معرفة, طلاب, تعليم عن بعد, مدرسون, أساليب تدريس, أطفال, تنمية, قراءة, كتابة",
+      "en": "education, learning, schools, universities, curriculum, skills, knowledge, students, remote learning, teachers, teaching methods, children, development, reading, writing",
+      "fr": "éducation, apprentissage, écoles, universités, curriculum, compétences, connaissances, étudiants, apprentissage à distance, enseignants, méthodes pédagogiques",
+      "es": "educación, aprendizaje, escuelas, universidades, currículo, habilidades, conocimientos, estudiantes, aprendizaje remoto, docentes, métodos de enseñanza"
+    },
+    "description": {
+      "ar": "اكتشف كيف يغير الواقع الافتراضي تعلم اللغات الأجنبية في 2026، واطلع على أحدث التكنولوجيا والمناهج التعليمية التي تسهل تعلم اللغات بطرق تفاعلية",
+      "en": "Read \"ثورة في تعلم اللغات: كيف يغير الواقع الافتراضي المناهج في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تعليم.",
+      "fr": "Lisez \"ثورة في تعلم اللغات: كيف يغير الواقع الافتراضي المناهج في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تعليم.",
+      "es": "Lea \"ثورة في تعلم اللغات: كيف يغير الواقع الافتراضي المناهج في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تعليم."
+    }
+  },
+  "healthy-summer-lifestyle-2026": {
+    "id": "cba756d9-1021-491b-9f37-07f896de44f1",
+    "title": "دليلك الشامل لتطبيق نمط حياة صحي في الصيف 2026",
+    "category": "أسلوب حياة",
+    "keywords": {
+      "ar": "نمط حياة صحي, صحة, صيف 2026, تناول الطعام الصحي, التمارين الرياضية, الراحة النفسية, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
+      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
+      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+    },
+    "description": {
+      "ar": "دليلك الشامل لتطبيق نمط حياة صحي في الصيف 2026، يشمل تناول الطعام الصحي، التمارين الرياضية، الراحة النفسية، وتجنب العوامل الضارة.",
+      "en": "Read \"دليلك الشامل لتطبيق نمط حياة صحي في الصيف 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on أسلوب حياة.",
+      "fr": "Lisez \"دليلك الشامل لتطبيق نمط حياة صحي في الصيف 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur أسلوب حياة.",
+      "es": "Lea \"دليلك الشامل لتطبيق نمط حياة صحي في الصيف 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre أسلوب حياة."
+    }
+  },
+  "improving-mental-health-with-smart-apps-2026": {
+    "id": "ea38122d-d9a7-4d9a-8d37-8a38fb77edf6",
+    "title": "تحسين الصحة النفسية بتطبيقات ذكية في 2026",
+    "category": "صحة",
+    "keywords": {
+      "ar": "صحة نفسية, تطبيقات ذكية, علاج نفسي, تطبيقات تهدئة, تطبيقات دعم اجتماعي, صحة, طب, علاج, وقاية, غذاء صحي, رياضة, نصائح صحية, جسم سليم, صحة نفسية, مناعة, نوم, تغذية, أمراض, أدوية, صحة عامة",
+      "en": "health, medicine, treatment, prevention, healthy food, fitness, wellness tips, healthy body, mental health, immunity, sleep, nutrition, diseases, medications, public health",
+      "fr": "santé, médecine, traitement, prévention, alimentation saine, remise en forme, conseils santé, corps sain, santé mentale, immunité, sommeil, nutrition, maladies, médicaments",
+      "es": "salud, medicina, tratamiento, prevención, alimentación saludable, fitness, consejos de salud, cuerpo sano, salud mental, inmunidad, sueño, nutrición, enfermedades, medicamentos"
+    },
+    "description": {
+      "ar": "تعرف على كيفية تحسين الصحة النفسية باستخدام التطبيقات الذكية في 2026. استفد من تطبيقات التهدئة، العلاج النفسي، والدعم الاجتماعي لتعزيز رفاهيتك النفسية.",
+      "en": "Read \"تحسين الصحة النفسية بتطبيقات ذكية في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
+      "fr": "Lisez \"تحسين الصحة النفسية بتطبيقات ذكية في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
+      "es": "Lea \"تحسين الصحة النفسية بتطبيقات ذكية في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
+    }
+  },
+  "urban-environment-sustainability-guide-2026": {
+    "id": "b02c0cdb-d038-4a0f-8c8a-4bac8d3017c6",
+    "title": "دليلك الشامل للحفاظ على البيئة في المناطق الحضرية 2026",
+    "category": "علوم",
+    "keywords": {
+      "ar": "بيئة, مناطق حضرية, استدامة, الطاقة المتجددة, النقل الكهربائي, إدارة النفايات, مساحات خضراء, توعية بيئية, تقنيات ذكية, تحسين جودة الهواء, علوم, بحث علمي, فيزياء, كيمياء, أحياء, اكتشافات, مختبر, نظريات, فضاء, طبيعة, بيئة, تطور, جينات, رياضيات, علم الأعصاب",
+      "en": "science, research, physics, chemistry, biology, discoveries, laboratory, theories, space, nature, environment, evolution, genetics, mathematics, neuroscience",
+      "fr": "sciences, recherche, physique, chimie, biologie, découvertes, laboratoire, théories, espace, nature, environnement, évolution, génétique, mathématiques",
+      "es": "ciencias, investigación, física, química, biología, descubrimientos, laboratorio, teorías, espacio, naturaleza, medio ambiente, evolución, genética, matemáticas"
+    },
+    "description": {
+      "ar": "اكتشف أحدث طرق الحفاظ على البيئة في المناطق الحضرية لعام 2026 مع دليل عملي شامل يشمل الطاقة المتجددة، النقل المستدام، وإدارة النفايات.",
+      "en": "Read \"دليلك الشامل للحفاظ على البيئة في المناطق الحضرية 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on علوم.",
+      "fr": "Lisez \"دليلك الشامل للحفاظ على البيئة في المناطق الحضرية 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur علوم.",
+      "es": "Lea \"دليلك الشامل للحفاظ على البيئة في المناطق الحضرية 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre علوم."
+    }
+  },
+  "top-3-daily-habits-2026-health": {
+    "id": "654353ba-5cea-4f92-8d2e-8d7eb0acd0ef",
+    "title": "أفضل 3 عادات يومية لتحسين صحتك العامة في 2026",
+    "category": "صحة",
+    "keywords": {
+      "ar": "صحة عامة, عادات يومية, تحسين الصحة, تقنيات 2026, تمارين خفيفة, تغذية متوازنة, مراقبة النوم, صحة نفسية, نمط حياة صحي, روتين يومي, اللياقة البدنية, الذكاء الاصطناعي, صحة, طب, علاج, وقاية, غذاء صحي, رياضة, نصائح صحية, جسم سليم, صحة نفسية, مناعة, نوم, تغذية, أمراض, أدوية, صحة عامة",
+      "en": "health, medicine, treatment, prevention, healthy food, fitness, wellness tips, healthy body, mental health, immunity, sleep, nutrition, diseases, medications, public health",
+      "fr": "santé, médecine, traitement, prévention, alimentation saine, remise en forme, conseils santé, corps sain, santé mentale, immunité, sommeil, nutrition, maladies, médicaments",
+      "es": "salud, medicina, tratamiento, prevención, alimentación saludable, fitness, consejos de salud, cuerpo sano, salud mental, inmunidad, sueño, nutrición, enfermedades, medicamentos"
+    },
+    "description": {
+      "ar": "اكتشف أفضل 3 عادات يومية مدعومة بالتقنية لتحسين صحتك العامة في 2026 وزيادة الطاقة، النوم الجيد، والرفاهية النفسية.",
+      "en": "Read \"أفضل 3 عادات يومية لتحسين صحتك العامة في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
+      "fr": "Lisez \"أفضل 3 عادات يومية لتحسين صحتك العامة في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
+      "es": "Lea \"أفضل 3 عادات يومية لتحسين صحتك العامة في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
+    }
+  },
+  "artificial-intelligence-in-education-guide": {
+    "id": "7ca9cef3-7e74-41a7-9596-889298d45678",
+    "title": "دليلك الشامل لاستخدام الذكاء الاصطناعي في التعليم",
+    "category": "تعليم",
+    "keywords": {
+      "ar": "تعليم, ذكاء اصطناعي, تكنولوجيا, أدوات تعليمية, تعليم, تعلم, مدارس, جامعات, مناهج, مهارات, معرفة, طلاب, تعليم عن بعد, مدرسون, أساليب تدريس, أطفال, تنمية, قراءة, كتابة",
+      "en": "education, learning, schools, universities, curriculum, skills, knowledge, students, remote learning, teachers, teaching methods, children, development, reading, writing",
+      "fr": "éducation, apprentissage, écoles, universités, curriculum, compétences, connaissances, étudiants, apprentissage à distance, enseignants, méthodes pédagogiques",
+      "es": "educación, aprendizaje, escuelas, universidades, currículo, habilidades, conocimientos, estudiantes, aprendizaje remoto, docentes, métodos de enseñanza"
+    },
+    "description": {
+      "ar": "دليلك الشامل لاستخدام الذكاء الاصطناعي في التعليم، تعلم كيف يمكن للذكاء الاصطناعي أن ي改变 الطريقة التي نتعلم بها.",
+      "en": "Read \"دليلك الشامل لاستخدام الذكاء الاصطناعي في التعليم\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تعليم.",
+      "fr": "Lisez \"دليلك الشامل لاستخدام الذكاء الاصطناعي في التعليم\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تعليم.",
+      "es": "Lea \"دليلك الشامل لاستخدام الذكاء الاصطناعي في التعليم\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تعليم."
+    }
+  },
+  "best-ways-to-protect-personal-data-in-2026": {
+    "id": "44ce2dc3-4aef-4247-9c72-b13293925d20",
+    "title": "أفضل الطرق لحماية البيانات الشخصية في 2026",
+    "category": "تكنولوجيا",
+    "keywords": {
+      "ar": "أمان البيانات, حماية البيانات, تكنولوجيا, كلمات مرور, تحقق من حيثيتين, شبكات الواي فاي, تكنولوجيا, ذكاء اصطناعي, برمجة, أجهزة ذكية, إنترنت, تطبيقات, ابتكار, مستقبل رقمي, تحول رقمي, أمن معلومات, سحابة, بيانات ضخمة, روبوتات, تعلم آلي",
+      "en": "technology, artificial intelligence, programming, smart devices, internet, apps, innovation, digital future, digital transformation, cybersecurity, cloud computing, big data, robotics, machine learning",
+      "fr": "technologie, intelligence artificielle, programmation, appareils intelligents, internet, applications, innovation, avenir numérique, transformation numérique, cybersécurité, cloud, big data, robotique, apprentissage automatique",
+      "es": "tecnología, inteligencia artificial, programación, dispositivos inteligentes, internet, aplicaciones, innovación, futuro digital, transformación digital, ciberseguridad, nube, big data, robótica, aprendizaje automático"
+    },
+    "description": {
+      "ar": "تعرف على أفضل الطرق لحماية البيانات الشخصية في 2026، منها استخدام كلمات المرور القوية وشبكات الواي فاي الآمنة.",
+      "en": "Read \"أفضل الطرق لحماية البيانات الشخصية في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تكنولوجيا.",
+      "fr": "Lisez \"أفضل الطرق لحماية البيانات الشخصية في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تكنولوجيا.",
+      "es": "Lea \"أفضل الطرق لحماية البيانات الشخصية في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تكنولوجيا."
+    }
+  },
+  "plan-2026-make-home-more-sustainable": {
+    "id": "998fbc57-e02c-40c3-9d2e-f05f841dfb50",
+    "title": "خطة 2026: كيف تجعل منزلك أكثر استدامة خطوة بخطوة",
+    "category": "أسلوب حياة",
+    "keywords": {
+      "ar": "استدامة, منازل مستدامة, تكنولوجيا, الطاقة الشمسية, المنزل الذكي, المواد الخضراء, إدارة النفايات, تقليل الكربون, الاقتصاد الأخضر, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
+      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
+      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+    },
+    "description": {
+      "ar": "تعرف على خطوات عملية ومحدثة لعام 2026 لتحويل منزلك إلى منزل مستدام، مع التركيز على الطاقة الشمسية، المواد الخضراء، والعادات اليومية المنخفضة الكربون.",
+      "en": "Read \"خطة 2026: كيف تجعل منزلك أكثر استدامة خطوة بخطوة\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on أسلوب حياة.",
+      "fr": "Lisez \"خطة 2026: كيف تجعل منزلك أكثر استدامة خطوة بخطوة\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur أسلوب حياة.",
+      "es": "Lea \"خطة 2026: كيف تجعل منزلك أكثر استدامة خطوة بخطوة\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre أسلوب حياة."
+    }
+  },
+  "technology-impact-on-mental-health-2026": {
+    "id": "d24b05bb-59c5-41d3-80a3-f01258d67472",
+    "title": "تأثيرات التكنولوجيا على الصحة النفسية في 2026",
+    "category": "صحة",
+    "keywords": {
+      "ar": "صحة نفسية, تكنولوجيا, تأثيرات إيجابية وسلبية, تطبيقات الصحة النفسية, الذكاء الاصطناعي, صحة, طب, علاج, وقاية, غذاء صحي, رياضة, نصائح صحية, جسم سليم, صحة نفسية, مناعة, نوم, تغذية, أمراض, أدوية, صحة عامة",
+      "en": "health, medicine, treatment, prevention, healthy food, fitness, wellness tips, healthy body, mental health, immunity, sleep, nutrition, diseases, medications, public health",
+      "fr": "santé, médecine, traitement, prévention, alimentation saine, remise en forme, conseils santé, corps sain, santé mentale, immunité, sommeil, nutrition, maladies, médicaments",
+      "es": "salud, medicina, tratamiento, prevención, alimentación saludable, fitness, consejos de salud, cuerpo sano, salud mental, inmunidad, sueño, nutrición, enfermedades, medicamentos"
+    },
+    "description": {
+      "ar": "التكنولوجيا والصحة النفسية: كيف يمكن للتكنولوجيا أن تؤثر على صحتنا النفسية في عام 2026؟",
+      "en": "Read \"تأثيرات التكنولوجيا على الصحة النفسية في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
+      "fr": "Lisez \"تأثيرات التكنولوجيا على الصحة النفسية في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
+      "es": "Lea \"تأثيرات التكنولوجيا على الصحة النفسية في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
+    }
+  },
+  "nutrition-mental-health-2026": {
+    "id": "d090659b-6a50-4a70-b568-f3c4595bc245",
+    "title": "تأثير التغذية على الصحة النفسية في 2026: دليل عملي",
+    "category": "صحة",
+    "keywords": {
+      "ar": "تغذية, صحة نفسية, نظام غذائي, دماغ, اضطرابات, قلق, اكتئاب, مكملات, تكنولوجيا, علاج, نمط حياة, غذاء, صحة عقلية, غذاء متوازن, صحة, طب, علاج, وقاية, غذاء صحي, رياضة, نصائح صحية, جسم سليم, صحة نفسية, مناعة, نوم, تغذية, أمراض, أدوية, صحة عامة",
+      "en": "health, medicine, treatment, prevention, healthy food, fitness, wellness tips, healthy body, mental health, immunity, sleep, nutrition, diseases, medications, public health",
+      "fr": "santé, médecine, traitement, prévention, alimentation saine, remise en forme, conseils santé, corps sain, santé mentale, immunité, sommeil, nutrition, maladies, médicaments",
+      "es": "salud, medicina, tratamiento, prevención, alimentación saludable, fitness, consejos de salud, cuerpo sano, salud mental, inmunidad, sueño, nutrición, enfermedades, medicamentos"
+    },
+    "description": {
+      "ar": "اكتشف كيف تؤثر التغذية على الصحة النفسية في 2026 وتعرف على أحدث الأدوات الغذائية والتقنيات التي تدعم مزاجك وتقلل القلق والاكتئاب.",
+      "en": "Read \"تأثير التغذية على الصحة النفسية في 2026: دليل عملي\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
+      "fr": "Lisez \"تأثير التغذية على الصحة النفسية في 2026: دليل عملي\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
+      "es": "Lea \"تأثير التغذية على الصحة النفسية في 2026: دليل عملي\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
+    }
+  },
+  "new-workplace-trends-2026": {
+    "id": "4fe6b92d-ee7c-4f34-b61f-bf21e265aa77",
+    "title": "التحولات الجديدة في سوق العمل في 2026",
+    "category": "مال وأعمال",
+    "keywords": {
+      "ar": "سوق العمل, تحولات, تكنولوجيا, عمل عن بعد, ذكاء اصطناعي, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
+      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
+      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+    },
+    "description": {
+      "ar": "استكشف التحولات الجديدة في سوق العمل في عام 2026، وتأثير التكنولوجيا على مكان العمل.",
+      "en": "Read \"التحولات الجديدة في سوق العمل في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on مال وأعمال.",
+      "fr": "Lisez \"التحولات الجديدة في سوق العمل في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur مال وأعمال.",
+      "es": "Lea \"التحولات الجديدة في سوق العمل في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre مال وأعمال."
+    }
+  },
+  "green-bond-investment-secrets-2026": {
+    "id": "826bd071-2699-4cfc-be7c-1b17d94a3110",
+    "title": "أسرار نجاح الاستثمار في السندات الخضراء في 2026",
+    "category": "مال وأعمال",
+    "keywords": {
+      "ar": "استثمار, سندات خضراء, تنمية مستدامة, طاقة متجددة, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
+      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
+      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+    },
+    "description": {
+      "ar": "اكتشف أسرار نجاح الاستثمار في السندات الخضراء في 2026. تعلم كيفية تحقيق عوائد مالية وتعزيز التنمية المستدامة",
+      "en": "Read \"أسرار نجاح الاستثمار في السندات الخضراء في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on مال وأعمال.",
+      "fr": "Lisez \"أسرار نجاح الاستثمار في السندات الخضراء في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur مال وأعمال.",
+      "es": "Lea \"أسرار نجاح الاستثمار في السندات الخضراء في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre مال وأعمال."
+    }
+  },
+  "comprehensive-health-apps-guide-2026": {
+    "id": "1f64f6d7-53b6-4092-b8cd-fd1920bddd22",
+    "title": "دليلك الشامل لاختيار واستخدام تطبيقات الصحة في 2026",
+    "category": "صحة",
+    "keywords": {
+      "ar": "تطبيقات الصحة, تتبع اللياقة, الذكاء الاصطناعي, صحة النفس, الطب عن بُعد, خصوصية البيانات, نصائح صحية, تقنية الصحة, مراقبة النوم, تمارين رياضية, إدارة وزن, صحة, طب, علاج, وقاية, غذاء صحي, رياضة, نصائح صحية, جسم سليم, صحة نفسية, مناعة, نوم, تغذية, أمراض, أدوية, صحة عامة",
+      "en": "health, medicine, treatment, prevention, healthy food, fitness, wellness tips, healthy body, mental health, immunity, sleep, nutrition, diseases, medications, public health",
+      "fr": "santé, médecine, traitement, prévention, alimentation saine, remise en forme, conseils santé, corps sain, santé mentale, immunité, sommeil, nutrition, maladies, médicaments",
+      "es": "salud, medicina, tratamiento, prevención, alimentación saludable, fitness, consejos de salud, cuerpo sano, salud mental, inmunidad, sueño, nutrición, enfermedades, medicamentos"
+    },
+    "description": {
+      "ar": "اكتشف أهم تطبيقات الصحة في 2026 وكيفية اختيارها واستخدامها بأمان لتتبع اللياقة، تحسين النوم، الدعم النفسي، والتواصل مع الأطباء عبر الذكاء الاصطناعي.",
+      "en": "Read \"دليلك الشامل لاختيار واستخدام تطبيقات الصحة في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
+      "fr": "Lisez \"دليلك الشامل لاختيار واستخدام تطبيقات الصحة في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
+      "es": "Lea \"دليلك الشامل لاختيار واستخدام تطبيقات الصحة في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
+    }
+  },
+  "best-5-sustainable-tourist-destinations-2026": {
+    "id": "f53f0a3c-af04-4a51-a03d-44db8f2174bd",
+    "title": "أفضل 5 وجهات سياحية مستدامة في 2026",
+    "category": "سفر",
+    "keywords": {
+      "ar": "سياحة مستدامة, وجهات بيئية, سفر 2026, سياحة خضراء, تقنيات بيئية, رحلات صديقة للبيئة, حماية الطبيعة, تجارب محلية, طاقة متجددة, إقامات صديقة للبيئة, سياحة مسؤولة, بيئة نظيفة, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
+      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
+      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+    },
+    "description": {
+      "ar": "اكتشف أفضل 5 وجهات سياحية مستدامة لعام 2026 مع تقنيات خضراء، تجارب محلية، وحلول بيئية تجعل رحلتك صديقة للبيئة ومليئة بالمغامرة. تعرف على كيفية حجز إقامات صديقة للبيئة والاستمتاع بالطبيعة دون إضرارها.",
+      "en": "Read \"أفضل 5 وجهات سياحية مستدامة في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on سفر.",
+      "fr": "Lisez \"أفضل 5 وجهات سياحية مستدامة في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur سفر.",
+      "es": "Lea \"أفضل 5 وجهات سياحية مستدامة في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre سفر."
+    }
+  },
+  "education-challenges-2026": {
+    "id": "093e9f4e-7c83-48c5-b4ae-3e322db74b73",
+    "title": "كيف يواجه التعليم تحديات 2026: استراتيجيات مبتكرة للنجاح",
+    "category": "تعليم",
+    "keywords": {
+      "ar": "التعليم, تحديات, تكنولوجيا, الذكاء الاصطناعي, الواقع المعزز, الفجوة الرقمية, التعلم المدمج, مهارات المستقبل, استراتيجيات التعليم, الابتكار, التحول الرقمي, تعليم, تعلم, مدارس, جامعات, مناهج, مهارات, معرفة, طلاب, تعليم عن بعد, مدرسون, أساليب تدريس, أطفال, تنمية, قراءة, كتابة",
+      "en": "education, learning, schools, universities, curriculum, skills, knowledge, students, remote learning, teachers, teaching methods, children, development, reading, writing",
+      "fr": "éducation, apprentissage, écoles, universités, curriculum, compétences, connaissances, étudiants, apprentissage à distance, enseignants, méthodes pédagogiques",
+      "es": "educación, aprendizaje, escuelas, universidades, currículo, habilidades, conocimientos, estudiantes, aprendizaje remoto, docentes, métodos de enseñanza"
+    },
+    "description": {
+      "ar": "اكتشف أبرز التحديات التي تواجه التعليم في عام 2026 وكيفية تحويلها إلى فرص باستخدام الذكاء الاصطناعي، الواقع المعزز، والاستراتيجيات الرقمية الحديثة.",
+      "en": "Read \"كيف يواجه التعليم تحديات 2026: استراتيجيات مبتكرة للنجاح\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تعليم.",
+      "fr": "Lisez \"كيف يواجه التعليم تحديات 2026: استراتيجيات مبتكرة للنجاح\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تعليم.",
+      "es": "Lea \"كيف يواجه التعليم تحديات 2026: استراتيجيات مبتكرة للنجاح\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تعليم."
+    }
+  },
+  "technology-in-sports-2026": {
+    "id": "1b5eb554-633f-4a89-87da-9e7ee7249315",
+    "title": "التكنولوجيا في مجال الرياضة عام 2026: كيف تُعيد تشكيل الأداء والتجربة",
+    "category": "رياضة",
+    "keywords": {
+      "ar": "رياضة, تكنولوجيا, واقع معزز, أجهزة قابلة للارتداء, بيانات ضخمة, ذكاء اصطناعي, تحليل أداء, تجارب جماهيرية, منصة رقمية, تحسين أداء الرياضيين, تقنيات رياضية, ابتكارات رياضية, رياضة, لياقة بدنية, كرة القدم, تمارين, صحة جسدية, بطولة, رياضيون, تدريب, أولمبياد, كرة السلة, سباحة, ركض, رياضة احترافية, إنجازات رياضية",
+      "en": "sports, fitness, football, exercises, physical health, championship, athletes, training, olympics, basketball, swimming, running, professional sports, sporting achievements",
+      "fr": "sport, fitness, football, exercices, santé physique, championnat, athlètes, entraînement, olympiades, basketball, natation, course à pied, sport professionnel",
+      "es": "deporte, fitness, fútbol, ejercicios, salud física, campeonato, atletas, entrenamiento, olimpiadas, baloncesto, natación, running, deporte profesional"
+    },
+    "description": {
+      "ar": "اكتشف كيف تُغير التكنولوجيا مجال الرياضة في 2026 عبر الواقع المعزز، الذكاء الاصطناعي، والأجهزة القابلة للارتداء لتطوير الأداء وتفاعل الجماهير.",
+      "en": "Read \"التكنولوجيا في مجال الرياضة عام 2026: كيف تُعيد تشكيل الأداء والتجربة\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on رياضة.",
+      "fr": "Lisez \"التكنولوجيا في مجال الرياضة عام 2026: كيف تُعيد تشكيل الأداء والتجربة\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur رياضة.",
+      "es": "Lea \"التكنولوجيا في مجال الرياضة عام 2026: كيف تُعيد تشكيل الأداء والتجربة\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre رياضة."
+    }
+  },
+  "comprehensive-crypto-investment-guide-2026": {
+    "id": "1e911647-7588-4ac0-a355-ef340017c024",
+    "title": "دليلك الشامل للاستثمار في العملات الرقمية عام 2026",
+    "category": "مال وأعمال",
+    "keywords": {
+      "ar": "عملات رقمية, استثمار, بلوكتشين, بيتكوين, إيثريوم, محفظة إلكترونية, تحليل فني, أمان, تنظيم, سوق العملات, تقنية مالية, تداول, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
+      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
+      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+    },
+    "description": {
+      "ar": "دليل شامل ومحدث لعام 2026 يوضح كيفية الاستثمار في العملات الرقمية بأمان، من فهم الأساسيات إلى اختيار المنصات وإدارة المخاطر لتحقيق عوائد مستدامة.",
+      "en": "Read \"دليلك الشامل للاستثمار في العملات الرقمية عام 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on مال وأعمال.",
+      "fr": "Lisez \"دليلك الشامل للاستثمار في العملات الرقمية عام 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur مال وأعمال.",
+      "es": "Lea \"دليلك الشامل للاستثمار في العملات الرقمية عام 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre مال وأعمال."
+    }
+  },
+  "how-to-improve-home-security-with-technology-2026": {
+    "id": "153c9ea8-a286-4f06-bcd0-dead63e5af47",
+    "title": "كيف تُحسّن أمان المنزل باستخدام التكنولوجيا في 2026: دليل عملي",
+    "category": "أسلوب حياة",
+    "keywords": {
+      "ar": "أمان المنزل, تكنولوجيا, البيت الذكي, أنظمة الأمان, مراقبة بالفيديو, إنذار, أمان منزلي, التحكم الذكي, أمن إلكتروني, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
+      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
+      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+    },
+    "description": {
+      "ar": "تعرف على أحدث طرق تحسين أمان المنزل باستخدام التكنولوجيا في عام 2026. دليل عملي ومفصل لتطبيق الأنظمة الذكية والبيومترية.",
+      "en": "Read \"كيف تُحسّن أمان المنزل باستخدام التكنولوجيا في 2026: دليل عملي\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on أسلوب حياة.",
+      "fr": "Lisez \"كيف تُحسّن أمان المنزل باستخدام التكنولوجيا في 2026: دليل عملي\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur أسلوب حياة.",
+      "es": "Lea \"كيف تُحسّن أمان المنزل باستخدام التكنولوجيا في 2026: دليل عملي\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre أسلوب حياة."
+    }
+  },
+  "top-3-productivity-boosting-methods-2026": {
+    "id": "079385bc-5b5d-4718-b843-fe14f9fa9480",
+    "title": "أفضل 3 طرق لتحسين الإنتاجية في العمل لعام 2026",
+    "category": "تطوير ذات",
+    "keywords": {
+      "ar": "إنتاجية, عمل, تكنولوجيا, تحسين الإنتاجية, الذكاء الاصطناعي, تركيز عميق, أدوات سحابية, عادات صحية, إدارة الوقت, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
+      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
+      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+    },
+    "description": {
+      "ar": "دليلك الشامل لأفضل 3 طرق لتحسين الإنتاجية في العمل عام 2026، تشمل الذكاء الاصطناعي، تقنيات التركيز، وأدوات التعاون السحابية لنتائج ملموسة.",
+      "en": "Read \"أفضل 3 طرق لتحسين الإنتاجية في العمل لعام 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تطوير ذات.",
+      "fr": "Lisez \"أفضل 3 طرق لتحسين الإنتاجية في العمل لعام 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تطوير ذات.",
+      "es": "Lea \"أفضل 3 طرق لتحسين الإنتاجية في العمل لعام 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تطوير ذات."
+    }
+  },
+  "skin-microbiome-probiotics-eczema-2026": {
+    "id": "e95dac94-9791-4594-bd0f-e994ae4084e8",
+    "title": "الصحة الميكروبيومية للجلد: أحدث بروبيوتيكات موضعية لعلاج الأكزيما في 2026",
+    "category": "صحة",
+    "keywords": {
+      "ar": "ميكروبيوم الجلد, بروبيوتيك موضعي, علاج الأكزيما, صحة البشرة, بروبيوتيك 2026, كريم بروبيوتيك, سيروم بروبيوتيك, توازن الميكروبيوم, حكة الجلد, منتجات جلدية طبيعية, صحة, طب, علاج, وقاية, غذاء صحي, رياضة, نصائح صحية, جسم سليم, صحة نفسية, مناعة, نوم, تغذية, أمراض, أدوية, صحة عامة",
+      "en": "health, medicine, treatment, prevention, healthy food, fitness, wellness tips, healthy body, mental health, immunity, sleep, nutrition, diseases, medications, public health",
+      "fr": "santé, médecine, traitement, prévention, alimentation saine, remise en forme, conseils santé, corps sain, santé mentale, immunité, sommeil, nutrition, maladies, médicaments",
+      "es": "salud, medicina, tratamiento, prevención, alimentación saludable, fitness, consejos de salud, cuerpo sano, salud mental, inmunidad, sueño, nutrición, enfermedades, medicamentos"
+    },
+    "description": {
+      "ar": "اكتشف أحدث بروبيوتيكات موضعية لعلاج الأكزيما في 2026 وكيفية تحسين صحة الميكروبيوم الجلدي بخطوات عملية وآمنة.",
+      "en": "Read \"الصحة الميكروبيومية للجلد: أحدث بروبيوتيكات موضعية لعلاج الأكزيما في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
+      "fr": "Lisez \"الصحة الميكروبيومية للجلد: أحدث بروبيوتيكات موضعية لعلاج الأكزيما في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
+      "es": "Lea \"الصحة الميكروبيومية للجلد: أحدث بروبيوتيكات موضعية لعلاج الأكزيما في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
+    }
+  },
+  "comprehensive-ar-education-guide-2026": {
+    "id": "98bc7c43-4cea-4b04-bb35-cda63f25040d",
+    "title": "دليلك الشامل لاستخدام الواقع المعزز في التربية في 2026",
+    "category": "تعليم",
+    "keywords": {
+      "ar": "الواقع المعزز, التعليم, تكنولوجيا التعليم, تطبيقات AR, تعلم تفاعلي, مدارس مستقبلية, أدوات الواقع المعزز, تصميم محتوى AR, تقييم التعلم, تدريب المعلمين, بيئات تعليمية, تعليم, تعلم, مدارس, جامعات, مناهج, مهارات, معرفة, طلاب, تعليم عن بعد, مدرسون, أساليب تدريس, أطفال, تنمية, قراءة, كتابة",
+      "en": "education, learning, schools, universities, curriculum, skills, knowledge, students, remote learning, teachers, teaching methods, children, development, reading, writing",
+      "fr": "éducation, apprentissage, écoles, universités, curriculum, compétences, connaissances, étudiants, apprentissage à distance, enseignants, méthodes pédagogiques",
+      "es": "educación, aprendizaje, escuelas, universidades, currículo, habilidades, conocimientos, estudiantes, aprendizaje remoto, docentes, métodos de enseñanza"
+    },
+    "description": {
+      "ar": "اكتشف كيف تستخدم الواقع المعزز في التربية عام 2026 لتفعيل التعلم التفاعلي، اختيار الأدوات، تصميم الأنشطة وتقييم الفعالية بطرق عملية ومحدثة.",
+      "en": "Read \"دليلك الشامل لاستخدام الواقع المعزز في التربية في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تعليم.",
+      "fr": "Lisez \"دليلك الشامل لاستخدام الواقع المعزز في التربية في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تعليم.",
+      "es": "Lea \"دليلك الشامل لاستخدام الواقع المعزز في التربية في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تعليم."
+    }
+  },
+  "becoming-a-skilled-english-speaker": {
+    "id": "c73648d0-866c-4ce7-9e41-001bd8ec0dc2",
+    "title": "كيف تصبح متحدثًا ماهرًا في اللغة الإنجليزية بسرعة",
+    "category": "تعليم",
+    "keywords": {
+      "ar": "تعلم لغة, لغة إنجليزية, متحدث ماهر, مهارات لغوية, تعلم اللغة بسرعة, تعليم, تعلم, مدارس, جامعات, مناهج, مهارات, معرفة, طلاب, تعليم عن بعد, مدرسون, أساليب تدريس, أطفال, تنمية, قراءة, كتابة",
+      "en": "education, learning, schools, universities, curriculum, skills, knowledge, students, remote learning, teachers, teaching methods, children, development, reading, writing",
+      "fr": "éducation, apprentissage, écoles, universités, curriculum, compétences, connaissances, étudiants, apprentissage à distance, enseignants, méthodes pédagogiques",
+      "es": "educación, aprendizaje, escuelas, universidades, currículo, habilidades, conocimientos, estudiantes, aprendizaje remoto, docentes, métodos de enseñanza"
+    },
+    "description": {
+      "ar": "تعلم اللغة الإنجليزية بسرعة وفعالية من خلال نصائح عملية ومحدثة. تحسين الاستماع والقراءة والكلام والكتابة",
+      "en": "Read \"كيف تصبح متحدثًا ماهرًا في اللغة الإنجليزية بسرعة\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تعليم.",
+      "fr": "Lisez \"كيف تصبح متحدثًا ماهرًا في اللغة الإنجليزية بسرعة\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تعليم.",
+      "es": "Lea \"كيف تصبح متحدثًا ماهرًا في اللغة الإنجليزية بسرعة\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تعليم."
+    }
+  },
+  "ai-productivity-tools-2026": {
+    "id": "0e8ae58b-1602-4878-9db3-befb6d7af435",
+    "title": "كيف تُحسّن الإنتاجية باستخدام أدوات الذكاء الاصطناعي في 2026",
+    "category": "تطوير ذات",
+    "keywords": {
+      "ar": "إنتاجية, ذكاء اصطناعي, أدوات AI, تحسين العمل, تكنولوجيا 2026, أتمتة, تحليل البيانات, تنظيم الوقت, كفاءة, تقنيات حديثة, تطوير الذات, عمل ذكي, تحسين الأداء, دليلك, موسوعة عربية, مقالات, معرفة, ثقافة, تعليم, بحث, اكتشاف, معلومات, عالم",
+      "en": "Dalilek, Arabic encyclopedia, articles, knowledge, culture, education, research, discovery, information, world",
+      "fr": "Dalilek, encyclopédie arabe, articles, connaissance, culture, éducation, recherche, découverte, information",
+      "es": "Dalilek, enciclopedia árabe, artículos, conocimiento, cultura, educación, investigación, descubrimiento, información"
+    },
+    "description": {
+      "ar": "اكتشف كيف تُحسّن الإنتاجية في 2026 باستخدام أدوات الذكاء الاصطناعي؛ خطوات عملية، أتمتة، وتحليل بيانات لتطوير الذات وزيادة الكفاءة.",
+      "en": "Read \"كيف تُحسّن الإنتاجية باستخدام أدوات الذكاء الاصطناعي في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on تطوير ذات.",
+      "fr": "Lisez \"كيف تُحسّن الإنتاجية باستخدام أدوات الذكاء الاصطناعي في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur تطوير ذات.",
+      "es": "Lea \"كيف تُحسّن الإنتاجية باستخدام أدوات الذكاء الاصطناعي في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre تطوير ذات."
+    }
+  },
+  "nitric-acid-diet-brain-boost-2026": {
+    "id": "71802d76-cca4-4032-bd29-4ad61bb48484",
+    "title": "الحمية القائمة على الحمض النيتريكي: أحدث اتجاه غذائي لتعزيز وظائف الدماغ في 2026",
+    "category": "صحة",
+    "keywords": {
+      "ar": "حمية نيتريكية, تحسين الدماغ, وظائف الإدراك, أطعمة طبيعية, صحة عصبية, أكسيد النيتريك, نظام غذائي 2026, تعزيز الذاكرة, غذاء النيتريت, صحة المخ, صحة, طب, علاج, وقاية, غذاء صحي, رياضة, نصائح صحية, جسم سليم, صحة نفسية, مناعة, نوم, تغذية, أمراض, أدوية, صحة عامة",
+      "en": "health, medicine, treatment, prevention, healthy food, fitness, wellness tips, healthy body, mental health, immunity, sleep, nutrition, diseases, medications, public health",
+      "fr": "santé, médecine, traitement, prévention, alimentation saine, remise en forme, conseils santé, corps sain, santé mentale, immunité, sommeil, nutrition, maladies, médicaments",
+      "es": "salud, medicina, tratamiento, prevención, alimentación saludable, fitness, consejos de salud, cuerpo sano, salud mental, inmunidad, sueño, nutrición, enfermedades, medicamentos"
+    },
+    "description": {
+      "ar": "اكتشف كيف تعزز الحمية القائمة على الحمض النيتريكي وظائف الدماغ في 2026 عبر أطعمة طبيعية، خطة أسبوعية، ونصائح عملية للسلامة.",
+      "en": "Read \"الحمية القائمة على الحمض النيتريكي: أحدث اتجاه غذائي لتعزيز وظائف الدماغ في 2026\" on Dalilek — the comprehensive Arabic encyclopedia. Explore in-depth, trusted content on صحة.",
+      "fr": "Lisez \"الحمية القائمة على الحمض النيتريكي: أحدث اتجاه غذائي لتعزيز وظائف الدماغ في 2026\" sur Dalilek — l'encyclopédie arabe complète. Découvrez des articles approfondis et fiables sur صحة.",
+      "es": "Lea \"الحمية القائمة على الحمض النيتريكي: أحدث اتجاه غذائي لتعزيز وظائف الدماغ في 2026\" en Dalilek — la enciclopedia árabe integral. Explore contenido confiable y detallado sobre صحة."
     }
   }
 }

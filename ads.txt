@@ -1,3 +1,5 @@
+improvedigital.com, 1602_131021, DIRECT
+improvedigital.com, 1033_131021, DIRECT
 OWNERDOMAIN=dalilek.online
 MANAGERDOMAIN=themoneytizer.com
 themoneytizer.com,131021,DIRECT
