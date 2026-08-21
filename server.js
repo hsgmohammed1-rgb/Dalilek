@@ -1498,7 +1498,7 @@ const appHandler = async (req, res) => {
   // 2. Staggered fade-up animation for article cards as they appear in the DOM
   if (!isBot) {
     const SB_NEW_HOST = (SUPABASE_URL || '').replace('https://', '').split('/')[0].replace(/['"\\\\]/g, '');
-    const SB_OLD_HOST = (process.env.OLD_SUPABASE_URL || 'https://pbebygpwujbtlwuhatmm.supabase.co').replace('https://', '').split('/')[0].replace(/['"\\]/g, '');
+    const SB_OLD_HOST = (process.env.SUPABASE_URL).replace('https://', '').split('/')[0].replace(/['"\\]/g, '');
     const SB_NEW_KEY = (SUPABASE_KEY || '').replace(/['"\\\\]/g, '');
     const SPEED_ANIM = `<style>
 @keyframes _dlk_fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
