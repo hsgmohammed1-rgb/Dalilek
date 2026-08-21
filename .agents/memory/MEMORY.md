@@ -1,0 +1,1 @@
+- [Dalilek interceptor lessons](dalilek-interceptor-lessons.md) — fetch interceptor bugs: lang from URL path, gte prefix, GET-only guard, promise cleanup, animation qi cap.

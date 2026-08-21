@@ -1,0 +1,5685 @@
+{
+  "results": [
+    {
+      "id": "3ff83607-a2a6-469a-a900-42f6afa9b64d",
+      "slug": "stock-market-investing-beginners",
+      "title": "دليل المبتدئين للاستثمار الذكي في البورصة",
+      "old": "??? ??????",
+      "new": "استثمار ومال",
+      "score": 24,
+      "changed": true
+    },
+    {
+      "id": "f2d0f746-ecf8-4102-b041-f7bde40735bf",
+      "slug": "virtual-reality-sleep-disorder-treatment",
+      "title": "��ستخدام الواقع الافتراضي في علاج اضطرابات النوم: حلول مبتكر",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 14,
+      "changed": true
+    },
+    {
+      "id": "5963e5cf-f8ce-40fa-a1ff-a5fea3b75ba5",
+      "slug": "celebrity-news-secrets",
+      "title": "حصرياً: أسرار المشاهير وكواليس الترند اليوم",
+      "old": "ثقافة عامة",
+      "new": "ثقافة عامة",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "3ad948dd-9de8-41d4-b0ed-f918cc49cf1f",
+      "slug": "dhurandhar-the-revenge",
+      "title": "Dhurandhar: The Revenge - فيلم تجسس هندي ملحمي",
+      "old": "سينما ومسرح",
+      "new": "سينما ومسرح",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "487c1f2b-2847-421a-8768-1297573166cd",
+      "slug": "ai-for-profit-online",
+      "title": "الذكاء الاصطناعي: فرصتك للربح من الإنترنت",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "c20333d5-fee1-4096-ab29-001b9c605879",
+      "slug": "quick-easy-lunch-recipes",
+      "title": "وصفات غداء سريعة: وجبات اقتصادية في 15 دقيقة",
+      "old": "طبخ ومطبخ",
+      "new": "طبخ ومطبخ",
+      "score": 53,
+      "changed": false
+    },
+    {
+      "id": "cddc9c51-2a4a-4796-bee0-8f5222d9f31d",
+      "slug": "make-money-online-2026",
+      "title": "الربح من الإنترنت للمبتدئين: دليل 2026",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "8f483aaf-ec44-4412-8f21-851958c25d38",
+      "slug": "profitable-digital-marketing",
+      "title": "أسرار التسويق الرقمي الناجح",
+      "old": "تسويق وإعلان",
+      "new": "تسويق وإعلان",
+      "score": 36,
+      "changed": false
+    },
+    {
+      "id": "71245834-fdb9-4ce5-869f-e26de05e8a66",
+      "slug": "master-digital-marketing",
+      "title": "أسرار التسويق الرقمي: ضاعف مبيعاتك بأقل تكلفة",
+      "old": "تسويق وإعلان",
+      "new": "تسويق وإعلان",
+      "score": 36,
+      "changed": false
+    },
+    {
+      "id": "c0a57155-07ea-4196-b084-b5d7ec10f1c0",
+      "slug": "integrated-health-fitness-plan",
+      "title": "خطة لياقة متكاملة: تمارين منزلية ونظام غذائي مثالي",
+      "old": "صحة وطب",
+      "new": "لياقة بدنية",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "afcb9134-30cc-4841-9b52-8d8dba0a5444",
+      "slug": "free-ai-tools-productivity",
+      "title": "أدوات الذكاء الاصطناعي المجانية لزيادة الإنتاجية",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "d5d07ed9-f4f3-4e17-ad87-eb77dfe0fb87",
+      "slug": "artificial-intelligence-and-human-relationships",
+      "title": "صديقٌ لا يغضب",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "861b7667-a171-4b9b-9b48-c7a529153bc9",
+      "slug": "self-improvement-daily-habits",
+      "title": "5 عادات لتطوير الذات وبناء شخصية قوية",
+      "old": "تطوير الذات",
+      "new": "تطوير الذات",
+      "score": 49,
+      "changed": false
+    },
+    {
+      "id": "92b3d4c4-baaa-4e56-aa08-87af5480240b",
+      "slug": "virtual-reality-therapy-for-anxiety-2026",
+      "title": "استغلال الواقع الافتراضي في علاج المخاوف 2026",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "dd7530fe-5257-4ca9-ac9a-a957e3f9a701",
+      "slug": "blue-zones-longevity-secrets",
+      "title": "المناطق الزرقاء: أسرار حياة أطول وأكثر صحة",
+      "old": "صحة وطب",
+      "new": "صحة وطب",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "b2648c24-91b0-4d07-9125-d50f2c9014aa",
+      "slug": "creator-economy-2025",
+      "title": "اقتصاد المبدعين: تحويل الهوايات إلى دخل في 2025",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 26,
+      "changed": false
+    },
+    {
+      "id": "75e62c58-13c3-4d7d-801b-7476db344e72",
+      "slug": "best-startup-ideas-2026",
+      "title": "أفضل أفكار مشاريع ناشئة ومربحة في 2026",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 39,
+      "changed": false
+    },
+    {
+      "id": "b3444201-021f-4156-bd8c-02db0b542f2d",
+      "slug": "toxic-productivity-art-of-doing-nothing",
+      "title": "تجنب فخ الإنتاجية: تعلم فن اللاشيء لتحقيق التوازن",
+      "old": "صحة نفسية",
+      "new": "صحة نفسية",
+      "score": 21,
+      "changed": false
+    },
+    {
+      "id": "08586857-58c6-4354-b7bd-649394e9eb22",
+      "slug": "success-happiness-balance",
+      "title": "النجاح والسعادة: معادلة متوازنة لحياة مُرضية",
+      "old": "تطوير الذات",
+      "new": "تطوير الذات",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "b42031c5-493b-4673-a3a2-fa21cd49772a",
+      "slug": "top-arab-travel-destinations-2026",
+      "title": "أفضل وجهات السفر العربية 2026: اكتشف الجواهر المخفية",
+      "old": "سفر وسياحة",
+      "new": "سفر وسياحة",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "560c4070-747b-40ef-bbde-80a6ce021875",
+      "slug": "manage-budget-save-money",
+      "title": "نصائح لتوفير المال وإدارة الميزانية",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 42,
+      "changed": false
+    },
+    {
+      "id": "dd869d0f-de98-41cd-8497-10f16b620817",
+      "slug": "pillars-of-islam",
+      "title": "أركان الإسلام: أهميتها وتأثيرها في حياة المسلم",
+      "old": "ثقافة عامة",
+      "new": "دين وروحانيات",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "17c8d40d-75d0-4e57-a6ee-64f17bc2c1b6",
+      "slug": "augmented-reality-education",
+      "title": "الواقع المعزز: ثورة في التعليم الحديث",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 21,
+      "changed": false
+    },
+    {
+      "id": "680696c0-6ed8-4f4c-894b-b92c3fd97c6f",
+      "slug": "future-of-jobs-arab-world",
+      "title": "وظائف المستقبل في العالم العربي 2026: نظرة استشرافية",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 21,
+      "changed": false
+    },
+    {
+      "id": "f31df8a3-3a83-42cc-a9b7-734a4705ad94",
+      "slug": "future-of-cryptocurrency",
+      "title": "مستقبل العملات الرقمية: نظرة على التأثير الاقتصادي",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "6f686754-920c-4eb2-93ef-0241cb7fefda",
+      "slug": "protecting-personal-data",
+      "title": "حماية بياناتك: دليل شامل للأمن السيبراني",
+      "old": "تكنولوجيا",
+      "new": "أمن وخصوصية",
+      "score": 39,
+      "changed": true
+    },
+    {
+      "id": "d4b95ed1-35e7-400a-822e-4a33100e5ecb",
+      "slug": "daily-exercise-benefits",
+      "title": "الرياضة اليومية: فوائد صحية ونفسية وكيف تبدأ",
+      "old": "صحة وطب",
+      "new": "صحة وطب",
+      "score": 34,
+      "changed": false
+    },
+    {
+      "id": "61d31650-e9a2-4644-946d-40a67cbcc28f",
+      "slug": "manchester-city-tactical-revolution",
+      "title": "مانشستر سيتي: تكتيكات جوارديولا والسيطرة",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 32,
+      "changed": false
+    },
+    {
+      "id": "89333a2d-2877-4bc8-ac10-cd068d63da67",
+      "slug": "social-media-youth-mental-health",
+      "title": "السوشيال ميديا والصحة النفسية للشباب",
+      "old": "صحة نفسية",
+      "new": "صحة نفسية",
+      "score": 34,
+      "changed": false
+    },
+    {
+      "id": "fb9f7ed1-7ef8-40ef-b6e8-0e9f7c88f44a",
+      "slug": "passover-easter-islamic-view",
+      "title": "عيد الفصح: التاريخ والحكم الشرعي",
+      "old": "ثقافة عامة",
+      "new": "ثقافة عامة",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "426bca33-75c9-42e4-a847-a469df175b94",
+      "slug": "barcelona-la-masia-philosophy",
+      "title": "برشلونة: مدرسة الكرة الجميلة وفلسفة 'لا ماسيا'",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 41,
+      "changed": false
+    },
+    {
+      "id": "62cb229a-e549-46f3-af73-9c613fcbfbfb",
+      "slug": "ai-future-of-jobs-arab-world",
+      "title": "الذكاء الاصطناعي وسوق العمل: نظرة على المستقبل",
+      "old": "ذكاء اصطناعي",
+      "new": "ذكاء اصطناعي",
+      "score": 21,
+      "changed": false
+    },
+    {
+      "id": "14b9e4e7-f32e-4710-a091-b132962825dc",
+      "slug": "eco-friendly-home-steps",
+      "title": "نصائح بسيطة لمنزل صديق للبيئة",
+      "old": "بيئة واستدامة",
+      "new": "بيئة واستدامة",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "e51a4cc3-bd7e-42bc-9818-ec842989e349",
+      "slug": "make-money-online-beginners-guide",
+      "title": "دليل المبتدئين للربح من الإنترنت",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "a3aed0af-84cb-4998-8b49-9d479bfa9921",
+      "slug": "novels-vs-movies",
+      "title": "الرواية أم الفيلم: أيهما أفضل ولماذا؟",
+      "old": "ثقافة عامة",
+      "new": "ثقافة عامة",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "6ca932a7-b6a8-44f3-8390-4892be323e38",
+      "slug": "time-management-freelancer",
+      "title": "تنظيم الوقت والعمل الحر: استراتيجيات فعالة",
+      "old": "تطوير الذات",
+      "new": "إنتاجية ووقت",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "840c6859-d63b-4295-afb9-8695ac4282f6",
+      "slug": "surviving-the-ai-age",
+      "title": "النجاة في عصر الذكاء الاصطناعي: كن لا يُستبدل",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "f9f1b2a3-ae4f-4251-afe0-7db9a2e0d607",
+      "slug": "freelance-vs-job",
+      "title": "العمل الحر أم الوظيفة: أيهما الأفضل لصحتك وإنتاجيتك؟",
+      "old": "صحة نفسية",
+      "new": "صحة نفسية",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "c8c1a7fe-5341-4649-8cf9-1237324912d9",
+      "slug": "online-vs-traditional-learning",
+      "title": "التعلم عبر الإنترنت مقابل التعلم التقليدي: أيهما أفضل؟",
+      "old": "تعليم وأكاديميا",
+      "new": "تعليم وأكاديميا",
+      "score": 41,
+      "changed": false
+    },
+    {
+      "id": "71dde2bc-6e50-4389-8c31-c2c1aee451df",
+      "slug": "real-madrid-europe-king",
+      "title": "ريال مدريد: تاريخ حافل بالألقاب والإنجازات",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 32,
+      "changed": false
+    },
+    {
+      "id": "d4ba997d-5680-4efb-af30-f482859033e2",
+      "slug": "mary-celeste-ghost-ship",
+      "title": "لغز ماري سليست: سفينة الأشباح التي اختفى طاقمها بالكامل",
+      "old": "تاريخ وحضارات",
+      "new": "تاريخ وحضارات",
+      "score": 49,
+      "changed": false
+    },
+    {
+      "id": "355c731a-02ff-416e-bbee-4fac62f00930",
+      "slug": "dyatlov-pass-incident",
+      "title": "لغز ممر دياتلوف: القصة الكاملة وراء الحادثة الغامضة",
+      "old": "تاريخ وحضارات",
+      "new": "تاريخ وحضارات",
+      "score": 35,
+      "changed": false
+    },
+    {
+      "id": "3bc3cd4a-5369-4adb-ac60-e0ae6c1b9538",
+      "slug": "liverpool-fc-history-anfield",
+      "title": "ليفربول: تاريخ، ألقاب، وملعب أنفيلد الأسطوري",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 41,
+      "changed": false
+    },
+    {
+      "id": "5d161f23-d6a0-4b9e-9405-96db4aa5b55c",
+      "slug": "dancing-plague-of-1518",
+      "title": "طاعون الرقص: رقص حتى الموت في ستراسبورغ",
+      "old": "تاريخ وحضارات",
+      "new": "تاريخ وحضارات",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "87642a2c-7f01-47b8-95a4-c63c2587f1f0",
+      "slug": "mandela-effect-memory",
+      "title": "تأثير مانديلا: حقائق، أسباب وتفسيرات للذاكرة الجماعية الخاطئ",
+      "old": "صحة نفسية",
+      "new": "صحة نفسية",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "ad8950db-36d0-4154-927e-2483e6d762d5",
+      "slug": "tarrare-the-insatiable-man",
+      "title": "تاراري: الرجل ذو الشهية التي لا تشبع",
+      "old": "تاريخ وحضارات",
+      "new": "تاريخ وحضارات",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "fb9d60c6-b2aa-4380-9c7a-eb37b6374b89",
+      "slug": "cotard-syndrome-walking-corpse",
+      "title": "متلازمة الجثة السائرة: وهم الموت والتعفن الذاتي",
+      "old": "صحة نفسية",
+      "new": "صحة نفسية",
+      "score": 21,
+      "changed": false
+    },
+    {
+      "id": "04e18477-3a6d-465b-a309-3a4ee8b4fd42",
+      "slug": "the-great-emu-war",
+      "title": "حرب الإيمو: عندما خسرت أستراليا الحرب ضد الطيور",
+      "old": "تاريخ وحضارات",
+      "new": "تاريخ وحضارات",
+      "score": 29,
+      "changed": false
+    },
+    {
+      "id": "ecf8b0c7-6bba-4dd2-848c-2615eacb0603",
+      "slug": "cotards-syndrome",
+      "title": "متلازمة الجثة السائرة: وهم الموت والتعفن",
+      "old": "صحة نفسية",
+      "new": "صحة نفسية",
+      "score": 21,
+      "changed": false
+    },
+    {
+      "id": "f0303e58-f856-49d1-9fd6-ecfeed231328",
+      "slug": "bayern-munich-achievements",
+      "title": "بايرن ميونخ: تاريخ، إنجازات، وأكثر | دليل شامل",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 35,
+      "changed": false
+    },
+    {
+      "id": "2e53f3ef-bcee-47fe-955c-8d439736a8fc",
+      "slug": "cicada-3301-internet-puzzle",
+      "title": "سيكادا 3301: لغز الإنترنت الغامض لاختبار الأذكياء",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "b09040cf-70e1-4684-ad18-fd0e7bc6a686",
+      "slug": "voynich-manuscript-mystery",
+      "title": "مخطوطة فوينيتش: لغز لم ي��حل بعد",
+      "old": "تاريخ وحضارات",
+      "new": "تاريخ وحضارات",
+      "score": 47,
+      "changed": false
+    },
+    {
+      "id": "dae065ec-2889-4435-9eaa-8060a1c76483",
+      "slug": "the-bloop-mystery",
+      "title": "نداء البلوب: لغز الصوت المرعب من أعماق المحيط الهادئ",
+      "old": "علوم وطبيعة",
+      "new": "علوم وطبيعة",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "a6d40d3a-b146-4749-9e22-2d1d4c88c186",
+      "slug": "the-bloop-ocean-mystery",
+      "title": "غموض البلوب: وحش أم ظاهرة طبيعية في أعماق المحيط؟",
+      "old": "علوم وطبيعة",
+      "new": "علوم وطبيعة",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "b2ff8cb4-3a60-4592-8c8f-d1f947761c14",
+      "slug": "esperance-vs-sundowns",
+      "title": "الترجي ضد صن داونز: مواجهة حاسمة في دوري الأبطال",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "a5396ac1-d2f5-4c4c-9ed1-4a9a38e9f3ab",
+      "slug": "chelsea-vs-man-city",
+      "title": "تشيلسي ضد مانشستر سيتي: تحليل وتغطية حصرية",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 36,
+      "changed": false
+    },
+    {
+      "id": "2c92d453-3020-4bab-ab70-92ce5542bbe5",
+      "slug": "is-ai-lying-to-us",
+      "title": "هل يكذب الذكاء الاصطناعي؟ نظرة على خداع الذكاء الاصطناعي",
+      "old": "ذكاء اصطناعي",
+      "new": "ذكاء اصطناعي",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "d3e6a0d1-9bd8-4e74-b915-018ffd301461",
+      "slug": "canadiens-vs-islanders-nhl",
+      "title": "مباراة هوكي NHL: مونتريال ضد نيويورك",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 23,
+      "changed": false
+    },
+    {
+      "id": "4bfe9289-2a89-426d-a7b7-72eb2eeecf9d",
+      "slug": "who-won-the-masters-2026",
+      "title": "بطل الماسترز 2026: من فاز بالسترة الخضراء؟",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 21,
+      "changed": false
+    },
+    {
+      "id": "ff8c35a6-53bb-4900-ad5c-5c91961d06af",
+      "slug": "al-ain-news",
+      "title": "آخر أخبار مدينة العين: تغطية شاملة ومباشرة",
+      "old": "أخبار عامة",
+      "new": "إعلام وصحافة",
+      "score": 30,
+      "changed": true
+    },
+    {
+      "id": "4f7c5717-ad38-49a7-a711-62bd50438caf",
+      "slug": "olympique-lyon-vs-lorient",
+      "title": "أولمبيك ليون ضد لوريان: ملخص، نتيجة وأهداف المباراة",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "fc61e459-5a7b-4615-95f7-679232059028",
+      "slug": "flash-floods-and-wadis",
+      "title": "جريان السيول والأودية: تغطية شاملة وتحذيرات هامة",
+      "old": "علوم وطبيعة",
+      "new": "علوم وطبيعة",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "ba3c7dbe-b8b0-4d97-a7fc-dba42df51c63",
+      "slug": "hungarian-elections-analysis",
+      "title": "الانتخابات المجرية: تحليل النتائج وتأثيرها المستقبلي",
+      "old": "سياسة",
+      "new": "سياسة",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "2a9943df-0768-4953-a9cf-9181fad443b8",
+      "slug": "egypt-hungary-relations",
+      "title": "العلاقات المصرية المجرية: تعاون استراتيجي واقتصادي",
+      "old": "سياسة",
+      "new": "سياسة",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "70b7d727-b5c6-48a7-addb-e94102075280",
+      "slug": "school-suspension-weather",
+      "title": "تعليق الدراسة الحضورية: قرارات وزارة التعليم العاجلة",
+      "old": "تعليم وأكاديميا",
+      "new": "تعليم وأكاديميا",
+      "score": 36,
+      "changed": false
+    },
+    {
+      "id": "3930cc88-889c-4d28-b523-68df45c14384",
+      "slug": "mahmoud-el-khatib-news",
+      "title": "محمود الخطيب: آخر الأخبار والتطورات في الأهلي",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "7e43c4b4-8cb8-41d2-b9ee-05a16625c998",
+      "slug": "mohamed-mounir-news",
+      "title": "محمد منير: آخر الأخبار والحفلات والأعمال الفنية",
+      "old": "موسيقى وفن",
+      "new": "موسيقى وفن",
+      "score": 37,
+      "changed": false
+    },
+    {
+      "id": "fbebac8a-6604-4580-a6f6-09007f2e143b",
+      "slug": "weather-forecast-april-13-18",
+      "title": "توقعات مفصلة لحالة الطقس والأمطار في الأيام القادمة",
+      "old": "علوم وطبيعة",
+      "new": "علوم وطبيعة",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "020b1826-7c39-487a-b0c9-8bca398ffc1b",
+      "slug": "why-we-watch-disasters",
+      "title": "سيكولوجية الكوارث: لماذا نستمتع بمشاهدتها؟",
+      "old": "صحة نفسية",
+      "new": "صحة نفسية",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "f920b123-145c-44ab-9fc3-a64604543ca6",
+      "slug": "dark-web-exploration",
+      "title": "الإنترنت المظلم: استكشاف الخفايا والتحديات",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "c69c370c-c900-4c7e-9b77-76f83a397429",
+      "slug": "delusional-celebrity-syndrome",
+      "title": "متلازمة البطل الو��مي: أسباب وتفسيرات",
+      "old": "صحة نفسية",
+      "new": "صحة نفسية",
+      "score": 21,
+      "changed": false
+    },
+    {
+      "id": "77544e40-e156-4a72-bc87-10fe699498a6",
+      "slug": "kids-earning-millions-online",
+      "title": "اقتصاد الظل الرقمي: أطفال يحققون الثراء عبر الإنترنت",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 26,
+      "changed": false
+    },
+    {
+      "id": "146ca222-51d7-4eae-9044-f682baa88400",
+      "slug": "deepfake-economy",
+      "title": "اقتصاد التزييف العميق: من المستفيد؟",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "af273211-9ce5-454f-8f1c-df5525b5e762",
+      "slug": "is-mind-reading-possible",
+      "title": "قراءة الأفكار: هل هو ممكن؟",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "7f9defeb-0352-4eea-8045-7ee8314b8e2e",
+      "slug": "silent-migration-cities",
+      "title": "الهجرة الصامتة: مدن تواجه التدهور السكاني",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "7d7bf646-fb0b-415c-ad6e-b80cec5230c1",
+      "slug": "digital-immortality",
+      "title": "الخلود الرقمي: حياتك بعد الموت على الإنترنت",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 36,
+      "changed": false
+    },
+    {
+      "id": "905efff8-b751-47ea-97da-0ddf95c97c37",
+      "slug": "animal-free-meat-future",
+      "title": "مستقبل الغذاء: لحوم مصنعة بدون حيوانات",
+      "old": "تكنولوجيا",
+      "new": "تغذية وغذاء",
+      "score": 18,
+      "changed": true
+    },
+    {
+      "id": "95a6a4a4-6a61-48be-bcc5-ae09042a17a5",
+      "slug": "smart-drugs-cognitive-enhancement",
+      "title": "الأدوية الذكية: تعزيز القدرات العقلية والأداء",
+      "old": "صحة وطب",
+      "new": "صحة وطب",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "950b171f-2e61-4e96-bc8f-1c06bc9cce0c",
+      "slug": "digital-vanishing-act",
+      "title": "الاختفاء الرقمي: دليل شامل لحماية خصوصيتك على الإنترنت",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 42,
+      "changed": false
+    },
+    {
+      "id": "eacba865-da29-4523-9de4-69e25d323744",
+      "slug": "lunar-exploration-space-race",
+      "title": "استكشاف القمر: سباق الفضاء الجديد وموارده الخفية",
+      "old": "الفضاء والكون",
+      "new": "الفضاء والكون",
+      "score": 45,
+      "changed": false
+    },
+    {
+      "id": "788781ce-e4db-48a1-b840-912a6e0c4bb8",
+      "slug": "jobs-at-risk-automation",
+      "title": "تقنيات مدمرة للوظائف: هل وظيفتك في خطر؟",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "ac75f09a-eaca-417c-8f0c-78de3a63d475",
+      "slug": "tesla-electric-vehicles",
+      "title": "تسلا: مستقبل السيارات الكهربائية",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "ee3cdaf2-12d8-4b23-a932-c79812de39ef",
+      "slug": "neom-city-of-the-future",
+      "title": "نيوم: مدينة المستقبل والاستدامة في السعودية",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "90f8a127-473a-4388-86bb-75d2c08fb420",
+      "slug": "area-51-mysteries",
+      "title": "أسرار منطقة 51: غموض يحيّر العلماء",
+      "old": "الفضاء والكون",
+      "new": "الفضاء والكون",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "713c74de-2dee-45c0-adac-244cd33bcbc6",
+      "slug": "saudi-vision-2030",
+      "title": "رؤية السعودية 2030: تحول إقليمي شامل",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "04fd415d-5b70-4b23-ac75-3a5469727709",
+      "slug": "zombie-jobs-real-or-glitch",
+      "title": "الوظائف الوهمية: تأثيرها وتحدياتها في سوق العمل",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "cf3a9bef-b38e-4b6e-8c46-e80f3a8f759c",
+      "slug": "create-undetectable-fake-id",
+      "title": "الهوية المزيفة المثالية: كيف تصنع هوية رقمية لا يمكن كشفها؟",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "9e28a76f-30f5-40fd-998c-826e7d7cb3cb",
+      "slug": "the-line-neom",
+      "title": "ذا لاين: مدينة المستقبل الثورية في نيوم",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "ad0b6299-5438-44dd-ad39-7965d2f03cab",
+      "slug": "jeffrey-epstein-files",
+      "title": "ملفات إبستين: خفايا النفوذ وفضيحة هزت العالم",
+      "old": "سياسة",
+      "new": "سياسة",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "774a9d5e-9b3e-4e00-8630-7796b437291a",
+      "slug": "space-based-internet-control",
+      "title": "الإنترنت الفضائي: مستقبل الشبكة العنكبوتية",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 33,
+      "changed": false
+    },
+    {
+      "id": "a910467b-f1f4-4128-a6aa-54bdc54b36f6",
+      "slug": "egyptian-treasury-bills",
+      "title": "أذونات الخزانة المصرية: تفاصيل اقتصادية وفرص استثمارية",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 21,
+      "changed": false
+    },
+    {
+      "id": "60022ea1-5804-44f2-b3ea-f4c676de284d",
+      "slug": "new-administrative-capital-egypt",
+      "title": "العاصمة الإدارية الجديدة: مستقبل مصر الذكي",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "b96cd07e-8733-44f9-9eb5-3071b42f8d5d",
+      "slug": "jeddah-tower-vision-2030",
+      "title": "برج جدة: تحفة معمارية نحو رؤية 2030",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "32885d11-fd15-4e27-a94f-e9988c13cf77",
+      "slug": "iran-war-2026",
+      "title": "حرب إيران 2026: تحليل تفصيلي وتداعيات الصدام الكبير",
+      "old": "سياسة",
+      "new": "سياسة",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "482c83c4-d5fb-4444-8f0b-679e25522cbd",
+      "slug": "human-development-in-the-21st-century",
+      "title": "تحقيق التنمية البشرية الفعّالة في القرن الحادي والعشرين",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 11,
+      "changed": true
+    },
+    {
+      "id": "6e4252c4-1e9f-45ec-b66a-ebc4dfcaca2d",
+      "slug": "best-fitness-devices-2026",
+      "title": "أفضل أجهزة اللياقة 2026: دليلك الشامل لتحقيق الصحة المثالية",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "1041778e-2a67-4fec-bbef-dd6e7eea7ad8",
+      "slug": "ali-khamenei-iran-supreme-leader",
+      "title": "علي خامنئي: مسيرة المرشد الأعلى لإيران وإرثه",
+      "old": "سياسة",
+      "new": "سياسة",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "517769e8-f170-4a75-93ba-e9b54a52bed8",
+      "slug": "economic-development-in-developing-countries",
+      "title": "دور التنمية الاقتصادية في تحسين مستوى ا��معيشة",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "e8d60017-89f8-4a46-8966-8d941cba86c2",
+      "slug": "women-entrepreneurship-in-business",
+      "title": "الريادة النسائية في الأعمال: تحقيق النجاح والاستقلال",
+      "old": "تطوير ذات",
+      "new": "مال وأعمال",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "a5b5c773-cde4-45db-aadc-051c11a4c2d7",
+      "slug": "artificial-intelligence-in-healthcare-technology",
+      "title": "ثورة الذكاء الاصطناعي في الرعاية الصحية: مستقبل الصحة المتقد",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 33,
+      "changed": true
+    },
+    {
+      "id": "7caff9c4-d4d0-4704-9abd-f732b8f92f91",
+      "slug": "best-cooking-apps-2026",
+      "title": "تعلم الطبخ بسهولة: أفضل 5 تطبيقات للطبخ في 2026",
+      "old": "طعام",
+      "new": "طبخ ومطبخ",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "4c5c743a-b27d-47ff-885b-fe2feebd7e29",
+      "slug": "applying-artificial-intelligence-to-improve-travel-experiences",
+      "title": "كيف يغيّر الذكاء الاصطناعي تجارب السفر في عام 2026",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "02c83bc7-d617-4fc9-ad30-df7914f05406",
+      "slug": "sustainability-in-construction-industry",
+      "title": "تحقيق الاستدامة في مجال الإنشاءات: भवيش المستقبل",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "d8b4a0f5-247d-4928-bae7-04658818a7d4",
+      "slug": "best-european-tourist-destinations-2026-2",
+      "title": "أفضل 5 وجهات سياحية في أوروبا في 2026",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "dde7089f-f9b1-4514-8469-98d90292aa28",
+      "slug": "hidden-world-of-everyday-things",
+      "title": "اكتشف الخبايا: نظرة عميقة على الأشياء اليومية",
+      "old": "علوم وطبيعة",
+      "new": "علوم وطبيعة",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "ee1c6368-865b-492e-81b4-1ae332776fda",
+      "slug": "bizarre-legal-things",
+      "title": "أشياء قانونية مرعبة: قوانين غريبة حول العالم",
+      "old": "ثقافة عامة",
+      "new": "قانون وحقوق",
+      "score": 54,
+      "changed": true
+    },
+    {
+      "id": "29ae1e65-1d4a-4681-8500-3cb484dd0da4",
+      "slug": "mental-health-remote-work-2026-strategies",
+      "title": "الصحة النفسية في عصر العمل عن بُعد: استراتيجيات للرفاهية في ",
+      "old": "صحة",
+      "new": "صحة نفسية",
+      "score": 30,
+      "changed": true
+    },
+    {
+      "id": "552c8d94-9b92-4207-8e46-1c8ddf4df5b3",
+      "slug": "snowy-mountain-power-episode-4",
+      "title": "جبل باور الثلجي: الحلقة 4 - صراع البقاء يشتد",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "40d381e5-e256-483c-99cf-1b3f616a02e4",
+      "slug": "giza-pyramids-history-tourism",
+      "title": "أهرامات الجيزة: تحفة معمارية وسياحة عصرية",
+      "old": "تاريخ وحضارات",
+      "new": "تاريخ وحضارات",
+      "score": 21,
+      "changed": false
+    },
+    {
+      "id": "0e2d5a3f-01d7-4d57-aa95-774b0f83a532",
+      "slug": "external-factors-decision-making",
+      "title": "اتخاذ القرارات: عوامل خارجية تؤثر في اختياراتك",
+      "old": "صحة نفسية",
+      "new": "صحة نفسية",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "52e5f99f-6cb6-48db-9a52-ed85527d3bfe",
+      "slug": "how-generative-ai-transforms-job-market-2026",
+      "title": "كيف يُعيد الذكاء الاصطناعي التوليدي تشكيل مستقبل سوق العمل ف",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 21,
+      "changed": false
+    },
+    {
+      "id": "48f208b5-0892-46b5-9f70-1e2bc5ec35de",
+      "slug": "interactive-ai-revolutionizes-ecommerce-2026",
+      "title": "كيف يغيّر الذكاء الاصطناعي التفاعلي تجربة التسوق الإلكتروني ",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 33,
+      "changed": false
+    },
+    {
+      "id": "0be380e0-69e9-46c8-929e-653bc1382532",
+      "slug": "mental-health-augmented-reality-wellbeing-strategies",
+      "title": "الصحة النفسية في عصر الواقع المعزز: استراتيجيات للرفاهية الر",
+      "old": "صحة",
+      "new": "صحة نفسية",
+      "score": 33,
+      "changed": true
+    },
+    {
+      "id": "5398e157-453e-487a-9fde-64fb3273d5f2",
+      "slug": "stable-crypto-investment-2026-opportunities-risks",
+      "title": "الاستثمار في العملات الرقمية المستقرة 2026: فرص ومخاطر تحتاج",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 34,
+      "changed": true
+    },
+    {
+      "id": "900bf955-f297-4ffd-910b-b40e7a86355e",
+      "slug": "smart-sleep-tech-2026-improve-quality",
+      "title": "تقنيات النوم الذكي في 2026: كيف تساعدك الأجهزة والبيانات على",
+      "old": "تطوير ذات",
+      "new": "تكنولوجيا",
+      "score": 24,
+      "changed": true
+    },
+    {
+      "id": "cd85b324-5167-4d86-b9fa-ea73247499e5",
+      "slug": "mental-health-in-metaverse-era",
+      "title": "الصحة النفسية في عصر الميتافيرس: كيف يؤثر الواقع المعزز على ",
+      "old": "صحة",
+      "new": "صحة نفسية",
+      "score": 27,
+      "changed": true
+    },
+    {
+      "id": "0cb05708-5e4b-472f-b515-f827d36e9db5",
+      "slug": "arabic-cultural-identity-digital-2026",
+      "title": "الهوية الرقمية والثقافة العربية في 2026: كيف نحمي تراثنا ونُ",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 38,
+      "changed": true
+    },
+    {
+      "id": "2b6cbbea-73cd-4c63-83e1-aeaa0ac5236c",
+      "slug": "mental-wellbeing-augmented-reality-2026",
+      "title": "الصحة النفسية في عصر الواقع المعزز: طرق مبتكرة للتوازن الذهن",
+      "old": "صحة",
+      "new": "صحة نفسية",
+      "score": 33,
+      "changed": true
+    },
+    {
+      "id": "d5f03d16-1652-47af-8e85-7c594981a61c",
+      "slug": "stable-digital-currency-investment-2026",
+      "title": "الاستثمار في العملات الرقمية المستقرة 2026: فرص مربحة ومخاطر",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 25,
+      "changed": true
+    },
+    {
+      "id": "baa1170a-d92a-4d5c-9ca3-2daafd5b8cca",
+      "slug": "ai-in-2026-professional-personal-life-transformation",
+      "title": "الذكاء الاصطناعي في 2026: ثورة شاملة تعيد تشكيل حياتنا المهن",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "b9847244-2488-4222-ac1d-d94c96dc40c8",
+      "slug": "generative-ai-for-small-businesses-2026",
+      "title": "الذكاء الاصطناعي التوليدي: كيف يرفع إنتاجية الشركات الصغيرة ",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "9ba48e7d-0edf-462d-8ab9-aa341ca49b30",
+      "slug": "personalized-medicine-genomic-maps-2026-health",
+      "title": "الطب الشخصي: كيف ستغير خرائط الجينوم مستقبلك الصحي بحلول 202",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 36,
+      "changed": true
+    },
+    {
+      "id": "9d2c5e80-fd08-492a-b703-cee55e1d2d13",
+      "slug": "generative-ai-evolution-2026-content-creation",
+      "title": "تطور الذكاء الاصطناعي التوليدي في 2026: كيف يغيّر صناعة المح",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "fec2316f-8bd8-4010-8f08-9ab563f6bb9d",
+      "slug": "smart-sleep-wearable-tech",
+      "title": "تقنيات النوم الذكية 2026: كيف تُحسّن الأجهزة القابلة للارتدا",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 14,
+      "changed": true
+    },
+    {
+      "id": "73d548ef-e21d-4746-891b-6446fe1c5f81",
+      "slug": "smart-sustainable-homes-2026-guide",
+      "title": "المنازل الذكية المستدامة 2026: دليلك الشامل لعيش أكثر ذكاءً ",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "2b8dc48a-c144-4f5d-9008-f2da414da5fb",
+      "slug": "future-food-vertical-farming-alternative-protein-2026",
+      "title": "طعام المستقبل 2026: ثورة الزراعة العم��دية والبروتين البديل ",
+      "old": "طعام",
+      "new": "تغذية وغذاء",
+      "score": 28,
+      "changed": true
+    },
+    {
+      "id": "1e27cd17-8afe-4dfb-a8ea-2587925fae4a",
+      "slug": "latest-ai-advancements-2026",
+      "title": "تطورات الذكاء الاصطناعي 2026: المستقبل هنا",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "a4308e2b-a5ec-484c-a9ab-243cd5367929",
+      "slug": "future-skills-2026-prepare-changing-job-market",
+      "title": "مهارات المستقبل 2026: دليلك الشامل للاستعداد لسوق العمل المت",
+      "old": "تعليم",
+      "new": "تطوير الذات",
+      "score": 14,
+      "changed": true
+    },
+    {
+      "id": "abb130ba-db1d-49d0-a4b0-b6b5b2d62895",
+      "slug": "climate-solutions-2026-carbon-capture-clean-energy",
+      "title": "حلول المناخ لعام 2026: تقنيات احتجاز الكربون ومستقبل الطاقة ",
+      "old": "علوم",
+      "new": "بيئة واستدامة",
+      "score": 33,
+      "changed": true
+    },
+    {
+      "id": "e4959c84-d714-4573-b30e-636ffb51346c",
+      "slug": "improving-mental-health-in-modern-times",
+      "title": "تحسين الصحة النفسية في العصر الحديث: نصائح عملية",
+      "old": "صحة",
+      "new": "صحة نفسية",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "c82eadce-cd39-4381-ae19-e49b961c028c",
+      "slug": "digital-focus-productivity-wellbeing-2026",
+      "title": "التركيز الرقمي 2026: دليل شامل لزيادة الإنتاجية والرفاهية في",
+      "old": "تطوير ذات",
+      "new": "إنتاجية ووقت",
+      "score": 28,
+      "changed": true
+    },
+    {
+      "id": "f17ce737-c65f-49f0-873c-d9a9e1cd86f5",
+      "slug": "sustainable-travel-2026-explore-responsibly",
+      "title": "السفر المستدام 2026: دليلك لاستكشاف العالم بمسؤولية",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 35,
+      "changed": true
+    },
+    {
+      "id": "7c666676-1e44-4c72-93e9-983534bbada0",
+      "slug": "stable-crypto-investment-2026",
+      "title": "الاستثمار في العملات الرقمية المستقرة 2026: فرص مربحة ومخاطر",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 34,
+      "changed": true
+    },
+    {
+      "id": "2280aa24-b3cf-4d57-89e2-b7013350df98",
+      "slug": "best-ways-achieve-work-life-balance-2026",
+      "title": "أفضل الطرق لتحقيق التوازن بين العمل والحياة الشخصية في 2026",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "9147c3e0-f6d2-4e84-af50-b37386d0cca6",
+      "slug": "healthy-lifestyle-tips-for-young-people",
+      "title": "النصائح الصحية للشباب في القرن الحادي والعشرين",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "782670b3-152c-4f67-9ca6-2f92c67ff545",
+      "slug": "artificial-intelligence-2026-trends",
+      "title": "تطورات الذكاء الاصطناعي 2026: مستقبل التكنولوجيا",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "46e5cbf6-b584-4b47-92c8-132df1d647b8",
+      "slug": "improving-effective-communication-skills-in-modern-workplace",
+      "title": "تحسين مهارات الاتصال الفعال في بيئة العمل الحديثة",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 25,
+      "changed": true
+    },
+    {
+      "id": "1607a080-ea77-44c0-9cee-1f2e9a343b8e",
+      "slug": "culture-influence-on-personal-identity",
+      "title": "تأثير الثقافة على الهوية الشخصية في المجتمعات المعاصرة",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "e47778f4-079f-4a61-8363-df00e296f1b8",
+      "slug": "sports-as-a-key-to-mental-and-physical-health-in-youth",
+      "title": "الرياضة كمفتاح للصحة النفسية والجسدية عند الشباب",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "328401cc-5cb7-40d8-a8aa-cf0d35ac7257",
+      "slug": "sustainable-tourism-travel-2026",
+      "title": "السياحة المستدامة: كيف تسافر وتحافظ على البيئة في 2026",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 26,
+      "changed": true
+    },
+    {
+      "id": "30d90bf8-0005-429a-80b2-d20e2a3956bd",
+      "slug": "neurotech-focus-2026",
+      "title": "كيف تعزز بيوتكنولوجيا تركيزك الذهني في عام 2026",
+      "old": "تطوير ذات",
+      "new": "إنتاجية ووقت",
+      "score": 18,
+      "changed": true
+    },
+    {
+      "id": "a40a8375-d38c-42af-b02e-3df27f1f81ec",
+      "slug": "discoveries-environmental-climate-change-2026",
+      "title": "اكتشافات علمية حديثة في مجال البيئة والاحتباس الحراري: التغي",
+      "old": "علوم",
+      "new": "علوم وطبيعة",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "0ee67420-0dbc-4a40-ba89-f6b0e3fb86c9",
+      "slug": "successful-cryptocurrency-investment-strategies-2026",
+      "title": "استراتيجيات الاستثمار الناجحة في سوق العملات الرقمية 2026",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "e7a5ad5d-92e1-4c48-bcb5-bc1141b097cc",
+      "slug": "social-robots-home-ai-2026",
+      "title": "الروبوتات الاجتماعية في المنازل: رفقاء الذكاء الاصطناعي لعام",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "814bed65-98af-4a8f-adf9-91395d5e683f",
+      "slug": "artificial-intelligence-self-learning-guide",
+      "title": "دليلك للتعلم الذاتي في مجال الذكاء الاصطناعي",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "0f6fdfad-8744-4fb7-8594-5682d093f28a",
+      "slug": "impact-genome-editing-rare-diseases-2026",
+      "title": "كيف سيغير الجينوم التحريري علاج الأمراض النادرة في 2026",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 29,
+      "changed": true
+    },
+    {
+      "id": "c4b8b342-f4ae-4cb2-9073-35dabd3bd9bb",
+      "slug": "stable-digital-currencies-sustainable-finance-2026",
+      "title": "العملات الرقمية المستقرة: ركيزة التمويل المستدام في 2026",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "99f65a43-604d-4cde-ad56-32b863d47a85",
+      "slug": "quantum-physics-renewable-energy-2026",
+      "title": "الفيزياء الكمومية وتطبيقاتها العملية في الطاقة المتجددة عام ",
+      "old": "علوم",
+      "new": "طاقة شمسية",
+      "score": 30,
+      "changed": true
+    },
+    {
+      "id": "f3ed7b7a-7d01-4aff-9c4e-c47b6af37330",
+      "slug": "smart-sleep-tech-home-2026",
+      "title": "تقنيات النوم الذكي: كيف تعزز أجهزة البيت الذكي جودة نومك في ",
+      "old": "تطوير ذات",
+      "new": "تكنولوجيا",
+      "score": 15,
+      "changed": true
+    },
+    {
+      "id": "a77d311a-4a98-4f32-87a3-8a538dd28711",
+      "slug": "virtual-reality-psychotherapy-2026-mental-health-revolution",
+      "title": "العلاج النفسي بالواقع الافتراضي 2026: ثورة في الصحة العقلية",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 35,
+      "changed": true
+    },
+    {
+      "id": "5650b4e5-cdc8-4271-8573-7770bd68868c",
+      "slug": "interactive-music-augmented-reality-2026",
+      "title": "اكتشف الموسيقى المتفاعلة بالواقع المعزز: تجربة ثقافية لا تُن",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 20,
+      "changed": true
+    },
+    {
+      "id": "9f7eb225-1ddd-434a-ad7c-96b1be2b7e7b",
+      "slug": "technology-improving-life-quality-2026",
+      "title": "ثورة التكنولوجيا: تحسين جودة الحياة في 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "bc8a842d-acf9-4ab6-90a5-71c5237f1ae1",
+      "slug": "cultural-tourism-promotion-2026",
+      "title": "تعزيز السياحة الثقافية في عام 2026",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 28,
+      "changed": true
+    },
+    {
+      "id": "aa4cbc27-55e2-496f-a35e-04dd4b927129",
+      "slug": "blockchain-crowdfunding-opportunities-small-businesses-2026",
+      "title": "التمويل الجماعي عبر البلوك تشين: الفرص المتاحة للمشروعات الص",
+      "old": "مال وأعمال",
+      "new": "شركات ناشئة",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "00c70e74-3404-4c1e-9017-940c82d58b22",
+      "slug": "6g-6th-generation-communication-2026",
+      "title": "شبكات الجيل السادس 6G: ثورة الاتصال الفائق السرعة في 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 41,
+      "changed": false
+    },
+    {
+      "id": "351ba747-7ec2-4199-baec-19ed6274f6ba",
+      "slug": "interactive-digital-literature-2026",
+      "title": "الأدب الرقمي المتفاعل: كيف يكتب القراء القصة في 2026",
+      "old": "ثقافة",
+      "new": "كتب ومراجعات",
+      "score": 27,
+      "changed": true
+    },
+    {
+      "id": "9e46603b-c59d-4cbb-ba0c-e16f71519107",
+      "slug": "emotional-intelligence-data-driven-tools-personal-growth-2026",
+      "title": "اكتشف الطريق الصحيح لنموك الشخصي: أدوات الذكاء العاطفي المدع",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 26,
+      "changed": true
+    },
+    {
+      "id": "caa3950a-751d-4b45-97dd-ca6e9d69b16c",
+      "slug": "virtual-museums-explore-cultural-creation-2026",
+      "title": "المتاحف الافتراضية: استكشف الأبداع الثقافي بدون حدود في عام ",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 22,
+      "changed": true
+    },
+    {
+      "id": "c31ce8e4-3d7a-4948-822c-156c96867416",
+      "slug": "nanotech-water-quality-2026",
+      "title": "الاستفادة من تكنولوجيا النانو في تحسين جودة المياه لعام 2026",
+      "old": "علوم",
+      "new": "محيطات وبحار",
+      "score": 15,
+      "changed": true
+    },
+    {
+      "id": "491604d3-6fd6-4b5d-8c2d-5966f956c145",
+      "slug": "cancer-gene-therapy-crispr-progress-2026",
+      "title": "العلاج الجيني للسرطان باستخدام CRISPR: تقدمات 2026",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "cd216f89-4138-4971-9e7d-c0ab07d3ad43",
+      "slug": "stable-coins-investment-2026-opportunities-and-challenges",
+      "title": "الاستثمار في العملات الرقمية المستقرة 2026: دليلك للفرص الجد",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 49,
+      "changed": true
+    },
+    {
+      "id": "defc886a-e530-412d-8f27-23721dd77469",
+      "slug": "ethical-ai-investment-2026",
+      "title": "الاستثمار في الذكاء الاصطناعي الأخلاقي 2026: فرص ومخاطر",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 22,
+      "changed": true
+    },
+    {
+      "id": "6de087f3-17b1-4969-bf4c-603a35210384",
+      "slug": "artificial-intelligence-impact-on-future-jobs",
+      "title": "تأثير الذكاء الاصطناعي على الوظائف المستقبلية: فرص وتحديات",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "baf3d5ed-8b18-41f1-8c4a-4607d59c80f7",
+      "slug": "renewable-energy-investment-2026",
+      "title": "الاستثمار في الطاقة المتجددة 2026: فرص واعدة ومخاطر يجب معرف",
+      "old": "مال وأعمال",
+      "new": "طاقة شمسية",
+      "score": 27,
+      "changed": true
+    },
+    {
+      "id": "37396910-b87c-4fb0-afbd-d9e72d5b16ef",
+      "slug": "ai-impact-future-jobs",
+      "title": "كيف سيُعيد الذكاء الاصطناعي تشكيل وظائف المستقبل",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "1bee6401-15f5-45fe-bfb6-695116764349",
+      "slug": "cryptocurrency-investment-strategies",
+      "title": "استراتيجيات الاستثمار الناجحة في سوق العملات الرقمية",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 25,
+      "changed": true
+    },
+    {
+      "id": "d354ecff-4632-42f8-9089-ea7a94504d37",
+      "slug": "sustainable-lifestyle-ideas",
+      "title": "تحسين أسلوب حياتك بطرق مستدامة ومبتكرة",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 23,
+      "changed": false
+    },
+    {
+      "id": "2dacacfa-436c-4eb3-8ffb-ebeafb8dc2ba",
+      "slug": "hybrid-fitness-2026",
+      "title": "اللياقة البدنية الهجينة 2026: كيف يدمج الواقع الافتراضي مع ا",
+      "old": "أسلوب حياة",
+      "new": "لياقة بدنية",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "be31d1fd-9d0f-472d-95aa-28e4264b704c",
+      "slug": "natural-herbs-for-human-health",
+      "title": "أفضل النباتات لتحسين صحتك بشكل طبيعي",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 24,
+      "changed": true
+    },
+    {
+      "id": "3838eb94-f47e-4c25-8d7e-b9f6b45b5868",
+      "slug": "how-plants-improve-human-health",
+      "title": "كيف تسهم النباتات في تحسين صحة الإنسان في 2026",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 35,
+      "changed": true
+    },
+    {
+      "id": "e1fb2761-46de-4469-887a-73df2fce25c1",
+      "slug": "techniques-for-meditation-and-relaxation-to-control-stress",
+      "title": "تقنيات التأمل والاسترخاء للتحكم في التوتر",
+      "old": "تطوير ذات",
+      "new": "صحة نفسية",
+      "score": 27,
+      "changed": true
+    },
+    {
+      "id": "7057f3a4-0318-440e-88f1-87920cd69f95",
+      "slug": "psychiatric-medications-role-in-improving-mental-health",
+      "title": "دور الأدوية النفسية في تحسين الصحة العقلية",
+      "old": "صحة",
+      "new": "صحة نفسية",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "221c30a6-94ba-4be0-a642-bf297cb6e2e5",
+      "slug": "strategies-for-investing-in-cryptocurrency-2026",
+      "title": "استراتيجيات الاستثمار الناجحة في سوق العملات المشفرة 2026",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "13282d9b-19df-47c4-b691-f70a1baf7a5e",
+      "slug": "modern-meditation-techniques-for-mental-health",
+      "title": "تقنيات التأمل الحديثة لتحسين الصحة النفسية",
+      "old": "تطوير ذات",
+      "new": "صحة نفسية",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "c67eb4ab-e08d-42d6-8d96-e999454da778",
+      "slug": "healthy-lifestyle-youth-21st-century",
+      "title": "أسلوب حياة صحي للشباب في القرن الحادي والعشرين: دليل شامل لل",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 38,
+      "changed": false
+    },
+    {
+      "id": "0db25ef2-a390-43ec-bf5f-ee055396669a",
+      "slug": "digital-finance-small-business-2026",
+      "title": "التمويل الرقمي: المفتاح لإنجاح المشاريع الصغيرة في 2026",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 33,
+      "changed": false
+    },
+    {
+      "id": "54c6dda3-72f9-4ad1-a178-b48cabf28601",
+      "slug": "recent-biology-discoveries-2026",
+      "title": "اكتشافات حديثة في علم الأحياء لعام 2026: من الجينات إلى المي",
+      "old": "علوم",
+      "new": "أحياء وجينات",
+      "score": 30,
+      "changed": true
+    },
+    {
+      "id": "3fc0c481-9331-47e2-9844-d39c42f2a6c4",
+      "slug": "ai-healthcare-improvement-2026",
+      "title": "كيف يُحدث الذكاء الاصطناعي تحولاً في الخدمات الصحية عام 2026",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 33,
+      "changed": true
+    },
+    {
+      "id": "47161cf9-b9bd-4109-a649-e79507127c6e",
+      "slug": "smart-sleep-techniques",
+      "title": "تقنيات النوم الذكي 2026: كيف تحسّن جودة نومك بأحدث الأدوات",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "f26d6b8d-7767-4740-8226-bdc9e3c66da9",
+      "slug": "freelance-challenges-risks-2026",
+      "title": "تحديات ومخاطر العمل الحر في 2026: ما يجب أن تعرفه",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 21,
+      "changed": false
+    },
+    {
+      "id": "a22d7d3c-98fd-472e-874b-8c60549fb8a2",
+      "slug": "healthy-diet-and-sport-for-better-fitness",
+      "title": "التغذية الصحية والرياضة: طريقك إلى لياقة بدنية أفضل",
+      "old": "رياضة",
+      "new": "لياقة بدنية",
+      "score": 40,
+      "changed": true
+    },
+    {
+      "id": "a5573047-676c-4a83-9c4b-62a81e15c07f",
+      "slug": "sosyal-media-and-children-behavior-in-2026",
+      "title": "تأثير السوشيال ميديا على سلوك الأطفال: تحديات وفرص",
+      "old": "ترفيه",
+      "new": "تسويق وإعلان",
+      "score": 12,
+      "changed": true
+    },
+    {
+      "id": "4ef5ae59-358b-427a-96a9-fd96da7e0f4d",
+      "slug": "sustainable-tourism-waste-free-travel-guide-2026",
+      "title": "السياحة المستدامة: كيف تحقق سفراً خالياً من النفايات في عام ",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 44,
+      "changed": true
+    },
+    {
+      "id": "4c96fe15-20a1-411f-826c-f1300812f572",
+      "slug": "technology-impact-on-social-relationships-2026",
+      "title": "التكنولوجيا وتأثيرها على العلاقات الاجتماعية في 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "0f40e46e-7ecd-40d4-9037-42f0481cdc15",
+      "slug": "ai-impact-on-automotive-industry-2026",
+      "title": "تأثير الذكاء الاصطناعي على صناعة السيارات في 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "cb775ea6-6e6b-4974-a72e-693e0b12f161",
+      "slug": "mental-health-apps-guide-2026",
+      "title": "دليلك الشامل لاستخدام تطبيقات الصحة النفسية في 2026",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "34977a9d-46e7-4695-9000-c27b15d4a33d",
+      "slug": "smart-lighting-technology-homes",
+      "title": "تكنولوجيا الإضاءة الذكية في المنازل: كيف تُحوّل بيتك إلى مسا",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 29,
+      "changed": false
+    },
+    {
+      "id": "47f422b2-aede-440d-a66b-ec044adec0f9",
+      "slug": "benefiting-from-augmented-reality-in-education",
+      "title": "استفيد من تقنيات الواقع المعزز في تعليم المستقبل",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "8fe4e311-d0c0-4bdd-b9b9-bfbc725e664e",
+      "slug": "achieving-work-life-balance-in-2026",
+      "title": "تحقيق التوازن بين العمل والحياة الشخصية سنة 2026",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "d58465bb-0126-4f24-aa60-82a8443fba7d",
+      "slug": "best-smartphones-2026-guide",
+      "title": "دليلك الشامل لاختيار أفضل الهواتف الذكية في 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 33,
+      "changed": false
+    },
+    {
+      "id": "e52d3391-c8cf-4bed-b5c2-b0492651f588",
+      "slug": "essential-oils-for-mental-health",
+      "title": "دليلك الشامل لاستخدام الزيوت العطرية للصحة النفسية",
+      "old": "صحة",
+      "new": "صحة نفسية",
+      "score": 24,
+      "changed": true
+    },
+    {
+      "id": "15e8f5ec-addc-407a-8647-8086208f9d15",
+      "slug": "educational-vr-tech",
+      "title": "استفادة الواقع الافتراضي في تعليم المعدات الحديثة",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "ff7a049f-3b4a-4b38-a499-835472f7d5af",
+      "slug": "importance-psychological-relaxation-health",
+      "title": "أهمية الاسترخاء النفسي للصحة العامة في 2026",
+      "old": "صحة",
+      "new": "صحة نفسية",
+      "score": 38,
+      "changed": true
+    },
+    {
+      "id": "2047b485-f635-4152-9a09-86ec01ca3430",
+      "slug": "online-marketing-successful-strategies-2026",
+      "title": "التسويق عبر الإنترنت: استراتيجيات ناجحة في عام 2026",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "2b0e8643-9c53-43fa-984f-e1d9abba0c8e",
+      "slug": "digital-entertainment-impact-on-communities",
+      "title": "ترفيه رقمي: كيف يمكننا تحسين المجتمعات",
+      "old": "ترفيه",
+      "new": "تكنولوجيا",
+      "score": 9,
+      "changed": true
+    },
+    {
+      "id": "fc776487-b988-47bb-887a-5e49c6104b03",
+      "slug": "best-government-bond-investment-strategies-2026",
+      "title": "أفضل استراتيجيات الاستثمار في السندات الحكومية 2026",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 31,
+      "changed": true
+    },
+    {
+      "id": "e4db69db-daad-4a0d-a679-411c0a1e476e",
+      "slug": "arabic-traditional-music-ai-song-creation-2026",
+      "title": "اكتشف تأثير الموسيقى العربية التقليدية على الذكاء الاصطناعي ",
+      "old": "ثقافة",
+      "new": "موسيقى وفن",
+      "score": 18,
+      "changed": true
+    },
+    {
+      "id": "b37b133d-d5da-47fc-a6b4-9a9a3dc509a6",
+      "slug": "late-sleep-disorder-nanotech-supplements-2026",
+      "title": "دليل شامل لمكافحة اضطراب النوم المتأخر باستخدام متممات النان",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "a5e939fd-8716-4787-854d-f489f33e78e1",
+      "slug": "how-to-use-6g-speed-up-video-downloads-2026",
+      "title": "كيف تستغل تقنية 6G لتسريع تحميل الفيديوهات على هاتفك في 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 36,
+      "changed": false
+    },
+    {
+      "id": "f2ccf414-c1c6-4289-998f-0bdab0e254dd",
+      "slug": "top-5-blockchain-funding-platforms-middle-east-2026",
+      "title": "أبرز 5 منصات بلوكتشين لتمويل المشاريع الصغيرة في الشرق الأوس",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 33,
+      "changed": false
+    },
+    {
+      "id": "d7b2b484-69b0-430b-9e33-b1083cff6472",
+      "slug": "solar-powered-ev-charging-2026",
+      "title": "كيف تستفيد من شحن سيارتك الكهربائية بالطاقة الشمسية المنزلية",
+      "old": "تكنولوجيا",
+      "new": "طاقة شمسية",
+      "score": 25,
+      "changed": true
+    },
+    {
+      "id": "8f7ce3d9-eaa8-4130-89c3-5443ead9d41d",
+      "slug": "practical-steps-emotional-intelligence-data-2026",
+      "title": "خطوات عملية لتطبيق الذكاء العاطفي المدعوم بالبيانات في حياتك",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 14,
+      "changed": true
+    },
+    {
+      "id": "c1127fd2-1fa1-4a3b-9a04-a0eea2ad2470",
+      "slug": "rsv-vaccine-2026-fast-efficacy",
+      "title": "أسرار الفعالية السريعة للقاح RSV المتنوع 2026: ما الذي يميزه",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 20,
+      "changed": true
+    },
+    {
+      "id": "11a3c71d-8149-448c-94cc-95385e80ed6e",
+      "slug": "how-to-use-apple-vision-pro-2-ar-home-2026",
+      "title": "كيف تستفيد من Apple Vision Pro 2 لتجربة الواقع المعزز في الم",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "f78833a6-069a-4609-99f1-f15d4a5106e4",
+      "slug": "nano-vs-3d-printing-agriculture-water-2026",
+      "title": "النانو ضد الطباعة ثلاثية الأبعاد: أيهما يحقق زراعة مستدامة ب",
+      "old": "علوم",
+      "new": "زراعة وغذاء",
+      "score": 18,
+      "changed": true
+    },
+    {
+      "id": "34bbaebc-cdaa-4f85-a147-aed1f8c5fb82",
+      "slug": "best-7-plant-based-meat-alternatives-2026-arabic-market",
+      "title": "أفضل 7 بدائل لحوم نباتية مبتكرة في السوق العربي 2026",
+      "old": "طعام",
+      "new": "زراعة وغذاء",
+      "score": 26,
+      "changed": true
+    },
+    {
+      "id": "ecf955e7-449c-49ad-a50b-0905bcdd2324",
+      "slug": "top-5-ai-processors-laptops-2026",
+      "title": "أفضل 5 معالجات ذكاء اصطناعي مدمجة في الحواسيب المحمولة 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "a4202ef6-ee42-475f-b5cf-a905fab8d79a",
+      "slug": "best-language-learning-apps-2026",
+      "title": "أفضل 5 تطبيقات لتعلم اللغات بطرق تفاعلية في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "1bbefb75-fd5d-4264-9504-2b75fa4f3f19",
+      "slug": "preserving-cultural-heritage-2026",
+      "title": "لماذا يجب على المجتمعات الحديثة الحفاظ على تراثها الثقافي؟",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 56,
+      "changed": true
+    },
+    {
+      "id": "f52dc94d-1e46-430d-856a-1af04d455442",
+      "slug": "common-mistakes-hybrid-work-2026",
+      "title": "تجنّب الأخطاء الشائعة عند تبني نظام العمل الهجين في 2026",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "7e9bd5be-678b-44c8-9e1f-b27823509418",
+      "slug": "overcoming-technology-s-effect-on-sleep",
+      "title": "تخطّي تأثيرات التكنولوجيا على النوم: نصائح للنوم الجيد في 20",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 13,
+      "changed": true
+    },
+    {
+      "id": "67d52d83-712b-4c4f-be28-1bb5adb0180d",
+      "slug": "fifa-2026-esports-riyadh-rivalry",
+      "title": "بطولة FIFA 2026: مواجهة مثيرة بين فرق عربية وعالمية في الريا",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 29,
+      "changed": false
+    },
+    {
+      "id": "e92abaf1-f516-4bf7-b481-0e28e7759524",
+      "slug": "metaverse-focus-techniques-students-2026",
+      "title": "كيف تقوّي تركيزك باستخدام تقنيات الميتافيرس للطلاب في 2026",
+      "old": "تطوير ذات",
+      "new": "إنتاجية ووقت",
+      "score": 12,
+      "changed": true
+    },
+    {
+      "id": "078e9dd9-6a17-40ac-984a-2d27344ba2be",
+      "slug": "how-ai-enhances-programming-skills-in-young-students-2026",
+      "title": "كيف يُحوّل الذكاء الاصطناعي مهارات البرمجة لدى طلاب المدارس ",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 26,
+      "changed": true
+    },
+    {
+      "id": "3d01cb8e-4f30-4532-81eb-5b3e78dd3ddf",
+      "slug": "crispy-vegetarian-burger-insect-protein-2026",
+      "title": "برجر نباتي مقرمش مع بروتين الحشرات: وصفة مبتكرة لمطبخ 2026",
+      "old": "طعام",
+      "new": "طبخ ومطبخ",
+      "score": 36,
+      "changed": true
+    },
+    {
+      "id": "a9cb5ad9-52a9-4b3c-9261-061395f30cec",
+      "slug": "nano-technology-air-quality-improvement",
+      "title": "تكنولوجيا النانو وتأثيرها على تحسين جودة الهواء",
+      "old": "علوم",
+      "new": "تكنولوجيا",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "9c23e971-6b18-4c87-8584-ce312f52b370",
+      "slug": "fitness-apps-for-exercise-goals",
+      "title": "تحقيق أهداف اللياقة البدنية بفضل تطبيقات اللياقة",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "1968166c-ce3f-4e7f-99f0-2bfb21b8fa94",
+      "slug": "balanced-nutrition-athletes-2026",
+      "title": "التغذية المتوازنة للرياضيين: دليلك لتحقيق أفضل أداء في 2026",
+      "old": "طعام",
+      "new": "تغذية وغذاء",
+      "score": 24,
+      "changed": true
+    },
+    {
+      "id": "af44ac6d-9f2e-47c4-940e-96763650a6f4",
+      "slug": "green-bonds-investment-guide-2026",
+      "title": "دليلك الشامل للاستثمار في السندات الخضراء في عام 2026",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "22556400-8ebc-465c-b055-654d7986754f",
+      "slug": "best-ai-tools-for-financial-data-analysis-2026",
+      "title": "أفضل 5 أدوات لتحليل البيانات المالية باستخدام الذكاء الاصطنا",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "c01f5bb3-f817-4311-ba97-d0dfff88d0b2",
+      "slug": "augmented-reality-in-art-exhibitions",
+      "title": "تكنولوجيا الواقع المعزز في المعارض الفنية: كيفية تعزيز تجارب",
+      "old": "ثقافة",
+      "new": "تكنولوجيا",
+      "score": 14,
+      "changed": true
+    },
+    {
+      "id": "6f19bb05-557c-4705-bce7-7086ff800394",
+      "slug": "ai-social-communication-improvement-tips",
+      "title": "تحسين التواصل الاجتماعي بذكاء: كيف يمكن للذكاء الاصطناعي أن ",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "aae2f3dd-e9b1-414a-b5d6-b55ef4a299e5",
+      "slug": "self-development-project-success-secrets",
+      "title": "أسرار النجاح في مشاريع التطوير الذاتي",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 42,
+      "changed": true
+    },
+    {
+      "id": "36ff19db-2415-4214-9824-ebee8ab39a77",
+      "slug": "top-3-asia-tourist-destinations-local-cultures",
+      "title": "أفضل 3 وجهات سياحية في آسيا لتجربة الثقافات المحلية",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 29,
+      "changed": true
+    },
+    {
+      "id": "87c67612-9918-4e9b-83df-4f3e62c4ff7c",
+      "slug": "healthy-nutrition-prevention-chronic-diseases",
+      "title": "دور التغذية الصحية في الوقاية من الأمراض المزمنة",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 33,
+      "changed": true
+    },
+    {
+      "id": "1a21bc31-ac85-47f2-8130-921844f7c49d",
+      "slug": "alternative-education-methods-for-children",
+      "title": "دليلك الشامل للتربية البديلة: أساليب تربية الأطفال بنجاح",
+      "old": "تعليم",
+      "new": "مجتمع وأسرة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "b8e5b4b5-6bb3-444c-9d1f-8056e4566e35",
+      "slug": "internet-speed-smart-cities-5g-vs-6g-dubai-abu-dhabi-2026",
+      "title": "سرعة الإنترنت في المدن الذكية: كيف تُغيّر 5G و6G تجربة الحيا",
+      "old": "ثقافة",
+      "new": "تكنولوجيا",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "05511b28-bb63-4f78-8ea2-a87a04b4e009",
+      "slug": "mental-health-workplace-strategies",
+      "title": "الصحة النفسية في مكان العمل: استراتيجيات فعّالة لتحسين رفاهي",
+      "old": "صحة",
+      "new": "صحة نفسية",
+      "score": 36,
+      "changed": true
+    },
+    {
+      "id": "68aab2c6-d657-4e67-a998-14cb632ad1c6",
+      "slug": "comprehensive-guide-electric-cars-2026",
+      "title": "دليلك الشامل لاختيار أفضل السيارات الكهربائية لعام 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "0c8ea3ca-491a-4ca1-8988-3146716c3ec6",
+      "slug": "technology-education-transform-learning-2026",
+      "title": "التكنولوجيا والتعليم: كيف تُعيد تشكيل طريقة تعلمنا في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 41,
+      "changed": true
+    },
+    {
+      "id": "4b8b9572-9aaa-404b-8404-d19fe82a736e",
+      "slug": "improve-nonverbal-communication-skills",
+      "title": "كيف تُحسّن مهارات الاتصال اللاشفوي في بيئة العمل",
+      "old": "تعليم",
+      "new": "تطوير الذات",
+      "score": 12,
+      "changed": true
+    },
+    {
+      "id": "3b142add-fc34-45b9-9735-b9bfbb4e747e",
+      "slug": "importance-sustainability-tourism-industry",
+      "title": "أهمية الاستدامة في صناعة السياحة: استراتيجيات وحلول لعام 202",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 29,
+      "changed": true
+    },
+    {
+      "id": "1a4735e6-ffd8-4d98-8ef4-735243f95303",
+      "slug": "ai-home-work-productivity-2026",
+      "title": "استخدام الذكاء الاصطناعي لرفع إنتاجية العمل المنزلي في 2026",
+      "old": "أسلوب حياة",
+      "new": "إنتاجية ووقت",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "1de1e1fa-7df3-4ad8-aab2-4e0b20bb22ba",
+      "slug": "light-sleep-impact-2026",
+      "title": "تأثير الضوء على النوم: كيف تحسّن جودة نومك في 2026",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 14,
+      "changed": true
+    },
+    {
+      "id": "9134bc6c-102f-4244-a896-4d5deb314d69",
+      "slug": "robots-enhance-industrial-efficiency-2026",
+      "title": "كيف تُعزز الروبوتات كفاءة الصناعة وتحسين جودة المنتجات في 20",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "f299f7e8-bde5-4358-975c-177c2df7b836",
+      "slug": "best-5-language-learning-apps-2026",
+      "title": "أفضل 5 تطبيقات لتعلم اللغات بطرق تفاعلية وممتعة في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 35,
+      "changed": true
+    },
+    {
+      "id": "b08cb669-8131-4708-89ed-5bc7986dab8c",
+      "slug": "commercial-space-infrastructure-investment-2026",
+      "title": "الاستثمار في البنية التحتية للفضاء التجاري 2026: فرص تمويلية",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "1c2feec2-e192-4d2f-8726-6f6c8569d1e2",
+      "slug": "edge-computing-2026-smart-devices-app-response",
+      "title": "التحول إلى الحوسبة الحافة في 2026: كيف تعيد الأجهزة الذكية ت",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 42,
+      "changed": false
+    },
+    {
+      "id": "b4690b75-99ab-430e-bfa9-d7a5ac6d3661",
+      "slug": "ai-emotional-learning-techniques-schools-2026",
+      "title": "كيف يرفع الذكاء الاصطناعي مستوى التعلم العاطفي في المدارس عا",
+      "old": "تطوير ذات",
+      "new": "تعليم وأكاديميا",
+      "score": 18,
+      "changed": true
+    },
+    {
+      "id": "b294e53c-d99c-41b2-a436-0185a6a107a6",
+      "slug": "dark-matter-particle-interaction-2026",
+      "title": "كشف أسرار الجسيمات المظلمة: التفاعل الجديد مع المادة العادية",
+      "old": "علوم",
+      "new": "علوم وطبيعة",
+      "score": 11,
+      "changed": true
+    },
+    {
+      "id": "325a3f74-6046-450c-911a-453641ad18d8",
+      "slug": "ai-emotional-learning-techniques",
+      "title": "تقنيات مبتكرة لتعزيز التعلم العاطفي بالذكاء الاصطناعي في الم",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 14,
+      "changed": true
+    },
+    {
+      "id": "d76743a6-6043-47bb-8633-19c8fd7ed98b",
+      "slug": "edge-computing-2026-smart-devices-response",
+      "title": "التحول إلى الحوسبة الحافة في 2026: كيف تعيد الأجهزة الذكية ت",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 36,
+      "changed": false
+    },
+    {
+      "id": "ec74134c-0564-4f6e-b86c-565565db8269",
+      "slug": "natural-light-lifestyle-moonlight-sleep-2026",
+      "title": "نمط حياة بلا إضاءة صناعية: كيف يحسّن النوم تحت ضوء القمر الص",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 35,
+      "changed": false
+    },
+    {
+      "id": "fd7c9477-d946-4b42-a83e-9d7109e273e5",
+      "slug": "digital-heritage-arabic-calligraphy-preservation",
+      "title": "التراث الرقمي للخط العربي: كيف تحافظ التكنولوجيا على الفنون ",
+      "old": "ثقافة",
+      "new": "تكنولوجيا",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "0f5b5d60-42fa-4c9d-aa36-6ff9a094c673",
+      "slug": "commercial-space-infrastructure-investment-2026-2",
+      "title": "الاستثمار في البنية التحتية للفضاء التجاري 2026: فرص تمويلية",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 21,
+      "changed": false
+    },
+    {
+      "id": "da1a8f1f-b0eb-43b0-8ece-36bc2d765082",
+      "slug": "nitric-acid-diet-brain-performance-2026",
+      "title": "الحمية القائمة على الحمض النيتريكي: أحدث طريقة لتعزيز وظائف ",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 11,
+      "changed": true
+    },
+    {
+      "id": "4bb04986-8bcf-4c1e-8c5b-58913f7208cf",
+      "slug": "augmented-reality-shopping-experience-2026",
+      "title": "كيف يغيّر الواقع المعزز تجربة التسوق في المتاجر الرقمية عام ",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "7e8bc1c4-367a-428b-bcf8-20c2f7ffb14f",
+      "slug": "augmented-reality-shopping-experience-2026-2",
+      "title": "الواقع المعزز يفتح آفاقاً جديدة لتجربة التسوق الرقمي في 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "2a0fac99-28af-4356-9394-8eb89f5c00f7",
+      "slug": "digital-heritage-arabic-calligraphy",
+      "title": "التراث الرقمي للخط العربي: كيف تُحافظ التكنولوجيا على الفنون",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 20,
+      "changed": true
+    },
+    {
+      "id": "0bb64982-f178-4017-b5bf-45593cefec4a",
+      "slug": "ai-emotional-learning-techniques-schools-2026-2",
+      "title": "تقنيات تعزيز التعلم العاطفي بالذكاء الاصطناعي في المدارس لعا",
+      "old": "تطوير ذات",
+      "new": "تعليم وأكاديميا",
+      "score": 18,
+      "changed": true
+    },
+    {
+      "id": "3dcb961a-3df8-43a2-9b7f-e11fa0911d6c",
+      "slug": "dark-matter-particle-interaction-2026-2",
+      "title": "اكتشافات 2026: جسيمات مظلمة تتفاعل مع المادة العادية في فيزي",
+      "old": "علوم",
+      "new": "علوم وطبيعة",
+      "score": 20,
+      "changed": true
+    },
+    {
+      "id": "3651b45e-5023-4e68-be84-9df836e32c00",
+      "slug": "natural-life-no-artificial-light-sleep-under-satellite-moon-2026",
+      "title": "نمط حياة بلا إضاءة صناعية: كيف يحسن النوم تحت ضوء القمر الصن",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 35,
+      "changed": false
+    },
+    {
+      "id": "8e7f287f-c0d9-43f2-82cc-75194cce750f",
+      "slug": "edge-computing-2026-smart-devices-response-2",
+      "title": "التحول إلى الحوسبة الحافة في 2026: كيف تعيد الأجهزة الذكية ت",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 36,
+      "changed": false
+    },
+    {
+      "id": "33188cbd-7bb4-4bba-a415-204c0cfee5d7",
+      "slug": "commercial-space-infrastructure-investment-2026-3",
+      "title": "الاستثمار في البنية التحتية للفضاء التجاري 2026: فرص تمويلية",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "14bca0af-2e9c-46fc-b0f7-d4eb085acbfe",
+      "slug": "best-daily-meditation-techniques-for-calm-life",
+      "title": "كن هادئاً مع أفضل أساليب التأمل لتحسين يومك",
+      "old": "تطوير ذات",
+      "new": "صحة نفسية",
+      "score": 18,
+      "changed": true
+    },
+    {
+      "id": "97b21850-049e-4b11-9ab9-483ed167a5b4",
+      "slug": "ai-tourism-industry-2026",
+      "title": "كيف سيُعيد الذكاء الاصطناعي تشكيل صناعة السياحة في 2026",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 29,
+      "changed": true
+    },
+    {
+      "id": "264e1aaf-c54f-4f24-9589-afb62a473be8",
+      "slug": "improve-english-skills-with-ai-apps",
+      "title": "تعلم اللغة الإنجليزية بسهولة مع تطبيقات الذكاء الاصطناعي",
+      "old": "تعليم",
+      "new": "تعلم اللغات",
+      "score": 29,
+      "changed": true
+    },
+    {
+      "id": "b1e71054-f0a0-480c-896f-f2cc0519e667",
+      "slug": "benefits-of-sports-for-mental-health",
+      "title": "كيف تساهم الرياضة في تحسين الصحة النفسية",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "669107aa-25cd-4e4b-a69f-e81f0f6760d7",
+      "slug": "mental-health-practices-in-digital-age",
+      "title": "5 ممارسات صحية للعقل في العصر الرقمي",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 30,
+      "changed": true
+    },
+    {
+      "id": "34bce176-781b-4a5a-ad40-30ae610fd09b",
+      "slug": "nano-technology-for-sustainable-living",
+      "title": "تكنولوجيا النانو: التحول إلى حياة أكثر استدامة",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 29,
+      "changed": false
+    },
+    {
+      "id": "42e6e908-29ed-4ab6-a63d-ba6d03bf64bc",
+      "slug": "secrets-of-successful-crowdfunding-projects-online",
+      "title": "كيف تحقق النجاح في مشاريع التمويل الجماعي عبر الإنترنت",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "3c31df26-7d62-4659-8cd1-e137c5534a12",
+      "slug": "augmented-reality-technology-in-education-guide",
+      "title": "دليلك الشامل لاستخدام تكنولوجيا الواقع المعزز في التعليم",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 26,
+      "changed": true
+    },
+    {
+      "id": "238638f2-1ede-4956-ac47-0459d6eed636",
+      "slug": "arabic-traditional-music-in-space-experiments",
+      "title": "الموسيقيات التقليدية في الفضاء: تجارب صوتية عربية على متن مح",
+      "old": "ثقافة",
+      "new": "الفضاء والكون",
+      "score": 22,
+      "changed": true
+    },
+    {
+      "id": "0d776f0c-0a0c-458d-a9e5-78276c8530a8",
+      "slug": "mrna-cancer-vaccines-clinical-trials-2026",
+      "title": "لقاحات mRNA المعدلة للسرطان: أحدث ما وصل إليه العلم في 2026",
+      "old": "علوم",
+      "new": "علوم وطبيعة",
+      "score": 20,
+      "changed": true
+    },
+    {
+      "id": "33f39968-6b84-4e27-8ce6-06ad5cb53d88",
+      "slug": "emotional-intelligence-remote-work-productivity",
+      "title": "كيف يرفع الذكاء العاطفي إنتاجيتك في بيئة العمل عن بُعد",
+      "old": "تطوير ذات",
+      "new": "إنتاجية ووقت",
+      "score": 15,
+      "changed": true
+    },
+    {
+      "id": "7c2505e6-d054-468d-adc9-55aa9ee65698",
+      "slug": "improve-online-investment-skills-2026",
+      "title": "كيف تطوّر مهاراتك في الاستثمار عبر الإنترنت ��ي 2026",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 34,
+      "changed": true
+    },
+    {
+      "id": "4a6784a6-fc49-4399-bb06-216bfe9ac90e",
+      "slug": "smart-sports-and-ai-for-fitness",
+      "title": "الرياضة الذكية: تحكم في لياقتك البدنية بفهم الذكاء الاصطناعي",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "3c82f462-005f-49df-8d11-af7db3d83245",
+      "slug": "sustainable-tourism-destinations-middle-east-2026",
+      "title": "أفضل 3 وجهات للسياحة المستدامة في الشرق الأوسط 2026",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 20,
+      "changed": true
+    },
+    {
+      "id": "5451cff9-dbd2-4bf3-9d24-adf167348ee0",
+      "slug": "best-mental-health-apps-2026",
+      "title": "أفضل 5 تطبيقات لتعزيز الصحة النفسية في عام 2026",
+      "old": "صحة",
+      "new": "صحة نفسية",
+      "score": 30,
+      "changed": true
+    },
+    {
+      "id": "cba756d9-1021-491b-9f37-07f896de44f1",
+      "slug": "healthy-summer-lifestyle-2026",
+      "title": "دليلك الشامل لتطبيق نمط حياة صحي في الصيف 2026",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "0796cec3-0384-40a9-9612-8dde4200a25e",
+      "slug": "enhance-museum-experience-augmented-reality-2026",
+      "title": "كيف تُعزّز تقنيات الواقع المعزز تجربة المتاحف في عام 2026",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 13,
+      "changed": true
+    },
+    {
+      "id": "7a70724e-f76a-42b1-8acf-06d307cee473",
+      "slug": "virtual-reality-language-learning-2026",
+      "title": "ثورة في تعلم اللغات: كيف يغير الواقع الافتراضي المناهج في 20",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 26,
+      "changed": true
+    },
+    {
+      "id": "a3d6ff1c-73a4-407a-ac88-35c92b7ce91e",
+      "slug": "artificial-intelligence-media-industry-2026",
+      "title": "تأثير الذكاء الاصطناعي على صناعة الإعلام 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 21,
+      "changed": false
+    },
+    {
+      "id": "82a0289b-96b1-4347-8d66-d235f847023c",
+      "slug": "ai-techniques-for-small-business-productivity-2026",
+      "title": "5 تقنيات ذكاء اصطناعي لتحسين إنتاجية الشركات الصغيرة 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "7a687bbf-a579-43b3-b0bf-0aebf0729e51",
+      "slug": "venture-investment-guide-2026",
+      "title": "دليلك الشامل لاستثمار الفينتشير في 2026",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 21,
+      "changed": false
+    },
+    {
+      "id": "076426ac-5ca9-48e3-85ea-48af74fac12d",
+      "slug": "sports-role-in-mental-health-for-teenagers",
+      "title": "دور الرياضة في تحسين الصحة النفسية للمراهقين",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 26,
+      "changed": false
+    },
+    {
+      "id": "d24b05bb-59c5-41d3-80a3-f01258d67472",
+      "slug": "technology-impact-on-mental-health-2026",
+      "title": "تأثيرات التكنولوجيا على الصحة النفسية في 2026",
+      "old": "صحة",
+      "new": "صحة نفسية",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "998fbc57-e02c-40c3-9d2e-f05f841dfb50",
+      "slug": "plan-2026-make-home-more-sustainable",
+      "title": "خطة 2026: كيف تجعل منزلك أكثر استدامة خطوة بخطوة",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "d090659b-6a50-4a70-b568-f3c4595bc245",
+      "slug": "nutrition-mental-health-2026",
+      "title": "تأثير التغذية على الصحة النفسية في 2026: دليل عملي",
+      "old": "صحة",
+      "new": "صحة نفسية",
+      "score": 30,
+      "changed": true
+    },
+    {
+      "id": "654353ba-5cea-4f92-8d2e-8d7eb0acd0ef",
+      "slug": "top-3-daily-habits-2026-health",
+      "title": "أفضل 3 عادات يومية لتحسين صحتك العامة في 2026",
+      "old": "صحة",
+      "new": "أسلوب حياة",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "826bd071-2699-4cfc-be7c-1b17d94a3110",
+      "slug": "green-bond-investment-secrets-2026",
+      "title": "أسرار نجاح الاستثمار في السندات الخضراء في 2026",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "4fe6b92d-ee7c-4f34-b61f-bf21e265aa77",
+      "slug": "new-workplace-trends-2026",
+      "title": "التحولات الجديدة في سوق العمل في 2026",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "1f64f6d7-53b6-4092-b8cd-fd1920bddd22",
+      "slug": "comprehensive-health-apps-guide-2026",
+      "title": "دليلك الشامل لاختيار واستخدام تطبيقات الصحة في 2026",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 30,
+      "changed": true
+    },
+    {
+      "id": "763ac9fb-b5ea-42ca-a8da-89843b7059f3",
+      "slug": "virtual-reality-in-education",
+      "title": "ثورة الواقع الافتراضي في التعليم: فرص وتحديات",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "b70a800f-342b-48fa-8c82-b34e70bd965d",
+      "slug": "importance-of-culture-in-shaping-community-identity-2026",
+      "title": "دور الثقافة في تشكيل الهوية المجتمعية في 2026",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "7ca9cef3-7e74-41a7-9596-889298d45678",
+      "slug": "artificial-intelligence-in-education-guide",
+      "title": "دليلك الشامل لاستخدام الذكاء الاصطناعي في التعليم",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "ea38122d-d9a7-4d9a-8d37-8a38fb77edf6",
+      "slug": "improving-mental-health-with-smart-apps-2026",
+      "title": "تحسين الصحة النفسية بتطبيقات ذكية في 2026",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "079385bc-5b5d-4718-b843-fe14f9fa9480",
+      "slug": "top-3-productivity-boosting-methods-2026",
+      "title": "أفضل 3 طرق لتحسين الإنتاجية في العمل لعام 2026",
+      "old": "تطوير ذات",
+      "new": "إنتاجية ووقت",
+      "score": 22,
+      "changed": true
+    },
+    {
+      "id": "093e9f4e-7c83-48c5-b4ae-3e322db74b73",
+      "slug": "education-challenges-2026",
+      "title": "كيف يواجه التعليم تحديات 2026: استراتيجيات مبتكرة للنجاح",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "e95dac94-9791-4594-bd0f-e994ae4084e8",
+      "slug": "skin-microbiome-probiotics-eczema-2026",
+      "title": "الصحة الميكروبيومية للجلد: أحدث بروبيوتيكات موضعية لعلاج الأ",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 26,
+      "changed": true
+    },
+    {
+      "id": "f53f0a3c-af04-4a51-a03d-44db8f2174bd",
+      "slug": "best-5-sustainable-tourist-destinations-2026",
+      "title": "أفضل 5 وجهات سياحية مستدامة في 2026",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 26,
+      "changed": true
+    },
+    {
+      "id": "153c9ea8-a286-4f06-bcd0-dead63e5af47",
+      "slug": "how-to-improve-home-security-with-technology-2026",
+      "title": "كيف تُحسّن أمان المنزل باستخدام التكنولوجيا في 2026: دليل عم",
+      "old": "أسلوب حياة",
+      "new": "أمن وخصوصية",
+      "score": 18,
+      "changed": true
+    },
+    {
+      "id": "c73648d0-866c-4ce7-9e41-001bd8ec0dc2",
+      "slug": "becoming-a-skilled-english-speaker",
+      "title": "كيف تصبح متحدثًا ماهرًا في اللغة الإنجليزية بسرعة",
+      "old": "تعليم",
+      "new": "تعلم اللغات",
+      "score": 24,
+      "changed": true
+    },
+    {
+      "id": "98bc7c43-4cea-4b04-bb35-cda63f25040d",
+      "slug": "comprehensive-ar-education-guide-2026",
+      "title": "دليلك الشامل لاستخدام الواقع المعزز في التربية في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 26,
+      "changed": true
+    },
+    {
+      "id": "1e911647-7588-4ac0-a355-ef340017c024",
+      "slug": "comprehensive-crypto-investment-guide-2026",
+      "title": "دليلك الشامل للاستثمار في العملات الرقمية عام 2026",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 37,
+      "changed": true
+    },
+    {
+      "id": "e3ba7869-c8de-427a-ae2c-358560bb9ddc",
+      "slug": "artificial-intelligence-data-security-2026",
+      "title": "تعزيز أمان البيانات باستخدام الذكاء الاصطناعي في 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "e1c27858-844d-48f9-9d4d-72a576792005",
+      "slug": "future-of-freelancing-in-2026",
+      "title": "مستقبل العمل الحر في 2026: فرص ومخاطر يجب مراعاتها",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "0057f112-0506-4c0f-827d-969bd7bc6355",
+      "slug": "space-technology-uncovering-universe-secrets",
+      "title": "أسرار الكون: كيف تكشف التكنولوجيا الفضائية عنها",
+      "old": "علوم",
+      "new": "علوم وطبيعة",
+      "score": 11,
+      "changed": true
+    },
+    {
+      "id": "221e23ee-e783-449e-8b0f-84071cc37ccf",
+      "slug": "quick-and-economical-meals-for-2026",
+      "title": "وجبات سريعة واقتصادية لليوم الجديد في 2026",
+      "old": "طعام",
+      "new": "اقتصاد كلي",
+      "score": 13,
+      "changed": true
+    },
+    {
+      "id": "b4405594-e5c5-42da-aa13-073be9d8808c",
+      "slug": "personal-data-security-2026",
+      "title": "كيفية تحسين أمان البيانات الشخصية في 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "71802d76-cca4-4032-bd29-4ad61bb48484",
+      "slug": "nitric-acid-diet-brain-boost-2026",
+      "title": "الحمية القائمة على الحمض النيتريكي: أحدث اتجاه غذائي لتعزيز ",
+      "old": "صحة",
+      "new": "تغذية وغذاء",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "99eb5e21-ec3b-41fc-abb2-2a9667523afc",
+      "slug": "improving-lifestyle-tips-for-2026",
+      "title": "تحسين أسلوب حياتك في 2026: 5 نصائح لتحقيق التوازن",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 20,
+      "changed": false
+    },
+    {
+      "id": "5ef96efa-331e-4d7d-b61b-d8d8ccad2bb3",
+      "slug": "best-new-movies-2026-review-and-info",
+      "title": "أفضل 5 أفلام جديدة في 2026: مراجعة ومعلومات",
+      "old": "ترفيه",
+      "new": "سينما ومسرح",
+      "score": 11,
+      "changed": true
+    },
+    {
+      "id": "edae71a4-60c0-496f-bc8f-3ef93963678a",
+      "slug": "virtual-reality-education-2026",
+      "title": "تكنولوجيا الواقع الافتراضي في التعليم 2026: كيف تُحسّن تجربة",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "04d0e8c0-573b-4d19-ac2a-e6929b1f05db",
+      "slug": "improving-mental-health-apps-2026",
+      "title": "تحسين صحتك العامة بطرق فعالة باستخدام تطبيقات الصحة النفسية",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "1433db24-8f8f-483f-bd99-f0c7c97681a9",
+      "slug": "ai-impact-on-personal-and-professional-life-in-2026",
+      "title": "تأثير الذكاء الاصطناعي على الحياة الشخصية والمهنية في 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "31145e86-f544-4918-8ab1-fb513e599758",
+      "slug": "new-sport-in-2026-improve-physical-fitness",
+      "title": "رياضة جديدة في 2026: تح��ين اللياقة البدنية بخطوات بسيطة",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 26,
+      "changed": false
+    },
+    {
+      "id": "3791cb58-f9be-4433-85be-da3c64e6965e",
+      "slug": "self-improvement-through-meditation-and-relaxation-2026",
+      "title": "تطوير الذات بفعالية في 2026: دليلك إلى الاسترخاء والتأمل",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 31,
+      "changed": true
+    },
+    {
+      "id": "3af9fd74-b02e-4aa8-9cf9-4b56cb02a32f",
+      "slug": "how-to-improve-scholarship-chances-2026",
+      "title": "كيفية تحسين فرصك في الحصول على منحة دراسية في 2026",
+      "old": "تعليم",
+      "new": "تطوير الذات",
+      "score": 15,
+      "changed": true
+    },
+    {
+      "id": "ca51b5aa-16eb-4187-a70d-d82246dc0439",
+      "slug": "climate-change-global-tourism-2026",
+      "title": "تأثير التغيير المناخي على السياحة العالمية: تحديات وفرص في ع",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "b4991f9f-f480-4791-a09e-1b0c5db39db8",
+      "slug": "building-sustainable-lifestyle-in-small-cities",
+      "title": "بناء نمط حياة مستدام في المدن الصغيرة: دليل شامل",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "29496d1b-a2c5-4e29-83f9-20428ad16b99",
+      "slug": "healthy-foods-for-better-lifestyle-in-2026",
+      "title": "أغذية صحية للجسم: دليل شامل لتحسين الصحة العامة في 2026",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 39,
+      "changed": true
+    },
+    {
+      "id": "693422da-d5f7-467b-b479-68604fe2458d",
+      "slug": "sports-role-in-enhancing-mental-health-for-teenagers",
+      "title": "دور الرياضة في تعزيز الصحة النفسية عند المراهقين",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 29,
+      "changed": false
+    },
+    {
+      "id": "4f6e8bf3-c9cc-4c4e-8046-1fa9e74b5c43",
+      "slug": "urban-environmental-protection-methods",
+      "title": "أهم 8 طرق لتحسين جودة البيئة في المدن",
+      "old": "علوم",
+      "new": "بيئة واستدامة",
+      "score": 18,
+      "changed": true
+    },
+    {
+      "id": "ac3739f9-ac71-4bfa-8627-ae0ebecb79a9",
+      "slug": "learning-new-languages-for-better-job-opportunities",
+      "title": " открыть أبوابك لفرص عمل جديدة: أهمية تعلم لغات جديدة",
+      "old": "تعليم",
+      "new": "تعلم اللغات",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "3d24d0b1-cdaa-4862-8f94-588cdd572628",
+      "slug": "new-green-bond-investment-standards-2026",
+      "title": "المعايير الجديدة للاستثمار في السندات الخضراء في 2026",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 25,
+      "changed": true
+    },
+    {
+      "id": "b4892538-2a9b-4781-b2f5-b61129cfc338",
+      "slug": "enhancing-creativity-business-metaverse-2026",
+      "title": "كيف يعزز الميتافيرس الإبداع في الأعمال في 2026",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 31,
+      "changed": false
+    },
+    {
+      "id": "e71bfa68-42fc-432a-b6f5-c72ace8debce",
+      "slug": "visual-arts-role-in-promoting-local-culture",
+      "title": "أهمية الفنون البصرية في تعزيز الهوية الثقافية المحلية",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "b4cc5973-239b-470b-9403-fa1202b72123",
+      "slug": "top-5-ai-productivity-tools-2026",
+      "title": "أفضل 5 طرق لرفع إنتاجيتك في العمل باستخدام أدوات الذكاء الاص",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "f03afe16-fd15-4fa7-a99f-e930f2e64bc3",
+      "slug": "healthy-lifestyle-nano-technology",
+      "title": "تحول حياتك إلى نمط صحي ومستدام باستخدام تقنيات النانو",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 20,
+      "changed": true
+    },
+    {
+      "id": "49942223-17a3-42a6-9f1e-2f11c592ec0c",
+      "slug": "technology-impact-on-social-relationships-2026-2",
+      "title": "تأثير التكنولوجيا على العلاقات الاجتماعية في 2026: تحليل متع",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "3f06f781-45aa-4191-8983-523f473626b4",
+      "slug": "natural-water-quality-improvement",
+      "title": "كيف تحسّن جودة المياه بشكل طبيعي في 2026: دليل عملي ومُحدّث",
+      "old": "علوم",
+      "new": "تقنية طبية",
+      "score": 9,
+      "changed": true
+    },
+    {
+      "id": "4c568fc4-3163-4732-84d2-5cb5ae9e6970",
+      "slug": "improve-water-quality-naturally-2026",
+      "title": "كيف تحسن جودة المياه طبيعيًا في 2026: خطوات عملية ومثبتة",
+      "old": "علوم",
+      "new": "محيطات وبحار",
+      "score": 24,
+      "changed": true
+    },
+    {
+      "id": "449c1783-ed97-49e0-9b80-079072525eea",
+      "slug": "improving-urban-air-quality-2026",
+      "title": "كيف تُحسّن جودة الهواء في المناطق الحضرية بحلول 2026",
+      "old": "علوم",
+      "new": "بيئة واستدامة",
+      "score": 9,
+      "changed": true
+    },
+    {
+      "id": "06012dbe-446f-4404-b165-6c0aa0b64583",
+      "slug": "technology-impact-on-foreign-language-learning",
+      "title": "كيف غيرت التكنولوجيا تعلم اللغات الأجنبية في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 26,
+      "changed": true
+    },
+    {
+      "id": "ebe8a9ca-7d9e-40f2-a932-ece3961c8336",
+      "slug": "smart-cities-improving-quality-of-life",
+      "title": "دور المدن الذكية في تحسين جودة الحياة: كيف تُغيّر التقنية مس",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "00b48387-ddba-4f9c-a0e8-08d288faf853",
+      "slug": "role-of-metaverse-in-enhancing-social-interaction",
+      "title": "كيف يغيّر الميتافيرس التفاعل الاجتماعي في عام 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "4c195a09-a44e-42ba-bcf4-e35be04d3261",
+      "slug": "impact-of-video-games-on-mental-health-2026",
+      "title": "كيف تؤثر الألعاب الإلكترونية على الصحة النفسية في عام 2026؟",
+      "old": "صحة",
+      "new": "صحة نفسية",
+      "score": 36,
+      "changed": true
+    },
+    {
+      "id": "41600a51-913b-4605-a7c4-21f44969f15a",
+      "slug": "nanotech-applications-textiles-2026",
+      "title": "تكنولوجيا النانو وتطبيقاتها المتطورة في صناعة الملابس لعام 2",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 32,
+      "changed": false
+    },
+    {
+      "id": "2ed0c687-e4f0-41e4-a523-aeb3e2c92681",
+      "slug": "importance-of-sport-for-public-health-2026",
+      "title": "为什么 الرياضة أساسية للصحة العامة؟",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "e5ed3806-f1b4-4f19-b8d9-0b231bb386b8",
+      "slug": "improve-english-skills-2026",
+      "title": "5 طرق لتحسين مهاراتك في اللغة الإنجليزية بسرعة في عام 2026",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "358b6449-dfe3-4a79-beb7-83ff4a60c78d",
+      "slug": "vr-sleep-disorder-treatment-2026",
+      "title": "كيف يُعيد الواقع الافتراضي النوم الصحي في عام 2026؟",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 26,
+      "changed": true
+    },
+    {
+      "id": "fc9274b5-9140-41cb-aac2-1f4ebe608efa",
+      "slug": "artificial-intelligence-in-special-education-2026",
+      "title": "ثورة الذكاء الاصطناعي في التعليم الخاص: تطبيقات 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "cd3878e9-abbb-4d96-ad69-990d6ffa749f",
+      "slug": "technology-and-environment-2026-challenges",
+      "title": "التكنولوجيا والبيئة: التأثيرات المتزايدة في عام 2026",
+      "old": "علوم",
+      "new": "تكنولوجيا",
+      "score": 9,
+      "changed": true
+    },
+    {
+      "id": "6e094a4d-73ac-4387-b300-8765a075e90f",
+      "slug": "best-new-destination-vacations-2026",
+      "title": "اكتشف الأجمل من وجهات السياحة الجديدة في 2026",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "9858f7b3-ccba-4ec4-911b-f40fdbb586e5",
+      "slug": "powr-mountain-snow",
+      "title": "سلسلة جبل باور الثلجي: مغامرات و تحديات",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "fad6cec8-3018-4128-a7de-608d29fe7a7f",
+      "slug": "social-media-shaping-public-opinion-2026",
+      "title": "كيف يشكل الإعلام الاجتماعي الرأي العام في عام 2026",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 13,
+      "changed": true
+    },
+    {
+      "id": "0e8ae58b-1602-4878-9db3-befb6d7af435",
+      "slug": "ai-productivity-tools-2026",
+      "title": "كيف تُحسّن الإنتاجية باستخدام أدوات الذكاء الاصطناعي في 2026",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "3271ed41-bf77-4e8b-af45-a0cc8558aae1",
+      "slug": "improving-smartphone-data-security-in-2026",
+      "title": "أمان البيانات على الهواتف الذكية: دليل 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "39377bc0-7343-4435-bc5a-5fd4c0850400",
+      "slug": "role-of-popular-culture-in-shaping-community-identity-2026",
+      "title": "دور الثقافة الشعبية في تشكيل الهوية المجتمعية في 2026",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "fec19006-910a-474d-8684-31313d3809f6",
+      "slug": "improving-eye-health-with-digital-techniques-2026",
+      "title": "تحسين صحة العين باستخدام تقنيات العصر الرقمي",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "827e04b1-9a15-418c-ad9a-734a8aeb138c",
+      "slug": "best-middle-east-restaurants-2026",
+      "title": "أفضل المطاعم في الشرق الأوسط لعام 2026",
+      "old": "طعام",
+      "new": "علوم وطبيعة",
+      "score": 3,
+      "changed": true
+    },
+    {
+      "id": "f8b98331-89f4-4d27-aa43-6b96075d5c6a",
+      "slug": "improve-english-skills-with-apps-2026",
+      "title": "ارتقِ بإنجليزيتك في 2026: دليل التطبيقات الفعّالة",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 20,
+      "changed": true
+    },
+    {
+      "id": "ec1c0169-346d-4fb1-8e0b-b3bb5593987d",
+      "slug": "tchnolojya-alafn-bshrj-2026",
+      "title": "تأثير التكنولوجيا على الفنون البصرية في 2026: التحول إلى الر",
+      "old": "ثقافة",
+      "new": "تكنولوجيا",
+      "score": 9,
+      "changed": true
+    },
+    {
+      "id": "c9cab3c4-d2f8-46aa-9c08-360a2508d552",
+      "slug": "best-language-learning-apps-2026-2",
+      "title": "أفضل 5 تطبيقات لتعلم اللغات بطرق تفاعلية في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "aed1f142-5c97-448f-a875-2b7a8883d79f",
+      "slug": "enhance-data-security-with-modern-encryption-techniques-2026",
+      "title": "تأمين البيانات: إستراتيجية التشفير الحديثة في 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "e0b961c0-3770-44c9-a008-473eabffd308",
+      "slug": "sports-role-in-mental-health-2026",
+      "title": "أهمية الرياضة في تعزيز الصحة النفسية في عام 2026",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "2921e448-c821-4909-a232-99ab61a421bd",
+      "slug": "foreign-government-bonds-investment-guide-2026",
+      "title": "دليلك الشامل للاستثمار في السندات الحكومية الأجنبية 2026",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "a39b89bc-2a95-4193-b9ef-2f5f60e0d88e",
+      "slug": "investing-in-solar-energy-2026",
+      "title": "استثمارك في الطاقة الشمسية: دليلك الشامل لعام 2026",
+      "old": "مال وأعمال",
+      "new": "طاقة شمسية",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "d35bb977-1d14-43bc-b2cc-ffd716f107e0",
+      "slug": "top-eco-friendly-tourist-destinations-2026",
+      "title": "أفضل 5 وجهات سياحية صديقة للبيئة في عام 2026",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "a78a9e89-856e-4ae2-91ae-c78d7b6981e5",
+      "slug": "artificial-intelligence-revolution-in-children-education",
+      "title": "ثورة الذكاء الاصطناعي في تعليم الأطفال: مستقبل التعليم في 20",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 25,
+      "changed": true
+    },
+    {
+      "id": "82697583-110c-4098-8969-656f8e780cec",
+      "slug": "plant-based-diet-impact-on-general-health-2026",
+      "title": "تأثير التغذية النباتية على الصحة العامة في 2026",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "6992e486-2c84-468a-a31e-50c789dcef7d",
+      "slug": "how-virtual-reality-is-changing-your-daily-life-in-2026",
+      "title": "تحول كبير: كيف تغير الواقع الافتراضي حياتك اليومية في 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 23,
+      "changed": false
+    },
+    {
+      "id": "fedd2d4f-6801-4083-98d8-5c49f0e31d8b",
+      "slug": "healthy-work-lifestyle-2026",
+      "title": "النمط الصحي في بيئة العمل: أدوات لعام 2026",
+      "old": "أسلوب حياة",
+      "new": "صحة وطب",
+      "score": 27,
+      "changed": true
+    },
+    {
+      "id": "dceb6ae7-14b7-4d5b-acb1-52d093ac9af2",
+      "slug": "comprehensive-guide-to-smart-health-devices-2026",
+      "title": "دليلك الشامل لاختيار أفضل الأجهزة الذكية للصحة في 2026",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "ff4e932a-b782-4db5-a9a3-b07d41d2e3ca",
+      "slug": "technology-impact-on-environment-2026",
+      "title": "تأثير التكنولوجيا على البيئة: فرص وتحديات في عام 2026",
+      "old": "علوم",
+      "new": "تكنولوجيا",
+      "score": 9,
+      "changed": true
+    },
+    {
+      "id": "08932d60-ee47-4d3e-b7d1-166ef1e135d2",
+      "slug": "smart-sleep-techniques-for-better-rest",
+      "title": "تحسين جودة النوم باستخدام تقنيات النوم الذكية",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 11,
+      "changed": true
+    },
+    {
+      "id": "e8a133bf-590b-40fa-90f6-ce378476b5b0",
+      "slug": "cultural-impact-on-sustainable-tourism-2026",
+      "title": "دور الثقافة في تعزيز السياحة المستدامة في 2026",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "129ad4dd-b680-4bd3-ab39-baca682352a3",
+      "slug": "electronic-learning-in-schools",
+      "title": "التعلم الالكتروني في المدارس: مستقبل التعليم",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "000dc946-aeea-4498-9d3f-f7da7fcbf589",
+      "slug": "modern-child-rearing-techniques",
+      "title": "تربية الأطفال بأساليب حديثة: دليل الوالدين للنجاح",
+      "old": "أسرة",
+      "new": "مجتمع وأسرة",
+      "score": 25,
+      "changed": true
+    },
+    {
+      "id": "263b6c4d-a59a-4ab6-91ef-90377c746684",
+      "slug": "blockchain-technology-in-food-industry",
+      "title": "ثورة البلوكتشين في صناعة الأغذية: مستقبل أكثر أماناً",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "93008018-6795-42e2-afbe-033c2b55907a",
+      "slug": "artificial-intelligence-in-healthcare-2026",
+      "title": "ثورة الذكاء الاصطناعي في مجال الصحة: المستقبل هنا",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "4b44f65f-b9c9-4dbe-a79c-9b0a11cb3176",
+      "slug": "how-metaverse-will-transform-entertainment-by-2026",
+      "title": "كيف سيُغيّر الميتافيرس صناعة الترفيه بحلول 2026؟",
+      "old": "ترفيه",
+      "new": "تكنولوجيا",
+      "score": 3,
+      "changed": true
+    },
+    {
+      "id": "988e04d5-44aa-4018-a8ca-2de85ca43398",
+      "slug": "money-culture-in-modern-societies",
+      "title": "ثقافة المال في المجتمعات الحديثة: فهم العلاقة بين المال والق",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 26,
+      "changed": false
+    },
+    {
+      "id": "a49f0137-db38-4486-9609-6498ca03de6b",
+      "slug": "enhancing-productivity-with-ai-in-2026",
+      "title": "تطوير إنتاجيتك باستخدام الذكاء الاصطناعي في 2026: أساليب وأد",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "08f9af58-b51e-4903-a10b-1cb99be9dc8a",
+      "slug": "ultimate-cryptocurrency-investment-guide-2026",
+      "title": "دليلك الشامل للاستثمار في العملات الرقمية في 2026",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "a1e4beea-d29e-426d-a11b-7a516584e8ce",
+      "slug": "sports-and-mental-health-benefits",
+      "title": "أهمية الرياضة في تعزيز الصحة النفسية",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "0cbb5cf7-d110-458c-a39c-cae404dc4070",
+      "slug": "innovation-in-transportation-technology",
+      "title": "تكنولوجيا النقل في المستقبل: ثورة الابتكار",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 26,
+      "changed": false
+    },
+    {
+      "id": "56e26889-efe2-48e0-b8c5-9eac317da6d1",
+      "slug": "sustainability-in-fashion-industry",
+      "title": "الاستدامة في صناعة الأزياء: كيف يمكن أن تخلق فرقاً",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "b74f3a77-d6ec-4ea8-a619-abc7654677c7",
+      "slug": "marine-resources-sustainability",
+      "title": "الاستدامة في مجال الموارد البحرية: مستقبل المحيطات",
+      "old": "علوم",
+      "new": "محيطات وبحار",
+      "score": 24,
+      "changed": true
+    },
+    {
+      "id": "7642a381-548e-4957-9d61-cbde51096caf",
+      "slug": "water-resources-sustainability",
+      "title": "تحقيق الاستدامة في مجال الموارد المائية",
+      "old": "علوم",
+      "new": "بيئة واستدامة",
+      "score": 9,
+      "changed": true
+    },
+    {
+      "id": "90af7f22-0266-4e5c-b019-fc3e9091b045",
+      "slug": "entertainment-in-europe",
+      "title": "اكتشف الترفيه في أوروبا: رحلة فنية وثقافية",
+      "old": "ترفيه",
+      "new": "موسيقى وفن",
+      "score": 13,
+      "changed": true
+    },
+    {
+      "id": "fdc30c99-ac81-4c07-9b0a-bb57e18b00d5",
+      "slug": "sustainability-in-solar-energy",
+      "title": "دور الاستدامة في تطوير الطاقة الشمسية",
+      "old": "علوم",
+      "new": "طاقة شمسية",
+      "score": 25,
+      "changed": true
+    },
+    {
+      "id": "a50c31b6-4aed-4afb-9d7c-97bd13b41227",
+      "slug": "human-development-in-education",
+      "title": "التنمية البشرية في مجال التعليم: أساس التطوير المستدام",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "a31cb530-75db-4f4a-987a-589202857bb4",
+      "slug": "entertainment-asia-2026",
+      "title": "الترفيه في آسيا 2026: مزيج من التقليد والابتكار",
+      "old": "ترفيه",
+      "new": "تكنولوجيا",
+      "score": 12,
+      "changed": true
+    },
+    {
+      "id": "124e76b2-20d6-4528-93d0-c2566b90f361",
+      "slug": "sustainable-development-in-small-cities",
+      "title": "دور التنمية المستدامة في تحويل المدن الصغيرة",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 8,
+      "changed": true
+    },
+    {
+      "id": "ce4a2866-4fc1-4038-9608-afa32f4a4f13",
+      "slug": "sustainability-in-energy-future",
+      "title": "دور الاستدامة في تحويل مستقبل الطاقة",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "3a4c494b-286f-4ed2-af28-f796d13c2f10",
+      "slug": "technology-in-business-improvement",
+      "title": "دور تكنولوجيا المعلومات في تحسين الأداء التجاري",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "59b70d62-b6f3-4ce2-9742-91562f6d0eb7",
+      "slug": "importance-of-sports-and-physical-health-for-adults",
+      "title": "أهمية الرياضة والصحة الجسدية للكبار",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "963d60d3-df3a-4d3e-95a8-34b811713dd2",
+      "slug": "climate-change-impact-on-marine-tourism",
+      "title": "التأثيرات الحاسمة لتغير المناخ على مستقبل السياحة البحرية",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "57aebaec-6703-4826-a7a0-434cbdf446b9",
+      "slug": "technology-of-communications-in-business",
+      "title": "تكنولوجيا الاتصالات في مجال الأعمال: كيف يمكن تحسين عملياتك",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 28,
+      "changed": false
+    },
+    {
+      "id": "e480df30-7461-404a-8e71-6586640b6b7b",
+      "slug": "entertainment-in-africa",
+      "title": "الترفيه في أفريقيا: نظرة شاملة لعام 2026",
+      "old": "ترفيه",
+      "new": "رياضة",
+      "score": 24,
+      "changed": true
+    },
+    {
+      "id": "87c67c01-11fb-4be5-809d-0b7b1ccaa812",
+      "slug": "sustainability-in-forestry",
+      "title": "دور الاستدامة في حماية الغابات",
+      "old": "علوم",
+      "new": "علوم وطبيعة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "3d85817b-2aa8-4437-b0e3-5a9b8508f0fc",
+      "slug": "sport-physical-health-2026",
+      "title": "الرياضة والصحة الجسدية: مفاتيح الحياة السليمة في عام 2026",
+      "old": "رياضة",
+      "new": "لياقة بدنية",
+      "score": 27,
+      "changed": true
+    },
+    {
+      "id": "21b6eeaa-5af9-4565-bad8-6fb0016d6f8f",
+      "slug": "sustainability-in-tropical-forests",
+      "title": "الاستدامة في مجال الغابات الاستوائية: حماية البيئة للأجيال ا",
+      "old": "علوم",
+      "new": "بيئة واستدامة",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "e721f3db-58d9-4a93-be44-e7cefe6873d3",
+      "slug": "digital-entertainment-revolution",
+      "title": "الترفيه في العصر الرقمي: كيف تغيرت وسائل الترفيه",
+      "old": "ترفيه",
+      "new": "تكنولوجيا",
+      "score": 15,
+      "changed": true
+    },
+    {
+      "id": "ce82ee34-9b29-43c3-af6d-51b8cfe2b1a1",
+      "slug": "technology-communication-education-future",
+      "title": "دور تكنولوجيا الاتصالات في تعزيز التعليم الحديث",
+      "old": "تعليم",
+      "new": "تكنولوجيا",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "e4085045-3f6d-43d3-b0e8-2f1d6afeda21",
+      "slug": "sports-mental-health-youth",
+      "title": "الرياضة والصحة النفسية للشباب: كيف تُعزز العقل والجسم معًا؟",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 48,
+      "changed": false
+    },
+    {
+      "id": "decca4d8-7ce1-42d1-9dd9-453a8f0b2064",
+      "slug": "educational-games-in-learning",
+      "title": "الألعاب التربوية: كيف تغير面 التعلم",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 20,
+      "changed": true
+    },
+    {
+      "id": "c8ab16fb-45fa-4230-95ab-75847b994adc",
+      "slug": "sustainable-food-practices-for-a-better-future",
+      "title": "الاستدامة في مجال الغذاء: الطريق نحو مستقبل صحي",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "04a8f64d-b889-45e6-822b-7b77bee3b65c",
+      "slug": "artificial-intelligence-in-cars",
+      "title": " كيف تُغير تكنولوجيا الذكاء الاصطناعي مستقبل السيارات",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "1a12a117-3000-4c9e-8276-a723386c2913",
+      "slug": "technology-impact-children-mental-health",
+      "title": "تأثير التكنولوجيا على الصحة النفسية للأطفال",
+      "old": "صحة",
+      "new": "صحة نفسية",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "564ad06f-7c43-4589-ae07-43d1c8b18495",
+      "slug": "artificial-intelligence-business-technology-2026",
+      "title": "كيف تُعيد تكنولوجيا الذكاء الاصطناعي تشكيل الأعمال في 2026",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 34,
+      "changed": false
+    },
+    {
+      "id": "79641752-feb0-4512-8496-d7bcdf7b1775",
+      "slug": "sustainability-thermal-energy",
+      "title": "الاستدامة في مجال الطاقة الحرارية: حلول مبتكرة لمستقبل نظيف",
+      "old": "علوم",
+      "new": "طاقة شمسية",
+      "score": 35,
+      "changed": true
+    },
+    {
+      "id": "680719ae-af90-411b-9421-ce56baa36da0",
+      "slug": "exploring-asian-popular-culture",
+      "title": "اكتشاف الثقافة الشعبية في آسيا: رحلة عبر التقاليد والفنون",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "80677ce6-7505-4694-b4d0-53d7c0603dc4",
+      "slug": "best-low-carb-cooking-appliances-2026",
+      "title": "أفضل 5 أجهزة كهربائية مبتكرة لطبخ منخفض الكربوهيدرات في 2026",
+      "old": "طعام",
+      "new": "طبخ ومطبخ",
+      "score": 15,
+      "changed": true
+    },
+    {
+      "id": "580b00df-ed13-413b-92ef-6279c1c972d8",
+      "slug": "arabic-cultural-events-2026",
+      "title": "الأحداث الثقافية العربية 2026: ماذا تنتظر من المهرجانات والم",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "34280a04-916d-4e65-8d16-507454d06bab",
+      "slug": "improve-language-skills-with-ai",
+      "title": "استخدم الذكاء الاصطناعي لتحسين مهاراتك اللغوية بفعالية",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 20,
+      "changed": true
+    },
+    {
+      "id": "584fbabc-5f24-4cc2-aa4c-ae3f2105fd82",
+      "slug": "it-healthcare-revolution-2026",
+      "title": "كيف تُحدث تكنولوجيا المعلومات ثورة في الرعاية الصحية عام 202",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 30,
+      "changed": true
+    },
+    {
+      "id": "e5d05056-967d-46a8-9921-724917548d37",
+      "slug": "freelance-success-secrets-2026",
+      "title": "أسرار النجاح في العمل الحر 2026: 7 خطوات لمبدأ الاستدامة الم",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "04755da8-d7ef-4141-9661-3305984c8811",
+      "slug": "best-foods-for-colon-health-2026",
+      "title": "أفضل 10 أطعمة لتعزيز صحة القولون في 2026",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 20,
+      "changed": true
+    },
+    {
+      "id": "fae2b7cc-500a-4305-ab74-a8c09645a6e2",
+      "slug": "best-ai-drawing-apps-2026",
+      "title": "أفضل تطبيقات الرسم بالذكاء الاصطناعي 2026",
+      "old": "تطوير ذات",
+      "new": "برمجة وتطوير",
+      "score": 13,
+      "changed": true
+    },
+    {
+      "id": "5df7104d-5771-4eab-a312-06e785aa193c",
+      "slug": "sustainable-travel-practices-for-2026",
+      "title": "السفر بدون أثر: 7 خطوات للمسافر المسؤول في 2026",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 26,
+      "changed": true
+    },
+    {
+      "id": "c3888b9a-b248-4582-95e0-e8c551e28df3",
+      "slug": "arabic-space-exploration-2026",
+      "title": "الفضاء العربي: المستقبل المشرق لمشاريع القمر والماه في عام 2",
+      "old": "علوم",
+      "new": "الفضاء والكون",
+      "score": 15,
+      "changed": true
+    },
+    {
+      "id": "c24b89e3-3665-4168-ae28-a6ed2e9cc386",
+      "slug": "invest-in-metaverse-virtual-business-2026",
+      "title": "استثمر في الميتافيرس: فرص ومخاطر الشركات الافتراضية 2026",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "31abff96-ab30-4611-9a2e-713defe01935",
+      "slug": "sports-and-mental-health-2026",
+      "title": "الرياضة والصحة النفسية في 2026: كيف تُصبح نشاطك الرياضي دعما",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 36,
+      "changed": false
+    },
+    {
+      "id": "97b10a14-a1a0-4caf-bda5-a95f27cdc5fd",
+      "slug": "best-virtual-reality-fitness-platforms-2026",
+      "title": "أفضل 5 منصات للتدريب الرياضي عبر الواقع الافتراضي في 2026",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "58f93daf-cde0-409f-bcc2-a02ce94be172",
+      "slug": "weird-biology-discoveries-2026",
+      "title": "أغرب اكتشافات علم الأحياء في 2026: من الجينات إلى الكائنات ا",
+      "old": "علوم",
+      "new": "أحياء وجينات",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "2d8d2950-0dc8-4852-9dcb-403c5417d1fd",
+      "slug": "choosing-best-artificial-intelligence-products-for-home-education-2026",
+      "title": "كيف تختار أفضل منتجات الذكاء الاصطناعي للتعليم المنزلي في 20",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 26,
+      "changed": true
+    },
+    {
+      "id": "5eb568b7-3c6a-4f16-8670-475deaf94749",
+      "slug": "digital-economy-2026-artificial-intelligence-investment",
+      "title": "الاقتصاد الرقمي في 2026: نحو استثمار ذكي في الذكاء الاصطناعي",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "d04933eb-e80f-4474-aaea-108166f061ea",
+      "slug": "starting-a-metaverse-business-2026",
+      "title": "دليلك الشامل لتأسيس مشروع تجاري في الميتافيرس 2026",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 21,
+      "changed": false
+    },
+    {
+      "id": "7354bbc5-f3d7-4c48-949d-72fbb4fba12b",
+      "slug": "arabic-literature-in-digital-age",
+      "title": "تأثير العصر الرقمي على الأدب العربي",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 11,
+      "changed": true
+    },
+    {
+      "id": "f58a91a0-ec7b-42e7-9876-2adba1835aaf",
+      "slug": "best-5-new-books-2026-review",
+      "title": "أفضل 5 كتب جديدة في 2026: مراجعة شاملة ومعلومات تفصيلية",
+      "old": "ثقافة",
+      "new": "كتب ومراجعات",
+      "score": 30,
+      "changed": true
+    },
+    {
+      "id": "4db05068-2665-425a-b5a5-7ba92240a23e",
+      "slug": "cultural-tourism-in-2026",
+      "title": "السياحة الثقافية في عام 2026: دور الثقافة في تطوير وجهات الس",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 31,
+      "changed": true
+    },
+    {
+      "id": "df25ba14-a96e-4932-a0b8-fd0b7030b615",
+      "slug": "top-10-practices-for-better-mental-health",
+      "title": "رفع مستويات الإنتاجية بعشر ممارسات لتعزيز الصحة النفسية",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 14,
+      "changed": true
+    },
+    {
+      "id": "dc9b7951-178f-424a-8deb-ca240d50df09",
+      "slug": "smart-organic-sleep-technology-2026",
+      "title": "كيف تحقق نومًا صحيًا في 2026 باستخدام التكنولوجيا العضوية ال",
+      "old": "صحة",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": true
+    },
+    {
+      "id": "246c9beb-f2c0-46bc-8684-1f5de8d61600",
+      "slug": "sustainability-wind-energy",
+      "title": "الاستدامة في مجال الطاقة الريحية: كيف تقود الرياح مستقبل الط",
+      "old": "علوم",
+      "new": "طاقة شمسية",
+      "score": 29,
+      "changed": true
+    },
+    {
+      "id": "867e89a9-f03a-498d-8158-db00b065feb3",
+      "slug": "investing-in-government-bonds-2026-guide",
+      "title": "دليل المبتدئين للاستثمار في السندات الحكومية 2026",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 28,
+      "changed": true
+    },
+    {
+      "id": "5193596a-ee86-45a9-b68f-97c6293309e7",
+      "slug": "sports-and-mental-health-in-2026",
+      "title": "الرياضة والصحة النفسية: كيف تؤثر الرياضة على الصحة النفسية ف",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 29,
+      "changed": false
+    },
+    {
+      "id": "1f6a6c5b-49d2-4b49-ae49-bddd028e7014",
+      "slug": "sports-enhancing-physical-health-in-2026",
+      "title": "تعزيز الصحة الجسدية من خلال الرياضة في 2026",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "303d3f75-145c-404a-b806-36115758dd48",
+      "slug": "ai-mental-health-2026",
+      "title": "كيف يغيّر الذكاء الاصطناعي مستقبل الصحة النفسية في 2026",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 29,
+      "changed": true
+    },
+    {
+      "id": "ee119761-911e-4a27-acdf-143fcbb43d0b",
+      "slug": "remote-learning-future-of-education-2026",
+      "title": "التعلم عن بعد: مستقبل التعليم في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 32,
+      "changed": true
+    },
+    {
+      "id": "c2d85ede-eace-465f-bf68-454739b76956",
+      "slug": "technology-entertainment-2026-changes",
+      "title": "التكنولوجيا والترفيه 2026: كيف غيّرت وسائل الترفيه عالمنا",
+      "old": "ترفيه",
+      "new": "تكنولوجيا",
+      "score": 9,
+      "changed": true
+    },
+    {
+      "id": "2478c79e-b96c-4c5a-b82c-ea212a5499ae",
+      "slug": "top-cultural-destinations-2026",
+      "title": "أفضل الوجهات السياحية الثقافية في عام 2026",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 32,
+      "changed": true
+    },
+    {
+      "id": "1f54df66-06bc-4e98-b6c5-1bf95f849055",
+      "slug": "technology-and-entertainment-2026",
+      "title": "التكنولوجيا والترفيه: كيف تغيرت وسائل الترفيه في 2026",
+      "old": "ترفيه",
+      "new": "تكنولوجيا",
+      "score": 12,
+      "changed": true
+    },
+    {
+      "id": "4c033c6e-fa5a-44b9-b080-00a5ec7d033b",
+      "slug": "sustainable-tourism-destinations-2026",
+      "title": "اكتشف أفضل الوجهات السياحية المستدامة في عام 2026",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "2bd612ab-ee7f-4ff7-89c3-d8fd8e227f11",
+      "slug": "top-cultural-tourism-destinations-2026",
+      "title": "أفضل الوجهات السياحية الثقافية لعام 2026: اكتشف عجائب العالم",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 41,
+      "changed": true
+    },
+    {
+      "id": "3048e070-113c-4c63-a0fd-6ebae727bc58",
+      "slug": "sustainable-tourist-destinations-2026",
+      "title": "اكتشف أفضل الوجهات السياحية المستدامة في عام 2026",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 20,
+      "changed": true
+    },
+    {
+      "id": "2ff164c7-18f2-4118-b07a-7284b0dc8410",
+      "slug": "artificial-intelligence-improving-quality-of-life-2026",
+      "title": "دور الذكاء الاصطناعي في تحسين جودة الحياة في عام 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 21,
+      "changed": false
+    },
+    {
+      "id": "5eca47da-7052-479f-bb94-394fdd9ad89b",
+      "slug": "investing-in-cryptocurrency-for-beginners-2026",
+      "title": "دليل المبتدئين للاستثمار في العملات الرقمية 2026",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 28,
+      "changed": true
+    },
+    {
+      "id": "dd4f9e7f-907c-4636-b51e-5462023d8e3b",
+      "slug": "culture-role-sustainable-tourism-2026",
+      "title": "دور الثقافة في تعزيز السياحة المستدامة عام 2026",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 25,
+      "changed": true
+    },
+    {
+      "id": "57b86228-b447-4ea6-8c18-1991c2f98080",
+      "slug": "technology-impact-on-healthcare-in-2026",
+      "title": "ثورة التكنولوجيا في مجال الصحة: التطورات الهائلة في عام 2026",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "1885a0a2-8ddc-4a3e-9433-f73165e6607d",
+      "slug": "impact-of-technology-on-environment-in-2026",
+      "title": "تأثير التكنولوجيا على البيئة في عام 2026: فرص وتحديات",
+      "old": "علوم",
+      "new": "تكنولوجيا",
+      "score": 9,
+      "changed": true
+    },
+    {
+      "id": "9991ad16-3516-40b6-9e1b-acfb74ebbf5e",
+      "slug": "eco-friendly-travel-destinations-2026",
+      "title": "أفضل وجهات السفر المستدام في عام 2026",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "f2c7b2a3-d980-4c71-9d70-ced28c4aeae2",
+      "slug": "best-language-learning-apps-2026-3",
+      "title": "أفضل التطبيقات لتعلم اللغات بطرق تفاعلية في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 29,
+      "changed": true
+    },
+    {
+      "id": "e62a0577-bc3c-4e68-a07e-49d35e823617",
+      "slug": "comprehensive-guide-to-artificial-intelligence-skills-2026",
+      "title": "دليلك الشامل لتطوير مهاراتك في الذكاء الاصطناعي 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "f79d302a-202f-435d-80d7-87593996d02f",
+      "slug": "best-ways-to-use-technology-to-improve-lifestyle-in-2026",
+      "title": "أفضل 10 طرق لاستخدام التكنولوجيا لتحسين أسلوب حياتك في 2026",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 20,
+      "changed": false
+    },
+    {
+      "id": "fffc79ae-0815-4222-ba8f-5905daa9abee",
+      "slug": "role-artificial-intelligence-improving-quality-life-2026",
+      "title": "تحول الذكاء الاصطناعي إلى التحسين المستمر لجودة الحياة في عا",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 17,
+      "changed": false
+    },
+    {
+      "id": "8739b063-b034-4936-be05-abc0d0e1a371",
+      "slug": "sports-in-modern-era",
+      "title": "الرياضة في العصر الحديث: تحديات وفرص",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "9e2cd046-d0da-41e9-ac73-42bfa67b9170",
+      "slug": "leverage-technology-for-lifestyle-2026",
+      "title": "كيف تستغل التكنولوجيا لتحسين أسلوب حياتك في 2026",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 20,
+      "changed": false
+    },
+    {
+      "id": "4555d535-37fc-4d48-8bde-34b3b9d8f884",
+      "slug": "technology-impact-education-2026-2",
+      "title": "كيف تشكّل التكنولوجيا مستقبل التعليم في عام 2026؟",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 29,
+      "changed": true
+    },
+    {
+      "id": "b498ff98-a6f8-41a3-a942-d658fa31300b",
+      "slug": "self-improvement-through-meditation-techniques-2026",
+      "title": "تطوير الذات باستخدام تقنيات التأمل 2026",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 25,
+      "changed": true
+    },
+    {
+      "id": "f0aeba91-9c21-479f-bfe9-fb2858f90c16",
+      "slug": "enjoying-entertainment-at-home-2026",
+      "title": "كيف تستمتع بالترفيه في المنزل 2026",
+      "old": "ترفيه",
+      "new": "تكنولوجيا",
+      "score": 3,
+      "changed": true
+    },
+    {
+      "id": "a2d21108-3582-4155-a72a-08e19dbcf491",
+      "slug": "healthy-recipes-for-better-life-in-2026",
+      "title": "تحسين صحتك بعشر وصفات صحية في 2026",
+      "old": "طعام",
+      "new": "صحة وطب",
+      "score": 13,
+      "changed": true
+    },
+    {
+      "id": "a8460aa8-75a6-4e82-b9a9-1e1cdd1024c4",
+      "slug": "investing-in-stocks-2026",
+      "title": "استثمارك في الأسهم 2026: دليلك الشامل لتحقيق الأرباح",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "cce079d1-bbb9-435d-a75a-cef743ba8a02",
+      "slug": "refreshing-your-lifestyle-in-2026",
+      "title": "تجديد أسلوب حياتك في 2026: تعلم كيف تتبنى التغييرات الإيجابي",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 20,
+      "changed": false
+    },
+    {
+      "id": "f509c3ab-ed5c-4797-8cbb-01f317398fe0",
+      "slug": "technology-for-environmental-sustainability-2026",
+      "title": "دور التكنولوجيا في تعزيز الاستدامة البيئية في 2026",
+      "old": "علم",
+      "new": "بيئة واستدامة",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "b2f3cce5-4294-4f9e-b65e-014b3fc704d3",
+      "slug": "improve-sport-performance-with-ai-2026",
+      "title": "كيف تحسّن أدائك الرياضي باستخدام تقنيات الذكاء الاصطناعي في ",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "e3b7c678-a877-450c-a2f6-8609fbea156c",
+      "slug": "cyber-security-tools-for-small-businesses-2026",
+      "title": "دليلك الشامل لاختيار أفضل أدوات الأمان السيبراني للشركات الص",
+      "old": "تكنولوجيا",
+      "new": "أمن وخصوصية",
+      "score": 31,
+      "changed": true
+    },
+    {
+      "id": "ac76f9ad-a293-4352-aa6c-68bae1b00451",
+      "slug": "best-asian-destinations-for-local-culture-experience-2026",
+      "title": "اكتشف أفضل 5 وجهات سياحية في آسيا لتجربة الثقافات المحلية في",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "db59da3f-a5b1-4e38-88f0-30489d128e4b",
+      "slug": "cultural-identity-2026",
+      "title": "الثقافة الشعبية كأساس للهوية الوطنية في عام 2026",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "41cf171c-a75c-4838-b315-62684e5a749e",
+      "slug": "comprehensive-guide-learn-english-fun-2026",
+      "title": "دليلك الشامل لتعلم اللغة الإنجليزية بطريقة ممتعة في 2026",
+      "old": "تعليم",
+      "new": "تعلم اللغات",
+      "score": 30,
+      "changed": true
+    },
+    {
+      "id": "04739201-9a65-4041-bad9-7626b0a9d46a",
+      "slug": "circular-economy-home-sustainability",
+      "title": "تحويل منزلك إلى نظام اقتصادي دائري لتحقيق الاستدامة",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "4325d939-e6b7-416d-9712-98392321bb02",
+      "slug": "best-language-learning-apps-2026-4",
+      "title": "5 تطبيقات رائعة لتعلم اللغات الأجنبية بطرق تفاعلية",
+      "old": "تعليم",
+      "new": "تعلم اللغات",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "eec0105b-8b54-4e35-9dda-bdb0d1bc8249",
+      "slug": "space-exploration-with-space-telescopes-2026",
+      "title": "اكتشاف أسرار الكون: كيف تساعد التلسكوبات الفضائية في فهم宇宙",
+      "old": "علوم",
+      "new": "علوم وطبيعة",
+      "score": 11,
+      "changed": true
+    },
+    {
+      "id": "9dc19a89-97a4-4b41-af1e-83373ab0b3fe",
+      "slug": "artificial-intelligence-sports-applications-2026",
+      "title": "تطبيقات الذكاء الاصطناعي في الرياضة: تحسين الأداء الرياضي في",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 39,
+      "changed": false
+    },
+    {
+      "id": "e6d714c3-6f01-41bf-969c-f95749dd015a",
+      "slug": "digital-marketing-skills-development-2026",
+      "title": "تطوير مهاراتك في التسويق الرقمي لعام 2026",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 22,
+      "changed": true
+    },
+    {
+      "id": "940cbeda-3575-49a4-8aac-7fc21011d2b9",
+      "slug": "overcoming-remote-learning-challenges-with-ai-techniques",
+      "title": "التغلب على مشاكل التعلم عن بعد باستخدام تقنيات الذكاء الاصطن",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 26,
+      "changed": true
+    },
+    {
+      "id": "6d5c415f-f8a9-4a05-81f2-a02f5ef6fdab",
+      "slug": "best-cybersecurity-practices-small-business-2026",
+      "title": "أفضل طرق تطبيق الأمان السيبراني في الشركات الصغيرة في عام 20",
+      "old": "مال وأعمال",
+      "new": "أمن وخصوصية",
+      "score": 34,
+      "changed": true
+    },
+    {
+      "id": "9936a130-59fa-44ed-9eae-5cdf5e011535",
+      "slug": "clean-energy-investment-2026-challenges",
+      "title": "تحديات 2026: استثمار آمن في الطاقة النظيفة",
+      "old": "مال وأعمال",
+      "new": "طاقة شمسية",
+      "score": 24,
+      "changed": true
+    },
+    {
+      "id": "39a9144e-0eae-4d65-a869-40a3ab627dcf",
+      "slug": "investing-in-renewable-energy-2026",
+      "title": "الاستثمار في الطاقة المتجددة 2026: دليلك الشامل للبدء",
+      "old": "مال وأعمال",
+      "new": "طاقة شمسية",
+      "score": 27,
+      "changed": true
+    },
+    {
+      "id": "3c7edd2b-6019-4d55-9d1e-46bce016bf8c",
+      "slug": "diet-impact-on-mental-health",
+      "title": "تأثير النظام الغذائي على الصحة النفسية: دليلك للتوازن الصحي ",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 35,
+      "changed": true
+    },
+    {
+      "id": "9d5b03d3-6338-4ddd-b652-4fce0005abf4",
+      "slug": "digital-marketing-for-small-businesses",
+      "title": "دليلك الشامل للتسويق الرقمي لشركات الصغيرة",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "2078fdb0-fb2c-4c8e-be5e-f41db24abcc5",
+      "slug": "investing-in-government-bonds-2026",
+      "title": "دليل المبتدئين للاستثمار في السندات الحكومية في 2026",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 31,
+      "changed": true
+    },
+    {
+      "id": "29eb5878-613e-4007-9716-19e1d55a186f",
+      "slug": "economic-development-e-commerce-2026",
+      "title": "التنمية الاقتصادية في مجال التجارة الإلكترونية: استراتيجيات ",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 54,
+      "changed": false
+    },
+    {
+      "id": "5cd6ae7b-751e-4068-a07e-137aa46492b1",
+      "slug": "preserving-cultural-heritage-in-the-21st-century",
+      "title": "حفظ التراث الثقافي: تحديات وعوامل نجاح في القرن الحادي والعش",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "0e15ff81-b884-4e90-919c-6061e7821d2e",
+      "slug": "enhancing-home-entertainment-with-vr-technology",
+      "title": "تجربة الترفيه في المنزل: كيف تغيّر الواقع الافتراضي كل شيء",
+      "old": "ترفيه",
+      "new": "أبحاث ودراسات",
+      "score": 8,
+      "changed": true
+    },
+    {
+      "id": "44ce2dc3-4aef-4247-9c72-b13293925d20",
+      "slug": "best-ways-to-protect-personal-data-in-2026",
+      "title": "أفضل الطرق لحماية البيانات الشخصية في 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "a5cfdf0d-90ca-4e4d-a51d-4d88c651b845",
+      "slug": "sports-and-technology-improving-athletic-performance-2026",
+      "title": "الرياضة والتكنولوجيا: كيف تُحسّن الأداء الرياضي في 2026",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "655f4434-dfb4-40a7-aa44-8b0a49f94534",
+      "slug": "global-investment-strategies-2026",
+      "title": "استراتيجيات الاستثمار في السوق العالمي في 2026",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "c708b301-a0e5-48b7-b3ae-f807a6f51765",
+      "slug": "natural-skin-care-products-2026",
+      "title": "10 طرق لتحسين صحة البشرة باستخدام المنتجات الطبيعية",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 30,
+      "changed": true
+    },
+    {
+      "id": "e8a70d7f-ca81-4619-bb4b-fd092784831b",
+      "slug": "artificial-intelligence-in-automotive-industry",
+      "title": "ثورة الذكاء الاصطناعي في صناعة السيارات",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "aa16c316-f9bb-49a1-92d4-b361b28b69d4",
+      "slug": "mind-power-techniques-relaxation-meditation-2026",
+      "title": "تقوية العقل بتقنيات التأمل والاسترخاء في 2026",
+      "old": "تطوير ذات",
+      "new": "صحة نفسية",
+      "score": 15,
+      "changed": true
+    },
+    {
+      "id": "c548c5fa-9684-4a4f-b706-d3cac5287246",
+      "slug": "cybersecurity-for-small-businesses-2026",
+      "title": "كيف تحافظ على الأمن السيبراني في الشركات الصغيرة عام 2026",
+      "old": "تكنولوجيا",
+      "new": "أمن وخصوصية",
+      "score": 34,
+      "changed": true
+    },
+    {
+      "id": "eaa6b252-6ae3-4b45-aee3-65fd1cdc770e",
+      "slug": "modern-cooking-techniques-2026",
+      "title": "تحسين طعامك بتقنيات الطهي الحديثة 2026",
+      "old": "طعام",
+      "new": "طبخ ومطبخ",
+      "score": 9,
+      "changed": true
+    },
+    {
+      "id": "1b5eb554-633f-4a89-87da-9e7ee7249315",
+      "slug": "technology-in-sports-2026",
+      "title": "التكنولوجيا في مجال الرياضة عام 2026: كيف تُعيد تشكيل الأداء",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 33,
+      "changed": false
+    },
+    {
+      "id": "e4d932ef-7099-40ed-8233-0e6c007ede80",
+      "slug": "investment-crypto-2026-beginners-guide",
+      "title": "الاستثمار في العملات الرقمية 2026: دليل المبتدئين الشامل",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 40,
+      "changed": true
+    },
+    {
+      "id": "a271b2a9-cdd0-4f8e-9cb4-2281a6f62d67",
+      "slug": "virtual-reality-training-guide",
+      "title": "دليلك الشامل لاستخدام الواقع الافتراضي في التدريب على مهارات",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "9d330d7c-ac9a-4bbc-8cef-325115653f01",
+      "slug": "art-and-local-culture-enhancement-2026",
+      "title": "الفنون والثقافة المحلية: تعزيز الهوية في 2026",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 26,
+      "changed": true
+    },
+    {
+      "id": "b02c0cdb-d038-4a0f-8c8a-4bac8d3017c6",
+      "slug": "urban-environment-sustainability-guide-2026",
+      "title": "دليلك الشامل للحفاظ على البيئة في المناطق الحضرية 2026",
+      "old": "علوم",
+      "new": "بيئة واستدامة",
+      "score": 15,
+      "changed": true
+    },
+    {
+      "id": "0e9fd085-91c7-402e-b40f-4681f1936be2",
+      "slug": "comprehensive-guide-to-choosing-the-best-educational-programs",
+      "title": "دليلك الشامل لاختيار أفضل البرامج التعليمية في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "6543795a-a5fc-4ec9-bdec-f4e09414c02a",
+      "slug": "healthy-lifestyle-tips-for-2026",
+      "title": "كيفية تحقيق نمط حياة صحي ومستدام في 2026",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 33,
+      "changed": false
+    },
+    {
+      "id": "d24f18ac-62a6-4d98-819a-96eec8ef7788",
+      "slug": "plastic-free-lifestyle-2026-innovative-solutions",
+      "title": "أصبح بلاستيك 2026: اكتشف النمط الحديث للحد من النفايات البلا",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "e75a0959-b1e4-425e-82ee-c9c59bcf59b5",
+      "slug": "best-mental-health-apps-2026-2",
+      "title": "أفضل 5 تطبيقات للصحة النفسية في 2026",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 27,
+      "changed": true
+    },
+    {
+      "id": "41cb7da7-fdd0-480e-8426-1de403c520b4",
+      "slug": "technology-impact-online-shopping-behaviors-2026",
+      "title": "كيف غيرت التكنولوجيا سلوكيات التسوق الإلكتروني في 2026",
+      "old": "مال وأعمال",
+      "new": "تكنولوجيا",
+      "score": 27,
+      "changed": true
+    },
+    {
+      "id": "9f49f2f1-9707-4a1d-abcd-b76d41fc3c70",
+      "slug": "3d-printing-industry-revolution-2026",
+      "title": "ثورة الطباعة ثلاثية الأبعاد: مستقبل الصناعة في 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "3cfd80a1-04d9-4efa-8e00-96ae0595bb06",
+      "slug": "technology-enhancing-cybersecurity-2026",
+      "title": "كيف تُعزز التكنولوجيا الأمن السيبراني في 2026؟",
+      "old": "تكنولوجيا",
+      "new": "أمن وخصوصية",
+      "score": 31,
+      "changed": true
+    },
+    {
+      "id": "bb4a9fa9-6763-486a-aefa-c3cd9f7501d4",
+      "slug": "visual-arts-promoting-local-culture-2026",
+      "title": "دور الفنون البصرية في تعزيز الثقافة المحلية في 2026",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "56167da5-648e-4686-82fb-d0ab77f0d24b",
+      "slug": "improving-personal-data-security-in-2026",
+      "title": "تعزيز أمان المعلومات الشخصية في 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "b98b6e10-8dfd-4430-9be2-8fc96f02c90a",
+      "slug": "sports-and-mental-health-2026-2",
+      "title": "دور الرياضة في تعزيز الصحة النفسية في 2026",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 29,
+      "changed": false
+    },
+    {
+      "id": "53a41960-0d65-40b6-9995-af0d49775537",
+      "slug": "best-apps-to-learn-new-skills-2026",
+      "title": "أفضل 5 تطبيقات لتعلم مهارات جديدة في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 20,
+      "changed": true
+    },
+    {
+      "id": "847b75e3-dc29-43ae-9f9d-59b6f080d6d2",
+      "slug": "improving-productivity-with-ai-techniques",
+      "title": "تحسين الإنتاجية باستخدام الذكاء الاصطناعي: دليلك الشامل",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "87f505a6-a521-4e30-897b-342dd4d97f93",
+      "slug": "smart-storage-technologies-for-future",
+      "title": "تخزين الذكاء الاصطناعي: مستقبل البيانات في 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "10a1ff32-6980-4f3c-a5c0-2044a3599074",
+      "slug": "comprehensive-guide-to-choosing-best-fitness-trackers-2026",
+      "title": "دليلك الشامل لاختيار أفضل الأجهزة الرياضية الذكية في 2026",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "af40d8db-d671-4a24-a678-5f96b96b3a45",
+      "slug": "sustainable-solar-energy-techniques-2026",
+      "title": "أسرار تقنيات الطاقة الشمسية المستدامة في 2026",
+      "old": "علوم",
+      "new": "طاقة شمسية",
+      "score": 31,
+      "changed": true
+    },
+    {
+      "id": "51e8ce3d-eedd-4536-bfd2-33380f2543c8",
+      "slug": "improving-personal-data-security-in-digital-age",
+      "title": "أمان البيانات الشخصية في العصر الرقمي: دليلك الشامل",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 33,
+      "changed": false
+    },
+    {
+      "id": "e5c730c2-ecde-46f1-aadf-87cbcf6b2a61",
+      "slug": "technological-revolution-in-mental-health",
+      "title": "ثورة التكنولوجيا في مجال الطب النفسي: المستقبل هنا",
+      "old": "صحة",
+      "new": "صحة نفسية",
+      "score": 26,
+      "changed": true
+    },
+    {
+      "id": "9651e34d-3864-42f2-8f5e-a44e0e629b46",
+      "slug": "improving-athletic-skills-with-ai-techniques",
+      "title": "تحسين مهاراتك الرياضية باستخدام تقنيات الذكاء الاصطناعي",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "444f5a78-4732-43af-9517-6b9ae2e6d9d5",
+      "slug": "how-generative-ai-will-transform-online-shopping-2026",
+      "title": "كيف سيُعيد الذكاء الاصطناعي التوليدي تشكيل تجربة التسوق عبر ",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "b26ba244-5f16-4996-bc6a-09dfdfb6ee49",
+      "slug": "improving-english-skills-with-metaverse-techniques",
+      "title": "تحسين مهارات اللغة الإنجليزية في ميتافيرس 2026",
+      "old": "تعليم",
+      "new": "تعلم اللغات",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "9e72021b-0938-4d3c-a52c-6fd89c679995",
+      "slug": "technology-impact-on-food-industry-2026",
+      "title": "الثورة التكنولوجية في الصناعة الغذائية: فرص وتحديات",
+      "old": "علوم",
+      "new": "تغذية وغذاء",
+      "score": 13,
+      "changed": true
+    },
+    {
+      "id": "59d7fc05-2271-4dbd-99c6-1aab8d7cc01e",
+      "slug": "best-language-learning-apps-2026-5",
+      "title": "5 تطبيقات لتعلم اللغات الأجنبية بطرق تفاعلية وممتعة",
+      "old": "تعليم",
+      "new": "تعلم اللغات",
+      "score": 27,
+      "changed": true
+    },
+    {
+      "id": "fd5f25b8-7d64-43bf-8216-01add354aab9",
+      "slug": "discover-secrets-universe-space-telescopes",
+      "title": "أسرار الكون: دور التلسكوبات الفضائية في فك تشفير الفضاء",
+      "old": "علوم",
+      "new": "الفضاء والكون",
+      "score": 27,
+      "changed": true
+    },
+    {
+      "id": "c5ab9dec-72be-44e9-83c6-3ef2eb950c15",
+      "slug": "cyber-security-technology-for-large-companies",
+      "title": "ثورة التكنولوجيا في تعزيز الأمان السيبراني للشركات الكبيرة",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "ff7e2b93-d5c4-4ab6-95b0-4bcbe79556e4",
+      "slug": "interactive-science-learning-apps-2026",
+      "title": "5 تطبيقات لتعلم العلوم بطرق تفاعلية في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 26,
+      "changed": true
+    },
+    {
+      "id": "65f88dd5-cd33-495c-be98-17e4c541e3bc",
+      "slug": "improving-lifestyle-with-nanotechnology",
+      "title": "تحسين أسلوب حياتك باستخدام تقنيات النانو",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 17,
+      "changed": false
+    },
+    {
+      "id": "869c0985-e3f9-4dd2-abc2-e7b3cdbea571",
+      "slug": "improving-athletic-skills-with-nano-technologies",
+      "title": "تحسين مهاراتك الرياضية بتقنيات النانو 2026",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "3bb0ccf4-aa3b-4878-9e2f-43b42f22ad0c",
+      "slug": "technology-role-in-enhancing-cyber-security-for-small-businesses",
+      "title": "دور التكنولوجيا في تعزيز الأمان السيبراني للشركات الصغيرة",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "88602d14-e116-4b1a-b4e7-455daf800385",
+      "slug": "smart-sleep-techniques-for-mental-health",
+      "title": "استكشاف أسرار النوم الذكي لتحسين الصحة النفسية",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "15458e17-dca4-480b-b5b3-b9e2ac41d4d8",
+      "slug": "improving-digestive-health-with-nanotechnology",
+      "title": "تحسين صحة الجهاز الهضمي باستخدام تقنيات النانو: دليلك الشامل",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 20,
+      "changed": true
+    },
+    {
+      "id": "cb1667ce-702f-4dd7-9cf7-87d25940695f",
+      "slug": "best-math-apps-for-interactive-learning-2026",
+      "title": "أفضل 5 تطبيقات لتعلم الرياضيات بطرق تفاعلية وممتعة في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 26,
+      "changed": true
+    },
+    {
+      "id": "a81199fe-213c-4271-81e1-9b7a84e4a72d",
+      "slug": "culture-for-environmental-sustainability-2026",
+      "title": "ثقافة الاستدامة: كيف تعزز من حماية البيئة في عام 2026",
+      "old": "ثقافة",
+      "new": "بيئة واستدامة",
+      "score": 33,
+      "changed": true
+    },
+    {
+      "id": "8ed55af3-e521-4766-89d9-16354e472474",
+      "slug": "mysterious-cosmic-phenomena-in-2026",
+      "title": "أكثر 5 أشياء غامضة في الكون",
+      "old": "علوم",
+      "new": "علوم وطبيعة",
+      "score": 11,
+      "changed": true
+    },
+    {
+      "id": "79ac2f54-40be-4ae5-ab47-f543fd328b9f",
+      "slug": "technology-in-education-quality-2026",
+      "title": "أدوار التكنولوجيا في تعزيز جودة التعليم",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "95614ba5-4612-467a-b4ff-e005d4757e9d",
+      "slug": "improving-tech-skills-with-virtual-learning-platforms-2026",
+      "title": "كيف تحسن مهاراتك التقنية بفضل منصات التعلم الافتراضي سنة 202",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "ab61250c-2545-413f-b6c0-74e99a449d4d",
+      "slug": "culture-and-international-cooperation-in-2026",
+      "title": "الثقافة كعامل مساهم في تعزيز التعاون الدولي في 2026",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "c8111016-0ddd-468a-bdd3-9908b87ca26b",
+      "slug": "interactive-language-learning-techniques-2026",
+      "title": "5 طرق لتعلم اللغات بطرق تفاعلية وممتعة في 2026",
+      "old": "تعليم",
+      "new": "تعلم اللغات",
+      "score": 24,
+      "changed": true
+    },
+    {
+      "id": "3ad7363f-dc5f-4232-9e7b-aee2437fd135",
+      "slug": "best-5-interactive-language-learning-apps-in-2026",
+      "title": "تعلم اللغات بطرق تفاعلية: أفضل 5 تطبيقات في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "dcaebb63-79e2-451c-b5eb-124ea6de36b7",
+      "slug": "technology-enhancing-personal-security-2026",
+      "title": "كيف تُعيد التكنولوجيا تشكيل الأمان الشخصي في عام 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 36,
+      "changed": false
+    },
+    {
+      "id": "a03cfefe-f703-4c46-876f-efb7a1efee1c",
+      "slug": "smart-cities-improving-quality-life-2026",
+      "title": "مدن الذكاء: كيف تحسّن جودة الحياة في 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "fa9dfe5e-f184-4676-8bbe-9a08d831c590",
+      "slug": "technology-impact-on-job-market-2026",
+      "title": "تأثير التكنولوجيا على سوق العمل في 2026",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "18eb7897-5375-4c56-ba6b-282c6e119fb9",
+      "slug": "improving-lifestyle-with-ai-techniques-in-2026",
+      "title": "تحسين أسلوب حياتك باستخدام تقنيات الذكاء الاصطناعي في 2026",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 20,
+      "changed": false
+    },
+    {
+      "id": "cbf7668f-46ef-42c3-9685-3eeb7920ebd7",
+      "slug": "smart-sleep-techniques-mental-health-2026",
+      "title": "أسرار تحسين الصحة النفسية باستخدام تقنيات النوم الذكية في 20",
+      "old": "صحة",
+      "new": "صحة نفسية",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "d21113c9-bed8-4834-b7cc-ada8d3a2175b",
+      "slug": "artificial-intelligence-revolution-in-architecture-2026",
+      "title": "ثورة الذكاء الاصطناعي في مجال العمارة: مستقبل التصميم في 202",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "491a4492-0a58-432a-a814-b82e0e37332f",
+      "slug": "digital-age-impact-on-pop-culture-2026",
+      "title": "تأثير العصر الرقمي على الثقافة الشعبية في 2026",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "a69ce2f7-a3f1-4f9d-9ae0-8607e8baeddb",
+      "slug": "gaming-revolution-cognitive-skills-2026",
+      "title": "ثورة الألعاب الإلكترونية في تعزيز المهارات المعرفية",
+      "old": "ترفيه",
+      "new": "ألعاب إلكترونية",
+      "score": 15,
+      "changed": true
+    },
+    {
+      "id": "08f66f60-106f-4aa9-915f-59c919db9910",
+      "slug": "top-asia-destinations-2026",
+      "title": "أفضل 5 وجهات سياحية في آسيا لعام 2026",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "f2ae887e-77e4-448a-b4b3-d86379fa7cb5",
+      "slug": "digital-age-impact-on-lifestyle-in-developing-communities",
+      "title": " العصر الرقمي وتأثيراته على أسلوب الحياة في المجتمعات النامي",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 26,
+      "changed": false
+    },
+    {
+      "id": "b3d1a0de-233a-4bd4-9d24-ae118a3558ca",
+      "slug": "technology-impact-on-lifestyle-2026",
+      "title": "تأثير التكنولوجيا على أسلوب الحياة في مجتمعات 2026",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 26,
+      "changed": false
+    },
+    {
+      "id": "730707d7-5601-4d04-a29e-83830b77ffdb",
+      "slug": "improving-time-management-with-ai-2026",
+      "title": "تحسين مهارات إدارة الوقت باستخدام الذكاء الاصطناعي",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 25,
+      "changed": true
+    },
+    {
+      "id": "77c20976-401d-443e-bef5-433cbbe0282a",
+      "slug": "green-finance-role-in-environmental-sustainability-2026",
+      "title": "دور الماليات الخضراء في تعزيز الاستدامة البيئية في عام 2026",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "7ec48b12-c4af-4850-94a7-c24a560f39df",
+      "slug": "mental-health-meditation-techniques-2026",
+      "title": "تعزيز الصحة العقلية باستخدام تقنيات التأمل الحديثة",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "8cd67224-db9d-4039-9cc7-02ba7b05d408",
+      "slug": "sports-role-in-mental-health-for-youth-2026",
+      "title": "أهمية الرياضة لتعزيز الصحة النفسية",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "2d53fca9-c502-43dd-9329-64cbf3ae41bf",
+      "slug": "best-healthy-dishes-in-saudi-cuisine-2026",
+      "title": "أفضل 5 أطباق صحية في المطبخ السعودي لعام 2026",
+      "old": "طعام",
+      "new": "طبخ ومطبخ",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "650c40c4-c88b-4116-9317-ff4b0d1a64d7",
+      "slug": "arabic-language-skills-with-ai-apps-2026",
+      "title": "تعزيز مهارات اللغة العربية مع تطبيقات الذكاء الاصطناعي 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 11,
+      "changed": true
+    },
+    {
+      "id": "feff8754-82fb-4126-8cad-514ed5db89d7",
+      "slug": "top-5-math-learning-apps-2026",
+      "title": "أفضل 5 تطبيقات لتعلم الرياضيات بطرق تفاعلية في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 20,
+      "changed": true
+    },
+    {
+      "id": "e12a9d33-10aa-4818-9acf-43ae94204797",
+      "slug": "role-of-culture-in-economic-cooperation-in-2026",
+      "title": "دور الثقافة في تعزيز التعاون الاقتصادي في 2026: فرص ومجتمعات",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "53317c10-14f2-4641-a5bb-61f5e219ea34",
+      "slug": "digital-age-impact-on-education-2026",
+      "title": "تأثير العصر الرقمي على مجال التعليم في عام 2026: رؤى وتحديات",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "4671ef5d-b278-40f8-b980-3ab79eb26974",
+      "slug": "improving-creative-leadership-skills-with-ai-in-2026",
+      "title": "تحسين المهارات القيادية الإبداعية باستخدام الذكاء الاصطناعي ",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 25,
+      "changed": true
+    },
+    {
+      "id": "9844c74c-41fb-4892-880b-e15f141a48ac",
+      "slug": "top-10-ai-productivity-apps-2026",
+      "title": "أفضل 10 تطبيقات ذكاء اصطناعي لزيادة الإنتاجية في 2026",
+      "old": "تطوير ذات",
+      "new": "إنتاجية ووقت",
+      "score": 22,
+      "changed": true
+    },
+    {
+      "id": "ad89e888-ee73-45ce-bbfa-0f39847b31cc",
+      "slug": "technology-cybersecurity-small-businesses-2026",
+      "title": "دور التكنولوجيا في تعزيز الأمن السيبراني للشركات الصغيرة في ",
+      "old": "تكنولوجيا",
+      "new": "أمن وخصوصية",
+      "score": 25,
+      "changed": true
+    },
+    {
+      "id": "eefb87ac-5b78-4a8e-81ca-03d73841e8bc",
+      "slug": "improving-digital-marketing-skills-with-ai-tools",
+      "title": "تحسين مهاراتك في التسويق الرقمي باستخدام الذكاء الاصطناعي",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 15,
+      "changed": false
+    },
+    {
+      "id": "c2f913dd-cf16-467f-9479-5d2400bdcf24",
+      "slug": "digital-age-impact-on-business-2026",
+      "title": "العصر الرقمي: كيف يؤثر على الأعمال في عام 2026",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 28,
+      "changed": false
+    },
+    {
+      "id": "c8e18330-0beb-44aa-ad85-ffcc45b90406",
+      "slug": "developing-project-management-skills-with-ai-in-2026",
+      "title": "تطوير مهاراتك في إدارة المشاريع بالذكاء الاصطناعي 2026",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "7eaf64ca-8c0a-4847-96b6-fd464aaa4c78",
+      "slug": "role-of-technology-in-improving-quality-of-life-in-rural-communities-2026",
+      "title": "دور التكنولوجيا في تحسين جودة الحياة في المجتمعات الريفية في",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "346d17a6-9801-4335-9538-49c3c10be0c0",
+      "slug": "role-of-sports-in-mental-health-in-large-communities-2026",
+      "title": "أهمية الرياضة في تعزيز الصحة النفسية في المجتمعات الكبيرة 20",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "e763ee6f-770a-4d73-8973-66c138ef66f3",
+      "slug": "impact-of-technology-on-modern-literature",
+      "title": "تأثير التكنولوجيا على الأدب الحديث",
+      "old": "ثقافة",
+      "new": "تكنولوجيا",
+      "score": 9,
+      "changed": true
+    },
+    {
+      "id": "5dda54da-9e0b-4129-9c55-00d632432680",
+      "slug": "top-5-sustainable-tourism-destinations-africa-2026",
+      "title": "اكتشف أفضل 5 وجهات سياحية مستدامة في أفريقيا لعام 2026",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 38,
+      "changed": true
+    },
+    {
+      "id": "0c844fe7-aad5-4754-93bf-a70911846870",
+      "slug": "top-5-history-learning-apps-2026",
+      "title": "أفضل 5 تطبيقات لتعلم التاريخ بطرق تفاعلية في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "d1cc4d16-82c1-4d0d-a2a9-502f07a391c4",
+      "slug": "improving-data-management-skills-with-ai-in-2026",
+      "title": "تحسين مهاراتك في إدارة البيانات بفضل الذكاء الاصطناعي في 202",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 25,
+      "changed": true
+    },
+    {
+      "id": "451c2c65-5b08-4722-af05-d496ed85e5d1",
+      "slug": "best-european-tourist-destinations-2026",
+      "title": "أفضل 5 وجهات سياحية شعبية في أوروبا لعام 2026",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "10450e82-caea-41b8-8a07-abe560e18b0b",
+      "slug": "best-5-art-learning-apps-2026",
+      "title": "اكتشف أفضل 5 تطبيقات لتعلم الفنون بطريقة تفاعلية في 2026",
+      "old": "تعليم",
+      "new": "فنون وأدب",
+      "score": 33,
+      "changed": true
+    },
+    {
+      "id": "9cbd39f8-9074-4dba-8955-955545b5b22c",
+      "slug": "dor-riyada-fi-ta3zim-al-sihha-al-3aamma-fi-al-mjatimaat-al-hadariya-2026",
+      "title": "دور الرياضة في تعزيز الصحة العامة في المجتمعات الحضرية في 20",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 26,
+      "changed": false
+    },
+    {
+      "id": "3a4453d4-4e14-44c6-a7ba-b9ab1e1bd9a5",
+      "slug": "improve-spanish-skills-with-ai-apps",
+      "title": "تعلم الإسبانية بذكاء: كيف تُحسن زبانك باستخدام التطبيقات الح",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "2dbffe2e-4d50-4e2a-b107-c50880958186",
+      "slug": "top-5-interactive-science-learning-apps-2026",
+      "title": "أفضل 5 تطبيقات لتعلم العلوم بطرق تفاعلية في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 29,
+      "changed": true
+    },
+    {
+      "id": "0d115945-6816-48ef-9dc5-729c8534b28f",
+      "slug": "enhance-french-skills-ai-apps-2026",
+      "title": "كيف تعزز مهاراتك في اللغة الفرنسية باستخدام تطبيقات الذكاء ا",
+      "old": "تعليم",
+      "new": "تعلم اللغات",
+      "score": 27,
+      "changed": true
+    },
+    {
+      "id": "93e13587-2f02-4b77-b397-eb524c9d87d3",
+      "slug": "best-sustainable-destinations-in-south-america-2026",
+      "title": "أفضل 5 وجهات سياحية مستدامة في أمريكا الجنوبية لعام 2026",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "cf868478-2c6a-4735-8863-240e5dd758a4",
+      "slug": "best-5-vr-hiit-home-workouts-2026",
+      "title": "أفضل 5 تمارين HIIT بالواقع الافتراضي للمنزل في 2026",
+      "old": "رياضة",
+      "new": "لياقة بدنية",
+      "score": 18,
+      "changed": true
+    },
+    {
+      "id": "75854824-839d-46b6-879a-335c97335867",
+      "slug": "islamic-arts-in-digital-photography-modern-techniques-2026",
+      "title": "أسرار الفنون الإسلامية في التصوير الفوتوغرافي الرقمي: تقنيات",
+      "old": "ثقافة",
+      "new": "تصوير فوتوغرافي",
+      "score": 15,
+      "changed": true
+    },
+    {
+      "id": "24035b99-b9d1-40a3-a028-4d05581492ed",
+      "slug": "best-5-social-science-learning-apps-2026",
+      "title": "أفضل 5 تطبيقات لتعلم العلوم الاجتماعية بطرق تفاعلية في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 20,
+      "changed": true
+    },
+    {
+      "id": "33c3f4d9-591f-4cf3-a18c-c30460975c8f",
+      "slug": "quantum-computing-gene-research-2026",
+      "title": "كيف تفتح الحوسبة الكمومية آفاقاً جديدة في أبحاث الجينات البش",
+      "old": "علوم",
+      "new": "أحياء وجينات",
+      "score": 18,
+      "changed": true
+    },
+    {
+      "id": "f8070351-d539-43cd-80f2-da1730104829",
+      "slug": "improve-english-skills-with-ai-2026",
+      "title": "كيفية تحسين مهاراتك في اللغة الإنجليزية باستخدام تقنيات الذك",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 29,
+      "changed": true
+    },
+    {
+      "id": "35ced597-896d-43de-b0d3-e6450d7b3b07",
+      "slug": "comprehensive-crypto-etf-investment-guide-2026-middle-east",
+      "title": "دليل شامل للاستثمار في الصناديق المتداولة بالعملات الرقمية (",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 34,
+      "changed": true
+    },
+    {
+      "id": "a647ecec-263f-4732-8277-2c138b4f9e47",
+      "slug": "how-to-use-ar-features-iphone-15-pro-max-2026",
+      "title": "كيفية استغلال ميزات الواقع المعزز في iPhone 15 Pro Max 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 21,
+      "changed": false
+    },
+    {
+      "id": "07940042-2010-4cdd-811b-3c9e3cee70b8",
+      "slug": "role-of-culture-in-strengthening-cultural-collaboration-2026",
+      "title": "دور الثقافة في تعزيز التعاون الثقافي عام 2026",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 37,
+      "changed": true
+    },
+    {
+      "id": "8b1a5772-8991-4c05-964d-c22bfa2ecc83",
+      "slug": "top-6-metaverse-games-2026",
+      "title": "أحدث 6 ألعاب ميتافيرس التي ستغير تجربة الترفيه الجماعي في 20",
+      "old": "ترفيه",
+      "new": "ألعاب إلكترونية",
+      "score": 18,
+      "changed": true
+    },
+    {
+      "id": "1142c04f-20ab-4449-abbd-01d6dc582022",
+      "slug": "top-5-ai-leadership-skills-2026",
+      "title": "أفضل 5 طرق لتحسين مهاراتك القيادية باستخدام تقنيات الذكاء ال",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 29,
+      "changed": true
+    },
+    {
+      "id": "f81afc79-6f60-40e9-a6db-35fdebd087d8",
+      "slug": "digital-age-impact-on-healthcare-2026",
+      "title": "تأثير العصر الرقمي على مجال الصحة: مستقبل الصحة في 2026",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "4535e350-b8fd-4e32-9276-e8fd42420376",
+      "slug": "quick-insect-protein-recipes-2026",
+      "title": "دليل الطهاة المبتدئين لوصفات سريعة ببروتين الحشرات 2026: نكه",
+      "old": "طعام",
+      "new": "طبخ ومطبخ",
+      "score": 24,
+      "changed": true
+    },
+    {
+      "id": "51c899a0-69c6-43ab-ab70-6e92f2301d00",
+      "slug": "digital-age-impact-on-medicine-2026",
+      "title": "تأثير العصر الرقمي على مجال الطب في 2026: ثورة في الرعاية ال",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 25,
+      "changed": true
+    },
+    {
+      "id": "710a8af9-99b3-4746-a98b-a3c0b4ec0a49",
+      "slug": "smart-pomodoro-steps-2026-productivity",
+      "title": "خطوات عملية لتطبيق تقنية بومودورو الذكية 2026 وزيادة الإنتاج",
+      "old": "تطوير ذات",
+      "new": "إنتاجية ووقت",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "3960bd6a-fb1c-4fd7-82b3-989b968da9f9",
+      "slug": "best-south-american-tourist-destinations-2026",
+      "title": "اكتشف جمال أمريكا الجنوبية: أفضل 5 وجهات سياحية في 2026",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "63c1c08d-f0a6-4d6f-87e2-f7100ec9c1fd",
+      "slug": "smart-travel-2026-short-flight-selection",
+      "title": "سفر ذكي 2026: كيف تختار أقصر رحلات جوية باستخدام تطبيقات الذ",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 28,
+      "changed": true
+    },
+    {
+      "id": "f4e2f980-5dcc-4b93-8f29-11e83570c1ed",
+      "slug": "impact-of-technology-on-education-in-2026",
+      "title": "تأثير التكنولوجيا على مجال التعليم في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "621b0420-fcc5-40e9-b42c-0d368e9510eb",
+      "slug": "best-interactive-language-learning-apps-2026",
+      "title": "تعلّم اللغات بطرق تفاعلية: أفضل 5 تطبيقات للنجاح في 2026",
+      "old": "تعليم",
+      "new": "تعلم اللغات",
+      "score": 15,
+      "changed": true
+    },
+    {
+      "id": "a7ce9e14-5f32-4e7d-b8a0-8de4f8dd6e66",
+      "slug": "marketing-skills-with-ai-tools-in-2026",
+      "title": "تعزيز مهارات التسويق عبر وسائل التواصل باستخدام الذكاء الاصط",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 21,
+      "changed": false
+    },
+    {
+      "id": "cdf8300c-8fab-41e8-90a4-d22331df5938",
+      "slug": "cryptocurrency-investment-guide-for-beginners-2026",
+      "title": "دليل المبتدئين للاستثمار في العملات الرقمية 2026",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "f6cd12d2-5c37-4556-93e4-2898c71a9828",
+      "slug": "haptic-augmented-reality-2026-digital-touch-interactions",
+      "title": "الواقع المعزز اللمسي 2026: كيف تُشكّل تقنيات اللمس الرقمي مس",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "dea3f68c-9029-4cc6-b5c8-200f86d66363",
+      "slug": "alarming-future-ai",
+      "title": "مستقبل الذكاء الاصطناعي: هل هو مرعب حقاً؟",
+      "old": "ذكاء اصطناعي",
+      "new": "ذكاء اصطناعي",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "aa6f7c8a-19da-4a16-b21c-ffd5c04fde4c",
+      "slug": "enhancing-data-security-with-modern-encryption-techniques",
+      "title": "تحسين أمان البيانات باستخدام تقنيات التشفير الحديثة",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 30,
+      "changed": false
+    },
+    {
+      "id": "aa4fec18-1f7f-410b-b5b2-b72babe9378c",
+      "slug": "culture-and-economic-cooperation-among-countries",
+      "title": "الثقافة كخطوة نحو التعاون الاقتصادي الفعال بين الدول",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "db2b0baf-0841-4269-94ae-e0bb7f6db68e",
+      "slug": "augmented-reality-advantages-for-shopping-experience",
+      "title": "واقع معزز فيزيائياً: كيفية تحسين تجربة التسوق في 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "0a3f2d13-f046-4957-9a70-9f41f3e74c46",
+      "slug": "technology-impact-on-graphic-design-job-market",
+      "title": "تأثير التكنولوجيا على سوق العمل في مجال التصميم الجرافيكي",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "cfeede4f-a592-4e22-b63a-ea6a913b1f14",
+      "slug": "best-art-learning-apps-2026",
+      "title": "اكتشف أفضل 5 تطبيقات لتعلم الفنون بطرق تفاعلية في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "6e7a3750-76f4-43e6-8db6-fbedc6184a9f",
+      "slug": "how-technology-will-change-life-quality-in-smart-cities-by-2026",
+      "title": "كيف تُغيّر التكنولوجيا جودة الحياة في المدن الذكية في 2026؟",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "a08f585f-6029-4a14-81f2-0fac1f00aade",
+      "slug": "improving-french-language-skills-with-smart-apps-2026",
+      "title": "تحسين مهاراتك اللغوية الفرنسية باستخدام التطبيقات الذكية 202",
+      "old": "تعليم",
+      "new": "تطوير الذات",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "b18bc659-0ea5-4c15-b6d0-7200289a80c1",
+      "slug": "sports-role-in-improving-physical-health-for-youth",
+      "title": "دور الرياضة في تحسين الصحة الجسدية للشباب في 2026",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 26,
+      "changed": false
+    },
+    {
+      "id": "751c12e3-78db-40f3-8da0-501bfb34da00",
+      "slug": "investing-in-government-bonds-2026-2",
+      "title": "استثمر بذكاء: دليل المبتدئين لاستثمار السندات الحكومية 2026",
+      "old": "مال وأعمال",
+      "new": "استثمار ومال",
+      "score": 19,
+      "changed": true
+    },
+    {
+      "id": "0e901fd8-e6fb-44d9-82ed-d6fe8b0d5f8b",
+      "slug": "how-to-enhance-digital-marketing-skills-with-ai-in-2026",
+      "title": "كيفية النهوض بمهاراتك في التسويق الرقمي عبر الذكاء الاصطناعي",
+      "old": "مال وأعمال",
+      "new": "تسويق وإعلان",
+      "score": 24,
+      "changed": true
+    },
+    {
+      "id": "3fc7d30d-3efc-4410-8851-a23acac772bc",
+      "slug": "sports-role-in-improving-teenagers-mental-health",
+      "title": "دور الرياضة في تحسين الصحة النفسية للمراهقين",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 26,
+      "changed": false
+    },
+    {
+      "id": "1baa086d-aa70-4e4f-b653-6c57bf6df48e",
+      "slug": "sports-role-in-improving-mental-health-for-youth",
+      "title": "كيف تساهم الرياضة في تحسين الصحة النفسية للشباب",
+      "old": "رياضة",
+      "new": "رياضة",
+      "score": 24,
+      "changed": false
+    },
+    {
+      "id": "08fc5a0d-ba75-4cac-866f-d128ca57462a",
+      "slug": "sustainable-asian-destinations-2026",
+      "title": "أفضل 5 وجهات سياحية مستدامة في آسيا في 2026",
+      "old": "سفر",
+      "new": "سفر وسياحة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "0e4028da-3f64-4105-9b3c-2f762022072b",
+      "slug": "nano-technology-life-style-improvement-tips",
+      "title": "التحول الرقمي في أسلوب حياتك باستخدام تقنيات النانو",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 20,
+      "changed": false
+    },
+    {
+      "id": "f4ef8deb-0b39-4a98-8b4f-d400f99b970c",
+      "slug": "cultural-cooperation-among-nations-in-2026",
+      "title": "دور الثقافة في تعزيز التعاون الثقافي بين الدول في 2026",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "b506ca99-997e-4c5f-a601-17e0fe5e47cf",
+      "slug": "creative-writing-freelance-success-secrets",
+      "title": "أسرار النجاح في العمل الحر في مجال الكتابة الإبداعية",
+      "old": "تطوير ذات",
+      "new": "تطوير الذات",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "d8e58aa6-fb5b-4999-b2eb-d49e23965eff",
+      "slug": "improving-lifestyle-with-ai-techniques",
+      "title": "تحسين أسلوب حياتك بذكاء: كيف تستفيد من الذكاء الاصطناعي في 2",
+      "old": "أسلوب حياة",
+      "new": "أسلوب حياة",
+      "score": 20,
+      "changed": false
+    },
+    {
+      "id": "987f348d-414d-4580-a831-a4ece71b31ee",
+      "slug": "technology-impact-on-mental-health-in-2026",
+      "title": "ثورة التكنولوجيا في مجال الصحة النفسية في 2026",
+      "old": "صحة",
+      "new": "صحة نفسية",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "6ee2018e-0616-4aed-bb8f-b3fd1b9f511f",
+      "slug": "culture-role-in-enhancing-national-identity-2026",
+      "title": "دور الثقافة في تعزيز الهوية الوطنية في 2026",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "b15d3f4b-b1cf-4c5c-bbcc-8b3a77776bb3",
+      "slug": "solar-energy-for-homes-guide",
+      "title": "استغلال الطاقة الشمسية في المنازل بشكل فعال",
+      "old": "علوم",
+      "new": "طاقة شمسية",
+      "score": 25,
+      "changed": true
+    },
+    {
+      "id": "df496464-d6c1-4f68-91e7-0184d32a7c5b",
+      "slug": "improving-spanish-language-skills-with-ai",
+      "title": "تحسين مهاراتك في اللغة الإسبانية بذكاء",
+      "old": "تعليم",
+      "new": "تطوير الذات",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "8bb2e126-d5e4-4d85-9289-f834d4983a03",
+      "slug": "best-science-learning-apps-2026",
+      "title": "اكتشف أفضل 5 تطبيقات لتعلم العلوم بطرق تفاعلية في 2026",
+      "old": "علوم",
+      "new": "علوم وطبيعة",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "0122712e-2a0d-460a-bfec-14cc6ca40aec",
+      "slug": "technology-impact-media-2026",
+      "title": "تأثير التكنولوجيا على مجال الإعلام في 2026: ما الذي سيغيّر ا",
+      "old": "ترفيه",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": true
+    },
+    {
+      "id": "4a55c0ff-b902-4c9f-a69c-d66f277bd0bb",
+      "slug": "technology-impact-education-2026",
+      "title": "كيف تُغيِّر التكنولوجيا مستقبل التعليم في عام 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "f74be03d-0c0c-4739-a975-23540fd9df30",
+      "slug": "improve-german-language-skills-smart-apps-2026",
+      "title": "كيفية تحسين مهاراتك في اللغة الألمانية باستخدام تطبيقات ذكية",
+      "old": "تعليم",
+      "new": "تعلم اللغات",
+      "score": 27,
+      "changed": true
+    },
+    {
+      "id": "84bebb09-22d2-463f-a66c-f2f5ff10e834",
+      "slug": "technology-environmental-sustainability",
+      "title": "ثورة التكنولوجيا في حماية البيئة",
+      "old": "علوم",
+      "new": "بيئة واستدامة",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "7e3a0e06-530b-4526-a932-f131961612cb",
+      "slug": "improving-digital-marketing-skills-with-ai-techniques-2026",
+      "title": "كيفية تحسين مهاراتك في التسويق الرقمي باستخدام تقنيات الذكاء",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "58da03a1-8f3c-488d-9e2b-7216dddeaf63",
+      "slug": "improving-digital-marketing-skills-with-data-analysis",
+      "title": "تحسين مهاراتك في التسويق الرقمي باستخدام تحليل البيانات في 2",
+      "old": "مال وأعمال",
+      "new": "تطوير الذات",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "e3ce9cdd-7503-4509-99be-faa45331c3c7",
+      "slug": "solar-energy-technology-future",
+      "title": "تكنولوجيا الطاقة الشمسية: مستقبل الطاقة النظيفة 2026",
+      "old": "علوم",
+      "new": "طاقة شمسية",
+      "score": 30,
+      "changed": true
+    },
+    {
+      "id": "1505131c-ad07-412d-bb22-04b5026f321c",
+      "slug": "haptic-augmented-reality-technology",
+      "title": "ثورة الواقع المعزز اللمسي: المستقبل القريب للتكنولوجيا",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 27,
+      "changed": false
+    },
+    {
+      "id": "9472e2cd-429c-4bd9-a5eb-a7278b669de6",
+      "slug": "artificial-intelligence-in-online-banking-services",
+      "title": "ثورة الذكاء الاصطناعي في خدمات البنوك عبر الإنترنت",
+      "old": "مال وأعمال",
+      "new": "تكنولوجيا",
+      "score": 15,
+      "changed": true
+    },
+    {
+      "id": "d1dac252-31be-4f5c-923d-7114512a1045",
+      "slug": "advanced-analytics-technology-big-data",
+      "title": "تكنولوجيا التحليلات المتقدمة في تحليلات البيانات الضخمة",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 38,
+      "changed": false
+    },
+    {
+      "id": "f24745de-f4a5-4e91-bd73-f2c286272ebf",
+      "slug": "effective-time-management-techniques",
+      "title": "أفضل 8 تقنيات لإدارة الوقت بشكل فعال",
+      "old": "تطوير ذات",
+      "new": "إنتاجية ووقت",
+      "score": 18,
+      "changed": true
+    },
+    {
+      "id": "03eea6ad-a9b3-4424-9df2-72e965dae28c",
+      "slug": "artificial-intelligence-in-education",
+      "title": "تكنولوجيا الذكاء الاصطناعي في التعليم: مستقبل التعلم",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 26,
+      "changed": true
+    },
+    {
+      "id": "66ef95da-a47f-41c7-9902-00c27a77222b",
+      "slug": "best-cybersecurity-strategies-for-2026",
+      "title": "Cómo Mejorar la Ciberseguridad con Estrategias Efectivas",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "a942e0d6-f3bc-42d0-b18e-45f2ac0268e6",
+      "slug": "improving-english-language-skills-with-ai",
+      "title": "تحسين مهاراتك في اللغة الإنجليزية باستخدام الذكاء الاصطناعي",
+      "old": "تعليم",
+      "new": "تطوير الذات",
+      "score": 17,
+      "changed": true
+    },
+    {
+      "id": "701a362b-8f4f-40e0-b003-8690d6cf0971",
+      "slug": "improving-mental-health-with-ai-applications-2026",
+      "title": "تحسين الصحة النفسية بتطبيقات الذكاء الاصطناعي 2026",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 30,
+      "changed": true
+    },
+    {
+      "id": "394930bd-70b5-45df-bf4e-48a76ee1efea",
+      "slug": "improving-mental-health-with-ai-applications",
+      "title": "تحسين الصحة النفسية بتطبيقات الذكاء الاصطناعي",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 30,
+      "changed": true
+    },
+    {
+      "id": "0f4a013a-06da-41bf-b33d-0ee0a2ce25d9",
+      "slug": "cyber-security-strategies-2026",
+      "title": "تعزيز الأمان السيبراني: استراتيجيات حديثة وحلول متقدمة",
+      "old": "تكنولوجيا",
+      "new": "أمن وخصوصية",
+      "score": 25,
+      "changed": true
+    },
+    {
+      "id": "ffdf9be8-d072-4e38-90b8-ea673b3996af",
+      "slug": "technology-mental-health-impact",
+      "title": "تكنولوجيا الطب النفسي: تغيير اللعبة",
+      "old": "��حة",
+      "new": "صحة نفسية",
+      "score": 18,
+      "changed": true
+    },
+    {
+      "id": "c3fc895d-884a-4c9a-bfbb-cf7b0ff0a67b",
+      "slug": "healthy-nutrition-for-disease-prevention",
+      "title": "حماية صحتك من خلال التغذية الصحية",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 27,
+      "changed": true
+    },
+    {
+      "id": "a4650c78-e6c7-47a5-87b1-3f286acda839",
+      "slug": "role-of-technology-in-enhancing-quality-of-life",
+      "title": "كيف تُحدث التكنولوجيا تحولاً في جودة الحياة في 2026",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 39,
+      "changed": false
+    },
+    {
+      "id": "5d0c80cc-df28-49c5-8f7a-e47879480077",
+      "slug": "nanotech-future-science-applications-2026",
+      "title": "تكنولوجيا النانو: مستقبل العلوم والتطبيقات في عام 2026",
+      "old": "علوم",
+      "new": "تكنولوجيا",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "14268f88-04eb-4817-9c56-1fdd9c5480f3",
+      "slug": "culture-and-international-cooperation",
+      "title": "أهمية الثقافة في تعزيز التعاون الثقافي بين الدول",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 23,
+      "changed": true
+    },
+    {
+      "id": "6ae9b980-d161-4b40-b048-e1a87c019d83",
+      "slug": "solar-energy-technology-future-2",
+      "title": "تكنولوجيا الطاقة الشمسية: مستقبل الطاقة النظيفة",
+      "old": "علوم",
+      "new": "طاقة شمسية",
+      "score": 36,
+      "changed": true
+    },
+    {
+      "id": "f472296f-28aa-468a-9c04-9c3b10bec282",
+      "slug": "virtual-reality-education-2026-2",
+      "title": "كيف تُغيّر تكنولوجيا الواقع الافتراضي مستقبل التعليم في 2026",
+      "old": "تعليم",
+      "new": "تعليم وأكاديميا",
+      "score": 32,
+      "changed": true
+    },
+    {
+      "id": "c9e370b0-bdd8-41b5-8b72-a23bce239323",
+      "slug": "ai-applications-for-mental-health-improvement",
+      "title": "تطبيقات الذكاء الاصطناعي لتحسين الصحة النفسية",
+      "old": "صحة",
+      "new": "صحة وطب",
+      "score": 21,
+      "changed": true
+    },
+    {
+      "id": "d57f4b5d-4f99-47e0-8663-cc5c63e8cee3",
+      "slug": "secrets-of-freelance-success-strategies",
+      "title": "أسرار النجاح في العمل الحر: استراتيجيات لتحقيق الأهداف",
+      "old": "مال وأعمال",
+      "new": "مال وأعمال",
+      "score": 18,
+      "changed": false
+    },
+    {
+      "id": "d7a52561-bff9-415c-b934-394456763af8",
+      "slug": "technology-enhances-youth-employment-opportunities",
+      "title": "ثورة التكنولوجيا: كيف تعزز فرص العمل للشباب",
+      "old": "تعليم",
+      "new": "تكنولوجيا",
+      "score": 12,
+      "changed": true
+    },
+    {
+      "id": "57a6c84f-8dbf-4deb-bd66-53e28d33e22e",
+      "slug": "culture-and-sustainable-tourism",
+      "title": "دور الثقافة في تعزيز السياحة المستدامة",
+      "old": "ثقافة",
+      "new": "ثقافة عامة",
+      "score": 20,
+      "changed": true
+    },
+    {
+      "id": "8124d27a-9dc0-4a5f-89e3-b50909f9d729",
+      "slug": "technology-improving-quality-of-life-2026",
+      "title": "دور التكنولوجيا في تحسين جودة الحياة",
+      "old": "تكنولوجيا",
+      "new": "تكنولوجيا",
+      "score": 45,
+      "changed": false
+    },
+    {
+      "id": "53f955a9-a779-4532-9b68-8afd2f3a1b3f",
+      "slug": "chuck-norris-martial-arts-legend",
+      "title": "تشاك نوريس: أسطورة الفنون القتالية والسينما",
+      "old": "سينما ومسرح",
+      "new": "سينما ومسرح",
+      "score": 43,
+      "changed": false
+    }
+  ],
+  "changedCount": 370,
+  "unchangedCount": 261
+}

@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /profile
+
+# Googlebot
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+# Sitemaps
+Sitemap: https://dalilek.online/sitemap-index.xml
+
+# Host
+Host: https://dalilek.online

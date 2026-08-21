@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.*
+
+# Replit / local state (contains API keys in transcripts)
+.local/
+
+# Cache files
+seo-data.json
+sitemap-articles.xml
+.indexnow-key
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Scratch/temp files
+scratch/
+*.log
+
+# Google credentials
+google-credentials.json

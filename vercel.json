@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "assets/**",
+          "banners/**",
+          "seo-generator.js",
+          "seo-data.json",
+          "*.html",
+          "*.jpg",
+          "*.png",
+          "*.xml",
+          "*.xsl",
+          "*.svg",
+          "*.txt"
+        ]
+      }
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "server.js" }
+  ]
+}

@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<title>توليد مقالات بالذكاء الاصطناعي — دليلك</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+<style>
+
+  *{box-sizing:border-box}
+  :root{
+    --brand:#009688;
+    --brand-2:#00bfa5;
+    --brand-soft:rgba(0,150,136,.12);
+    --bg:#f8fafc;
+    --bg-2:#f1f5f9;
+    --panel:#ffffff;
+    --panel-2:#f8fafc;
+    --panel-3:#f1f5f9;
+    --border:#e2e8f0;
+    --border-strong:#cbd5e1;
+    --text:#0f172a;
+    --muted:#64748b;
+    --muted-2:#475569;
+    --warn:#f59e0b;
+    --danger:#ef4444;
+    --success:#10b981;
+  }
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;min-height:100vh}
+  a{color:var(--brand);text-decoration:none}
+  
+  /* App Layout */
+  .app-layout {
+    min-height: 100vh;
+  }
+  
+  /* Sidebar removed — full-page layout */
+  .sidebar-logo-text span {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  /* Main Content Area */
+  .main-area {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* Header inside main area */
+  header{padding:18px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);position:sticky;top:0;z-index:40}
+  .brand-row{display:flex;align-items:center;gap:14px}
+  .brand-text h1{margin:0;font-size:18px;font-weight:800;color:var(--text)}
+  .brand-text .sub{font-size:12px;color:var(--muted);margin-top:2px}
+  .header-right{display:flex;gap:14px;align-items:center;font-size:13px;color:var(--muted)}
+  .user-chip{display:flex;align-items:center;gap:10px;background:var(--panel-2);padding:6px 14px;border-radius:99px;border:1px solid var(--border);cursor:pointer}
+  .user-chip img{width:26px;height:26px;border-radius:50%}
+  .user-chip .name-wrap {display:flex;flex-direction:column;line-height:1.2}
+  .user-chip .name{font-size:13px;color:var(--text);font-weight:700}
+  .user-chip .email{font-size:11px;color:var(--muted)}
+
+  main{max-width:none;margin:0;padding:32px 40px;width:100%}
+
+  .page-title{display:flex;align-items:center;gap:16px;margin-bottom:28px}
+  .page-title-icon{width:52px;height:52px;border-radius:14px;background:var(--brand-soft);display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--brand)}
+  .page-title h2{margin:0;font-size:24px;font-weight:800}
+  .page-title p{margin:4px 0 0 0;font-size:14px;color:var(--muted)}
+
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:26px;margin-bottom:20px;box-shadow:0 4px 6px -1px rgba(0,0,0,.05),0 2px 4px -2px rgba(0,0,0,.05)}
+  .card-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+  .card-num{background:var(--brand-soft);color:var(--brand);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+  .card-head h3{margin:0;font-size:18px;font-weight:800}
+  .card .desc{color:var(--muted-2);font-size:13.5px;margin:0 0 20px 0;line-height:1.7}
+
+  label{display:block;font-size:13px;color:var(--text);margin-bottom:8px;font-weight:700}
+  input,select,textarea{width:100%;background:var(--panel);color:var(--text);border:1px solid var(--border-strong);border-radius:10px;padding:12px 14px;font-size:14px;font-family:inherit;outline:none;transition:border-color .15s,box-shadow .15s}
+  input:focus,select:focus,textarea:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(0,150,136,.15)}
+  textarea{resize:vertical;min-height:80px}
+
+  .row{display:grid;gap:16px}
+  .row.cols-2{grid-template-columns:1fr 1fr}
+  .row.cols-3{grid-template-columns:1fr 1fr 1fr}
+  @media(max-width:760px){.row.cols-2,.row.cols-3{grid-template-columns:1fr}}
+
+  button{cursor:pointer;border:none;border-radius:10px;padding:12px 20px;font-size:14px;font-weight:700;transition:transform .08s,opacity .15s,box-shadow .15s;font-family:inherit}
+  button:active{transform:scale(.98)}
+  button:disabled{opacity:.6;cursor:not-allowed;transform:none}
+  .btn-primary{background:var(--brand);color:white;box-shadow:0 4px 12px rgba(0,150,136,.25)}
+  .btn-primary:hover:not(:disabled){background:var(--brand-2);box-shadow:0 6px 16px rgba(0,191,165,.35)}
+  .btn-secondary{background:var(--panel);color:var(--text);border:1px solid var(--border-strong)}
+  .btn-secondary:hover:not(:disabled){border-color:var(--brand);color:var(--brand)}
+  .btn-success{background:var(--success);color:white}
+  .btn-danger{background:rgba(239,68,68,.1);color:var(--danger);border:1px solid rgba(239,68,68,.2)}
+  .btn-ghost{background:transparent;color:var(--muted);border:1px solid transparent}
+  .btn-ghost:hover{color:var(--danger);background:rgba(239,68,68,.05)}
+
+  .badge{display:inline-block;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:700;border:1px solid currentColor}
+  .badge.ok{color:var(--success)}
+  .badge.warn{color:var(--warn)}
+  .badge.err{color:var(--danger)}
+  .badge.idle{color:var(--muted)}
+  .err-detail{margin-top:6px;padding:10px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:8px;font-size:12px;color:var(--danger);line-height:1.5;max-width:340px;word-break:break-word;cursor:pointer}
+  .err-detail .why{color:var(--danger);font-weight:800;margin-bottom:3px;display:block}
+  .err-detail .full{display:none;margin-top:6px;color:var(--muted-2);font-size:11px;font-family:monospace;background:rgba(0,0,0,.05);padding:8px;border-radius:6px;max-height:140px;overflow:auto}
+  .err-detail.expanded .full{display:block}
+  .retry-btn{margin-top:6px;background:white;color:var(--text);border:1px solid var(--border-strong);border-radius:6px;padding:6px 12px;font-size:12px;cursor:pointer;font-weight:700}
+  .retry-btn:hover{background:var(--bg-2);border-color:var(--brand)}
+
+  .topic-row{display:flex;flex-direction:column;gap:12px;padding:14px;border-radius:12px;background:var(--panel-2);margin-bottom:10px;border:1px solid var(--border);transition:border-color .15s}
+  .topic-row:hover{border-color:var(--border-strong)}
+  .topic-row .topic-main{display:flex;gap:14px;align-items:flex-start}
+  .topic-row .idx{width:32px;height:32px;border-radius:50%;background:var(--brand-soft);color:var(--brand);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;margin-top:5px}
+  .topic-row .col{flex:1;min-width:0}
+  .topic-row input{background:var(--panel)}
+  .topic-row .status{flex-shrink:0;align-self:center;font-size:12px;min-width:100px;text-align:center}
+  .topic-row button{padding:8px;font-size:16px}
+
+  /* Per-topic media preview: 3 images side by side, each with a reroll button. */
+  .topic-media{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .topic-media-slot{position:relative;border-radius:10px;overflow:hidden;background:var(--border);border:1px solid var(--border-strong);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px}
+  .topic-media-slot img,.topic-media-slot video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+  .topic-media-slot .tag{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.6);color:#fff;font-size:10px;padding:2px 7px;border-radius:99px;pointer-events:none}
+  .topic-media-slot.loading{animation:pulse 1.2s ease-in-out infinite}
+  .topic-media-slot .reroll{position:absolute;inset:auto 0 0 0;background:rgba(0,0,0,.65);color:#fff;font-size:11px;text-align:center;padding:6px 4px;cursor:pointer;opacity:0;transition:opacity .15s;border:none;width:100%;font-weight:700}
+  .topic-media-slot:hover .reroll{opacity:1}
+  .topic-media-slot .reroll:disabled{cursor:wait;opacity:1}
+  @keyframes pulse{0%,100%{opacity:.6}50%{opacity:1}}
+
+  .progress-bar{height:12px;background:var(--panel-2);border-radius:99px;overflow:hidden;margin:16px 0;border:1px solid var(--border)}
+  .progress-bar .fill{height:100%;background:var(--brand);transition:width .3s}
+
+  .stats-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+  .stat-pill{background:var(--panel-2);border:1px solid var(--border);padding:10px 18px;border-radius:12px;font-size:13px;color:var(--muted)}
+  .stat-pill b{color:var(--text);font-size:16px;margin:0 6px;font-weight:800}
+
+  .url-list{background:var(--panel-3);border:1px solid var(--border);border-radius:12px;padding:18px;max-height:380px;overflow-y:auto;font-family:monospace;font-size:13px;line-height:1.9;white-space:pre;direction:ltr;text-align:left;color:var(--text)}
+
+  .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:var(--text);color:white;padding:14px 24px;border-radius:12px;font-size:14px;box-shadow:0 10px 25px rgba(0,0,0,.2);z-index:100;animation:slidein .25s}
+  .toast.success{background:var(--success)}
+  .toast.error{background:var(--danger)}
+  @keyframes slidein{from{opacity:0;transform:translate(-50%,15px)}to{opacity:1;transform:translate(-50%,0)}}
+
+  .speed-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px}
+  @media(max-width:760px){.speed-grid{grid-template-columns:1fr}}
+  
+  .speed-card{background:var(--panel);border:1px solid var(--border-strong);border-radius:12px;padding:16px;cursor:pointer;transition:all .15s;text-align:center}
+  .speed-card:hover{border-color:var(--brand)}
+  .speed-card.active{background:var(--brand-soft);border-color:var(--brand);box-shadow:0 0 0 1px var(--brand) inset}
+  .speed-card .icon{font-size:26px;margin-bottom:8px}
+  .speed-card .label{font-weight:800;font-size:15px;color:var(--text);margin-bottom:6px}
+  .speed-card .desc{font-size:12px;color:var(--muted);line-height:1.6}
+
+  .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:16px}
+  .feature{background:var(--panel-2);padding:16px;border-radius:12px;border:1px solid var(--border);font-size:13px;color:var(--muted-2);line-height:1.7}
+  .feature b{display:block;color:var(--brand);font-size:14px;margin-bottom:6px;font-weight:800}
+
+  .row-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+  .hidden{display:none!important}
+  .small{font-size:12px;color:var(--muted)}
+  .key-link{color:var(--brand);font-weight:600}
+  .mini-row{display:flex;gap:10px;align-items:center;font-size:12.5px;color:var(--muted);margin-top:8px}
+  .key-status{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:99px;background:var(--success);color:white;font-size:11px;font-weight:700}
+
+  .img-article-card{background:var(--panel-2);border:1px solid var(--border);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px}
+  .img-article-title{font-size:13.5px;font-weight:700;color:var(--text);line-height:1.5;min-height:38px}
+  .img-article-cat{display:inline-block;font-size:11px;color:var(--brand);background:var(--brand-soft);padding:2px 9px;border-radius:99px;margin-bottom:2px;width:fit-content}
+  .img-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .img-slot{position:relative;aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:var(--border);border:1px solid var(--border-strong)}
+  .img-slot img{width:100%;height:100%;object-fit:cover;display:block}
+  .img-slot .empty{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:22px}
+  .img-slot .slot-replace{position:absolute;inset:auto 0 0 0;background:rgba(0,0,0,.62);color:#fff;font-size:10.5px;text-align:center;padding:5px 2px;cursor:pointer;opacity:0;transition:opacity .15s;border:none;width:100%}
+  .img-slot:hover .slot-replace{opacity:1}
+  .img-slot.busy{animation:pulse 1s ease-in-out infinite}
+  .img-slot .slot-replace:disabled{cursor:wait}
+  .img-article-actions{display:flex;gap:8px;flex-wrap:wrap}
+  .img-article-actions button{flex:1;min-width:120px;padding:9px 10px;font-size:12px;border-radius:9px}
+  .img-video-wrap{margin-top:2px}
+  .img-video-box{border-radius:10px;overflow:hidden;background:var(--border);border:1px solid var(--border-strong);aspect-ratio:16/9}
+  .img-video-box video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+  .img-video-box .empty{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px}
+  .result-media-card{margin-top:10px;padding:12px;background:var(--panel-2);border:1px solid var(--border);border-radius:12px}
+
+  .gate{max-width:480px;margin:100px auto;padding:40px 36px;background:var(--panel);border:1px solid var(--border);border-radius:20px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+  .gate-icon{width:72px;height:72px;border-radius:18px;background:var(--brand-soft);display:inline-flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:20px}
+  .gate h2{margin:0 0 10px 0;font-size:22px;color:var(--text)}
+  .gate p{color:var(--muted);font-size:14.5px;margin:0 0 24px 0;line-height:1.7}
+  .gate .err{color:var(--danger);font-size:13.5px;margin-top:16px;padding:12px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:10px;text-align:right}
+  .loader{display:inline-block;width:20px;height:20px;border:2px solid var(--brand);border-top-color:transparent;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-left:8px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+</style>
+</head>
+<body>
+
+<!-- ── Auth gate ── -->
+<div id="gate" class="gate">
+  <div class="gate-icon">🔐</div>
+  <h2>التحقق من الدخول</h2>
+  <p id="gateMsg">جارٍ البحث عن جلسة Supabase في المتصفح…<span class="loader"></span></p>
+  <div id="gateActions" class="hidden" style="display:flex;flex-direction:column;gap:10px;margin-top:18px">
+    <button id="googleSignInBtn" class="btn-primary" style="padding:14px 24px;border-radius:10px;color:#001;font-weight:800;display:flex;align-items:center;justify-content:center;gap:10px">
+      <svg width="20" height="20" viewBox="0 0 24 24" style="background:#fff;border-radius:50%;padding:2px"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      تسجيل الدخول بـGoogle
+    </button>
+    <div class="small" style="text-align:center;color:var(--muted);font-size:11.5px;margin-top:4px">تسجيل الدخول مقتصر على حساب الإدارة المعتمد فقط.</div>
+  </div>
+  <div id="gateErr" class="err hidden"></div>
+</div>
+
+<!-- ── Main app ── -->
+<div id="app" class="hidden app-layout">
+  <div class="main-area">
+
+<header>
+  <div class="brand-row">
+    <a href="/admin" class="btn-secondary" style="display:flex;align-items:center;gap:6px;border-radius:10px;padding:8px 14px;font-size:13px;text-decoration:none;color:var(--text)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+      رجوع
+    </a>
+    <div class="brand-text" style="margin-right:14px">
+      <h1>عمل مقالات</h1>
+      <div class="sub">قسم التوليد الجماعي للمقالات بالذكاء الاصطناعي</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <a href="/" target="_blank" class="btn-secondary" style="display:flex;align-items:center;gap:6px;border-radius:10px;padding:8px 14px;font-size:13px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> الموقع</a>
+    <button class="btn-ghost" id="logoutBtn" style="color:var(--danger)">خروج</button>
+  </div>
+</header>
+
+<main>
+
+<div class="page-title">
+  <div class="page-title-icon">✨</div>
+  <div>
+    <h2>توليد مقالات بالذكاء الاصطناعي بحجم كبير</h2>
+    <p>أنشئ من 10 إلى 150 مقالاً عالي الجودة بالكامل عبر الذكاء الاصطناعي، مع صور Pexels ونشر تلقائي على Supabase</p>
+  </div>
+</div>
+
+<!-- Quick-start guide -->
+<div style="background:linear-gradient(135deg,#e0f7fa,#f0fdf4);border:1.5px solid #00bfa5;border-radius:14px;padding:16px 20px;margin-bottom:18px;font-family:Tajawal,sans-serif">
+  <div style="font-weight:800;font-size:15px;color:#00695c;margin-bottom:10px">🚀 كيف تعمل الآن — خطوة واحدة فقط</div>
+  <div style="display:flex;flex-direction:column;gap:8px;font-size:14px;color:#1a3c34">
+    <div style="display:flex;align-items:flex-start;gap:10px">
+      <span style="background:#009688;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:12px">1</span>
+      <div><b>اختر عدد المقالات واضغط "توليد ونشر الكل"</b> — البقية تلقائية بالكامل: اكتشاف المواضيع من مصادر إخبارية حقيقية (Google News، BBC عربي، الجزيرة، ويكيبيديا)، الكتابة عبر Groq، الترجمة لـ4 لغات، وجلب الصور من Wikimedia/ويكيبيديا ثم Pexels — بدون أي إعداد يدوي.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Settings -->
+<div class="card">
+  <div class="card-head">
+    <div class="card-num">1</div>
+    <h3>محرك الذكاء الاصطناعي — Groq (مجموعة مفاتيح دوارة)</h3>
+  </div>
+  <p class="desc">النظام يستعمل حصرياً Groq مع مجموعة من مفاتيح API تدور تلقائياً — إذا فشل أو استُنفد مفتاح، يتحوّل النظام فوراً للتالي دون أي تدخل يدوي أو إدخال مفاتيح.</p>
+
+  <div id="groqPoolPanel" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px"></div>
+  <div class="small" id="groqPoolSummary" style="margin-bottom:10px"></div>
+
+  <div style="margin-top:8px">
+    <label>وضع السرعة والجودة</label>
+    <div class="speed-grid" id="speedGrid"></div>
+    <div class="small" id="speedHint" style="margin-top:8px"></div>
+  </div>
+</div>
+
+<!-- Topic discovery -->
+<div class="card">
+  <div class="card-head">
+    <div class="card-num">2</div>
+    <h3>اكتشاف المواضيع</h3>
+  </div>
+  <p class="desc">تُجلب المواضيع من مصادر إخبارية حقيقية (Google News، BBC عربي، الجزيرة، ويكيبيديا) ثم يختار الذكاء الاصطناعي الأفضل منها ويصوغها كعناوين موسوعية جذابة. يمكنك تعديل القائمة قبل التوليد.</p>
+  <div class="row cols-3">
+    <div>
+      <label>عدد المقالات</label>
+      <select id="count">
+        <option value="10">10 مقالات</option>
+        <option value="20">20 مقال</option>
+        <option value="30">30 مقال</option>
+        <option value="50">50 مقال</option>
+        <option value="75">75 مقال</option>
+        <option value="100">100 مقال</option>
+        <option value="150">150 مقال</option>
+      </select>
+    </div>
+    <div>
+      <label>وضع الاكتشاف</label>
+      <select id="mode">
+        <option value="trending" selected>📰 رائج الآن — من أخبار حقيقية (Google News/BBC/الجزيرة/ويكيبيديا)</option>
+        <option value="auto">🤖 ذكي — الذكاء الاصطناعي يختار أحدث وأفضل المواضيع</option>
+        <option value="category">📂 حسب فئة معينة</option>
+        <option value="custom">✏️ مخصص (أنا أحدد البذرة)</option>
+      </select>
+    </div>
+    <div>
+      <label>القالب</label>
+      <select id="templateMode">
+          <option value="random">عشوائي لكل مقال (ذكي)</option>
+          <option value="1">قالب 1</option><option value="2">قالب 2</option>
+          <option value="3">قالب 3 (موسع)</option><option value="4">قالب 4</option>
+          <option value="5">قالب 5</option><option value="6">قالب 6</option>
+          <option value="7">قالب 7</option><option value="8">قالب 8</option>
+          <option value="9">قالب 9</option><option value="10">قالب 10</option>
+          <option value="11">قالب 11</option><option value="12">قالب 12</option>
+          <option value="13">قالب 13</option><option value="14">قالب 14</option>
+          <option value="15">قالب 15</option><option value="16">قالب 16 (تقنية)</option>
+          <option value="17">قالب 17 (فضاء)</option><option value="18">قالب 18 (تاريخ)</option>
+          <option value="19">قالب 19 (طب)</option><option value="20">قالب 20 (طهي)</option>
+          <option value="21">قالب 21 (عمارة)</option><option value="22">قالب 22 (فلسفة)</option>
+          <option value="23">قالب 23 (ألعاب)</option><option value="24">قالب 24 (محركات)</option>
+          <option value="25">قالب 25 (قانون)</option><option value="26">قالب 26 (أحياء)</option>
+          <option value="27">قالب 27 (استثمار)</option><option value="28">قالب 28 (موضة)</option>
+          <option value="29">قالب 29 (أساطير)</option><option value="30">قالب 30 (طفولة)</option>
+        </select>
+    </div>
+  </div>
+
+  <div class="row cols-2" style="margin-top:14px">
+    <div id="categoryWrap" class="hidden">
+      <label>الفئة</label>
+      <select id="category">
+        <option value="تكنولوجيا">تكنولوجيا</option>
+        <option value="صحة">صحة</option>
+        <option value="مال وأعمال">مال وأعمال</option>
+        <option value="تطوير ذات">تطوير ذات</option>
+        <option value="ثقافة">ثقافة</option>
+        <option value="علوم">علوم</option>
+        <option value="أسلوب حياة">أسلوب حياة</option>
+        <option value="طعام">طعام</option>
+        <option value="رياضة">رياضة</option>
+        <option value="تعليم">تعليم</option>
+        <option value="سفر">سفر</option>
+        <option value="ترفيه">ترفيه</option>
+      </select>
+    </div>
+    <div id="customWrap" class="hidden">
+      <label>كلمة/موضوع البذرة</label>
+      <input type="text" id="customSeed" placeholder="مثلاً: الذكاء الاصطناعي 2026" />
+    </div>
+  </div>
+
+  <div class="row-actions">
+    <button class="btn-primary" id="discoverBtn">🔍 اكتشاف المواضيع</button>
+    <button class="btn-secondary" id="addManualBtn">+ إضافة موضوع يدوي</button>
+    <button class="btn-secondary" id="regenAllTopicImagesBtn" title="تجديد صور كل المواضيع دفعة واحدة">🖼️ تجديد كل الصور</button>
+    <button class="btn-danger" id="clearTopicsBtn">حذف الكل</button>
+    <span id="topicCount" style="margin-inline-start:auto;color:var(--muted);font-size:13px;align-self:center">0 موضوع</span>
+  </div>
+  <div class="small" style="margin-top:8px">📸 الصور والفيديوهات تُجلب تلقائياً أثناء التوليد (Wikimedia/ويكيبيديا ثم Pexels) — لا حاجة لخطوة معاينة يدوية.</div>
+
+  <div id="topicsList" style="margin-top:18px"></div>
+</div>
+
+<!-- Generation -->
+<div class="card">
+  <div class="card-head">
+    <div class="card-num">3</div>
+    <h3>التوليد والنشر</h3>
+  </div>
+  <p class="desc">سيُنشأ كل مقال كاملاً ويُترجم لـ4 لغات، تُجلب الصور من Wikimedia/ويكيبيديا أولاً ثم Pexels عند الحاجة، ثم يُنشر على Supabase تلقائياً مع slug فريد — كل ذلك تلقائياً دون أي خطوة يدوية إضافية.</p>
+
+  <div class="feature-grid">
+    <div class="feature"><b>📰 مواضيع من أخبار حقيقية</b>Google News + BBC عربي + الجزيرة + الأكثر قراءة على ويكيبيديا — ليست اختراعاً من الذكاء الاصطناعي</div>
+    <div class="feature"><b>📖 محتوى مبني على حقائق</b>استخراج نص المصدر عبر Jina AI Reader (مع نسخة احتياطية) ليكتب المقال بأسلوب أصلي مبني على وقائع فعلية</div>
+    <div class="feature"><b>🖼️ صور Wikimedia + ويكيبيديا أولاً</b>صور حرة عالية الجودة مرتبطة مباشرة بالموضوع، وPexels احتياطياً فقط عند الحاجة</div>
+    <div class="feature"><b>🔑 مجموعة مفاتيح Groq دوارة</b>11 مفتاحاً تتبادل العمل تلقائياً؛ أي مفتاح يفشل يُستبعد فوراً دون توقف الدفعة</div>
+    <div class="feature"><b>🌐 ترجمة تلقائية لـ4 لغات</b>عربي، إنجليزي، فرنسي، إسباني لكل مقال دون أي إعداد إضافي</div>
+    <div class="feature"><b>🔗 slug فريد تلقائياً</b>إذا تكرر، يُضاف رقم تلقائي (-2, -3, …) — يحل مشكلة articles_slug_key</div>
+    <div class="feature"><b>📑 3-8 أقسام حسب الوضع</b>مع stats وskills وcallouts وخاتمة جذابة</div>
+    <div class="feature"><b>📋 نسخ كل الروابط دفعة واحدة</b>زر واحد بعد الانتهاء + صيغة Markdown</div>
+  </div>
+
+  <div class="row-actions">
+    <button class="btn-success" id="generateBtn" disabled>🚀 توليد ونشر الكل</button>
+    <button class="btn-danger hidden" id="stopBtn">⏹ إيقاف</button>
+  </div>
+
+  <div id="progressWrap" class="hidden" style="margin-top:14px">
+    <div class="progress-bar"><div class="fill" id="progressFill" style="width:0%"></div></div>
+    <div class="stats-row">
+      <div class="stat-pill">المنجز: <b id="statDone">0</b></div>
+      <div class="stat-pill">الفاشل: <b id="statFail">0</b></div>
+      <div class="stat-pill">الإجمالي: <b id="statTotal">0</b></div>
+      <div class="stat-pill">الوقت: <b id="statTime">0s</b></div>
+    </div>
+  </div>
+</div>
+
+<!-- Results -->
+<div class="card hidden" id="resultsCard">
+  <div class="card-head">
+    <div class="card-num">4</div>
+    <h3>الروابط النهائية</h3>
+  </div>
+  <p class="desc">جميع المقالات المنشورة. اضغط "نسخ الكل" لنسخ كل الروابط دفعة واحدة.</p>
+  <div class="row-actions">
+    <button class="btn-primary" id="copyAllBtn">📋 نسخ كل الروابط</button>
+    <button class="btn-secondary" id="copyMdBtn">📝 نسخ بصيغة Markdown</button>
+    <button class="btn-secondary" id="refreshSeoBtn">🔄 تحديث الكاش وخريطة الموقع</button>
+  </div>
+  <div id="urlList" class="url-list" style="margin-top:14px"></div>
+  <div class="small" style="margin-top:16px;color:var(--muted)">📸🎬 صور وفيديو كل مقال — غيّر صورة واحدة، كل الصور، أو اجلبها من بكسلس:</div>
+  <div id="resultMediaGrid" style="margin-top:10px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px"></div>
+</div>
+
+<div class="card" id="indexnow-card" style="margin-top:24px">
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+    <span style="font-size:24px">🚀</span>
+    <h3>الفهرسة الفورية في محركات البحث (IndexNow)</h3>
+  </div>
+  <p class="desc">كل مقال جديد يُنشر تلقائياً يُرسَل فوراً إلى Bing وYandex وDuckDuckGo وSeznam وNaver عبر بروتوكول IndexNow. هذا يُسرّع الفهرسة من أسابيع إلى ساعات. لإعادة إرسال جميع المقالات الموجودة دفعة واحدة (مفيد بعد إصلاح مشاكل الـ SEO أو لإعادة فهرسة الموقع كاملاً)، اضغط الزر أدناه.</p>
+
+  <div style="margin-top:14px;padding:14px;background:var(--panel-3);border:1px solid var(--border);border-radius:11px">
+    <div class="small" style="line-height:1.8">
+      <b>🔑 مفتاح IndexNow:</b> <code id="indexnowKeyBox" style="direction:ltr">—</code><br>
+      <b>📄 رابط التحقق من الملكية:</b> <a id="indexnowKeyUrl" target="_blank" rel="noopener" style="color:var(--brand-2);direction:ltr;display:inline-block">—</a><br>
+      <b>📚 عدد المقالات في الكاش:</b> <b id="indexnowArticleCount">—</b> · <b>🌐 إجمالي الروابط عند إعادة الإرسال:</b> <b id="indexnowTotalUrls">—</b>
+    </div>
+  </div>
+
+  <div class="row-actions" style="margin-top:16px">
+    <button class="btn-primary" id="indexnowResubmitBtn">📤 إعادة إرسال جميع الروابط الآن</button>
+    <button class="btn-secondary" id="indexnowRefreshBtn">🔄 تحديث الإحصائيات</button>
+  </div>
+
+  <div id="indexnowResultBox" class="hidden" style="margin-top:16px;padding:14px;background:var(--panel-3);border:1px solid var(--border);border-radius:11px;font-family:monospace;font-size:13px;direction:ltr"></div>
+
+  <div class="small" style="margin-top:14px;line-height:1.7;padding:12px;background:rgba(99,102,241,.08);border-right:3px solid var(--brand-2);border-radius:8px">
+    <b>💡 ملاحظات مهمة:</b><br>
+    • IndexNow لا يضمن الفهرسة، لكنه يُخبر محركات البحث فوراً بوجود محتوى جديد فيقوموا بزيارته بسرعة بدلاً من الانتظار.<br>
+    • يعمل مع Bing وYandex وDuckDuckGo وSeznam وNaver. <b>Google لا يدعم IndexNow رسمياً</b> — لكن لديه طرق أخرى مذكورة أدناه.<br>
+    • للحصول على فهرسة Google السريعة: في Google Search Console → "فحص عنوان URL" → الصق الرابط → اضغط "طلب الفهرسة". مع نشر مقالات جديدة باستمرار وروابط داخلية، Google سيكتشف باقي الموقع تلقائياً.
+  </div>
+</div>
+
+<div class="card" id="imagesCard" style="margin-top:24px">
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+    <span style="font-size:24px">🖼️</span>
+    <h3>إدارة صور المقالات</h3>
+  </div>
+  <p class="desc">تصفّح صور أي مقال منشور، وغيّرها كلها أو غيّر صورة واحدة فقط. "جلب صور جديدة" يبحث في ويكيبيديا/ويكيميديا أولاً ثم بكسلس كاحتياط، بينما "جلب صور من بكسلس" يجيب الصور من بكسلس فقط.</p>
+
+  <div class="row-actions" style="margin-top:10px;flex-wrap:wrap;gap:10px">
+    <input id="imgSearchInput" type="text" placeholder="ابحث عن مقال بالعنوان..." style="flex:1;min-width:220px;padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:var(--panel-3);color:inherit;font-family:inherit">
+    <button class="btn-secondary" id="imgSearchBtn">🔍 بحث</button>
+    <button class="btn-secondary" id="imgRefreshBtn">🔄 تحديث</button>
+  </div>
+  <div style="margin-top:12px;padding:14px;background:var(--panel-2);border-radius:12px;border:1px solid var(--border);display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+    <div style="flex:1;min-width:200px">
+      <div style="font-weight:800;font-size:14px;color:var(--text);margin-bottom:3px">🖼️ تجديد صور كل المقالات دفعة واحدة</div>
+      <div class="small">يجلب صوراً جديدة لجميع المقالات المنشورة تلقائياً — ويكيبيديا/ويكيميديا أولاً، بكسلس احتياطاً.</div>
+    </div>
+    <button class="btn-primary" id="regenAllImagesBtn" style="white-space:nowrap;padding:10px 20px">🔄 تجديد صور كل المقالات</button>
+    <button class="btn-secondary" id="regenAllStopBtn" style="display:none;white-space:nowrap;padding:10px 16px;color:var(--danger)">⏹ إيقاف</button>
+    <div id="regenAllProgress" style="display:none;font-size:13px;color:var(--muted);font-weight:600;min-width:120px;text-align:center"></div>
+  </div>
+
+  <div id="imgArticlesGrid" style="margin-top:18px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px"></div>
+  <div id="imgLoadMoreWrap" class="row-actions hidden" style="margin-top:14px;justify-content:center">
+    <button class="btn-secondary" id="imgLoadMoreBtn">تحميل المزيد</button>
+  </div>
+  <div id="imgEmptyState" class="small hidden" style="text-align:center;padding:24px;color:var(--muted)">ما فيه مقالات مطابقة.</div>
+</div>
+
+</main>
+  </div>
+</div>
+
+<script>
+(function(){
+  const $ = (id) => document.getElementById(id);
+  const SITE_URL = location.origin;
+
+  let token = localStorage.getItem('bulkAdminToken') || '';
+  // Persist discovered topics across page refreshes — losing them after every
+  // refresh was the user's #1 frustration with the discovery flow.
+  const TOPICS_LS_KEY = 'bulkAdminTopics_v1';
+  let topics = (function loadSavedTopics(){
+    try {
+      const raw = localStorage.getItem(TOPICS_LS_KEY);
+      const arr = raw ? JSON.parse(raw) : [];
+      return Array.isArray(arr) ? arr : [];
+    } catch(_) { return []; }
+  })();
+  function saveTopics(){
+    try {
+      // Strip transient UI-only fields (thumbnail blobs, loading flags) to keep storage small.
+      const slim = topics.map(t => ({
+        title: t.title || '',
+        category: t.category || '',
+        keywords: t.keywords || '',
+        image_query: t.image_query || '',
+        video_query: t.video_query || '',
+      }));
+      localStorage.setItem(TOPICS_LS_KEY, JSON.stringify(slim));
+    } catch(_) { /* quota/private mode — silently ignore */ }
+  }
+  let results = [];
+  let stopRequested = false;
+  let generating = false;
+  let timerInterval = null;
+  let startTime = 0;
+  let speedProfiles = {};
+  let currentSpeed = localStorage.getItem('speed') || 'medium';
+  let providers = {};
+  const currentProvider = 'groq'; // locked — Groq rotating key pool only
+
+  // ── Token discovery: ONLY accept a fresh token from the URL hash (after a
+  // Google OAuth redirect). Scanning localStorage caused false positives —
+  // an old/expired Supabase token from a different project would be picked up
+  // and rejected by the server, locking the user out with a confusing error.
+  // Authentication removed per user request.
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // No longer need Google Sign In
+  });
+
+  function showApp(user){
+    $('gate').classList.add('hidden');
+    $('app').classList.remove('hidden');
+    user = user || JSON.parse(localStorage.getItem('bulkAdminUser') || '{}');
+    // Sidebar elements removed — guard against null
+    const elEmail  = $('userEmail');  if (elEmail  && user.email)  elEmail.textContent  = user.name || user.email;
+    const elAvatar = $('userAvatar'); if (elAvatar) elAvatar.src = user.avatar || 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300e6c8"><circle cx="12" cy="8" r="4"/><path d="M12 14c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"/></svg>');
+
+    // Legacy per-provider localStorage keys from the old multi-provider UI
+    // are no longer used — the app is locked to the server-side Groq pool.
+    ['orKey', 'orModel', 'apiKey_gemini', 'apiKey_openrouter', 'apiKey_groq', 'aiProvider'].forEach(k => localStorage.removeItem(k));
+
+    loadModels();
+    // Restore any topic list that was discovered/edited in a previous session.
+    if (topics.length > 0) renderTopics();
+  }
+
+  function showGate(){
+    // Gate is disabled
+  }
+
+  // Immediately start the app instead of authenticating
+  showApp();
+
+  $('logoutBtn')?.addEventListener('click', () => {
+    localStorage.removeItem('bulkAdminToken');
+    localStorage.removeItem('bulkAdminUser');
+    token = '';
+    location.reload();
+  });
+
+  // ── API helper ──
+  async function api(path, body){
+    const r = await fetch(path, {
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'X-Bulk-Admin-Token': token,
+      },
+      body: JSON.stringify(body || {})
+    });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
+    return j;
+  }
+
+  async function apiGet(path){
+    const r = await fetch(path, { headers:{ 'X-Bulk-Admin-Token': token } });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
+    return j;
+  }
+
+  function toast(msg, kind){
+    const t = document.createElement('div');
+    t.className = 'toast ' + (kind||'');
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 7000);
+  }
+
+  // ── Model + speed profiles (Groq only — no provider switcher) ──
+  async function loadModels(){
+    try {
+      const r = await fetch('/api/bulk-admin/models');
+      const j = await r.json();
+      providers = j.providers || {};
+      speedProfiles = j.speedProfiles || {};
+      renderSpeedCards();
+      loadGroqPoolStatus();
+      setInterval(loadGroqPoolStatus, 15000);
+    } catch(e) { console.warn(e); }
+  }
+
+  // ── Groq key-pool health dashboard ──
+  async function loadGroqPoolStatus(){
+    try {
+      const r = await apiGet('/api/bulk-admin/groq-pool-status');
+      const pool = Array.isArray(r) ? r : [];
+      const panel = $('groqPoolPanel');
+      if (panel) {
+        panel.innerHTML = pool.map(k => {
+          const cls = k.status === 'ok' ? 'ok' : (k.status === 'limited' ? 'warn' : 'err');
+          const icon = k.status === 'ok' ? '✓' : (k.status === 'limited' ? '⏳' : '✕');
+          return `<span class="badge ${cls}" title="مقالات: ${k.articlesGenerated} · نجاح: ${k.successCount} · فشل: ${k.failCount}${k.lastError ? ' · آخر خطأ: ' + k.lastError : ''}">${icon} مفتاح ${k.index + 1} (${k.keyPreview})</span>`;
+        }).join('');
+      }
+      const ok = pool.filter(k => k.status === 'ok').length;
+      const limited = pool.filter(k => k.status === 'limited').length;
+      const failed = pool.filter(k => k.status === 'failed').length;
+      const totalArticles = pool.reduce((s, k) => s + (k.articlesGenerated || 0), 0);
+      const summary = $('groqPoolSummary');
+      if (summary) summary.textContent = `${pool.length} مفتاح إجمالاً — ${ok} جاهز، ${limited} في فترة انتظار، ${failed} معطّل نهائياً · ${totalArticles} مقال أُنشئ عبر المجموعة`;
+    } catch(e) { console.warn('groq pool status failed', e); }
+  }
+
+  function renderSpeedCards(){
+    const grid = $('speedGrid');
+    grid.innerHTML = '';
+    const icons = { fast: '⚡', medium: '⚖️', thorough: '💎' };
+    Object.entries(speedProfiles).forEach(([key, p]) => {
+      const card = document.createElement('div');
+      card.className = 'speed-card' + (key === currentSpeed ? ' active' : '');
+      card.dataset.speed = key;
+      card.innerHTML = `
+        <div class="icon">${icons[key] || '⚙'}</div>
+        <div class="label">${p.label.replace(/^[⚡⚖💎️ ]+/, '')}</div>
+        <div class="desc">${p.description}</div>
+      `;
+      card.onclick = () => selectSpeed(key);
+      grid.appendChild(card);
+    });
+    updateSpeedHint();
+  }
+
+  // Returns the recommended model string for the current provider + speed combination.
+  // recommendedModel can be a plain string OR a {gemini, groq, openrouter} map.
+  function getRecommendedModel(speedKey) {
+    const rec = speedProfiles[speedKey]?.recommendedModel;
+    if (!rec) return '';
+    if (typeof rec === 'string') return rec;
+    if (typeof rec === 'object') return rec[currentProvider] || rec[Object.keys(rec)[0]] || '';
+    return '';
+  }
+
+  function selectSpeed(key){
+    currentSpeed = key;
+    localStorage.setItem('speed', key);
+    document.querySelectorAll('.speed-card').forEach(c => {
+      c.classList.toggle('active', c.dataset.speed === key);
+    });
+    // Optionally suggest the recommended model
+    const rec = getRecommendedModel(key);
+    if (rec) {
+      const sel = $('orModel');
+      const opt = [...sel.options].find(o => o.value === rec);
+      if (opt && sel.value !== rec) {
+        // Only auto-switch if user hasn't manually picked one in this session
+        if (!sessionStorage.getItem('userPickedModel:' + currentProvider)) {
+          sel.value = rec;
+          localStorage.setItem('model_' + currentProvider, rec);
+        }
+      }
+    }
+    updateSpeedHint();
+  }
+
+  function updateSpeedHint(){
+    const p = speedProfiles[currentSpeed];
+    if (!p) return;
+    const modelName = getRecommendedModel(currentSpeed).split('/').pop() || '';
+    $('speedHint').innerHTML = `النموذج الموصى به: <span style="color:var(--brand-2);font-weight:700">${modelName}</span> · توليد متزامن ${p.concurrency}× مقال`;
+  }
+
+  // ── Mode toggle ──
+  $('mode')?.addEventListener('change', () => {
+    const m = $('mode').value;
+    $('categoryWrap').classList.toggle('hidden', m !== 'category');
+    $('customWrap').classList.toggle('hidden', m !== 'custom');
+  });
+
+  // ── Topics rendering ──
+  // Each discovered topic gets a live image + video preview underneath it
+  // (fetched from the same Wikipedia/Wikimedia/Pexels pipeline used at
+  // generation time), each with its own "reroll" button so the user can
+  // adjust media before ever hitting "generate".
+  function mediaSlotHtml(i, slotIdx, item, loading){
+    if (loading) return `<div class="topic-media-slot loading">⏳</div>`;
+    if (!item) return `<div class="topic-media-slot"><span>لا صورة</span><button class="reroll" data-reroll="${i}" data-slot="${slotIdx}" data-kind="image">🔄 صورة أخرى</button></div>`;
+    return `<div class="topic-media-slot" title="${escapeAttr(item.photographer || '')}">
+      <img src="${escapeAttr(item.thumb || item.url)}" alt="" loading="lazy">
+      <span class="tag">📷 ${slotIdx + 1}</span>
+      <button class="reroll" data-reroll="${i}" data-slot="${slotIdx}" data-kind="image">🔄 صورة أخرى</button>
+    </div>`;
+  }
+
+  function renderTopics(){
+    const list = $('topicsList');
+    list.innerHTML = '';
+    topics.forEach((t, i) => {
+      const row = document.createElement('div');
+      row.className = 'topic-row';
+      row.innerHTML = `
+        <div class="topic-main">
+          <div class="idx">${i+1}</div>
+          <div class="col">
+            <input data-i="${i}" data-f="title" value="${escapeAttr(t.title)}" placeholder="عنوان المقال" />
+            <div class="row cols-2" style="margin-top:6px;gap:6px">
+              <input data-i="${i}" data-f="category" value="${escapeAttr(t.category)}" placeholder="الفئة" />
+              <input data-i="${i}" data-f="keywords" value="${escapeAttr(t.keywords)}" placeholder="كلمات مفتاحية" />
+            </div>
+          </div>
+          <div class="status" id="status-${i}"><span class="badge idle">في الانتظار</span></div>
+          <button class="btn-ghost" data-del="${i}">×</button>
+        </div>
+        <div class="topic-media" data-media-row="${i}">
+          ${mediaSlotHtml(i, 0, (t._images||[])[0], t._mediaLoading)}
+          ${mediaSlotHtml(i, 1, (t._images||[])[1], t._mediaLoading)}
+          ${mediaSlotHtml(i, 2, (t._images||[])[2], t._mediaLoading)}
+        </div>
+        <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn-secondary" data-rerollall="${i}" style="font-size:12px;padding:6px 14px;border-radius:8px" ${t._mediaLoading || generating ? 'disabled' : ''}>🔄 تجديد كل الصور</button>
+          <button class="btn-secondary" data-rerollpexels="${i}" style="font-size:12px;padding:6px 14px;border-radius:8px" ${t._mediaLoading || generating ? 'disabled' : ''}>🖼️ تجديد الصور من بكسلس</button>
+        </div>
+      `;
+      list.appendChild(row);
+    });
+    list.querySelectorAll('input').forEach(inp => {
+      inp.addEventListener('input', e => {
+        const i = +e.target.dataset.i, f = e.target.dataset.f;
+        topics[i][f] = e.target.value;
+        saveTopics();
+      });
+    });
+    list.querySelectorAll('[data-del]').forEach(btn => {
+      btn.disabled = generating;
+      btn.onclick = () => { if (generating) return; topics.splice(+btn.dataset.del, 1); saveTopics(); renderTopics(); };
+    });
+    list.querySelectorAll('[data-reroll]').forEach(btn => {
+      btn.disabled = generating;
+      btn.addEventListener('click', () => rerollTopicMedia(+btn.dataset.reroll, btn.dataset.kind, +(btn.dataset.slot || 0)));
+    });
+    list.querySelectorAll('[data-rerollall]').forEach(btn => {
+      btn.disabled = generating;
+      btn.addEventListener('click', () => rerollAllTopicImages(+btn.dataset.rerollall));
+    });
+    list.querySelectorAll('[data-rerollpexels]').forEach(btn => {
+      btn.disabled = generating;
+      btn.addEventListener('click', () => rerollAllTopicImages(+btn.dataset.rerollpexels, true));
+    });
+    list.querySelectorAll('input').forEach(inp => { inp.disabled = generating; });
+    $('topicCount').textContent = topics.length + ' موضوع';
+    $('generateBtn').disabled = topics.length === 0;
+    saveTopics();
+  }
+
+  // Fetch image+video previews for every topic that doesn't already have one
+  // (fresh discovery, or manually-added topics). Runs as one batched request.
+  async function loadTopicPreviews(onlyMissing = true){
+    // Never rebuild the topic list while generation is running — that would
+    // detach the live status badges each runOne() worker is updating.
+    if (generating) return;
+    const targets = topics
+      .map((t, i) => ({ t, i }))
+      .filter(({ t }) => !onlyMissing || (!(t._images && t._images.length) && !t._mediaLoading));
+    if (targets.length === 0) return;
+    // Capture whatever's currently shown BEFORE clearing, so a full "regenerate
+    // all" reroll can tell the server to avoid handing back the same images.
+    const avoidByTarget = targets.map(({ t }) => (t._images || []).filter(Boolean).map(im => im.url).filter(Boolean));
+    targets.forEach(({ t }) => { t._mediaLoading = true; });
+    renderTopics();
+    try {
+      const out = await api('/api/bulk-admin/preview-media', {
+        topics: targets.map(({ t }, idx) => ({
+          title: t.title, category: t.category, image_query: t.image_query, source_name: t.source_name,
+          avoid_image_urls: avoidByTarget[idx],
+        })),
+      });
+      (out.previews || []).forEach((p, idx) => {
+        const { t } = targets[idx];
+        t._images = (p.images && p.images.length) ? p.images : (p.image ? [p.image] : []);
+        t._video = p.video || null; // keep for generation pipeline
+        t.image_query = p.image_query || t.image_query;
+        t._mediaLoading = false;
+      });
+    } catch (e) {
+      targets.forEach(({ t }) => { t._mediaLoading = false; });
+      toast('تعذّر جلب معاينة الصور/الفيديو: ' + e.message, 'error');
+    }
+    // Re-check: generation may have started while this request was in flight.
+    // Skip the rerender in that case — it would detach the live status badges
+    // runOne() is updating. The fetched media is still saved on `t`, so it'll
+    // simply show up next time renderTopics() runs (e.g. after generation ends).
+    if (generating) return;
+    renderTopics();
+  }
+
+  // Reroll just one topic's image slot (keeps the other slots untouched).
+  async function rerollTopicMedia(i, kind, slotIdx){
+    if (generating) return;
+    const t = topics[i];
+    if (!t) return;
+    slotIdx = slotIdx || 0;
+    t._mediaLoading = true;
+    renderTopics();
+    try {
+      const currentSlotUrl = ((t._images || [])[slotIdx] || {}).url || null;
+      const out = await api('/api/bulk-admin/preview-media', {
+        topics: [{
+          title: t.title, category: t.category, image_query: t.image_query, source_name: t.source_name,
+          avoid_image_url: currentSlotUrl || undefined,
+        }],
+      });
+      const p = (out.previews || [])[0];
+      if (p) {
+        const newList = p.images && p.images.length ? p.images : (p.image ? [p.image] : []);
+        // pick first image not already used in another slot
+        const existingUrls = new Set((t._images || []).map((im, s) => s !== slotIdx && im ? im.url : null).filter(Boolean));
+        const pick = newList.find(im => !existingUrls.has(im.url)) || newList[0] || null;
+        const updated = [...(t._images || [null, null, null])];
+        updated[slotIdx] = pick;
+        t._images = updated;
+      }
+    } catch (e) {
+      toast('خطأ: ' + e.message, 'error');
+    } finally {
+      t._mediaLoading = false;
+      if (!generating) renderTopics();
+    }
+  }
+
+  // Reroll ALL 3 image slots for a topic at once (fresh fetch, ignore existing).
+  // Sends every currently-shown image URL as an "avoid" list so the fresh
+  // fetch can't just return the same deterministic Wikipedia/Commons set —
+  // otherwise "reroll all" looked like it did nothing.
+  async function rerollAllTopicImages(i, pexelsOnly = false){
+    if (generating) return;
+    const t = topics[i];
+    if (!t) return;
+    const avoidUrls = (t._images || []).filter(Boolean).map(im => im.url).filter(Boolean);
+    t._images = [];
+    t._mediaLoading = true;
+    renderTopics();
+    try {
+      const out = await api('/api/bulk-admin/preview-media', {
+        topics: [{
+          title: t.title, category: t.category, image_query: t.image_query, source_name: t.source_name,
+          avoid_image_urls: avoidUrls, pexels_only: pexelsOnly,
+        }],
+      });
+      const p = (out.previews || [])[0];
+      if (p) {
+        t._images = (p.images && p.images.length) ? p.images : (p.image ? [p.image] : []);
+        t.image_query = p.image_query || t.image_query;
+      }
+    } catch(e) {
+      toast('خطأ: ' + e.message, 'error');
+    } finally {
+      t._mediaLoading = false;
+      if (!generating) renderTopics();
+    }
+  }
+
+  function escapeAttr(s){ return String(s||'').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+  // ── Discover ──
+  $('discoverBtn')?.addEventListener('click', async () => {
+    const btn = $('discoverBtn');
+    btn.disabled = true; btn.textContent = '⏳ جارٍ الاكتشاف...';
+    try {
+      const out = await api('/api/bulk-admin/discover-topics', {
+        count: +$('count').value,
+        mode: $('mode').value, category: $('category').value, customSeed: $('customSeed').value,
+      });
+      topics = out.topics || [];
+      renderTopics();
+      const extras = [];
+      if (out.modelUsed) extras.push('عبر ' + out.modelUsed.split('/').pop());
+      if (out.excluded_count) extras.push('استبعاد ' + out.excluded_count + ' موجود مسبقاً');
+      if (out.duplicates_filtered) extras.push(out.duplicates_filtered + ' مكرر فُلتر');
+      toast('تم اكتشاف ' + topics.length + ' موضوع' + (extras.length ? ' (' + extras.join(' · ') + ')' : ''), 'success');
+      loadTopicPreviews();
+    } catch(e) {
+      toast('خطأ: ' + e.message, 'error');
+    } finally {
+      btn.disabled = false; btn.textContent = '🔍 اكتشاف المواضيع';
+    }
+  });
+
+  $('addManualBtn')?.addEventListener('click', () => {
+    topics.push({ title:'', category: $('category').value || 'ثقافة', keywords:'' });
+    renderTopics();
+  });
+  // Manually-added topics only get a title as the user types it in, so
+  // fetch its media preview once they've moved on (blur) instead of on
+  // every keystroke.
+  $('topicsList')?.addEventListener('focusout', (e) => {
+    if (e.target.tagName !== 'INPUT' || e.target.dataset.f !== 'title') return;
+    const i = +e.target.dataset.i;
+    const t = topics[i];
+    if (t && t.title && t.title.trim() && !(t._images && t._images.length) && !t._mediaLoading) loadTopicPreviews();
+  });
+  $('clearTopicsBtn')?.addEventListener('click', () => { if (confirm('حذف كل المواضيع؟')) { topics=[]; saveTopics(); renderTopics(); } });
+
+  $('regenAllTopicImagesBtn')?.addEventListener('click', async () => {
+    if (generating || topics.length === 0) return;
+    const btn = $('regenAllTopicImagesBtn');
+    btn.disabled = true;
+    btn.textContent = '⏳ جارٍ التجديد…';
+    // Do NOT clear images before calling loadTopicPreviews — it needs the
+    // current images to build the "avoid" list so the fresh fetch actually
+    // returns different pictures instead of the same deterministic set.
+    try {
+      await loadTopicPreviews(false);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = '🖼️ تجديد كل الصور';
+    }
+  });
+
+  // ── Generate (with concurrency based on speed profile) ──
+  $('generateBtn')?.addEventListener('click', async () => {
+    if (topics.length === 0) return;
+    const profile = speedProfiles[currentSpeed] || { concurrency: 1 };
+    const concurrency = Math.max(1, profile.concurrency || 1);
+    if (!confirm('سيُنشر ' + topics.length + ' مقال على الموقع بوضع "' + (profile.label||currentSpeed) + '" (تزامن ' + concurrency + 'x) عبر مجموعة مفاتيح Groq. متابعة؟')) return;
+
+    stopRequested = false;
+    generating = true;
+    results = [];
+    const tplMode = $('templateMode').value;
+
+    $('discoverBtn').disabled = true;
+    $('addManualBtn').disabled = true;
+    $('clearTopicsBtn').disabled = true;
+    if ($('regenAllTopicImagesBtn')) $('regenAllTopicImagesBtn').disabled = true;
+    renderTopics(); // lock per-row delete/reroll/edit controls too
+
+    $('progressWrap').classList.remove('hidden');
+    $('generateBtn').classList.add('hidden');
+    $('stopBtn').classList.remove('hidden');
+    $('resultsCard').classList.add('hidden');
+    $('statTotal').textContent = topics.length;
+    $('statDone').textContent = '0';
+    $('statFail').textContent = '0';
+    startTime = Date.now();
+    timerInterval = setInterval(() => {
+      const s = Math.floor((Date.now()-startTime)/1000);
+      $('statTime').textContent = s + 's';
+    }, 500);
+
+    let done = 0, fail = 0, processed = 0;
+
+    // Map raw error → short user-friendly Arabic reason, so the user
+    // immediately understands WHY each article failed without reading logs.
+    function explainError(msg){
+      const m = String(msg || '').toLowerCase();
+      if (/مفتاح|api key|unauthorized|401/.test(m)) return { why:'مفتاح API غير صالح أو منتهي', tip:'تحقق من المفتاح في الأعلى وأعد الإدخال.' };
+      if (/quota|exhausted|429|rate[- ]?limit|too many|الحد اليومي|الحد الشهري/.test(m)) return { why:'تجاوز حد الطلبات/الحصة على مفتاح الذكاء الاصطناعي', tip:'انتظر دقيقة أو خفّض السرعة (وضع متوسط/أفضل) أو استخدم مزوّداً آخر.' };
+      if (/timeout|تجاوز الوقت|aborted/.test(m)) return { why:'انتهت مهلة الاتصال بمزوّد الذكاء الاصطناعي', tip:'سيُعاد المحاولة تلقائياً، أو اضغط زر "إعادة المحاولة" بالأسفل.' };
+      if (/empty|فارغ|finishreason/.test(m)) return { why:'النموذج رجّع رد فارغ', tip:'جرّب نموذجاً مختلفاً أو وضع جودة أعلى.' };
+      if (/json|parse|تحليل/.test(m)) return { why:'النموذج رجّع تنسيقاً غير صالح', tip:'جرّب الوضع "الأفضل" — يستعمل JSON mode الأكثر موثوقية.' };
+      if (/بنية مقال|بدون أقسام|أقسام/.test(m)) return { why:'النموذج رجّع مقالاً ناقصاً', tip:'جرّب نموذجاً أقوى أو وضع "متوسط/أفضل".' };
+      if (/supabase|insert|unique|duplicate|slug/.test(m)) return { why:'فشل حفظ المقال في قاعدة البيانات (ربما مكرر)', tip:'العنوان قد يكون موجوداً مسبقاً — غيّره وأعد المحاولة.' };
+      if (/blocked|safety|رفض|منع/.test(m)) return { why:'النموذج رفض الموضوع لأسباب أمان', tip:'غيّر صياغة العنوان أو استخدم موضوعاً مختلفاً.' };
+      if (/network|fetch|enotfound|econn/.test(m)) return { why:'مشكلة شبكة مع مزوّد الذكاء الاصطناعي', tip:'تحقّق من الاتصال وأعد المحاولة.' };
+      return { why:'خطأ أثناء التوليد', tip:'افتح التفاصيل بالأسفل لمعرفة الرسالة الكاملة.' };
+    }
+
+    function renderFailure(i, errMsg){
+      const statusEl = $('status-' + i);
+      if (!statusEl) return;
+      const explained = explainError(errMsg);
+      statusEl.innerHTML = `
+        <span class="badge err">✗ فشل</span>
+        <div class="err-detail" data-i="${i}" title="اضغط لعرض الرسالة الكاملة">
+          <span class="why">⚠ ${escapeAttr(explained.why)}</span>
+          <span style="opacity:.85">${escapeAttr(explained.tip)}</span>
+          <div class="full">${escapeAttr(errMsg || '(no message)')}</div>
+        </div>
+        <button class="retry-btn" data-retry="${i}">↻ إعادة المحاولة</button>
+      `;
+      // Click to expand full error.
+      statusEl.querySelector('.err-detail')?.addEventListener('click', e => {
+        if (e.target.closest('.retry-btn')) return;
+        e.currentTarget.classList.toggle('expanded');
+      });
+      // Click to retry just this one article.
+      statusEl.querySelector('.retry-btn')?.addEventListener('click', async (e) => {
+        const btn = e.currentTarget;
+        btn.disabled = true; btn.textContent = '⏳ جارٍ المحاولة…';
+        statusEl.querySelector('.err-detail')?.remove();
+        await runOne(i, /*isRetry*/true);
+      });
+    }
+
+    async function runOne(i, isRetry){
+      const t = topics[i];
+      // Always look the status cell up fresh (by id) instead of holding a
+      // node reference across awaits — a preview/reroll rerender could
+      // otherwise replace the whole topics list mid-generation and silently
+      // detach a captured node, so updates would stop reaching the screen.
+      const getStatusEl = () => $('status-' + i);
+      const initEl = getStatusEl();
+      if (initEl && !isRetry) initEl.innerHTML = '<span class="badge warn">⏳ جارٍ التوليد</span>';
+      else if (initEl && isRetry) initEl.innerHTML = '<span class="badge warn">⏳ إعادة المحاولة…</span>';
+      try {
+        const tplId = tplMode === 'random' ? null : parseInt(tplMode, 10);
+        const out = await api('/api/bulk-admin/generate-one', {
+          topic: t, templateId: tplId, speed: currentSpeed
+        });
+        results.push(out.article);
+        if (!isRetry) done++; else { done++; fail--; }
+        addResultMediaCard(out.article);
+        const statusEl = getStatusEl();
+        if (statusEl) {
+          const badges = [];
+          badges.push('<span class="badge ok">✓ منشور</span>');
+          if (out.article?.has_video) badges.push('<span class="badge ok" title="يحتوي فيديو">🎬</span>');
+          if (out.article?.images_count) badges.push('<span class="badge ok" title="صور">📸'+out.article.images_count+'</span>');
+          if (Array.isArray(out.article?.languages)) {
+            const langs = out.article.languages.length;
+            const cls = langs >= 4 ? 'ok' : 'warn';
+            badges.push('<span class="badge '+cls+'" title="'+out.article.languages.join(',')+'">🌐 '+langs+'/4</span>');
+          }
+          statusEl.innerHTML = badges.join(' ');
+        }
+        $('statDone').textContent = done;
+        $('statFail').textContent = fail;
+        if (isRetry) {
+          // Refresh the cache + results panel after a successful retry.
+          renderResults?.();
+          try { await api('/api/bulk-admin/refresh-cache', {}); } catch(_) {}
+        }
+      } catch(e) {
+        if (!isRetry) fail++;
+        renderFailure(i, e.message);
+        $('statFail').textContent = fail;
+        console.error('Failed for', t?.title, e);
+      }
+    }
+
+    // Worker pool: each worker pulls next index, generates, marks status.
+    // Concurrency comes purely from the speed profile now — the Groq key
+    // pool rotation happens transparently on the server for each request.
+    const queue = topics.map((_, i) => i);
+    const workers = [];
+
+    async function worker() {
+      while (queue.length > 0 && !stopRequested) {
+        const i = queue.shift();
+        await runOne(i, false);
+        processed++;
+        $('progressFill').style.width = ((processed/topics.length)*100) + '%';
+      }
+    }
+
+    for (let w = 0; w < concurrency; w++) {
+      workers.push(worker());
+    }
+    await Promise.all(workers);
+    generating = false;
+    $('discoverBtn').disabled = false;
+    $('addManualBtn').disabled = false;
+    $('clearTopicsBtn').disabled = false;
+    renderTopics(); // unlock per-row controls and pick up any media fetched mid-run
+
+    clearInterval(timerInterval);
+    $('stopBtn').classList.add('hidden');
+    $('generateBtn').classList.remove('hidden');
+
+    if (results.length > 0) {
+      renderResults();
+      $('resultsCard').classList.remove('hidden');
+      $('resultsCard').scrollIntoView({behavior:'smooth'});
+      try { await api('/api/bulk-admin/refresh-cache', {}); } catch(e) {}
+    }
+    toast(done + ' منشور · ' + fail + ' فاشل', done > fail ? 'success' : 'error');
+  });
+
+  $('stopBtn')?.addEventListener('click', () => { stopRequested = true; toast('سيتوقف بعد المقال الحالي'); });
+
+  function renderResults(){
+    const list = $('urlList');
+    list.textContent = results.map(a => `${SITE_URL}/articles/${a.slug}`).join('\n');
+  }
+
+  // Show images + video for a just-published article right under the link
+  // list, with the same per-image / all / Pexels / video controls used in
+  // the "إدارة صور المقالات" section below. Replaces any existing card for
+  // the same id (covers the retry-one flow).
+  async function addResultMediaCard(article){
+    if (!article || !article.id) return;
+    const grid = $('resultMediaGrid');
+    if (!grid) return;
+    const existing = grid.querySelector(`[data-article-id="${article.id}"]`);
+    if (existing) existing.remove();
+    try {
+      const r = await apiGet('/api/bulk-admin/article-media?id=' + encodeURIComponent(article.id));
+      const card = renderImgArticleCard(r.article);
+      grid.insertBefore(card, grid.firstChild);
+    } catch (e) {
+      // Non-fatal — the article still published fine, media management can
+      // always be done later from the images section below.
+    }
+  }
+
+  $('copyAllBtn')?.addEventListener('click', () => {
+    const text = results.map(a => `${SITE_URL}/articles/${a.slug}`).join('\n');
+    navigator.clipboard.writeText(text).then(() => toast('تم نسخ ' + results.length + ' رابط', 'success'));
+  });
+  $('copyMdBtn')?.addEventListener('click', () => {
+    const text = results.map(a => `- [${a.title}](${SITE_URL}/articles/${a.slug})`).join('\n');
+    navigator.clipboard.writeText(text).then(() => toast('تم نسخ Markdown', 'success'));
+  });
+  $('refreshSeoBtn')?.addEventListener('click', async () => {
+    $('refreshSeoBtn').disabled = true;
+    try {
+      await api('/api/bulk-admin/refresh-cache', {});
+      toast('تم تحديث الكاش وخريطة الموقع', 'success');
+    } catch(e) { toast(e.message, 'error'); }
+    $('refreshSeoBtn').disabled = false;
+  });
+
+  // ── IndexNow card ──────────────────────────────────────────────────────────
+  async function loadIndexNowCard() {
+    try {
+      const r = await apiGet('/api/bulk-admin/indexnow-status');
+      $('indexnowKeyBox').textContent = r.key || '—';
+      const a = $('indexnowKeyUrl');
+      if (r.keyUrl) { a.href = r.keyUrl; a.textContent = r.keyUrl; } else { a.textContent = '—'; a.removeAttribute('href'); }
+      $('indexnowArticleCount').textContent = (r.articleCount ?? '—');
+      $('indexnowTotalUrls').textContent = (r.totalUrlsIfResubmit ?? '—');
+    } catch(e) { /* not authed yet — silent */ }
+  }
+
+  $('indexnowRefreshBtn') && $('indexnowRefreshBtn').addEventListener('click', async () => {
+    await loadIndexNowCard();
+    toast('تم التحديث', 'success');
+  });
+
+  $('indexnowResubmitBtn') && $('indexnowResubmitBtn').addEventListener('click', async () => {
+    const btn = $('indexnowResubmitBtn');
+    const box = $('indexnowResultBox');
+    if (!confirm('سيتم إرسال جميع روابط المقالات (5 روابط لكل مقال × عدد المقالات) إلى محركات البحث الآن. متابعة؟')) return;
+    btn.disabled = true; btn.textContent = '⏳ جاري الإرسال...';
+    box.classList.remove('hidden'); box.textContent = 'جاري الإرسال...';
+    try {
+      const r = await api('/api/bulk-admin/indexnow-resubmit-all', {});
+      box.textContent = `✅ تم إرسال ${r.totalUrls} رابط في ${r.batches.length} دفعة:\n` + r.batches.map((b,i) => `Batch ${i+1}: ${b.count} URLs → HTTP ${b.status} ${b.ok?'✓':'✗'}`).join('\n');
+      toast(`تم إرسال ${r.totalUrls} رابط إلى محركات البحث`, 'success');
+    } catch(e) {
+      box.textContent = '❌ ' + e.message;
+      toast(e.message, 'error');
+    } finally {
+      btn.disabled = false; btn.textContent = '📤 إعادة إرسال جميع الروابط الآن';
+    }
+  });
+
+  // Load the cron + IndexNow cards as soon as both (a) providers are populated
+  // and (b) the user is authenticated. We poll for that combo because the
+  // legacy init() runs loadModels() before this IIFE wraps it. Once both
+  // conditions are met we fire each loader exactly once and stop.
+  let _indexNowLoaded = false;
+  const _readyTimer = setInterval(() => {
+    const providersReady = Object.keys(providers).length > 0;
+    const authed = !!token;
+    if (providersReady && authed) {
+      if (!_indexNowLoaded) { _indexNowLoaded = true; loadIndexNowCard().catch(()=>{}); }
+      if (_indexNowLoaded) clearInterval(_readyTimer);
+    }
+  }, 500);
+  // Stop polling after 30s no matter what (avoid runaway timer).
+  setTimeout(() => clearInterval(_readyTimer), 30000);
+
+  // ── Article images management ───────────────────────────────────────────
+  const IMG_PAGE_SIZE = 24;
+  let imgOffset = 0;
+  let imgSearch = '';
+  let imgArticles = [];
+
+  function catEmoji(){ return '📂'; }
+
+  function renderImgArticleCard(a){
+    const card = document.createElement('div');
+    card.className = 'img-article-card';
+    card.dataset.articleId = a.id;
+
+    const cat = document.createElement('div');
+    cat.className = 'img-article-cat';
+    cat.textContent = catEmoji() + ' ' + (a.category || '—');
+
+    const title = document.createElement('div');
+    title.className = 'img-article-title';
+    title.textContent = a.title;
+
+    const slots = document.createElement('div');
+    slots.className = 'img-slots';
+    for (let i = 0; i < 3; i++) {
+      const slot = document.createElement('div');
+      slot.className = 'img-slot';
+      slot.dataset.slotIndex = i;
+      const img = a.images[i];
+      if (img && img.url) {
+        const im = document.createElement('img');
+        im.src = img.thumb || img.url;
+        im.loading = 'lazy';
+        im.title = img.photographer ? ('© ' + img.photographer) : '';
+        slot.appendChild(im);
+      } else {
+        const empty = document.createElement('div');
+        empty.className = 'empty';
+        empty.textContent = '—';
+        slot.appendChild(empty);
+      }
+      const replaceBtn = document.createElement('button');
+      replaceBtn.className = 'slot-replace';
+      replaceBtn.textContent = '🔁 استبدال هذه الصورة';
+      replaceBtn.addEventListener('click', () => regenerateImages(a.id, 'auto', i, card));
+      slot.appendChild(replaceBtn);
+      slots.appendChild(slot);
+    }
+
+    const actions = document.createElement('div');
+    actions.className = 'img-article-actions';
+    const btnAll = document.createElement('button');
+    btnAll.className = 'btn-primary';
+    btnAll.textContent = '🖼️ جلب صور جديدة';
+    btnAll.addEventListener('click', () => regenerateImages(a.id, 'auto', 'all', card));
+    const btnPexels = document.createElement('button');
+    btnPexels.className = 'btn-secondary';
+    btnPexels.textContent = '📷 جلب صور من بكسلس';
+    btnPexels.addEventListener('click', () => regenerateImages(a.id, 'pexels', 'all', card));
+    actions.appendChild(btnAll);
+    actions.appendChild(btnPexels);
+
+    // ── Video preview + regenerate (Pexels is the only video source) ──
+    const videoWrap = document.createElement('div');
+    videoWrap.className = 'img-video-wrap';
+    videoWrap.appendChild(renderVideoBlock(a.video));
+
+    const videoActions = document.createElement('div');
+    videoActions.className = 'img-article-actions';
+    const btnVideo = document.createElement('button');
+    btnVideo.className = 'btn-secondary';
+    btnVideo.textContent = '🎬 جلب فيديو جديد (بكسلس)';
+    btnVideo.addEventListener('click', () => regenerateVideo(a.id, card));
+    videoActions.appendChild(btnVideo);
+
+    card.appendChild(cat);
+    card.appendChild(title);
+    card.appendChild(slots);
+    card.appendChild(actions);
+    card.appendChild(videoWrap);
+    card.appendChild(videoActions);
+    return card;
+  }
+
+  function renderVideoBlock(video){
+    const box = document.createElement('div');
+    box.className = 'img-video-box';
+    if (video && video.url) {
+      const v = document.createElement('video');
+      v.src = video.url;
+      v.poster = video.poster || '';
+      v.controls = true;
+      v.muted = true;
+      v.preload = 'metadata';
+      v.playsInline = true;
+      if (video.photographer) v.title = '© ' + video.photographer;
+      box.appendChild(v);
+    } else {
+      const empty = document.createElement('div');
+      empty.className = 'empty';
+      empty.textContent = 'لا يوجد فيديو';
+      box.appendChild(empty);
+    }
+    return box;
+  }
+
+  function setCardBusy(card, busy){
+    card.querySelectorAll('.img-slot').forEach(s => s.classList.toggle('busy', busy));
+    card.querySelectorAll('button').forEach(b => b.disabled = busy);
+  }
+
+  function updateCardImages(card, images){
+    const slots = card.querySelectorAll('.img-slot');
+    slots.forEach((slot, i) => {
+      slot.querySelectorAll('img, .empty').forEach(el => el.remove());
+      const img = images[i];
+      if (img && img.url) {
+        const im = document.createElement('img');
+        im.src = img.thumb || img.url;
+        im.loading = 'lazy';
+        im.title = img.photographer ? ('© ' + img.photographer) : '';
+        slot.insertBefore(im, slot.firstChild);
+      } else {
+        const empty = document.createElement('div');
+        empty.className = 'empty';
+        empty.textContent = '—';
+        slot.insertBefore(empty, slot.firstChild);
+      }
+    });
+  }
+
+  async function regenerateImages(id, mode, slot, card){
+    setCardBusy(card, true);
+    try {
+      const r = await api('/api/bulk-admin/regenerate-images', { id, mode, slot });
+      updateCardImages(card, r.images || []);
+      toast(slot === 'all' ? 'تم جلب صور جديدة' : 'تم استبدال الصورة', 'success');
+    } catch (e) {
+      toast(e.message, 'error');
+    } finally {
+      setCardBusy(card, false);
+    }
+  }
+
+  function updateCardVideo(card, video){
+    const wrap = card.querySelector('.img-video-wrap');
+    if (!wrap) return;
+    wrap.innerHTML = '';
+    wrap.appendChild(renderVideoBlock(video));
+  }
+
+  async function regenerateVideo(id, card){
+    setCardBusy(card, true);
+    try {
+      const r = await api('/api/bulk-admin/regenerate-video', { id });
+      updateCardVideo(card, r.video || null);
+      toast('تم جلب فيديو جديد', 'success');
+    } catch (e) {
+      toast(e.message, 'error');
+    } finally {
+      setCardBusy(card, false);
+    }
+  }
+
+  async function loadImgArticles(reset){
+    if (reset) { imgOffset = 0; imgArticles = []; $('imgArticlesGrid').innerHTML = ''; }
+    try {
+      const qs = new URLSearchParams({ limit: IMG_PAGE_SIZE, offset: imgOffset, search: imgSearch });
+      const r = await apiGet('/api/bulk-admin/articles-list?' + qs.toString());
+      const list = r.articles || [];
+      imgArticles = imgArticles.concat(list);
+      const grid = $('imgArticlesGrid');
+      list.forEach(a => grid.appendChild(renderImgArticleCard(a)));
+      imgOffset += list.length;
+      $('imgEmptyState').classList.toggle('hidden', imgArticles.length > 0);
+      $('imgLoadMoreWrap').classList.toggle('hidden', list.length < IMG_PAGE_SIZE);
+    } catch (e) {
+      toast(e.message, 'error');
+    }
+  }
+
+  $('imgSearchBtn')?.addEventListener('click', () => {
+    imgSearch = $('imgSearchInput').value.trim();
+    loadImgArticles(true);
+  });
+  $('imgSearchInput')?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { imgSearch = $('imgSearchInput').value.trim(); loadImgArticles(true); }
+  });
+  $('imgRefreshBtn')?.addEventListener('click', () => loadImgArticles(true));
+  $('imgLoadMoreBtn')?.addEventListener('click', () => loadImgArticles(false));
+
+  // ── Regenerate ALL articles' images ──────────────────────────────────────
+  let _regenAllStop = false;
+
+  $('regenAllImagesBtn')?.addEventListener('click', async () => {
+    if (!confirm('سيتم تجديد صور جميع المقالات المنشورة واحداً تلو الآخر. هذا قد يستغرق وقتاً حسب عدد المقالات. متابعة؟')) return;
+    _regenAllStop = false;
+    const btn  = $('regenAllImagesBtn');
+    const stop = $('regenAllStopBtn');
+    const prog = $('regenAllProgress');
+    btn.disabled = true;
+    stop.style.display = '';
+    prog.style.display = '';
+
+    try {
+      // 1. Load all article IDs in batches
+      const allIds = [];
+      let offset = 0;
+      const PG = 100;
+      while (true) {
+        const r = await apiGet('/api/bulk-admin/articles-list?limit=' + PG + '&offset=' + offset);
+        const batch = r.articles || [];
+        for (const a of batch) allIds.push({ id: a.id, title: a.title });
+        offset += batch.length;
+        if (batch.length < PG) break;
+      }
+
+      prog.textContent = '0 / ' + allIds.length + ' مقال';
+
+      let done = 0, failed = 0;
+      // 2. Process sequentially to respect rate limits
+      for (const { id, title } of allIds) {
+        if (_regenAllStop) break;
+        prog.textContent = '⏳ ' + (done + 1) + ' / ' + allIds.length + ' — ' + title.slice(0, 30) + '…';
+        try {
+          const r = await api('/api/bulk-admin/regenerate-images', { id, mode: 'auto', slot: 'all' });
+          // Update card in grid if visible
+          const card = document.querySelector('[data-article-id="' + id + '"]');
+          if (card) updateCardImages(card, r.images || []);
+          done++;
+        } catch (e) {
+          failed++;
+        }
+        prog.textContent = done + ' / ' + allIds.length + ' ✅' + (failed ? ' · ' + failed + ' ❌' : '');
+      }
+
+      const msg = _regenAllStop
+        ? 'تم الإيقاف — جُدِّد ' + done + ' مقال'
+        : 'تم تجديد ' + done + ' مقال' + (failed ? ' · ' + failed + ' فشل' : '');
+      toast(msg, done > 0 ? 'success' : 'error');
+      prog.textContent = msg;
+    } catch (e) {
+      toast('خطأ: ' + e.message, 'error');
+      prog.textContent = '❌ ' + e.message;
+    } finally {
+      btn.disabled = false;
+      stop.style.display = 'none';
+    }
+  });
+
+  $('regenAllStopBtn')?.addEventListener('click', () => {
+    _regenAllStop = true;
+    $('regenAllStopBtn').disabled = true;
+    $('regenAllStopBtn').textContent = '⏳ جاري الإيقاف…';
+  });
+
+  loadImgArticles(true);
+})();
+</script>
+</body>
+</html>
